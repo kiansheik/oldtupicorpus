@@ -148,7 +148,7 @@ irã = Adverb("irã")
 béno = Adverb("béno")
 erobîar = Verb("erobîar")
 
-salve_rainha = ProperNoun("Salva Rainha")
+salve_rainha = ProperNoun("Salve Rainha")
 poraûsubara = Noun("poraûsubara")
 ikobé = Verb("ikobé")
 een = Noun("e'ẽ")
@@ -213,7 +213,7 @@ moîaoîaok = mo * îaok.redup()
 pytybõ = Verb("pytybõ")
 
 
-bettendorff_compendio_pt_1 = [
+bettendorff_compendio = [
     # Santa Cruz
     ((saba * (santa_cruz * aang)) * esé)
     + (endé * (pysyro.imp()) * oré)
