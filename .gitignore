@@ -205,3 +205,9 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+
+# Models are big
+# model artifacts
+tokenizer/output/tupi_canonicalizer/final_model/
+*.safetensors
