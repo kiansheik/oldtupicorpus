@@ -1,0 +1,358 @@
+[
+  {
+    "id": "S000071",
+    "subtag": "1p"
+  },
+  {
+    "id": "S000011",
+    "subtag": "1ppe"
+  },
+  {
+    "id": "S000055",
+    "subtag": "1ppi"
+  },
+  {
+    "id": "S000078",
+    "subtag": "1ps"
+  },
+  {
+    "id": "S000073",
+    "subtag": "2p"
+  },
+  {
+    "id": "S000013",
+    "subtag": "2ps"
+  },
+  {
+    "id": "S000027",
+    "subtag": "3p"
+  },
+  {
+    "id": "S000020",
+    "subtag": "ABSOLUTE"
+  },
+  {
+    "id": "S000018",
+    "subtag": "ABSOLUTE_AGENT_SUFFIX"
+  },
+  {
+    "id": "S000045",
+    "subtag": "ADVERB"
+  },
+  {
+    "id": "S000053",
+    "subtag": "ADVERSATIVE"
+  },
+  {
+    "id": "S000029",
+    "subtag": "AGENTLESS_PATIENT_SUFFIX"
+  },
+  {
+    "id": "S000079",
+    "subtag": "ALL"
+  },
+  {
+    "id": "S000024",
+    "subtag": "AMEN"
+  },
+  {
+    "id": "S000022",
+    "subtag": "AND"
+  },
+  {
+    "id": "S000080",
+    "subtag": "ANY"
+  },
+  {
+    "id": "S000063",
+    "subtag": "ASPECT"
+  },
+  {
+    "id": "S000075",
+    "subtag": "BEYOND"
+  },
+  {
+    "id": "S000088",
+    "subtag": "CARDINAL"
+  },
+  {
+    "id": "S000048",
+    "subtag": "CAUSATIVE_PREFIX"
+  },
+  {
+    "id": "S000056",
+    "subtag": "CIRCUMSTANTIAL_SUFFIX"
+  },
+  {
+    "id": "S000068",
+    "subtag": "CLASS_1"
+  },
+  {
+    "id": "S000067",
+    "subtag": "CLASS_2"
+  },
+  {
+    "id": "S000025",
+    "subtag": "CLITIC"
+  },
+  {
+    "id": "S000021",
+    "subtag": "CONJUNCTION"
+  },
+  {
+    "id": "S000058",
+    "subtag": "CONJUNCTIVE_SUFFIX"
+  },
+  {
+    "id": "S000081",
+    "subtag": "CONSONANT"
+  },
+  {
+    "id": "S000083",
+    "subtag": "CONSONANT_CLASH"
+  },
+  {
+    "id": "S000006",
+    "subtag": "CONSONANT_ENDING"
+  },
+  {
+    "id": "S000064",
+    "subtag": "CONTINUOUS"
+  },
+  {
+    "id": "S000046",
+    "subtag": "DATIVE"
+  },
+  {
+    "id": "S000041",
+    "subtag": "DEADVERBAL"
+  },
+  {
+    "id": "S000044",
+    "subtag": "DEFAULT"
+  },
+  {
+    "id": "S000070",
+    "subtag": "DEMONSTRATIVE"
+  },
+  {
+    "id": "S000085",
+    "subtag": "DEMONSTRATIVE_VOWEL_ENDING"
+  },
+  {
+    "id": "S000040",
+    "subtag": "EVERY"
+  },
+  {
+    "id": "S000004",
+    "subtag": "FACILITY_SUFFIX"
+  },
+  {
+    "id": "S000089",
+    "subtag": "FROM_THERE"
+  },
+  {
+    "id": "S000076",
+    "subtag": "FUTURE"
+  },
+  {
+    "id": "S000077",
+    "subtag": "FUTURE_SUFFIX"
+  },
+  {
+    "id": "S000065",
+    "subtag": "GERUND_SUBJECT_PREFIX"
+  },
+  {
+    "id": "S000066",
+    "subtag": "GERUND_SUFFIX"
+  },
+  {
+    "id": "S000061",
+    "subtag": "HAIL"
+  },
+  {
+    "id": "S000084",
+    "subtag": "HUMAN"
+  },
+  {
+    "id": "S000047",
+    "subtag": "IMPERATIVE"
+  },
+  {
+    "id": "S000042",
+    "subtag": "IMPERATIVE_PREFIX"
+  },
+  {
+    "id": "S000023",
+    "subtag": "INTERJECTION"
+  },
+  {
+    "id": "S000036",
+    "subtag": "LOAN_WORD"
+  },
+  {
+    "id": "S000026",
+    "subtag": "LOCATIVE"
+  },
+  {
+    "id": "S000059",
+    "subtag": "M"
+  },
+  {
+    "id": "S000049",
+    "subtag": "MO"
+  },
+  {
+    "id": "S000050",
+    "subtag": "NEGATION_PARTICLE"
+  },
+  {
+    "id": "S000017",
+    "subtag": "NEGATION_SUFFIX"
+  },
+  {
+    "id": "S000028",
+    "subtag": "NON_MAIN_CLAUSE_SUBJECT"
+  },
+  {
+    "id": "S000007",
+    "subtag": "NOUN"
+  },
+  {
+    "id": "S000086",
+    "subtag": "NUMBER"
+  },
+  {
+    "id": "S000010",
+    "subtag": "OBJECT"
+  },
+  {
+    "id": "S000014",
+    "subtag": "OBJECT_1P"
+  },
+  {
+    "id": "S000043",
+    "subtag": "OBJECT_MARKER"
+  },
+  {
+    "id": "S000069",
+    "subtag": "ORAL_VOWEL"
+  },
+  {
+    "id": "S000052",
+    "subtag": "PARTICLE"
+  },
+  {
+    "id": "S000039",
+    "subtag": "PATIENT_PREFIX"
+  },
+  {
+    "id": "S000032",
+    "subtag": "PERMISSIVE_PREFIX"
+  },
+  {
+    "id": "S000002",
+    "subtag": "PLURIFORM_PREFIX"
+  },
+  {
+    "id": "S000037",
+    "subtag": "PORTUGUESE"
+  },
+  {
+    "id": "S000015",
+    "subtag": "POSSESSIVE_PRONOUN"
+  },
+  {
+    "id": "S000008",
+    "subtag": "POSSESSOR"
+  },
+  {
+    "id": "S000009",
+    "subtag": "POSTPOSITION"
+  },
+  {
+    "id": "S000074",
+    "subtag": "PRETERITE_SUFFIX"
+  },
+  {
+    "id": "S000057",
+    "subtag": "PRONOUN"
+  },
+  {
+    "id": "S000001",
+    "subtag": "PROPER_NOUN"
+  },
+  {
+    "id": "S000003",
+    "subtag": "R"
+  },
+  {
+    "id": "S000062",
+    "subtag": "REDUPLICATION"
+  },
+  {
+    "id": "S000038",
+    "subtag": "REFLEXIVE"
+  },
+  {
+    "id": "S000054",
+    "subtag": "RELATIVE_AGENT_SUFFIX"
+  },
+  {
+    "id": "S000060",
+    "subtag": "S"
+  },
+  {
+    "id": "S000030",
+    "subtag": "SIMULATIVE_SUFFIX"
+  },
+  {
+    "id": "S000012",
+    "subtag": "SUBJECT"
+  },
+  {
+    "id": "S000034",
+    "subtag": "SUBJECT_PREFIX"
+  },
+  {
+    "id": "S000005",
+    "subtag": "SUBSTANTIVE_SUFFIX"
+  },
+  {
+    "id": "S000019",
+    "subtag": "T"
+  },
+  {
+    "id": "S000087",
+    "subtag": "THREE"
+  },
+  {
+    "id": "S000031",
+    "subtag": "TRANSLATIONAL"
+  },
+  {
+    "id": "S000051",
+    "subtag": "UME"
+  },
+  {
+    "id": "S000082",
+    "subtag": "UNIVERSAL_WE"
+  },
+  {
+    "id": "S000072",
+    "subtag": "VISIBLE"
+  },
+  {
+    "id": "S000016",
+    "subtag": "VOCATIVE"
+  },
+  {
+    "id": "S000033",
+    "subtag": "VOWEL"
+  },
+  {
+    "id": "S000035",
+    "subtag": "VOWEL_ENDING"
+  }
+]

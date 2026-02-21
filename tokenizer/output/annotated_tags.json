@@ -1,0 +1,318 @@
+[
+  {
+    "id": "T000012",
+    "tag": "[ABSOLUTE_AGENT_SUFFIX]"
+  },
+  {
+    "id": "T000067",
+    "tag": "[ADVERB:3p:ALL]"
+  },
+  {
+    "id": "T000068",
+    "tag": "[ADVERB:3p:ANY]"
+  },
+  {
+    "id": "T000078",
+    "tag": "[ADVERB:FROM_THERE]"
+  },
+  {
+    "id": "T000036",
+    "tag": "[ADVERB]"
+  },
+  {
+    "id": "T000021",
+    "tag": "[AGENTLESS_PATIENT_SUFFIX]"
+  },
+  {
+    "id": "T000076",
+    "tag": "[CARDINAL]"
+  },
+  {
+    "id": "T000041",
+    "tag": "[CAUSATIVE_PREFIX:MO]"
+  },
+  {
+    "id": "T000077",
+    "tag": "[CIRCUMSTANTIAL_SUFFIX:CONSONANT_ENDING]"
+  },
+  {
+    "id": "T000046",
+    "tag": "[CIRCUMSTANTIAL_SUFFIX:VOWEL_ENDING]"
+  },
+  {
+    "id": "T000079",
+    "tag": "[CONJUNCTION:ALL]"
+  },
+  {
+    "id": "T000015",
+    "tag": "[CONJUNCTION:AND]"
+  },
+  {
+    "id": "T000049",
+    "tag": "[CONJUNCTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000072",
+    "tag": "[CONSONANT_CLASH]"
+  },
+  {
+    "id": "T000033",
+    "tag": "[DEADVERBAL]"
+  },
+  {
+    "id": "T000059",
+    "tag": "[DEMONSTRATIVE:1p:VISIBLE]"
+  },
+  {
+    "id": "T000061",
+    "tag": "[DEMONSTRATIVE:2p:VISIBLE]"
+  },
+  {
+    "id": "T000073",
+    "tag": "[DEMONSTRATIVE:3p:VISIBLE:HUMAN]"
+  },
+  {
+    "id": "T000003",
+    "tag": "[FACILITY_SUFFIX]"
+  },
+  {
+    "id": "T000064",
+    "tag": "[FUTURE]"
+  },
+  {
+    "id": "T000065",
+    "tag": "[FUTURE_SUFFIX]"
+  },
+  {
+    "id": "T000056",
+    "tag": "[GERUND_SUBJECT_PREFIX:1ppe]"
+  },
+  {
+    "id": "T000069",
+    "tag": "[GERUND_SUFFIX:CLASS_1:CONSONANT]"
+  },
+  {
+    "id": "T000058",
+    "tag": "[GERUND_SUFFIX:CLASS_1:ORAL_VOWEL]"
+  },
+  {
+    "id": "T000057",
+    "tag": "[GERUND_SUFFIX:CLASS_2:DEFAULT]"
+  },
+  {
+    "id": "T000034",
+    "tag": "[IMPERATIVE_PREFIX:2ps]"
+  },
+  {
+    "id": "T000016",
+    "tag": "[INTERJECTION:AMEN]"
+  },
+  {
+    "id": "T000052",
+    "tag": "[INTERJECTION:HAIL]"
+  },
+  {
+    "id": "T000060",
+    "tag": "[INTERJECTION]"
+  },
+  {
+    "id": "T000042",
+    "tag": "[NEGATION_PARTICLE:UME]"
+  },
+  {
+    "id": "T000011",
+    "tag": "[NEGATION_SUFFIX]"
+  },
+  {
+    "id": "T000028",
+    "tag": "[NOUN:LOAN_WORD:PORTUGUESE]"
+  },
+  {
+    "id": "T000005",
+    "tag": "[NOUN:POSSESSOR]"
+  },
+  {
+    "id": "T000014",
+    "tag": "[NOUN]"
+  },
+  {
+    "id": "T000075",
+    "tag": "[NUMBER:THREE]"
+  },
+  {
+    "id": "T000007",
+    "tag": "[OBJECT:1ppe]"
+  },
+  {
+    "id": "T000020",
+    "tag": "[OBJECT:3p:NON_MAIN_CLAUSE_SUBJECT]"
+  },
+  {
+    "id": "T000071",
+    "tag": "[OBJECT:3p]"
+  },
+  {
+    "id": "T000029",
+    "tag": "[OBJECT:REFLEXIVE]"
+  },
+  {
+    "id": "T000035",
+    "tag": "[OBJECT_MARKER:3p:DEFAULT]"
+  },
+  {
+    "id": "T000043",
+    "tag": "[PARTICLE:ADVERSATIVE]"
+  },
+  {
+    "id": "T000037",
+    "tag": "[PATIENT_PREFIX:1ppe]"
+  },
+  {
+    "id": "T000053",
+    "tag": "[PATIENT_PREFIX:2ps]"
+  },
+  {
+    "id": "T000030",
+    "tag": "[PATIENT_PREFIX]"
+  },
+  {
+    "id": "T000025",
+    "tag": "[PERMISSIVE_PREFIX:VOWEL]"
+  },
+  {
+    "id": "T000050",
+    "tag": "[PLURIFORM_PREFIX:M:ABSOLUTE]"
+  },
+  {
+    "id": "T000002",
+    "tag": "[PLURIFORM_PREFIX:R]"
+  },
+  {
+    "id": "T000051",
+    "tag": "[PLURIFORM_PREFIX:S]"
+  },
+  {
+    "id": "T000013",
+    "tag": "[PLURIFORM_PREFIX:T:ABSOLUTE]"
+  },
+  {
+    "id": "T000019",
+    "tag": "[PLURIFORM_PREFIX:T]"
+  },
+  {
+    "id": "T000009",
+    "tag": "[POSSESSIVE_PRONOUN:1ppe]"
+  },
+  {
+    "id": "T000045",
+    "tag": "[POSSESSIVE_PRONOUN:1ppi]"
+  },
+  {
+    "id": "T000024",
+    "tag": "[POSSESSIVE_PRONOUN:2ps]"
+  },
+  {
+    "id": "T000063",
+    "tag": "[POSTPOSITION:BEYOND]"
+  },
+  {
+    "id": "T000038",
+    "tag": "[POSTPOSITION:DATIVE]"
+  },
+  {
+    "id": "T000032",
+    "tag": "[POSTPOSITION:EVERY]"
+  },
+  {
+    "id": "T000018",
+    "tag": "[POSTPOSITION:LOCATIVE]"
+  },
+  {
+    "id": "T000023",
+    "tag": "[POSTPOSITION:TRANSLATIONAL]"
+  },
+  {
+    "id": "T000006",
+    "tag": "[POSTPOSITION]"
+  },
+  {
+    "id": "T000062",
+    "tag": "[PRETERITE_SUFFIX]"
+  },
+  {
+    "id": "T000070",
+    "tag": "[PRONOUN:UNIVERSAL_WE]"
+  },
+  {
+    "id": "T000048",
+    "tag": "[PRONOUN]"
+  },
+  {
+    "id": "T000001",
+    "tag": "[PROPER_NOUN]"
+  },
+  {
+    "id": "T000055",
+    "tag": "[REDUPLICATION:ASPECT:CONTINUOUS]"
+  },
+  {
+    "id": "T000044",
+    "tag": "[RELATIVE_AGENT_SUFFIX]"
+  },
+  {
+    "id": "T000022",
+    "tag": "[SIMULATIVE_SUFFIX]"
+  },
+  {
+    "id": "T000040",
+    "tag": "[SUBJECT:1ppe]"
+  },
+  {
+    "id": "T000008",
+    "tag": "[SUBJECT:2ps:OBJECT_1P]"
+  },
+  {
+    "id": "T000031",
+    "tag": "[SUBJECT:3p]"
+  },
+  {
+    "id": "T000054",
+    "tag": "[SUBJECT_PREFIX:1ppe]"
+  },
+  {
+    "id": "T000066",
+    "tag": "[SUBJECT_PREFIX:1ps]"
+  },
+  {
+    "id": "T000039",
+    "tag": "[SUBJECT_PREFIX:2ps:IMPERATIVE]"
+  },
+  {
+    "id": "T000047",
+    "tag": "[SUBJECT_PREFIX:2ps]"
+  },
+  {
+    "id": "T000026",
+    "tag": "[SUBJECT_PREFIX:3p]"
+  },
+  {
+    "id": "T000017",
+    "tag": "[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING:CLITIC]"
+  },
+  {
+    "id": "T000004",
+    "tag": "[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING]"
+  },
+  {
+    "id": "T000074",
+    "tag": "[SUBSTANTIVE_SUFFIX:DEMONSTRATIVE_VOWEL_ENDING]"
+  },
+  {
+    "id": "T000027",
+    "tag": "[SUBSTANTIVE_SUFFIX:VOWEL_ENDING]"
+  },
+  {
+    "id": "T000010",
+    "tag": "[VOCATIVE]"
+  }
+]

@@ -1,0 +1,827 @@
+[
+  {
+    "value": "ar",
+    "tag": "[ABSOLUTE_AGENT_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "bar",
+    "tag": "[ABSOLUTE_AGENT_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "esar",
+    "tag": "[ABSOLUTE_AGENT_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "oar",
+    "tag": "[ABSOLUTE_AGENT_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "sar",
+    "tag": "[ABSOLUTE_AGENT_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "opakatu",
+    "tag": "[ADVERB:3p:ALL]",
+    "translation": ""
+  },
+  {
+    "value": "tetiruã",
+    "tag": "[ADVERB:3p:ANY]",
+    "translation": ""
+  },
+  {
+    "value": "suí",
+    "tag": "[ADVERB:FROM_THERE]",
+    "translation": ""
+  },
+  {
+    "value": "a'e",
+    "tag": "[ADVERB]",
+    "translation": ""
+  },
+  {
+    "value": "béno",
+    "tag": "[ADVERB]",
+    "translation": ""
+  },
+  {
+    "value": "irã",
+    "tag": "[ADVERB]",
+    "translation": ""
+  },
+  {
+    "value": "ko'yr",
+    "tag": "[ADVERB]",
+    "translation": ""
+  },
+  {
+    "value": "kori",
+    "tag": "[ADVERB]",
+    "translation": ""
+  },
+  {
+    "value": "mbyr",
+    "tag": "[AGENTLESS_PATIENT_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "pyr",
+    "tag": "[AGENTLESS_PATIENT_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "mosapyra",
+    "tag": "[CARDINAL]",
+    "translation": ""
+  },
+  {
+    "value": "mo",
+    "tag": "[CAUSATIVE_PREFIX:MO]",
+    "translation": ""
+  },
+  {
+    "value": "i",
+    "tag": "[CIRCUMSTANTIAL_SUFFIX:CONSONANT_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "û",
+    "tag": "[CIRCUMSTANTIAL_SUFFIX:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "pabẽ",
+    "tag": "[CONJUNCTION:ALL]",
+    "translation": ""
+  },
+  {
+    "value": "Santo",
+    "tag": "[CONJUNCTION:AND]",
+    "translation": ""
+  },
+  {
+    "value": "abé",
+    "tag": "[CONJUNCTION:AND]",
+    "translation": ""
+  },
+  {
+    "value": "eme",
+    "tag": "[CONJUNCTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "me",
+    "tag": "[CONJUNCTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "y",
+    "tag": "[CONSONANT_CLASH]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[DEADVERBAL]",
+    "translation": ""
+  },
+  {
+    "value": "ndûar",
+    "tag": "[DEADVERBAL]",
+    "translation": ""
+  },
+  {
+    "value": "ikó",
+    "tag": "[DEMONSTRATIVE:1p:VISIBLE]",
+    "translation": ""
+  },
+  {
+    "value": "eboûing",
+    "tag": "[DEMONSTRATIVE:2p:VISIBLE]",
+    "translation": ""
+  },
+  {
+    "value": "a'e",
+    "tag": "[DEMONSTRATIVE:3p:VISIBLE:HUMAN]",
+    "translation": ""
+  },
+  {
+    "value": "ab",
+    "tag": "[FACILITY_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "erobîasab",
+    "tag": "[FACILITY_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "sa",
+    "tag": "[FACILITY_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "á",
+    "tag": "[FACILITY_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "îase'ûab",
+    "tag": "[FACILITY_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "îekosupa",
+    "tag": "[FACILITY_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "ne",
+    "tag": "[FUTURE]",
+    "translation": ""
+  },
+  {
+    "value": "gûam",
+    "tag": "[FUTURE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "oro",
+    "tag": "[GERUND_SUBJECT_PREFIX:1ppe]",
+    "translation": ""
+  },
+  {
+    "value": "oré",
+    "tag": "[GERUND_SUBJECT_PREFIX:1ppe]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[GERUND_SUFFIX:CLASS_1:CONSONANT]",
+    "translation": ""
+  },
+  {
+    "value": "bo",
+    "tag": "[GERUND_SUFFIX:CLASS_1:ORAL_VOWEL]",
+    "translation": ""
+  },
+  {
+    "value": "amo",
+    "tag": "[GERUND_SUFFIX:CLASS_2:DEFAULT]",
+    "translation": ""
+  },
+  {
+    "value": "e",
+    "tag": "[IMPERATIVE_PREFIX:2ps]",
+    "translation": ""
+  },
+  {
+    "value": "amém",
+    "tag": "[INTERJECTION:AMEN]",
+    "translation": ""
+  },
+  {
+    "value": "salve",
+    "tag": "[INTERJECTION:HAIL]",
+    "translation": ""
+  },
+  {
+    "value": "ene'ĩ",
+    "tag": "[INTERJECTION]",
+    "translation": ""
+  },
+  {
+    "value": "umẽ",
+    "tag": "[NEGATION_PARTICLE:UME]",
+    "translation": ""
+  },
+  {
+    "value": "e'ym",
+    "tag": "[NEGATION_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "Reino",
+    "tag": "[NOUN:LOAN_WORD:PORTUGUESE]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[NOUN:LOAN_WORD:PORTUGUESE]",
+    "translation": ""
+  },
+  {
+    "value": "Christo",
+    "tag": "[NOUN:POSSESSOR]",
+    "translation": ""
+  },
+  {
+    "value": "Eva",
+    "tag": "[NOUN:POSSESSOR]",
+    "translation": ""
+  },
+  {
+    "value": "Santo",
+    "tag": "[NOUN:POSSESSOR]",
+    "translation": ""
+  },
+  {
+    "value": "Tupã",
+    "tag": "[NOUN:POSSESSOR]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[NOUN:POSSESSOR]",
+    "translation": ""
+  },
+  {
+    "value": "asé",
+    "tag": "[NOUN:POSSESSOR]",
+    "translation": ""
+  },
+  {
+    "value": "ba'e",
+    "tag": "[NOUN:POSSESSOR]",
+    "translation": ""
+  },
+  {
+    "value": "yby",
+    "tag": "[NOUN:POSSESSOR]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "ekobé",
+    "tag": "[NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "ekokatu",
+    "tag": "[NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "irũ",
+    "tag": "[NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "kunhã",
+    "tag": "[NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "mba'e",
+    "tag": "[NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "nhyrõ",
+    "tag": "[NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "oîepeba'e",
+    "tag": "[NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "pitangĩ",
+    "tag": "[NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "sy",
+    "tag": "[NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "tentação",
+    "tag": "[NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "yby",
+    "tag": "[NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "mosapyra",
+    "tag": "[NUMBER:THREE]",
+    "translation": ""
+  },
+  {
+    "value": "oré",
+    "tag": "[OBJECT:1ppe]",
+    "translation": ""
+  },
+  {
+    "value": "i",
+    "tag": "[OBJECT:3p:NON_MAIN_CLAUSE_SUBJECT]",
+    "translation": ""
+  },
+  {
+    "value": "i",
+    "tag": "[OBJECT:3p]",
+    "translation": ""
+  },
+  {
+    "value": "îe",
+    "tag": "[OBJECT:REFLEXIVE]",
+    "translation": ""
+  },
+  {
+    "value": "î",
+    "tag": "[OBJECT_MARKER:3p:DEFAULT]",
+    "translation": ""
+  },
+  {
+    "value": "te",
+    "tag": "[PARTICLE:ADVERSATIVE]",
+    "translation": ""
+  },
+  {
+    "value": "oré",
+    "tag": "[PATIENT_PREFIX:1ppe]",
+    "translation": ""
+  },
+  {
+    "value": "endé",
+    "tag": "[PATIENT_PREFIX:2ps]",
+    "translation": ""
+  },
+  {
+    "value": "embi",
+    "tag": "[PATIENT_PREFIX]",
+    "translation": ""
+  },
+  {
+    "value": "emi",
+    "tag": "[PATIENT_PREFIX]",
+    "translation": ""
+  },
+  {
+    "value": "t",
+    "tag": "[PERMISSIVE_PREFIX:VOWEL]",
+    "translation": ""
+  },
+  {
+    "value": "m",
+    "tag": "[PLURIFORM_PREFIX:M:ABSOLUTE]",
+    "translation": ""
+  },
+  {
+    "value": "r",
+    "tag": "[PLURIFORM_PREFIX:R]",
+    "translation": ""
+  },
+  {
+    "value": "s",
+    "tag": "[PLURIFORM_PREFIX:S]",
+    "translation": ""
+  },
+  {
+    "value": "t",
+    "tag": "[PLURIFORM_PREFIX:T:ABSOLUTE]",
+    "translation": ""
+  },
+  {
+    "value": "t",
+    "tag": "[PLURIFORM_PREFIX:T]",
+    "translation": ""
+  },
+  {
+    "value": "oré",
+    "tag": "[POSSESSIVE_PRONOUN:1ppe]",
+    "translation": ""
+  },
+  {
+    "value": "îandé",
+    "tag": "[POSSESSIVE_PRONOUN:1ppi]",
+    "translation": ""
+  },
+  {
+    "value": "nde",
+    "tag": "[POSSESSIVE_PRONOUN:2ps]",
+    "translation": ""
+  },
+  {
+    "value": "iré",
+    "tag": "[POSTPOSITION:BEYOND]",
+    "translation": ""
+  },
+  {
+    "value": "be",
+    "tag": "[POSTPOSITION:DATIVE]",
+    "translation": ""
+  },
+  {
+    "value": "bo",
+    "tag": "[POSTPOSITION:DATIVE]",
+    "translation": ""
+  },
+  {
+    "value": "supé",
+    "tag": "[POSTPOSITION:DATIVE]",
+    "translation": ""
+  },
+  {
+    "value": "îabi'õ",
+    "tag": "[POSTPOSITION:EVERY]",
+    "translation": ""
+  },
+  {
+    "value": "pe",
+    "tag": "[POSTPOSITION:LOCATIVE]",
+    "translation": ""
+  },
+  {
+    "value": "amo",
+    "tag": "[POSTPOSITION:TRANSLATIONAL]",
+    "translation": ""
+  },
+  {
+    "value": "namo",
+    "tag": "[POSTPOSITION:TRANSLATIONAL]",
+    "translation": ""
+  },
+  {
+    "value": "esé",
+    "tag": "[POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "koty",
+    "tag": "[POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "pupé",
+    "tag": "[POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "ri",
+    "tag": "[POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "suí",
+    "tag": "[POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "îabé",
+    "tag": "[POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "gûer",
+    "tag": "[PRETERITE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "pûer",
+    "tag": "[PRETERITE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "ûer",
+    "tag": "[PRETERITE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "asé",
+    "tag": "[PRONOUN:UNIVERSAL_WE]",
+    "translation": ""
+  },
+  {
+    "value": "oré",
+    "tag": "[PRONOUN]",
+    "translation": ""
+  },
+  {
+    "value": "Catholica",
+    "tag": "[PROPER_NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "Christo",
+    "tag": "[PROPER_NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "Cruz",
+    "tag": "[PROPER_NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "Eva",
+    "tag": "[PROPER_NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "Jesus",
+    "tag": "[PROPER_NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "JesusChristoabé",
+    "tag": "[PROPER_NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "Maria",
+    "tag": "[PROPER_NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "Pilato",
+    "tag": "[PROPER_NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "Rainha",
+    "tag": "[PROPER_NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "Santo",
+    "tag": "[PROPER_NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "Santos",
+    "tag": "[PROPER_NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "Tupã",
+    "tag": "[PROPER_NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "pukaî",
+    "tag": "[REDUPLICATION:ASPECT:CONTINUOUS]",
+    "translation": ""
+  },
+  {
+    "value": "îa'ok",
+    "tag": "[REDUPLICATION:ASPECT:CONTINUOUS]",
+    "translation": ""
+  },
+  {
+    "value": "ba'e",
+    "tag": "[RELATIVE_AGENT_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "amo",
+    "tag": "[SIMULATIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "namo",
+    "tag": "[SIMULATIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "oré",
+    "tag": "[SUBJECT:1ppe]",
+    "translation": ""
+  },
+  {
+    "value": "îepé",
+    "tag": "[SUBJECT:2ps:OBJECT_1P]",
+    "translation": ""
+  },
+  {
+    "value": "i",
+    "tag": "[SUBJECT:3p]",
+    "translation": ""
+  },
+  {
+    "value": "oro",
+    "tag": "[SUBJECT_PREFIX:1ppe]",
+    "translation": ""
+  },
+  {
+    "value": "oré",
+    "tag": "[SUBJECT_PREFIX:1ppe]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[SUBJECT_PREFIX:1ps]",
+    "translation": ""
+  },
+  {
+    "value": "nde",
+    "tag": "[SUBJECT_PREFIX:2ps:IMPERATIVE]",
+    "translation": ""
+  },
+  {
+    "value": "ere",
+    "tag": "[SUBJECT_PREFIX:2ps]",
+    "translation": ""
+  },
+  {
+    "value": "i",
+    "tag": "[SUBJECT_PREFIX:3p]",
+    "translation": ""
+  },
+  {
+    "value": "o",
+    "tag": "[SUBJECT_PREFIX:3p]",
+    "translation": ""
+  },
+  {
+    "value": "y",
+    "tag": "[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING:CLITIC]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "apyter",
+    "tag": "[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "membyr",
+    "tag": "[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "morubixab",
+    "tag": "[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "ybak",
+    "tag": "[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "ba'e",
+    "tag": "[SUBSTANTIVE_SUFFIX:DEMONSTRATIVE_VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "'u",
+    "tag": "[SUBSTANTIVE_SUFFIX:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "Maria",
+    "tag": "[SUBSTANTIVE_SUFFIX:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "Reino",
+    "tag": "[SUBSTANTIVE_SUFFIX:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "asé",
+    "tag": "[SUBSTANTIVE_SUFFIX:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "ekobé",
+    "tag": "[SUBSTANTIVE_SUFFIX:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "ekokatu",
+    "tag": "[SUBSTANTIVE_SUFFIX:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "irũ",
+    "tag": "[SUBSTANTIVE_SUFFIX:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "kunhã",
+    "tag": "[SUBSTANTIVE_SUFFIX:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "mba'e",
+    "tag": "[SUBSTANTIVE_SUFFIX:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "nhyrõ",
+    "tag": "[SUBSTANTIVE_SUFFIX:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "oîepeba'e",
+    "tag": "[SUBSTANTIVE_SUFFIX:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "pitangĩ",
+    "tag": "[SUBSTANTIVE_SUFFIX:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "sy",
+    "tag": "[SUBSTANTIVE_SUFFIX:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "tentação",
+    "tag": "[SUBSTANTIVE_SUFFIX:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "yby",
+    "tag": "[SUBSTANTIVE_SUFFIX:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "Maria",
+    "tag": "[VOCATIVE]",
+    "translation": ""
+  },
+  {
+    "value": "esar",
+    "tag": "[VOCATIVE]",
+    "translation": ""
+  },
+  {
+    "value": "nherane'ym",
+    "tag": "[VOCATIVE]",
+    "translation": ""
+  },
+  {
+    "value": "oar",
+    "tag": "[VOCATIVE]",
+    "translation": ""
+  },
+  {
+    "value": "ub",
+    "tag": "[VOCATIVE]",
+    "translation": ""
+  },
+  {
+    "value": "îar",
+    "tag": "[VOCATIVE]",
+    "translation": ""
+  }
+]

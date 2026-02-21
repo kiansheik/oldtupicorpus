@@ -1,0 +1,706 @@
+[
+  {
+    "id": "M000047",
+    "value": "'ar"
+  },
+  {
+    "id": "M000061",
+    "value": "'arukar"
+  },
+  {
+    "id": "M000166",
+    "value": "'ekatuab"
+  },
+  {
+    "id": "M000046",
+    "value": "'u"
+  },
+  {
+    "id": "M000066",
+    "value": "Ave"
+  },
+  {
+    "id": "M000172",
+    "value": "Catholica"
+  },
+  {
+    "id": "M000131",
+    "value": "Christo"
+  },
+  {
+    "id": "M000002",
+    "value": "Cruz"
+  },
+  {
+    "id": "M000020",
+    "value": "Espírito"
+  },
+  {
+    "id": "M000107",
+    "value": "Eva"
+  },
+  {
+    "id": "M000171",
+    "value": "Igreja"
+  },
+  {
+    "id": "M000082",
+    "value": "Jesus"
+  },
+  {
+    "id": "M000143",
+    "value": "JesusChristoabé"
+  },
+  {
+    "id": "M000067",
+    "value": "Maria"
+  },
+  {
+    "id": "M000151",
+    "value": "Pilato"
+  },
+  {
+    "id": "M000150",
+    "value": "Poncio"
+  },
+  {
+    "id": "M000093",
+    "value": "Rainha"
+  },
+  {
+    "id": "M000038",
+    "value": "Reino"
+  },
+  {
+    "id": "M000092",
+    "value": "Salve"
+  },
+  {
+    "id": "M000001",
+    "value": "Santa"
+  },
+  {
+    "id": "M000021",
+    "value": "Santo"
+  },
+  {
+    "id": "M000173",
+    "value": "Santos"
+  },
+  {
+    "id": "M000011",
+    "value": "Tupã"
+  },
+  {
+    "id": "M000128",
+    "value": "Virgem"
+  },
+  {
+    "id": "M000006",
+    "value": "a"
+  },
+  {
+    "id": "M000004",
+    "value": "a'ang"
+  },
+  {
+    "id": "M000120",
+    "value": "a'e"
+  },
+  {
+    "id": "M000019",
+    "value": "a'yr"
+  },
+  {
+    "id": "M000005",
+    "value": "ab"
+  },
+  {
+    "id": "M000149",
+    "value": "ababykagûere'ym"
+  },
+  {
+    "id": "M000080",
+    "value": "abé"
+  },
+  {
+    "id": "M000033",
+    "value": "amo"
+  },
+  {
+    "id": "M000013",
+    "value": "amotar"
+  },
+  {
+    "id": "M000024",
+    "value": "amém"
+  },
+  {
+    "id": "M000129",
+    "value": "angaturam"
+  },
+  {
+    "id": "M000085",
+    "value": "angaîpa"
+  },
+  {
+    "id": "M000056",
+    "value": "angaîpab"
+  },
+  {
+    "id": "M000161",
+    "value": "apyter"
+  },
+  {
+    "id": "M000142",
+    "value": "ar"
+  },
+  {
+    "id": "M000145",
+    "value": "asé"
+  },
+  {
+    "id": "M000070",
+    "value": "ba'e"
+  },
+  {
+    "id": "M000015",
+    "value": "bar"
+  },
+  {
+    "id": "M000054",
+    "value": "be"
+  },
+  {
+    "id": "M000102",
+    "value": "bo"
+  },
+  {
+    "id": "M000091",
+    "value": "béno"
+  },
+  {
+    "id": "M000050",
+    "value": "e"
+  },
+  {
+    "id": "M000141",
+    "value": "e'ikatu"
+  },
+  {
+    "id": "M000014",
+    "value": "e'ym"
+  },
+  {
+    "id": "M000098",
+    "value": "e'ẽ"
+  },
+  {
+    "id": "M000116",
+    "value": "eboûing"
+  },
+  {
+    "id": "M000028",
+    "value": "ek"
+  },
+  {
+    "id": "M000164",
+    "value": "ekobeîebyr"
+  },
+  {
+    "id": "M000096",
+    "value": "ekobé"
+  },
+  {
+    "id": "M000174",
+    "value": "ekokatu"
+  },
+  {
+    "id": "M000170",
+    "value": "ekomonhang"
+  },
+  {
+    "id": "M000074",
+    "value": "ekó"
+  },
+  {
+    "id": "M000153",
+    "value": "ekór"
+  },
+  {
+    "id": "M000045",
+    "value": "embi"
+  },
+  {
+    "id": "M000154",
+    "value": "eme"
+  },
+  {
+    "id": "M000041",
+    "value": "emi"
+  },
+  {
+    "id": "M000167",
+    "value": "en"
+  },
+  {
+    "id": "M000101",
+    "value": "endé"
+  },
+  {
+    "id": "M000113",
+    "value": "ene'ĩ"
+  },
+  {
+    "id": "M000132",
+    "value": "enõî"
+  },
+  {
+    "id": "M000125",
+    "value": "epîakukar"
+  },
+  {
+    "id": "M000022",
+    "value": "er"
+  },
+  {
+    "id": "M000077",
+    "value": "ere"
+  },
+  {
+    "id": "M000057",
+    "value": "erekomemûã"
+  },
+  {
+    "id": "M000099",
+    "value": "erobîasab"
+  },
+  {
+    "id": "M000117",
+    "value": "esaporaûsubar"
+  },
+  {
+    "id": "M000115",
+    "value": "esar"
+  },
+  {
+    "id": "M000007",
+    "value": "esé"
+  },
+  {
+    "id": "M000068",
+    "value": "graç"
+  },
+  {
+    "id": "M000135",
+    "value": "gûam"
+  },
+  {
+    "id": "M000122",
+    "value": "gûer"
+  },
+  {
+    "id": "M000160",
+    "value": "gûeîyb"
+  },
+  {
+    "id": "M000030",
+    "value": "i"
+  },
+  {
+    "id": "M000078",
+    "value": "ikó"
+  },
+  {
+    "id": "M000087",
+    "value": "irã"
+  },
+  {
+    "id": "M000124",
+    "value": "iré"
+  },
+  {
+    "id": "M000071",
+    "value": "irũ"
+  },
+  {
+    "id": "M000086",
+    "value": "ko'yr"
+  },
+  {
+    "id": "M000053",
+    "value": "kori"
+  },
+  {
+    "id": "M000119",
+    "value": "koty"
+  },
+  {
+    "id": "M000079",
+    "value": "kunhã"
+  },
+  {
+    "id": "M000094",
+    "value": "m"
+  },
+  {
+    "id": "M000163",
+    "value": "manõ"
+  },
+  {
+    "id": "M000139",
+    "value": "mba'e"
+  },
+  {
+    "id": "M000065",
+    "value": "mba'eaíb"
+  },
+  {
+    "id": "M000155",
+    "value": "mbyr"
+  },
+  {
+    "id": "M000090",
+    "value": "me"
+  },
+  {
+    "id": "M000052",
+    "value": "me'eng"
+  },
+  {
+    "id": "M000081",
+    "value": "membyr"
+  },
+  {
+    "id": "M000060",
+    "value": "mo"
+  },
+  {
+    "id": "M000031",
+    "value": "moete"
+  },
+  {
+    "id": "M000076",
+    "value": "mombe'ukatu"
+  },
+  {
+    "id": "M000040",
+    "value": "monhang"
+  },
+  {
+    "id": "M000152",
+    "value": "morubixab"
+  },
+  {
+    "id": "M000162",
+    "value": "mosapyra"
+  },
+  {
+    "id": "M000042",
+    "value": "motar"
+  },
+  {
+    "id": "M000157",
+    "value": "moîar"
+  },
+  {
+    "id": "M000072",
+    "value": "namo"
+  },
+  {
+    "id": "M000034",
+    "value": "nde"
+  },
+  {
+    "id": "M000049",
+    "value": "ndûar"
+  },
+  {
+    "id": "M000130",
+    "value": "ne"
+  },
+  {
+    "id": "M000108",
+    "value": "nhe'angerur"
+  },
+  {
+    "id": "M000126",
+    "value": "nherane'ym"
+  },
+  {
+    "id": "M000055",
+    "value": "nhyrõ"
+  },
+  {
+    "id": "M000035",
+    "value": "o"
+  },
+  {
+    "id": "M000029",
+    "value": "oar"
+  },
+  {
+    "id": "M000138",
+    "value": "opakatu"
+  },
+  {
+    "id": "M000095",
+    "value": "oraûsubar"
+  },
+  {
+    "id": "M000103",
+    "value": "oro"
+  },
+  {
+    "id": "M000008",
+    "value": "oré"
+  },
+  {
+    "id": "M000144",
+    "value": "oîepeba'e"
+  },
+  {
+    "id": "M000169",
+    "value": "pabẽ"
+  },
+  {
+    "id": "M000027",
+    "value": "pe"
+  },
+  {
+    "id": "M000106",
+    "value": "pe'a"
+  },
+  {
+    "id": "M000147",
+    "value": "pitangĩ"
+  },
+  {
+    "id": "M000109",
+    "value": "poasem"
+  },
+  {
+    "id": "M000127",
+    "value": "poreaûsuberek"
+  },
+  {
+    "id": "M000105",
+    "value": "pukaî"
+  },
+  {
+    "id": "M000023",
+    "value": "pupé"
+  },
+  {
+    "id": "M000032",
+    "value": "pyr"
+  },
+  {
+    "id": "M000009",
+    "value": "pysyrõ"
+  },
+  {
+    "id": "M000148",
+    "value": "pûer"
+  },
+  {
+    "id": "M000003",
+    "value": "r"
+  },
+  {
+    "id": "M000136",
+    "value": "ri"
+  },
+  {
+    "id": "M000118",
+    "value": "robak"
+  },
+  {
+    "id": "M000137",
+    "value": "robîar"
+  },
+  {
+    "id": "M000097",
+    "value": "s"
+  },
+  {
+    "id": "M000121",
+    "value": "sa"
+  },
+  {
+    "id": "M000100",
+    "value": "salve"
+  },
+  {
+    "id": "M000104",
+    "value": "sapuka"
+  },
+  {
+    "id": "M000058",
+    "value": "sar"
+  },
+  {
+    "id": "M000059",
+    "value": "supé"
+  },
+  {
+    "id": "M000016",
+    "value": "suí"
+  },
+  {
+    "id": "M000083",
+    "value": "sy"
+  },
+  {
+    "id": "M000123",
+    "value": "syk"
+  },
+  {
+    "id": "M000017",
+    "value": "t"
+  },
+  {
+    "id": "M000064",
+    "value": "te"
+  },
+  {
+    "id": "M000063",
+    "value": "tentação"
+  },
+  {
+    "id": "M000140",
+    "value": "tetiruã"
+  },
+  {
+    "id": "M000084",
+    "value": "tupãmongetá"
+  },
+  {
+    "id": "M000159",
+    "value": "tym"
+  },
+  {
+    "id": "M000018",
+    "value": "ub"
+  },
+  {
+    "id": "M000062",
+    "value": "umẽ"
+  },
+  {
+    "id": "M000165",
+    "value": "upir"
+  },
+  {
+    "id": "M000037",
+    "value": "ur"
+  },
+  {
+    "id": "M000026",
+    "value": "y"
+  },
+  {
+    "id": "M000025",
+    "value": "ybak"
+  },
+  {
+    "id": "M000043",
+    "value": "yby"
+  },
+  {
+    "id": "M000156",
+    "value": "ybyraîoasab"
+  },
+  {
+    "id": "M000111",
+    "value": "ybytygûaî"
+  },
+  {
+    "id": "M000069",
+    "value": "ynysem"
+  },
+  {
+    "id": "M000146",
+    "value": "á"
+  },
+  {
+    "id": "M000051",
+    "value": "î"
+  },
+  {
+    "id": "M000175",
+    "value": "îa'o"
+  },
+  {
+    "id": "M000176",
+    "value": "îa'ok"
+  },
+  {
+    "id": "M000048",
+    "value": "îabi'õ"
+  },
+  {
+    "id": "M000044",
+    "value": "îabé"
+  },
+  {
+    "id": "M000073",
+    "value": "îandé"
+  },
+  {
+    "id": "M000012",
+    "value": "îar"
+  },
+  {
+    "id": "M000110",
+    "value": "îase'ûa"
+  },
+  {
+    "id": "M000112",
+    "value": "îase'ûab"
+  },
+  {
+    "id": "M000039",
+    "value": "îe"
+  },
+  {
+    "id": "M000134",
+    "value": "îekosupa"
+  },
+  {
+    "id": "M000088",
+    "value": "îekyî"
+  },
+  {
+    "id": "M000010",
+    "value": "îepé"
+  },
+  {
+    "id": "M000114",
+    "value": "îerur"
+  },
+  {
+    "id": "M000168",
+    "value": "îkobe"
+  },
+  {
+    "id": "M000036",
+    "value": "îkó"
+  },
+  {
+    "id": "M000158",
+    "value": "îuka"
+  },
+  {
+    "id": "M000089",
+    "value": "ú"
+  },
+  {
+    "id": "M000075",
+    "value": "û"
+  },
+  {
+    "id": "M000133",
+    "value": "ûer"
+  }
+]
