@@ -182,7 +182,7 @@ def main() -> None:
     ap.add_argument(
         "--in_json",
         required=True,
-        help="JSON file with list of rows containing 'anotated'",
+        help="JSON or JSONL file with rows containing 'anotated'",
     )
     ap.add_argument("--out_dir", default=".", help="Where to write outputs")
     ap.add_argument(
@@ -203,6 +203,17 @@ def main() -> None:
         default=sorted(DEFAULT_CONTEXT_TAGS),
         help=f"Context tags to ignore if unattached. Default: {sorted(DEFAULT_CONTEXT_TAGS)}",
     )
+    ap.add_argument(
+        "--debug",
+        action="store_true",
+        help="Print progress while building tokenizer outputs.",
+    )
+    ap.add_argument(
+        "--log-every",
+        type=int,
+        default=0,
+        help="If set, emit progress every N rows.",
+    )
 
     args = ap.parse_args()
 
@@ -213,11 +224,26 @@ def main() -> None:
     subtags_path = os.path.join(out_dir, "annotated_subtags.json")
     toks_path = os.path.join(out_dir, "annotated_tokens.json")
     pairs_path = os.path.join(out_dir, "annotated_token_pairs.json")
+    variant_map_path = os.path.join(out_dir, "annotated_token_variants.json")
     io_path = os.path.join(out_dir, args.out_jsonl)
 
     # Load corpus
-    with open(args.in_json, "r", encoding="utf-8") as f:
-        corpus = json.load(f)
+    def iter_corpus_rows(path: str):
+        if path.endswith(".jsonl"):
+            with open(path, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    yield json.loads(line)
+        else:
+            with open(path, "r", encoding="utf-8") as f:
+                rows = json.load(f)
+            for row in rows:
+                yield row
+
+    if args.debug:
+        print(f"[tokenizer] loading corpus from {args.in_json}")
 
     # Load existing registries (stable across runs)
     tag2id = load_registry(tags_path)  # full tags -> T######
@@ -229,11 +255,12 @@ def main() -> None:
 
     # For token-pair export
     token_tag_pairs_set: Set[Tuple[str, str]] = set()
+    variant_map_set: Set[Tuple[str, str, str, str, str, str, str, str]] = set()
 
     # Build training IO (JSONL)
     num_rows = 0
     with open(io_path, "w", encoding="utf-8") as out_f:
-        for row in corpus:
+        for row in iter_corpus_rows(args.in_json):
             annotated = (
                 row.get("anotated")
                 or row.get("annotated")
@@ -241,6 +268,11 @@ def main() -> None:
             )
             if not annotated or not isinstance(annotated, str):
                 continue
+            annotated_canon = (
+                row.get("anotated_canon")
+                or row.get("annotated_canon")
+                or row.get("anotated_nav")
+            )
 
             # Surface input preference order
             surface_in = (
@@ -285,6 +317,54 @@ def main() -> None:
             }
             out_f.write(json.dumps(out_obj, ensure_ascii=False) + "\n")
             num_rows += 1
+            if args.log_every and num_rows % args.log_every == 0:
+                print(
+                    f"[tokenizer] rows={num_rows} tokens={len(tok2id)} "
+                    f"tags={len(tag2id)} subtags={len(subtag2id)}"
+                )
+
+            if annotated_canon and isinstance(annotated_canon, str):
+                swt_canon = extract_surfaces_with_attached_tags(
+                    annotated_canon,
+                    context_tags=context_tags,
+                    exclude_tag_substrings=exclude_tag_substrings,
+                )
+                if len(swt_canon) == len(swt):
+                    orth = row.get("orth") or ""
+                    orth_source = row.get("orth_source") or ""
+                    for item_var, item_can in zip(swt, swt_canon):
+                        if item_can.surface not in tok2id:
+                            tok2id[item_can.surface] = next_id("M", tok2id.values())
+                        var_id = tok2id[item_var.surface]
+                        can_id = tok2id[item_can.surface]
+                        if item_var.tags:
+                            for full_tag in item_var.tags:
+                                tag_id = tag2id.get(full_tag, "")
+                                variant_map_set.add(
+                                    (
+                                        item_var.surface,
+                                        var_id,
+                                        item_can.surface,
+                                        can_id,
+                                        full_tag,
+                                        tag_id,
+                                        orth,
+                                        orth_source,
+                                    )
+                                )
+                        else:
+                            variant_map_set.add(
+                                (
+                                    item_var.surface,
+                                    var_id,
+                                    item_can.surface,
+                                    can_id,
+                                    "",
+                                    "",
+                                    orth,
+                                    orth_source,
+                                )
+                            )
 
     # Write registries (sorted for stability)
     tag_items = [{"id": tag2id[t], "tag": t} for t in sorted(tag2id.keys())]
@@ -302,6 +382,24 @@ def main() -> None:
     ]
     write_registry_items(pairs_path, pair_items)
 
+    if variant_map_set:
+        variant_items = [
+            {
+                "variant": v,
+                "variant_id": vid,
+                "canonical": c,
+                "canonical_id": cid,
+                "tag": tag,
+                "tag_id": tid,
+                "orth": orth,
+                "orth_source": orth_source,
+            }
+            for (v, vid, c, cid, tag, tid, orth, orth_source) in sorted(
+                variant_map_set, key=lambda x: (x[7], x[6], x[2], x[0], x[4])
+            )
+        ]
+        write_registry_items(variant_map_path, variant_items)
+
     print("Done.")
     print(f"Wrote training IO: {io_path} (rows={num_rows})")
     print(
@@ -310,6 +408,8 @@ def main() -> None:
     print(
         f"Counts: tokens={len(tok2id)} tags={len(tag2id)} subtags={len(subtag2id)} pairs={len(token_tag_pairs_set)}"
     )
+    if variant_map_set:
+        print(f"Wrote variant map: {variant_map_path} (rows={len(variant_map_set)})")
 
 
 if __name__ == "__main__":

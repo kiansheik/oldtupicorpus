@@ -17,6 +17,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 data_base_path = "/Users/kian/code/oldtupicorpus/tokenizer/output"
+CORPUS_JSONL = data_base_path + "/corpus.jsonl"
 CORPUS_JSON = data_base_path + "/corpus.json"
 CANONICAL_IO = data_base_path + "/canonical_io.jsonl"
 TOKENS_JSON = data_base_path + "/annotated_tokens.json"  # M######
@@ -25,6 +26,7 @@ SUBTAGS_JSON = data_base_path + "/annotated_subtags.json"  # S######
 TOKEN_PAIRS_JSON = (
     data_base_path + "/annotated_token_pairs.json"
 )  # (value, tag) list; optional fallback
+VARIANT_MAP_JSON = data_base_path + "/annotated_token_variants.json"
 
 os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
 
@@ -32,17 +34,39 @@ print(
     "Exists?",
     *(
         os.path.exists(p)
-        for p in [CORPUS_JSON, CANONICAL_IO, TOKENS_JSON, TAGS_JSON, SUBTAGS_JSON]
+        for p in [
+            CORPUS_JSONL,
+            CORPUS_JSON,
+            CANONICAL_IO,
+            TOKENS_JSON,
+            TAGS_JSON,
+            SUBTAGS_JSON,
+            VARIANT_MAP_JSON,
+        ]
     ),
 )
 
-with open(CORPUS_JSON, "r", encoding="utf-8") as f:
-    corpus = json.load(f)
 
-print("corpus rows:", len(corpus))
-print("sample keys:", corpus[0].keys())
-print("sample label:", corpus[0].get("label")[:120])
-print("sample anotated:", corpus[0].get("anotated")[:120])
+def _read_first_corpus_row():
+    if os.path.exists(CORPUS_JSONL):
+        with open(CORPUS_JSONL, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line:
+                    return json.loads(line)
+        return None
+    if os.path.exists(CORPUS_JSON):
+        with open(CORPUS_JSON, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data[0] if data else None
+    return None
+
+
+first_row = _read_first_corpus_row()
+if first_row:
+    print("sample keys:", first_row.keys())
+    print("sample label:", str(first_row.get("label", ""))[:120])
+    print("sample anotated:", str(first_row.get("anotated", ""))[:120])
 
 
 # --------------------------
@@ -67,6 +91,17 @@ T_ID_TO_TAG = load_registry_id_to_value(TAGS_JSON, "tag")  # T#### -> "[TAG:...]
 TAG_TO_T_ID = load_registry_value_to_id(TAGS_JSON, "tag")
 S_ID_TO_SUBTAG = load_registry_id_to_value(SUBTAGS_JSON, "subtag")
 SUBTAG_TO_S_ID = load_registry_value_to_id(SUBTAGS_JSON, "subtag")
+
+# Variant map: variant M -> canonical M (Navarro)
+VARIANT_TO_CANON_ID = {}
+if os.path.exists(VARIANT_MAP_JSON):
+    with open(VARIANT_MAP_JSON, "r", encoding="utf-8") as f:
+        items = json.load(f)
+    for it in items:
+        vid = it.get("variant_id")
+        cid = it.get("canonical_id")
+        if vid and cid and vid not in VARIANT_TO_CANON_ID:
+            VARIANT_TO_CANON_ID[vid] = cid
 
 # Build surface->possible M IDs (usually 1-1, but keep general)
 SURF_TO_M_IDS = defaultdict(list)
@@ -333,59 +368,18 @@ def score_mid_sequence(mids: list[str]) -> float:
     return s
 
 
-def canonicalize_stats(text: str, allow_join_across_space: bool = True) -> str:
-    """
-    Returns canonical token stream:
-      - Always emits M#### tokens (or <RAW:...>)
-      - Optionally emits best T#### after each M#### if pair priors exist
-    """
-    text = normalize_surface(text)
-    words = text.split()
-
-    # First pass: segment each word independently
-    mids_per_word = [word_to_mids(w) for w in words]
-
-    # Optionally consider joining adjacent words if that yields a better morpheme sequence
-    # e.g., "xe rera" vs "xerera"
-    if allow_join_across_space and len(words) >= 2:
-        i = 0
-        new_mids = []
-        while i < len(words):
-            if i + 1 < len(words):
-                w1, w2 = words[i], words[i + 1]
-                mids_sep = mids_per_word[i] + mids_per_word[i + 1]
-                score_sep = score_mid_sequence(
-                    [m for m in mids_sep if not m.startswith("<RAW:")]
-                )
-
-                joined = w1 + w2
-                mids_join = word_to_mids(joined)
-                score_join = score_mid_sequence(
-                    [m for m in mids_join if not m.startswith("<RAW:")]
-                )
-
-                if score_join > score_sep + 0.5:  # small margin to avoid over-joining
-                    new_mids.extend(mids_join)
-                    i += 2
-                    continue
-            new_mids.extend(mids_per_word[i])
-            i += 1
-        mids = new_mids
-    else:
-        mids = [m for sub in mids_per_word for m in sub]
-
-    # Emit canonical stream with optional T tags
+def _emit_canonical_from_mids(mids: list[str]) -> str:
     # Modes:
     # - "sequence": most frequent tag sequence per M from canonical_io
     # - "single": most frequent single tag per M
     # - "none": emit M only
     TAG_MODE = "sequence"
-    INCLUDE_SUBTAGS = False
+    INCLUDE_SUBTAGS = True
 
     out = []
     for m in mids:
         if m.startswith("<RAW:"):
-            out.append(m)  # keep raw token marker as-is
+            out.append(m)
             continue
         out.append(m)
         if TAG_MODE == "single":
@@ -402,6 +396,85 @@ def canonicalize_stats(text: str, allow_join_across_space: bool = True) -> str:
                     out.extend(subtags_for_T_id(tid))
 
     return " ".join(out)
+
+
+def _raw_from_token(tok: str) -> str:
+    if tok.startswith("<RAW:") and tok.endswith(">"):
+        return tok[len("<RAW:") : -1]
+    if tok.startswith("<RAW:"):
+        return tok[len("<RAW:") :]
+    return tok
+
+
+def _canonical_mid(mid: str) -> str:
+    return VARIANT_TO_CANON_ID.get(mid, mid)
+
+
+def _word_from_mids(mids: list[str], normalize: bool) -> str:
+    parts = []
+    for m in mids:
+        if m.startswith("<RAW:"):
+            parts.append(_raw_from_token(m))
+            continue
+        use_mid = _canonical_mid(m) if normalize else m
+        parts.append(M_ID_TO_SURF.get(use_mid, use_mid))
+    return "".join(parts)
+
+
+def canonicalize_with_surfaces(
+    text: str, allow_join_across_space: bool = True
+) -> tuple[str, str, str]:
+    text = normalize_surface(text)
+    words = text.split()
+
+    # First pass: segment each word independently
+    mids_per_word = [word_to_mids(w) for w in words]
+
+    # Optionally consider joining adjacent words if that yields a better morpheme sequence
+    if allow_join_across_space and len(words) >= 2:
+        i = 0
+        new_mids = []
+        while i < len(words):
+            if i + 1 < len(words):
+                w1, w2 = words[i], words[i + 1]
+                mids_sep = mids_per_word[i] + mids_per_word[i + 1]
+                score_sep = score_mid_sequence(mids_sep)
+
+                joined = w1 + w2
+                mids_join = word_to_mids(joined)
+                score_join = score_mid_sequence(mids_join)
+
+                raw_sep = sum(1 for m in mids_sep if m.startswith("<RAW:"))
+                raw_join = sum(1 for m in mids_join if m.startswith("<RAW:"))
+                allow_join = False
+                if raw_join < raw_sep:
+                    allow_join = True
+                elif raw_join == 0 and raw_sep == 0:
+                    allow_join = True
+
+                if allow_join and score_join > score_sep + 0.5:
+                    new_mids.extend(mids_join)
+                    i += 2
+                    continue
+            new_mids.extend(mids_per_word[i])
+            i += 1
+        mids = new_mids
+    else:
+        mids = [m for sub in mids_per_word for m in sub]
+
+    canon = _emit_canonical_from_mids(mids)
+    surface_input = " ".join(
+        _word_from_mids(mw, normalize=False) for mw in mids_per_word
+    )
+    surface_nav = " ".join(_word_from_mids(mw, normalize=True) for mw in mids_per_word)
+    return canon, surface_input, surface_nav
+
+
+def canonicalize_stats(text: str, allow_join_across_space: bool = True) -> str:
+    canon, _surface_in, _surface_nav = canonicalize_with_surfaces(
+        text, allow_join_across_space=allow_join_across_space
+    )
+    return canon
 
 
 # --------------------------
@@ -423,15 +496,22 @@ def surface_from_canonical(canon: str) -> str:
 tests = [
     "amém",
     "tuba ta'yra Espírito Santo rera pupé",
-    corpus[0].get("label", ""),
+    (str(first_row.get("label", "")) if first_row else ""),
     "xe rera",
     "xerera",
+    "Kian xe rera",
+    "aîpotar nde kûara",
+    "ajpotar nde kûara",
 ]
+
 
 for t in tests:
     if not t:
         continue
-    canon = canonicalize_stats(t, allow_join_across_space=True)
+    canon, surf_in, surf_nav = canonicalize_with_surfaces(
+        t, allow_join_across_space=True
+    )
     print("\nIN:   ", t)
     print("CANON:", canon[:200], "..." if len(canon) > 200 else "")
-    print("SURF: ", surface_from_canonical(canon))
+    print("SURF_IN:  ", surf_in)
+    print("SURF_NAV: ", surf_nav)

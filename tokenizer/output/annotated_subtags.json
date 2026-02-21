@@ -20,6 +20,10 @@
     "subtag": "2p"
   },
   {
+    "id": "S000091",
+    "subtag": "2pp"
+  },
+  {
     "id": "S000013",
     "subtag": "2ps"
   },
@@ -204,8 +208,24 @@
     "subtag": "MO"
   },
   {
+    "id": "S000096",
+    "subtag": "MONOSYLLABIC"
+  },
+  {
+    "id": "S000095",
+    "subtag": "MUTUAL"
+  },
+  {
+    "id": "S000092",
+    "subtag": "NA"
+  },
+  {
     "id": "S000050",
     "subtag": "NEGATION_PARTICLE"
+  },
+  {
+    "id": "S000090",
+    "subtag": "NEGATION_PREFIX"
   },
   {
     "id": "S000017",
@@ -312,8 +332,16 @@
     "subtag": "SUBJECT"
   },
   {
+    "id": "S000094",
+    "subtag": "SUBJECT_1P"
+  },
+  {
     "id": "S000034",
     "subtag": "SUBJECT_PREFIX"
+  },
+  {
+    "id": "S000093",
+    "subtag": "SUBJECT_PRONOUN"
   },
   {
     "id": "S000005",

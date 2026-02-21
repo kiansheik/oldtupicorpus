@@ -11,11 +11,11 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from historic import primary_sources as sources
+from synthetic import primary_sources as sources
 
 
 @dataclass(frozen=True)
-class PrimarySourceCase:
+class SyntheticCase:
     name: str
     ground_truth_path: Path
     expressions: Sequence[object]
@@ -38,22 +38,23 @@ def _render_lines(expressions: Iterable[object]) -> list[str]:
     return [expr.eval().strip() for expr in expressions]
 
 
-GROUND_TRUTH_DIR = ROOT / "ground_truth" / "historic"
+GROUND_TRUTH_DIR = ROOT / "ground_truth" / "synthetic"
 
 
-def _load_primary_sources() -> list[PrimarySourceCase]:
-    cases: list[PrimarySourceCase] = []
+def _load_synthetic_sources() -> list[SyntheticCase]:
+    cases: list[SyntheticCase] = []
     for path in sorted(GROUND_TRUTH_DIR.glob("*.txt")):
         name = path.stem
         expressions = getattr(sources, name, None)
         if expressions is None:
             raise AttributeError(
-                f"Missing primary source for '{name}'. "
-                f"Define a list named '{name}' in a source module and import it "
-                f"in historic/primary_sources.py."
+                f"Missing synthetic source for '{name}'. "
+                f"Define a list named '{name}' in synthetic/primary_sources.py."
             )
+        if callable(expressions):
+            expressions = expressions()
         cases.append(
-            PrimarySourceCase(
+            SyntheticCase(
                 name=name,
                 ground_truth_path=path,
                 expressions=expressions,
@@ -62,8 +63,8 @@ def _load_primary_sources() -> list[PrimarySourceCase]:
     return cases
 
 
-class PrimarySourceCaseTest(unittest.TestCase):
-    def __init__(self, case: PrimarySourceCase) -> None:
+class SyntheticCaseTest(unittest.TestCase):
+    def __init__(self, case: SyntheticCase) -> None:
         super().__init__("run_case")
         self.case = case
 
@@ -133,16 +134,18 @@ def load_tests(
 ) -> unittest.TestSuite:
     suite = unittest.TestSuite()
     suite.addTests(tests)
-    cases = _load_primary_sources()
+    cases = _load_synthetic_sources()
     if not cases:
 
         def _no_ground_truth() -> None:
-            raise AssertionError(f"No ground truth files found in {GROUND_TRUTH_DIR}.")
+            raise AssertionError(
+                f"No synthetic ground truth files found in {GROUND_TRUTH_DIR}."
+            )
 
         suite.addTest(unittest.FunctionTestCase(_no_ground_truth))
         return suite
     for case in cases:
-        suite.addTest(PrimarySourceCaseTest(case))
+        suite.addTest(SyntheticCaseTest(case))
     return suite
 
 

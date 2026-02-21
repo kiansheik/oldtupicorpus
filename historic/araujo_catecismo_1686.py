@@ -5,12 +5,14 @@ import sys
 sys.path.insert(
     0,
     os.path.abspath(
-        os.path.join(os.path.dirname(__file__), "..", "nhe-enga", "pydicate")
+        os.path.join(os.path.dirname(__file__), "..", "..", "nhe-enga", "pydicate")
     ),
 )
 sys.path.insert(
     0,
-    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "nhe-enga", "tupi")),
+    os.path.abspath(
+        os.path.join(os.path.dirname(__file__), "..", "..", "nhe-enga", "tupi")
+    ),
 )
 from pydicate.lang.tupilang import *
 from pydicate.lang.tupilang.pos import *
@@ -211,20 +213,20 @@ santos = ProperNoun("Santos")
 îaok = Verb("îa'ok")
 moîaoîaok = mo * îaok.redup()
 pytybõ = Verb("pytybõ")
+orébe = (oré * supé).var(1)
 
-
-bettendorff_compendio = [
+araujo_catecismo_1686 = [
     # Santa Cruz
     ((saba * (santa_cruz * aang)) * esé)
     + (endé * (pysyro.imp()) * oré)
     + ((tupan == (oré * îara.voc())))
     + ((sara * (-(oré * amotar))) * suí),
     (((tuba + tayra + espirito_santo) * era) * pupé),
-    (amen + jesus),
+    (amen),
     # Pai nosso
     (oré * tuba).voc() @ (((pe * ybaka)) + (sara * ikó).voc())
     + (amo * (pyra * moeté))
-    + (ikó * (nde * era)).perm(),
+    + ((nde * era) * ikó).perm(),
     (ur * (nde * reino)).perm(),
     (monhang * (emi * (potar * nde)) * îe).perm()
     + (pe * yby)
@@ -232,12 +234,12 @@ bettendorff_compendio = [
     + (îabé * (monhang * ae * îe)),
     (((emi * (u * oré)) @ (nduara * (ara * iabiõ))) * (meeng * +endé).imp())
     + kori
-    + (oré * supé),
-    ((+nde * nhyron).imp() + (oré * angaipaba * esé) + (oré * supé))
+    + orébe,
+    ((+nde * nhyron).imp() + (oré * angaipaba * esé) + orébe)
     + (îabé * ((((sara * (erekomemûã * oré))) * supé) + (oré * nhyron))),
     (endé * -(mo * (ar / ukar)).imp() * oré) + (tentação * pupé),
     ((oré * ((pysyro * endé))).imp() << te) + ((mbae / aiba) * suí),
-    (amen + jesus),
+    (amen),
     # Ave Maria
     cop() * avemaria * (bae * ((esé * graça) + v(ynysema))),
     (amo * (nde * irun)) + (ikó * (îandé * îara)),
@@ -248,7 +250,7 @@ bettendorff_compendio = [
     + (esé * (cop() * oré * (bae * v(angaipaba))))
     + koyr
     << (irã + ((îub * oré) >> (îekyî * oré)) << béno),
-    (amen + jesus),
+    (amen),
     # salva rainha
     (cop() * (salve_rainha == (poraûsubara * sy)) + ikobé.base_nominal(True))
     + (bae * v(een))
@@ -265,7 +267,7 @@ bettendorff_compendio = [
     (aec)
     + (
         (iré * (syk * (ikód * (pûera * (saba * (pea * îe))))))
-        >> ((jatf * (+endé * (epîak / ukar))).imp() + (oré * supé))
+        >> ((jatf * (+endé * (epîak / ukar))).imp() + orébe)
     ),
     cop()
     * (nheraneym.voc())
@@ -277,7 +279,7 @@ bettendorff_compendio = [
     + (
         ri * (rama * (saba * (oré * îekosub)))
     ),  # îekosupagûama here is îekosuBagûama in bettendorf, displaying already some early divergences of loss of phonetic composition which we see in nheengatu
-    (amen + jesus),
+    (amen),
     # Creio em Deus Padre
     erobîar * +ixé * ((ttomtmetkbae) * (sara * (monhang * (abé + ybaka + yby)))),
     (
@@ -321,3 +323,7 @@ bettendorff_compendio = [
     * erobîar
     * (((santos * (ikó / katu)).base_nominal(True) * (mo * îaok) * îe).redup()),
 ]
+
+if __name__ == "__main__":
+    for expr in araujo_catecismo_1686:
+        print(expr.eval())

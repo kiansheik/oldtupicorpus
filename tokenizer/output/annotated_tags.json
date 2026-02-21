@@ -116,8 +116,24 @@
     "tag": "[INTERJECTION]"
   },
   {
+    "id": "T000087",
+    "tag": "[NEGATION_PARTICLE:NA]"
+  },
+  {
     "id": "T000042",
     "tag": "[NEGATION_PARTICLE:UME]"
+  },
+  {
+    "id": "T000080",
+    "tag": "[NEGATION_PREFIX]"
+  },
+  {
+    "id": "T000081",
+    "tag": "[NEGATION_SUFFIX:CONSONANT_ENDING]"
+  },
+  {
+    "id": "T000089",
+    "tag": "[NEGATION_SUFFIX:VOWEL_ENDING]"
   },
   {
     "id": "T000011",
@@ -144,6 +160,30 @@
     "tag": "[OBJECT:1ppe]"
   },
   {
+    "id": "T000102",
+    "tag": "[OBJECT:1ppi]"
+  },
+  {
+    "id": "T000100",
+    "tag": "[OBJECT:1ps]"
+  },
+  {
+    "id": "T000098",
+    "tag": "[OBJECT:2pp:SUBJECT_1P]"
+  },
+  {
+    "id": "T000104",
+    "tag": "[OBJECT:2pp]"
+  },
+  {
+    "id": "T000097",
+    "tag": "[OBJECT:2ps:SUBJECT_1P]"
+  },
+  {
+    "id": "T000103",
+    "tag": "[OBJECT:2ps]"
+  },
+  {
     "id": "T000020",
     "tag": "[OBJECT:3p:NON_MAIN_CLAUSE_SUBJECT]"
   },
@@ -152,12 +192,24 @@
     "tag": "[OBJECT:3p]"
   },
   {
+    "id": "T000099",
+    "tag": "[OBJECT:MUTUAL]"
+  },
+  {
     "id": "T000029",
     "tag": "[OBJECT:REFLEXIVE]"
   },
   {
     "id": "T000035",
     "tag": "[OBJECT_MARKER:3p:DEFAULT]"
+  },
+  {
+    "id": "T000105",
+    "tag": "[OBJECT_MARKER:3p:MONOSYLLABIC]"
+  },
+  {
+    "id": "T000106",
+    "tag": "[OBJECT_MARKER:3p:PLURIFORM_PREFIX:MONOSYLLABIC]"
   },
   {
     "id": "T000043",
@@ -174,6 +226,10 @@
   {
     "id": "T000030",
     "tag": "[PATIENT_PREFIX]"
+  },
+  {
+    "id": "T000096",
+    "tag": "[PERMISSIVE_PREFIX:CONSONANT]"
   },
   {
     "id": "T000025",
@@ -268,8 +324,28 @@
     "tag": "[SUBJECT:1ppe]"
   },
   {
+    "id": "T000083",
+    "tag": "[SUBJECT:1ppi]"
+  },
+  {
+    "id": "T000084",
+    "tag": "[SUBJECT:1ps]"
+  },
+  {
+    "id": "T000101",
+    "tag": "[SUBJECT:2pp:OBJECT_1P]"
+  },
+  {
+    "id": "T000086",
+    "tag": "[SUBJECT:2pp]"
+  },
+  {
     "id": "T000008",
     "tag": "[SUBJECT:2ps:OBJECT_1P]"
+  },
+  {
+    "id": "T000088",
+    "tag": "[SUBJECT:2ps]"
   },
   {
     "id": "T000031",
@@ -280,8 +356,16 @@
     "tag": "[SUBJECT_PREFIX:1ppe]"
   },
   {
+    "id": "T000082",
+    "tag": "[SUBJECT_PREFIX:1ppi]"
+  },
+  {
     "id": "T000066",
     "tag": "[SUBJECT_PREFIX:1ps]"
+  },
+  {
+    "id": "T000085",
+    "tag": "[SUBJECT_PREFIX:2pp]"
   },
   {
     "id": "T000039",
@@ -294,6 +378,30 @@
   {
     "id": "T000026",
     "tag": "[SUBJECT_PREFIX:3p]"
+  },
+  {
+    "id": "T000090",
+    "tag": "[SUBJECT_PRONOUN:1ppe]"
+  },
+  {
+    "id": "T000091",
+    "tag": "[SUBJECT_PRONOUN:1ppi]"
+  },
+  {
+    "id": "T000092",
+    "tag": "[SUBJECT_PRONOUN:1ps]"
+  },
+  {
+    "id": "T000093",
+    "tag": "[SUBJECT_PRONOUN:2pp]"
+  },
+  {
+    "id": "T000094",
+    "tag": "[SUBJECT_PRONOUN:2ps]"
+  },
+  {
+    "id": "T000095",
+    "tag": "[SUBJECT_PRONOUN:3p]"
   },
   {
     "id": "T000017",
