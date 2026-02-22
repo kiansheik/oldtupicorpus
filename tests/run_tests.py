@@ -156,6 +156,18 @@ def _parse_args(argv: list[str] | None) -> argparse.Namespace:
         help="Generate orthography variants for all known orthographies.",
     )
     parser.add_argument(
+        "--tokenizer-orth-workers",
+        type=int,
+        default=1,
+        help="Number of worker processes for orthography expansion.",
+    )
+    parser.add_argument(
+        "--tokenizer-orth-batch-size",
+        type=int,
+        default=200,
+        help="Batch size for orthography expansion workers.",
+    )
+    parser.add_argument(
         "--tokenizer-include-synthetic",
         action="store_true",
         help="Include synthetic sources when building the tokenizer corpus.",
@@ -222,6 +234,10 @@ def _regenerate_tokens(args: argparse.Namespace) -> None:
             build_cmd.extend(args.tokenizer_orth_expand)
         if args.tokenizer_orth_expand_all:
             build_cmd.append("--orth-expand-all")
+        if args.tokenizer_orth_workers:
+            build_cmd.extend(["--orth-workers", str(args.tokenizer_orth_workers)])
+        if args.tokenizer_orth_batch_size:
+            build_cmd.extend(["--orth-batch-size", str(args.tokenizer_orth_batch_size)])
         if args.tokenizer_include_synthetic:
             build_cmd.append("--include-synthetic")
         subprocess.run(

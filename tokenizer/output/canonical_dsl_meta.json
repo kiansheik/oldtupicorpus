@@ -1,0 +1,18 @@
+{
+  "imports": [
+    "from tokenizer.dsl_runtime import Seq, Tok",
+    "from pydicate.lang.tupilang import *",
+    "from pydicate.lang.tupilang.pos import *"
+  ],
+  "runtime": "tokenizer/dsl_runtime.py",
+  "dsl_fields": [
+    "dsl",
+    "dsl_fallback",
+    "dsl_stats"
+  ],
+  "notes": [
+    "dsl uses pydicate constructors when a POS tag is clear and the token is not an affix.",
+    "dsl_fallback uses Tok(...) for every token to preserve exact annotated surfaces.",
+    "structure includes node metadata, roots, grouped morphemes, and a light state change trace."
+  ]
+}

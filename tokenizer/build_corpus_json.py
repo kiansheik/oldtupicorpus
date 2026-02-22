@@ -8,6 +8,8 @@ import json
 import re
 import sys
 import time
+from collections import deque
+from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 from typing import Iterable, Optional
 import importlib
@@ -41,6 +43,46 @@ def strip_tags_to_surface(s: str) -> str:
     s2 = TAG_STRIP_RE.sub("", s)
     s2 = re.sub(r"\s+", " ", s2).strip()
     return s2
+
+
+_ORTH_WORKER_MAPPER = None
+_ORTH_WORKER_ORTHS: list[str] | None = None
+
+
+def _init_orth_worker(orth_list: list[str], root_str: str) -> None:
+    import os
+    import sys as _sys
+
+    tupi_path = os.path.abspath(os.path.join(root_str, "..", "nhe-enga", "tupi"))
+    if tupi_path not in _sys.path:
+        _sys.path.insert(0, tupi_path)
+    from tupi.tupi import TupiAntigo
+
+    global _ORTH_WORKER_MAPPER, _ORTH_WORKER_ORTHS
+    _ORTH_WORKER_MAPPER = TupiAntigo()
+    _ORTH_WORKER_ORTHS = orth_list
+
+
+def _orth_batch_worker(
+    batch: list[tuple[str, Optional[str]]],
+) -> list[list[tuple[str, str, str]]]:
+    mapper = _ORTH_WORKER_MAPPER
+    orths = _ORTH_WORKER_ORTHS or []
+    out: list[list[tuple[str, str, str]]] = []
+    for annotated, base_label in batch:
+        base = base_label or strip_tags_to_surface(annotated)
+        variants: list[tuple[str, str, str]] = []
+        if mapper is None:
+            out.append(variants)
+            continue
+        for orth in orths:
+            mapped_annotated = mapper.map_orthography(annotated, orth=orth)
+            mapped_label = strip_tags_to_surface(mapped_annotated)
+            if not mapped_label or mapped_label == base:
+                continue
+            variants.append((mapped_annotated, mapped_label, orth))
+        out.append(variants)
+    return out
 
 
 def _normalize_orth_list(orth_list: list[str], expand_all: bool) -> list[str]:
@@ -200,6 +242,18 @@ def _parse_args(argv: list[str] | None) -> argparse.Namespace:
         help="Generate extra rows for all known orthographies (excluding NAVARRO).",
     )
     parser.add_argument(
+        "--orth-workers",
+        type=int,
+        default=1,
+        help="Number of worker processes for orthography expansion.",
+    )
+    parser.add_argument(
+        "--orth-batch-size",
+        type=int,
+        default=200,
+        help="Batch size for orthography expansion workers.",
+    )
+    parser.add_argument(
         "--label-from-annotated",
         action="store_true",
         help="Use annotated string to derive label when label is missing (faster).",
@@ -226,7 +280,8 @@ def main(argv: list[str] | None = None) -> int:
             print(f"[corpus] failed to import TupiAntigo: {exc}")
             orth_list = []
         else:
-            tupi_mapper = TupiAntigo()
+            if args.orth_workers <= 1:
+                tupi_mapper = TupiAntigo()
     try:
         from tqdm import tqdm  # type: ignore
     except ModuleNotFoundError:
@@ -277,6 +332,21 @@ def main(argv: list[str] | None = None) -> int:
     skipped = 0
     emitted = 0
     variants = 0
+    use_orth_pool = bool(orth_list) and args.orth_workers > 1
+    orth_pool: ProcessPoolExecutor | None = None
+    pending: deque[tuple[object, list[tuple[str, str, int, str, str]]]] = deque()
+    batch_payload: list[tuple[str, Optional[str]]] = []
+    batch_meta: list[tuple[str, str, int, str, str]] = []
+    if use_orth_pool:
+        orth_pool = ProcessPoolExecutor(
+            max_workers=args.orth_workers,
+            initializer=_init_orth_worker,
+            initargs=(orth_list, str(ROOT)),
+        )
+        if args.debug:
+            print(
+                f"[corpus] orth workers={args.orth_workers} batch={args.orth_batch_size}"
+            )
     for name, expressions, corpus_label, size in sources:
         if args.debug:
             size_str = str(size) if size is not None else "unknown"
@@ -345,48 +415,121 @@ def main(argv: list[str] | None = None) -> int:
                 elapsed = time.perf_counter() - source_start
                 rate = emitted / elapsed if elapsed > 0 else 0.0
                 print(f"[corpus] rows={emitted} skipped={skipped} rate={rate:.1f}/s")
-            if orth_list and tupi_mapper is not None:
+            if orth_list:
                 base_label = label or strip_tags_to_surface(annotated)
-                for orth in orth_list:
-                    try:
-                        mapped_annotated = tupi_mapper.map_orthography(
-                            annotated, orth=orth
-                        )
-                        mapped_label = strip_tags_to_surface(mapped_annotated)
-                    except Exception as exc:
-                        if args.debug:
-                            print(f"[corpus] orth map failed {orth}: {exc}")
-                        continue
-                    if not mapped_label or mapped_label == base_label:
-                        continue
-                    variant = {
-                        "source": name,
-                        "corpus": corpus_label,
-                        "index": idx,
-                        "anotated": mapped_annotated,
-                        "label": mapped_label,
-                        "anotated_canon": annotated,
-                        "label_canon": base_label,
-                        "orth": orth,
-                        "orth_source": "NAVARRO",
-                    }
-                    if jsonl_f is not None:
-                        jsonl_f.write(json.dumps(variant, ensure_ascii=False) + "\n")
-                    if json_f is not None:
-                        json_f.write(",\n")
-                        json_f.write(json.dumps(variant, ensure_ascii=False))
-                    first_json = False
-                    emitted += 1
-                    variants += 1
-                    source_variants += 1
-                    if pbar is not None:
-                        pbar.update(1)
-                    elif args.log_every and emitted % args.log_every == 0:
-                        elapsed = time.perf_counter() - source_start
-                        rate = emitted / elapsed if elapsed > 0 else 0.0
-                        print(
-                            f"[corpus] rows={emitted} skipped={skipped} rate={rate:.1f}/s"
-                        )
+                if use_orth_pool and orth_pool is not None:
+                    batch_payload.append((annotated, base_label))
+                    batch_meta.append((name, corpus_label, idx, annotated, base_label))
+                    if len(batch_payload) >= args.orth_batch_size:
+                        future = orth_pool.submit(_orth_batch_worker, batch_payload)
+                        pending.append((future, batch_meta))
+                        batch_payload = []
+                        batch_meta = []
+                    while pending and len(pending) >= args.orth_workers * 2:
+                        future, meta = pending.popleft()
+                        results = future.result()
+                        for row_meta, variants_list in zip(meta, results):
+                            src, corp, ridx, canon_annot, canon_label = row_meta
+                            for mapped_annot, mapped_label, orth in variants_list:
+                                variant = {
+                                    "source": src,
+                                    "corpus": corp,
+                                    "index": ridx,
+                                    "anotated": mapped_annot,
+                                    "label": mapped_label,
+                                    "anotated_canon": canon_annot,
+                                    "label_canon": canon_label,
+                                    "orth": orth,
+                                    "orth_source": "NAVARRO",
+                                }
+                                if jsonl_f is not None:
+                                    jsonl_f.write(
+                                        json.dumps(variant, ensure_ascii=False) + "\n"
+                                    )
+                                if json_f is not None:
+                                    json_f.write(",\n")
+                                    json_f.write(
+                                        json.dumps(variant, ensure_ascii=False)
+                                    )
+                                first_json = False
+                                emitted += 1
+                                variants += 1
+                                source_variants += 1
+                                if pbar is not None:
+                                    pbar.update(1)
+                elif tupi_mapper is not None:
+                    for orth in orth_list:
+                        try:
+                            mapped_annotated = tupi_mapper.map_orthography(
+                                annotated, orth=orth
+                            )
+                            mapped_label = strip_tags_to_surface(mapped_annotated)
+                        except Exception as exc:
+                            if args.debug:
+                                print(f"[corpus] orth map failed {orth}: {exc}")
+                            continue
+                        if not mapped_label or mapped_label == base_label:
+                            continue
+                        variant = {
+                            "source": name,
+                            "corpus": corpus_label,
+                            "index": idx,
+                            "anotated": mapped_annotated,
+                            "label": mapped_label,
+                            "anotated_canon": annotated,
+                            "label_canon": base_label,
+                            "orth": orth,
+                            "orth_source": "NAVARRO",
+                        }
+                        if jsonl_f is not None:
+                            jsonl_f.write(
+                                json.dumps(variant, ensure_ascii=False) + "\n"
+                            )
+                        if json_f is not None:
+                            json_f.write(",\n")
+                            json_f.write(json.dumps(variant, ensure_ascii=False))
+                        first_json = False
+                        emitted += 1
+                        variants += 1
+                        source_variants += 1
+                        if pbar is not None:
+                            pbar.update(1)
+        if use_orth_pool and orth_pool is not None:
+            if batch_payload:
+                future = orth_pool.submit(_orth_batch_worker, batch_payload)
+                pending.append((future, batch_meta))
+                batch_payload = []
+                batch_meta = []
+            while pending:
+                future, meta = pending.popleft()
+                results = future.result()
+                for row_meta, variants_list in zip(meta, results):
+                    src, corp, ridx, canon_annot, canon_label = row_meta
+                    for mapped_annot, mapped_label, orth in variants_list:
+                        variant = {
+                            "source": src,
+                            "corpus": corp,
+                            "index": ridx,
+                            "anotated": mapped_annot,
+                            "label": mapped_label,
+                            "anotated_canon": canon_annot,
+                            "label_canon": canon_label,
+                            "orth": orth,
+                            "orth_source": "NAVARRO",
+                        }
+                        if jsonl_f is not None:
+                            jsonl_f.write(
+                                json.dumps(variant, ensure_ascii=False) + "\n"
+                            )
+                        if json_f is not None:
+                            json_f.write(",\n")
+                            json_f.write(json.dumps(variant, ensure_ascii=False))
+                        first_json = False
+                        emitted += 1
+                        variants += 1
+                        source_variants += 1
+                        if pbar is not None:
+                            pbar.update(1)
         if args.debug:
             print(
                 f"[corpus] done source={name} rows={source_rows} emitted={source_emitted} "
@@ -402,6 +545,8 @@ def main(argv: list[str] | None = None) -> int:
         jsonl_f.close()
     if pbar is not None:
         pbar.close()
+    if orth_pool is not None:
+        orth_pool.shutdown()
 
     if out_jsonl_path is not None:
         print(f"Wrote {emitted} rows to {out_jsonl_path}.")

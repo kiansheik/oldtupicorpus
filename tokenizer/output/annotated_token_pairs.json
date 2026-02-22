@@ -10,16 +10,6 @@
     "translation": ""
   },
   {
-    "value": "esar",
-    "tag": "[ABSOLUTE_AGENT_SUFFIX]",
-    "translation": ""
-  },
-  {
-    "value": "oar",
-    "tag": "[ABSOLUTE_AGENT_SUFFIX]",
-    "translation": ""
-  },
-  {
     "value": "sar",
     "tag": "[ABSOLUTE_AGENT_SUFFIX]",
     "translation": ""
@@ -122,11 +112,6 @@
   {
     "value": "y",
     "tag": "[CONSONANT_CLASH]",
-    "translation": ""
-  },
-  {
-    "value": "a",
-    "tag": "[DEADVERBAL]",
     "translation": ""
   },
   {
@@ -336,11 +321,6 @@
   },
   {
     "value": "pitangĩ",
-    "tag": "[NOUN]",
-    "translation": ""
-  },
-  {
-    "value": "sy",
     "tag": "[NOUN]",
     "translation": ""
   },
@@ -695,16 +675,6 @@
     "translation": ""
   },
   {
-    "value": "apyter",
-    "tag": "[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING]",
-    "translation": ""
-  },
-  {
-    "value": "membyr",
-    "tag": "[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING]",
-    "translation": ""
-  },
-  {
     "value": "morubixab",
     "tag": "[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING]",
     "translation": ""
@@ -800,7 +770,7 @@
     "translation": ""
   },
   {
-    "value": "esar",
+    "value": "ar",
     "tag": "[VOCATIVE]",
     "translation": ""
   },
@@ -810,7 +780,7 @@
     "translation": ""
   },
   {
-    "value": "oar",
+    "value": "sar",
     "tag": "[VOCATIVE]",
     "translation": ""
   },
