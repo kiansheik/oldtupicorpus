@@ -128,6 +128,74 @@
     "subtag": "DEADVERBAL"
   },
   {
+    "id": "S000093",
+    "subtag": "DEEPEST_NODE_1"
+  },
+  {
+    "id": "S000104",
+    "subtag": "DEEPEST_NODE_10"
+  },
+  {
+    "id": "S000095",
+    "subtag": "DEEPEST_NODE_11"
+  },
+  {
+    "id": "S000098",
+    "subtag": "DEEPEST_NODE_12"
+  },
+  {
+    "id": "S000097",
+    "subtag": "DEEPEST_NODE_13"
+  },
+  {
+    "id": "S000106",
+    "subtag": "DEEPEST_NODE_14"
+  },
+  {
+    "id": "S000096",
+    "subtag": "DEEPEST_NODE_15"
+  },
+  {
+    "id": "S000107",
+    "subtag": "DEEPEST_NODE_17"
+  },
+  {
+    "id": "S000108",
+    "subtag": "DEEPEST_NODE_19"
+  },
+  {
+    "id": "S000100",
+    "subtag": "DEEPEST_NODE_2"
+  },
+  {
+    "id": "S000092",
+    "subtag": "DEEPEST_NODE_3"
+  },
+  {
+    "id": "S000091",
+    "subtag": "DEEPEST_NODE_4"
+  },
+  {
+    "id": "S000090",
+    "subtag": "DEEPEST_NODE_5"
+  },
+  {
+    "id": "S000099",
+    "subtag": "DEEPEST_NODE_6"
+  },
+  {
+    "id": "S000105",
+    "subtag": "DEEPEST_NODE_7"
+  },
+  {
+    "id": "S000101",
+    "subtag": "DEEPEST_NODE_8"
+  },
+  {
+    "id": "S000094",
+    "subtag": "DEEPEST_NODE_9"
+  },
+  {
     "id": "S000044",
     "subtag": "DEFAULT"
   },
@@ -234,6 +302,10 @@
   {
     "id": "S000043",
     "subtag": "OBJECT_MARKER"
+  },
+  {
+    "id": "S000102",
+    "subtag": "OBJECT_PREFIX"
   },
   {
     "id": "S000069",
@@ -354,5 +426,9 @@
   {
     "id": "S000035",
     "subtag": "VOWEL_ENDING"
+  },
+  {
+    "id": "S000103",
+    "subtag": "refl"
   }
 ]
