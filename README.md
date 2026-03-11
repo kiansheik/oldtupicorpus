@@ -16,13 +16,13 @@ The code expects local checkouts at:
 - `../nhe-enga/pydicate`
 - `../nhe-enga/tupi`
 
-If your paths differ, adjust the `sys.path` inserts in each primary source module
-(for example, `bettendorff_compendio.py`).
+If your paths differ, adjust the `sys.path` inserts in the shared historic lexicon
+module (`historic/lexicon.tu.py`; `historic/lexicon.py` is a compatibility shim).
 
 ### Primary sources and ground truth
 - Store reference texts in `ground_truth/historic/<source_name>.txt`.
 - Define a list named `<source_name>` in a source module under `historic/`
-  (for example, `historic/bettendorff_compendio.py`).
+  (for example, `historic/bettendorff_compendio.tu.py`).
 - Import that list in `historic/primary_sources.py` so tests can discover it.
 - Synthetic data lives in `synthetic/` and mirrors ground truth in
   `ground_truth/synthetic/` (for example, `synthetic/primary_sources.py`
@@ -112,13 +112,13 @@ Os caminhos esperados são:
 - `../nhe-enga/pydicate`
 - `../nhe-enga/tupi`
 
-Se o seu caminho for diferente, ajuste o `sys.path` em cada módulo de fonte
-(por exemplo, `bettendorff_compendio.py`).
+Se o seu caminho for diferente, ajuste o `sys.path` no léxico histórico
+compartilhado (`historic/lexicon.tu.py`; `historic/lexicon.py` é um shim de compatibilidade).
 
 ### Fontes primárias e texto de referência
 - Guarde o texto em `ground_truth/historic/<nome_da_fonte>.txt`.
 - Defina uma lista chamada `<nome_da_fonte>` no módulo da fonte dentro de
-  `historic/` (por exemplo, `historic/bettendorff_compendio.py`).
+  `historic/` (por exemplo, `historic/bettendorff_compendio.tu.py`).
 - Importe essa lista em `historic/primary_sources.py` para os testes encontrarem.
 - Dados sintéticos ficam em `synthetic/` e espelham os textos em
   `ground_truth/synthetic/` (por exemplo, `synthetic/primary_sources.py`
