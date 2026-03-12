@@ -175,6 +175,11 @@
     "translation": ""
   },
   {
+    "value": "i",
+    "tag": "[3p:DEEPEST_NODE_17:SUBJECT]",
+    "translation": ""
+  },
+  {
     "value": "î",
     "tag": "[3p:DEEPEST_NODE_1:DEFAULT:OBJECT_MARKER]",
     "translation": ""
@@ -232,6 +237,11 @@
   {
     "value": "o",
     "tag": "[3p:DEEPEST_NODE_6:SUBJECT_PREFIX]",
+    "translation": ""
+  },
+  {
+    "value": "o",
+    "tag": "[3p:DEEPEST_NODE_7:SUBJECT_PREFIX]",
     "translation": ""
   },
   {
@@ -476,6 +486,11 @@
   },
   {
     "value": "y",
+    "tag": "[CLITIC:CONSONANT_ENDING:DEEPEST_NODE_17:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "y",
     "tag": "[CLITIC:CONSONANT_ENDING:DEEPEST_NODE_1:SUBSTANTIVE_SUFFIX]",
     "translation": ""
   },
@@ -697,6 +712,16 @@
   {
     "value": "e'ym",
     "tag": "[DEEPEST_NODE_13:NEGATION_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "agûer",
+    "tag": "[DEEPEST_NODE_16:PRETERITE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "pe",
+    "tag": "[DEEPEST_NODE_17:LOCATIVE:POSTPOSITION]",
     "translation": ""
   },
   {
@@ -1162,6 +1187,11 @@
   {
     "value": "îabi'õ",
     "tag": "[DEEPEST_NODE_8:EVERY:POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "am",
+    "tag": "[DEEPEST_NODE_8:FUTURE_SUFFIX]",
     "translation": ""
   },
   {

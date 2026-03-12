@@ -164,6 +164,10 @@
     "tag": "[3p:DEEPEST_NODE_11:SUBJECT_PREFIX]"
   },
   {
+    "id": "T000315",
+    "tag": "[3p:DEEPEST_NODE_17:SUBJECT]"
+  },
+  {
     "id": "T000132",
     "tag": "[3p:DEEPEST_NODE_1:DEFAULT:OBJECT_MARKER]"
   },
@@ -210,6 +214,10 @@
   {
     "id": "T000257",
     "tag": "[3p:DEEPEST_NODE_6:SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000318",
+    "tag": "[3p:DEEPEST_NODE_7:SUBJECT_PREFIX]"
   },
   {
     "id": "T000108",
@@ -424,6 +432,10 @@
     "tag": "[CLASS_2:DEEPEST_NODE_5:DEFAULT:GERUND_SUFFIX]"
   },
   {
+    "id": "T000313",
+    "tag": "[CLITIC:CONSONANT_ENDING:DEEPEST_NODE_17:SUBSTANTIVE_SUFFIX]"
+  },
+  {
     "id": "T000123",
     "tag": "[CLITIC:CONSONANT_ENDING:DEEPEST_NODE_1:SUBSTANTIVE_SUFFIX]"
   },
@@ -630,6 +642,14 @@
   {
     "id": "T000224",
     "tag": "[DEEPEST_NODE_14:FUTURE_SUFFIX]"
+  },
+  {
+    "id": "T000316",
+    "tag": "[DEEPEST_NODE_16:PRETERITE_SUFFIX]"
+  },
+  {
+    "id": "T000314",
+    "tag": "[DEEPEST_NODE_17:LOCATIVE:POSTPOSITION]"
   },
   {
     "id": "T000208",
@@ -946,6 +966,10 @@
   {
     "id": "T000129",
     "tag": "[DEEPEST_NODE_8:EVERY:POSTPOSITION]"
+  },
+  {
+    "id": "T000317",
+    "tag": "[DEEPEST_NODE_8:FUTURE_SUFFIX]"
   },
   {
     "id": "T000222",

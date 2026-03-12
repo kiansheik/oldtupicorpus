@@ -234,8 +234,21 @@ aé = Adverb("aé", definition="de fato, realmente")
 pitanga = Noun("pitanga", definition="criança, child")
 
 memen = Adverb("mem˜e")
-
+saguera = lambda x: (pûera * (saba * x))
 ybyraîoasaba = ybyrá / îoasaba
+
+moîar = Verb("moîar")
+gûeîyb = Verb("gûeîyb")
+ypyOrigin = Noun("ypy")
+karaiba = Noun("karaíba")
+etá = Noun("etá")
+soul = Noun("'anga")
+aepe = Adverb("a'epe")
+arõ = Verb(
+    "arõ",
+    verb_class="(s)",
+    definition="(s) (v.tr.) - guardar, velar; olhar por (para que não se perca); proteger",
+)
 
 __all__ = [
     name for name in globals() if not name.startswith("_") and name not in {"os", "sys"}

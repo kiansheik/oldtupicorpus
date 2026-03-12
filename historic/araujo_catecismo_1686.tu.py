@@ -146,7 +146,7 @@ l += (arobiar << (aé)) * (
     )
 )
 
-saguera = lambda x: (pûera * (saba * x))
+
 l += (
     arobiar
     * (
@@ -155,7 +155,6 @@ l += (
     )
 ) + memen
 
-moîar = Verb("moîar")
 pyreramo = lambda x: (amo * (pûera * (pyra * x)))
 l += arobiar * (
     (asé * esé)
@@ -165,9 +164,35 @@ l += arobiar * (
     )
 )
 
-gûeîyb = Verb("gûeîyb")
+enosem = Verb("enosem")
 
-l += arobiar * ((pe * (yby * apytera)) + saguera(+ae * gûeîyb))
+l += arobiar * (
+    saguera(
+        (
+            bae
+            * (
+                (
+                    rama
+                    * (
+                        (
+                            (abé * ((pe * (yby * apytera)) + saguera(+ae * gûeîyb)))
+                            * (
+                                (
+                                    (asé * (tuba / ypyOrigin))
+                                    @ ((karaiba / etá) * (pûera * soul))
+                                )
+                                * ((aepe >> îur))
+                            ).base_nominal()
+                        )
+                    )
+                )
+                * arõ
+            )
+        )
+        * (enosem)
+    )
+    + bé
+)
 
 
 araujo_catecismo_1686 = l
