@@ -1,191 +1,389 @@
 # Old Tupi Corpus (Computational Implementation)
 
-## English (for international, academic replication)
+## English
 
-This repository contains Kian Arad Sheik's doctoral research in Computational Linguistics and the Description of Non‑Indo‑European Languages at the University of São Paulo (FFLCH). The project implements the Old Tupi corpus in a distributed‑morphology, morpheme‑by‑morpheme representation.
+This repository contains Kian Arad Sheik's doctoral research in Computational Linguistics and the Description of Non-Indo-European Languages at the University of Sao Paulo (FFLCH). It encodes Old Tupi texts as compositional expressions, checks them against manually curated ground truth, and derives tokenizer- and DSL-oriented corpora from the same source material.
 
-### Why this matters
-- Build a searchable, structured corpus of Old Tupi sources.
-- Generate facsimiles, syntax trees, and aligned analyses for complex clauses.
-- Create synthetic data grounded in real lexical and morphosyntactic patterns.
-- Support training of parsers and LLMs for historical or endangered languages.
+### What this repo currently does
+- Encodes historic Old Tupi sources as compositional `pydicate` expressions backed by a shared lexicon.
+- Keeps synthetic data generation in the same ecosystem, currently centered on verb generation.
+- Compares rendered expressions against ground-truth text files.
+- Lets you review and append new ground-truth lines manually, line by line, with context.
+- Builds corpus JSONL, canonical token streams, token/tag registries, orthography variants, and DSL output for downstream experiments.
+- Provides an interactive REPL playground with `pydicate`, `tupi`, lexicon globals, and sample sources already loaded.
 
 ### Dependencies
-This project relies on the `pydicate` and `tupi` Python libraries from `kiansheik/nhe-enga`.
-The code expects local checkouts at:
+This repo depends on the local `pydicate` and `tupi` packages from `kiansheik/nhe-enga`.
+
+Expected local paths:
 - `../nhe-enga/pydicate`
 - `../nhe-enga/tupi`
 
-If your paths differ, adjust the `sys.path` inserts in the shared historic lexicon
-module (`historic/lexicon.tu.py`; `historic/lexicon.py` is a compatibility shim).
+The shared historic lexicon prepends those paths automatically for local development. If your checkout layout differs, update the path logic in `historic/lexicon.tu.py`.
 
-### Primary sources and ground truth
-- Store reference texts in `ground_truth/historic/<source_name>.txt`.
-- Define a list named `<source_name>` in a source module under `historic/`
-  (for example, `historic/bettendorff_compendio.tu.py`).
-- Import that list in `historic/primary_sources.py` so tests can discover it.
-- Synthetic data lives in `synthetic/` and mirrors ground truth in
-  `ground_truth/synthetic/` (for example, `synthetic/primary_sources.py`
-  paired with `ground_truth/synthetic/verb.txt`).
+### Repo map
+- `historic/`: historic source modules plus the shared lexicon.
+- `synthetic/`: synthetic source generators and helpers.
+- `ground_truth/historic/`: reference text for historic sources.
+- `ground_truth/synthetic/`: reference text for synthetic sources.
+- `tests/`: corpus-alignment tests, ground-truth updater, and shared case loaders.
+- `tokenizer/`: corpus builder, registry builder, DSL compiler/runtime, and experimental canonicalization tools.
+- `playground.py`: interactive bootstrap for REPL work.
+- `primary_sources.py`: compatibility aggregator that merges historic and synthetic sources.
 
-### How to replicate for another language
-1. **Collect sources**: choose a text or manuscript with a stable edition.
-2. **Define lexical items**: add lemmas and glosses as `Noun`, `Verb`, etc.
-3. **Encode morphology**: represent each clause as compositional predicates.
-4. **Add ground truth**: store a clean reference text for alignment.
-5. **Test alignment**: compare evaluated expressions to the reference.
+### Source loading model
+- Historic sources are auto-discovered from `historic/*.tu.py` and `historic/*.py` by `historic/primary_sources.py`.
+- For a historic source, define a list named exactly like the filename stem. Example: `historic/bettendorff_compendio.tu.py` exports `bettendorff_compendio`.
+- Synthetic sources are exported explicitly from `synthetic/primary_sources.py`.
+- The shared lexicon lives in `historic/lexicon.tu.py`; `historic/lexicon.py` is a compatibility shim.
 
-### Running tests
+### Common workflows
+
+**1. Open the REPL playground**
+```bash
+make play
+```
+
+What you get:
+- `pydicate`
+- `tupi`
+- historic lexicon globals
+- historic samples such as `bettendorff_compendio`
+- synthetic samples such as `verb`
+- helpers like `preview(...)`, `render(...)`, and `play_help()`
+
+**2. Run tests**
 ```bash
 make test
 ```
 
-Or run directly:
+Useful variants:
+- `make test ARGS="--skip-tokenizer"`: run tests only.
+- `make test ARGS="--include-synthetic"`: include synthetic tests.
+- `make test ARGS="--timings"`: print discovery/test/tokenizer timings.
+- `make test ARGS="--tokenizer-verbose --tokenizer-log-every 1000"`: verbose tokenizer rebuild.
+- `make test ARGS="--tokenizer-tqdm"`: progress bar during corpus generation.
+- `make test ARGS="--tokenizer-include-synthetic"`: include synthetic sources in corpus generation.
+- `make test ARGS="--tokenizer-label-from-annotated"`: derive labels from annotated text when missing.
+- `make test ARGS="--tokenizer-orth-expand POTIGUARA TUPINAMBA SEM_DIACRITICO"`: add selected orthography variants.
+- `make test ARGS="--tokenizer-orth-expand-all"`: expand all known orthographies except `NAVARRO`.
+
+**3. Review and append ground truth manually**
 ```bash
-python3 -m unittest discover -s tests -p "*_test.py"
+make update-ground-truth
 ```
 
-**Test runner options**
-- `make test ARGS="--skip-tokenizer"`: run tests only, skip corpus/tokenizer regeneration.
-- `make test ARGS="--include-synthetic"`: include synthetic tests.
-- `make test ARGS="--timings"`: show discovery/test/tokenizer timings.
-- `make test ARGS="--tokenizer-verbose --tokenizer-log-every 1000"`: debug output while regenerating tokenizer artifacts.
-- `make test ARGS="--tokenizer-tqdm"`: show a tqdm progress bar during corpus generation.
-- `make test ARGS="--tokenizer-include-synthetic"`: include synthetic sources in the corpus build.
-- `make test ARGS="--tokenizer-label-from-annotated"`: derive labels from annotated strings when missing (faster).
-- `make test ARGS="--tokenizer-orth-expand POTIGUARA TUPINAMBA SEM_DIACRITICO"`: add orthography variants.
-- `make test ARGS="--tokenizer-orth-expand-all"`: add variants for all known orthographies (excluding NAVARRO).
-- You can also pass standard unittest discovery flags via `--start-directory` and `--pattern`.
+Useful variants:
+- `make update-ground-truth ARGS="--ground-truth-source bettendorff_compendio"`
+- `make update-ground-truth ARGS="--include-synthetic --ground-truth-source verb"`
 
-**Tokenizer pipeline**
-- Build corpus JSONL:
-  ```bash
-  python3 tokenizer/build_corpus_json.py --out_jsonl tokenizer/output/corpus.jsonl
-  ```
-- Build token registries + canonical IO:
-  ```bash
-  python3 tokenizer/rawgrammarpair.py --in_json tokenizer/output/corpus.jsonl --out_dir tokenizer/output
-  ```
+How it behaves:
+- It is always user-triggered. Nothing in `make test` writes ground truth.
+- It checks that existing lines still match before offering any append.
+- It shows a 10-line context window before each new line so you can orient against the source text.
+- You confirm each candidate with `y`, stop the current source with `n`, or quit the session with `q`.
+- It only appends a contiguous prefix of accepted new lines.
+- If a source cannot load or render, it is reported and blocked instead of crashing the whole session.
 
-`tokenizer/build_corpus_json.py` flags:
-- `--out_jsonl PATH`: write JSONL (streaming).
-- `--out_json PATH`: optional JSON array output.
-- `--include-synthetic`: include synthetic sources.
-- `--orth-expand ORTH...`: add orthography variants (e.g. `POTIGUARA`, `TUPINAMBA`, `SEM_DIACRITICO`).
-- `--orth-expand-all`: expand all known orthographies (excluding NAVARRO).
-- `--label-from-annotated`: derive labels from annotated string (faster).
-- `--tqdm`: show progress bar.
-- `--debug` / `--log-every N`: debug and periodic logging.
+### Adding or extending sources
 
-`tokenizer/rawgrammarpair.py` flags:
-- `--in_json PATH`: JSON or JSONL input.
-- `--out_dir PATH`: output directory.
-- `--out_jsonl NAME`: output JSONL filename (inside `out_dir`).
-- `--exclude_tag_substrings ...`: drop tags containing these substrings.
-- `--context_tags ...`: context tags to ignore if unattached.
-- `--debug` / `--log-every N`: debug and periodic logging.
+**Historic sources**
+1. Add a module under `historic/`, usually `<name>.tu.py`.
+2. Define a list named `<name>` in that module.
+3. Add or extend `ground_truth/historic/<name>.txt`.
+4. Run `make test` or `make update-ground-truth`.
 
-Outputs include:
+**Synthetic sources**
+1. Export the source from `synthetic/primary_sources.py`.
+2. Add or extend `ground_truth/synthetic/<name>.txt`.
+3. Run `make test ARGS="--include-synthetic"` or the updater with `--include-synthetic`.
+
+### Tokenizer and corpus pipeline
+
+**1. Build corpus rows from source expressions**
+```bash
+python3 tokenizer/build_corpus_json.py --out_jsonl tokenizer/output/corpus.jsonl
+```
+
+What it does:
+- Reads historic sources, and optionally synthetic ones.
+- Extracts annotated and surface strings from expressions.
+- Can expand rows into alternative orthographies using `tupi`.
+- Produces `tokenizer/output/corpus.jsonl` and optionally a JSON array output.
+
+Important flags for `tokenizer/build_corpus_json.py`:
+- `--out_jsonl PATH`
+- `--out_json PATH`
+- `--include-synthetic`
+- `--orth-expand ORTH...`
+- `--orth-expand-all`
+- `--orth-workers N`
+- `--orth-batch-size N`
+- `--label-from-annotated`
+- `--tqdm`
+- `--debug`
+- `--log-every N`
+
+**2. Build stable registries and canonical IO**
+```bash
+python3 tokenizer/rawgrammarpair.py \
+  --in_json tokenizer/output/corpus.jsonl \
+  --out_dir tokenizer/output
+```
+
+What it does:
+- Builds stable morpheme IDs (`M######`), tag IDs (`T######`), and subtag IDs (`S######`).
+- Emits training-style input/output pairs.
+- Exports unique token/tag pairs and variant-to-canonical mappings.
+
+Important flags for `tokenizer/rawgrammarpair.py`:
+- `--in_json PATH`
+- `--out_dir PATH`
+- `--out_jsonl NAME`
+- `--exclude_tag_substrings ...`
+- `--context_tags ...`
+- `--debug`
+- `--log-every N`
+
+**3. Compile canonical streams into a DSL**
+```bash
+python3 tokenizer/compile_to_dsl.py \
+  --in_jsonl tokenizer/output/canonical_io.jsonl \
+  --out_jsonl tokenizer/output/canonical_dsl.jsonl
+```
+
+What it does:
+- Reconstructs annotated strings from canonical token streams.
+- Builds a morpheme-and-tag AST.
+- Emits a best-effort Pydicate-style DSL string plus a literal fallback.
+- Writes metadata describing required imports and runtime helpers.
+- Can open an interactive DSL explorer REPL unless `--no-repl` is set.
+
+Important flags for `tokenizer/compile_to_dsl.py`:
+- `--in_jsonl PATH`
+- `--out_jsonl PATH`
+- `--tokens PATH`
+- `--tags PATH`
+- `--meta_out PATH`
+- `--limit N`
+- `--no-structure`
+- `--repl`
+- `--no-repl`
+
+**4. Execute generated DSL**
+- `tokenizer/dsl_runtime.py` provides `Tok(...)` and `Seq([...])` so compiled DSL output stays executable even when some morphemes fall back to literal tokens.
+
+**5. Experimental canonicalizer**
+- `tokenizer/viterbi.py` is a notebook-style baseline that uses the generated tokenizer outputs to score canonical morpheme sequences with a Viterbi approach. It is useful as an experiment or debugging aid, not as the main pipeline entry point.
+
+### Key outputs
 - `tokenizer/output/corpus.jsonl`
 - `tokenizer/output/canonical_io.jsonl`
+- `tokenizer/output/canonical_dsl.jsonl`
+- `tokenizer/output/canonical_dsl_meta.json`
 - `tokenizer/output/annotated_tokens.json`
 - `tokenizer/output/annotated_tags.json`
 - `tokenizer/output/annotated_subtags.json`
 - `tokenizer/output/annotated_token_pairs.json`
-- `tokenizer/output/annotated_token_variants.json` (variant → canonical map)
+- `tokenizer/output/annotated_token_variants.json`
+
+### Notes for maintainers
+- Prefer editing `historic/lexicon.tu.py`; `historic/lexicon.py` exists for compatibility.
+- The root-level `primary_sources.py` is a compatibility aggregator, not the canonical place to register historic sources.
+- Historic source loading prefers `.tu.py` over `.py` when both exist for the same source name.
+- The ground-truth updater is intentionally interactive and should remain user-triggered.
 
 ---
 
-## Português (para uso prático e comunitário)
+## Portugues
 
-Este repositório reúne a pesquisa de doutorado de Kian Arad Sheik na USP (FFLCH). O objetivo é construir um corpus do Tupi Antigo com análise morfológica detalhada, para apoiar estudo, ensino e revitalização.
+Este repositório reúne a pesquisa de doutorado de Kian Arad Sheik na USP (FFLCH). Ele codifica textos em Tupi Antigo como expressões composicionais, compara essas expressões com textos de referência e gera saídas para tokenizer, registries e DSL a partir das mesmas fontes.
 
-### Para que serve
-- Buscar palavras e trechos no corpus.
-- Gerar árvores sintáticas e versões fac-símile.
-- Criar novos exemplos com base no léxico real.
-- Ajudar na criação de ferramentas para outras línguas indígenas.
+### O que o repositório faz hoje
+- Codifica fontes históricas em `pydicate`, com um léxico histórico compartilhado.
+- Gera dados sintéticos no mesmo ecossistema, hoje principalmente verbos.
+- Compara a saída renderizada com arquivos de ground truth.
+- Permite revisar e acrescentar novas linhas do ground truth manualmente, com contexto.
+- Gera corpus JSONL, streams canônicos, registries de morfemas/tags, variantes ortográficas e uma DSL derivada do corpus.
+- Oferece um playground em REPL com `pydicate`, `tupi`, léxico e fontes já carregados.
 
 ### Dependências
-Este projeto usa as bibliotecas `pydicate` e `tupi` do repositório `kiansheik/nhe-enga`.
-Os caminhos esperados são:
+Este projeto depende dos pacotes locais `pydicate` e `tupi` vindos de `kiansheik/nhe-enga`.
+
+Caminhos esperados:
 - `../nhe-enga/pydicate`
 - `../nhe-enga/tupi`
 
-Se o seu caminho for diferente, ajuste o `sys.path` no léxico histórico
-compartilhado (`historic/lexicon.tu.py`; `historic/lexicon.py` é um shim de compatibilidade).
+O léxico histórico compartilhado já faz o prepend desses caminhos para desenvolvimento local. Se sua estrutura de pastas for diferente, ajuste a lógica em `historic/lexicon.tu.py`.
 
-### Fontes primárias e texto de referência
-- Guarde o texto em `ground_truth/historic/<nome_da_fonte>.txt`.
-- Defina uma lista chamada `<nome_da_fonte>` no módulo da fonte dentro de
-  `historic/` (por exemplo, `historic/bettendorff_compendio.tu.py`).
-- Importe essa lista em `historic/primary_sources.py` para os testes encontrarem.
-- Dados sintéticos ficam em `synthetic/` e espelham os textos em
-  `ground_truth/synthetic/` (por exemplo, `synthetic/primary_sources.py`
-  com `ground_truth/synthetic/verb.txt`).
+### Mapa do repositório
+- `historic/`: fontes históricas e o léxico compartilhado.
+- `synthetic/`: geradores e helpers para fontes sintéticas.
+- `ground_truth/historic/`: textos de referência das fontes históricas.
+- `ground_truth/synthetic/`: textos de referência das fontes sintéticas.
+- `tests/`: testes de alinhamento, atualizador de ground truth e loaders compartilhados.
+- `tokenizer/`: builder do corpus, builder dos registries, compilador/runtime da DSL e ferramentas experimentais.
+- `playground.py`: bootstrap interativo para REPL.
+- `primary_sources.py`: agregador de compatibilidade para fontes históricas e sintéticas.
 
-### Como adaptar para outra língua
-1. **Escolha uma fonte confiável** (texto, catecismo, manuscrito).
-2. **Defina o léxico** com glossas e categorias gramaticais.
-3. **Modele a morfologia** de forma composicional.
-4. **Crie um texto de referência** para comparar com a saída.
-5. **Teste a correspondência** entre a análise e o texto.
+### Como as fontes são carregadas
+- Fontes históricas são descobertas automaticamente a partir de `historic/*.tu.py` e `historic/*.py` por `historic/primary_sources.py`.
+- Para uma fonte histórica, defina uma lista com o mesmo nome do arquivo. Exemplo: `historic/bettendorff_compendio.tu.py` exporta `bettendorff_compendio`.
+- Fontes sintéticas são exportadas explicitamente por `synthetic/primary_sources.py`.
+- O léxico compartilhado vive em `historic/lexicon.tu.py`; `historic/lexicon.py` é apenas um shim de compatibilidade.
 
-### Rodar testes
+### Fluxos mais comuns
+
+**1. Abrir o playground no REPL**
+```bash
+make play
+```
+
+O que já vem carregado:
+- `pydicate`
+- `tupi`
+- globais do léxico histórico
+- fontes históricas como `bettendorff_compendio`
+- fontes sintéticas como `verb`
+- helpers como `preview(...)`, `render(...)` e `play_help()`
+
+**2. Rodar testes**
 ```bash
 make test
 ```
 
-Ou rode diretamente:
-```bash
-python3 -m unittest discover -s tests -p "*_test.py"
-```
-
-**Opções do runner de testes**
-- `make test ARGS="--skip-tokenizer"`: roda apenas os testes, sem regenerar corpus/tokenizer.
+Variações úteis:
+- `make test ARGS="--skip-tokenizer"`: roda só os testes.
 - `make test ARGS="--include-synthetic"`: inclui testes sintéticos.
 - `make test ARGS="--timings"`: mostra tempos de discovery/test/tokenizer.
-- `make test ARGS="--tokenizer-verbose --tokenizer-log-every 1000"`: debug detalhado na regeneração.
-- `make test ARGS="--tokenizer-tqdm"`: barra de progresso no corpus.
+- `make test ARGS="--tokenizer-verbose --tokenizer-log-every 1000"`: rebuild verboso do tokenizer.
+- `make test ARGS="--tokenizer-tqdm"`: barra de progresso na geração do corpus.
 - `make test ARGS="--tokenizer-include-synthetic"`: inclui fontes sintéticas no corpus.
-- `make test ARGS="--tokenizer-label-from-annotated"`: deriva labels do anotado (mais rápido).
-- `make test ARGS="--tokenizer-orth-expand POTIGUARA TUPINAMBA SEM_DIACRITICO"`: gera variantes de ortografia.
-- `make test ARGS="--tokenizer-orth-expand-all"`: gera variantes para todas as ortografias (exceto NAVARRO).
-- Flags padrão do unittest (`--start-directory`, `--pattern`) também funcionam.
+- `make test ARGS="--tokenizer-label-from-annotated"`: deriva labels do texto anotado quando faltarem.
+- `make test ARGS="--tokenizer-orth-expand POTIGUARA TUPINAMBA SEM_DIACRITICO"`: adiciona variantes ortográficas selecionadas.
+- `make test ARGS="--tokenizer-orth-expand-all"`: expande todas as ortografias conhecidas, exceto `NAVARRO`.
 
-**Pipeline do tokenizer**
-- Gerar corpus JSONL:
-  ```bash
-  python3 tokenizer/build_corpus_json.py --out_jsonl tokenizer/output/corpus.jsonl
-  ```
-- Gerar registries + canonical IO:
-  ```bash
-  python3 tokenizer/rawgrammarpair.py --in_json tokenizer/output/corpus.jsonl --out_dir tokenizer/output
-  ```
+**3. Revisar e acrescentar ground truth manualmente**
+```bash
+make update-ground-truth
+```
 
-`tokenizer/build_corpus_json.py`:
-- `--out_jsonl PATH`: escreve JSONL (streaming).
-- `--out_json PATH`: JSON array opcional.
-- `--include-synthetic`: inclui fontes sintéticas.
-- `--orth-expand ORTH...`: variantes de ortografia (ex.: `POTIGUARA`, `TUPINAMBA`, `SEM_DIACRITICO`).
-- `--orth-expand-all`: todas as ortografias (exceto NAVARRO).
-- `--label-from-annotated`: label a partir do anotado (mais rápido).
-- `--tqdm`: barra de progresso.
-- `--debug` / `--log-every N`: debug e logs periódicos.
+Variações úteis:
+- `make update-ground-truth ARGS="--ground-truth-source bettendorff_compendio"`
+- `make update-ground-truth ARGS="--include-synthetic --ground-truth-source verb"`
 
-`tokenizer/rawgrammarpair.py`:
-- `--in_json PATH`: JSON ou JSONL.
-- `--out_dir PATH`: diretório de saída.
-- `--out_jsonl NAME`: nome do JSONL (dentro de `out_dir`).
-- `--exclude_tag_substrings ...`: remove tags com esses substrings.
-- `--context_tags ...`: ignora tags de contexto sem ancoragem.
-- `--debug` / `--log-every N`: debug e logs periódicos.
+Comportamento:
+- Sempre depende de ação explícita do usuário. `make test` nunca grava ground truth.
+- Verifica primeiro se as linhas antigas continuam batendo antes de oferecer append.
+- Mostra uma janela de contexto com 10 linhas anteriores antes de cada nova linha.
+- Cada linha é confirmada com `y`, a fonte atual para com `n`, e a sessão sai com `q`.
+- Só acrescenta um prefixo contíguo das novas linhas aceitas.
+- Se uma fonte não carregar ou não renderizar, ela é reportada e bloqueada sem derrubar a sessão inteira.
 
-Saídas:
+### Como adicionar ou ampliar fontes
+
+**Fontes históricas**
+1. Adicione um módulo em `historic/`, normalmente `<nome>.tu.py`.
+2. Defina uma lista chamada `<nome>` nesse módulo.
+3. Crie ou amplie `ground_truth/historic/<nome>.txt`.
+4. Rode `make test` ou `make update-ground-truth`.
+
+**Fontes sintéticas**
+1. Exporte a fonte em `synthetic/primary_sources.py`.
+2. Crie ou amplie `ground_truth/synthetic/<nome>.txt`.
+3. Rode `make test ARGS="--include-synthetic"` ou o atualizador com `--include-synthetic`.
+
+### Pipeline de tokenizer e corpus
+
+**1. Gerar linhas de corpus a partir das expressões**
+```bash
+python3 tokenizer/build_corpus_json.py --out_jsonl tokenizer/output/corpus.jsonl
+```
+
+O que faz:
+- Lê fontes históricas e, opcionalmente, sintéticas.
+- Extrai strings anotadas e de superfície a partir das expressões.
+- Pode expandir as linhas para ortografias alternativas usando `tupi`.
+- Produz `tokenizer/output/corpus.jsonl` e, opcionalmente, um JSON em array.
+
+Flags importantes de `tokenizer/build_corpus_json.py`:
+- `--out_jsonl PATH`
+- `--out_json PATH`
+- `--include-synthetic`
+- `--orth-expand ORTH...`
+- `--orth-expand-all`
+- `--orth-workers N`
+- `--orth-batch-size N`
+- `--label-from-annotated`
+- `--tqdm`
+- `--debug`
+- `--log-every N`
+
+**2. Gerar registries estáveis e canonical IO**
+```bash
+python3 tokenizer/rawgrammarpair.py \
+  --in_json tokenizer/output/corpus.jsonl \
+  --out_dir tokenizer/output
+```
+
+O que faz:
+- Gera IDs estáveis para morfemas (`M######`), tags (`T######`) e subtags (`S######`).
+- Emite pares de entrada/saída para treino.
+- Exporta pares únicos token/tag e o mapeamento variante -> canônico.
+
+Flags importantes de `tokenizer/rawgrammarpair.py`:
+- `--in_json PATH`
+- `--out_dir PATH`
+- `--out_jsonl NAME`
+- `--exclude_tag_substrings ...`
+- `--context_tags ...`
+- `--debug`
+- `--log-every N`
+
+**3. Compilar streams canônicos para uma DSL**
+```bash
+python3 tokenizer/compile_to_dsl.py \
+  --in_jsonl tokenizer/output/canonical_io.jsonl \
+  --out_jsonl tokenizer/output/canonical_dsl.jsonl
+```
+
+O que faz:
+- Reconstrói strings anotadas a partir dos streams canônicos.
+- Monta uma AST de morfemas e tags.
+- Emite uma DSL no estilo Pydicate, mais um fallback literal.
+- Escreve metadados com imports e runtime necessários.
+- Pode abrir um REPL de exploração da DSL, a menos que `--no-repl` seja usado.
+
+Flags importantes de `tokenizer/compile_to_dsl.py`:
+- `--in_jsonl PATH`
+- `--out_jsonl PATH`
+- `--tokens PATH`
+- `--tags PATH`
+- `--meta_out PATH`
+- `--limit N`
+- `--no-structure`
+- `--repl`
+- `--no-repl`
+
+**4. Executar a DSL gerada**
+- `tokenizer/dsl_runtime.py` fornece `Tok(...)` e `Seq([...])`, para que a DSL compilada continue executável mesmo quando algum morfema cai para um token literal.
+
+**5. Canonicalizador experimental**
+- `tokenizer/viterbi.py` é um baseline em estilo notebook que usa as saídas do tokenizer para pontuar sequências canônicas de morfemas com Viterbi. Serve como experimento e ferramenta de inspeção, não como pipeline principal.
+
+### Saídas principais
 - `tokenizer/output/corpus.jsonl`
 - `tokenizer/output/canonical_io.jsonl`
+- `tokenizer/output/canonical_dsl.jsonl`
+- `tokenizer/output/canonical_dsl_meta.json`
 - `tokenizer/output/annotated_tokens.json`
 - `tokenizer/output/annotated_tags.json`
 - `tokenizer/output/annotated_subtags.json`
 - `tokenizer/output/annotated_token_pairs.json`
-- `tokenizer/output/annotated_token_variants.json` (mapa variante → canônico)
+- `tokenizer/output/annotated_token_variants.json`
+
+### Notas para manutenção
+- Prefira editar `historic/lexicon.tu.py`; `historic/lexicon.py` existe por compatibilidade.
+- `primary_sources.py` na raiz é um agregador de compatibilidade, não o lugar canônico para registrar fontes históricas.
+- No carregamento histórico, `.tu.py` tem prioridade sobre `.py` quando os dois existem para o mesmo nome.
+- O atualizador de ground truth foi desenhado para continuar interativo e explicitamente disparado pelo usuário.

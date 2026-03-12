@@ -2,8 +2,6 @@ from historic.lexicon import load_lexicon
 
 globals().update(load_lexicon())
 
-orébe = (oré * supé).var(1)
-
 araujo_catecismo_1686 = [
     # Santa Cruz
     ((saba * (santa_cruz * aang)) * esé)
@@ -21,9 +19,11 @@ araujo_catecismo_1686 = [
     + (pe * yby)
     + (pe * ybaka)
     + (îabé * (monhang * ae * îe)),
+    #####
     (((emi * (u * oré)) @ (nduara * (ara * iabiõ))) * (meeng * +endé).imp())
     + kori
     + orébe,
+    #####
     ((+nde * nhyron).imp() + (oré * angaipaba * esé) + orébe)
     + (îabé * ((((sara * (erekomemûã * oré))) * supé) + (oré * nhyron))),
     (endé * -(mo * (ar / ukar)).imp() * oré) + (tentação * pupé),
@@ -111,6 +111,7 @@ araujo_catecismo_1686 = [
     +ixé
     * erobîar
     * (((santos * (ikó / katu)).base_nominal(True) * (mo * îaok) * îe).redup()),
+    (+ixé * erobîar * ((ekoangaîpaba * esé) + (tupan * nhyron))),  # in progress
 ]
 
 if __name__ == "__main__":

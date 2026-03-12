@@ -8,7 +8,20 @@ import sys
 import time
 import traceback
 import unittest
+from collections.abc import Callable
 from pathlib import Path
+
+TESTS_DIR = Path(__file__).resolve().parent
+if str(TESTS_DIR) not in sys.path:
+    sys.path.insert(0, str(TESTS_DIR))
+
+from ground_truth_cases import (
+    GroundTruthRenderError,
+    GroundTruthSourceLoadError,
+    append_ground_truth_lines,
+    compare_case_lines,
+    load_ground_truth_cases,
+)
 
 
 class SlimTextTestResult(unittest.TextTestResult):
@@ -178,6 +191,20 @@ def _parse_args(argv: list[str] | None) -> argparse.Namespace:
         help="Include synthetic tests in the test run.",
     )
     parser.add_argument(
+        "--update-ground-truth",
+        action="store_true",
+        help=(
+            "Interactively append newly rendered lines to ground-truth text files. "
+            "Only contiguous new lines can be accepted."
+        ),
+    )
+    parser.add_argument(
+        "--ground-truth-source",
+        nargs="*",
+        default=[],
+        help="Only process the named ground-truth source(s).",
+    )
+    parser.add_argument(
         "--timings",
         action="store_true",
         help="Print timing information for discovery, tests, and tokenizer steps.",
@@ -187,6 +214,194 @@ def _parse_args(argv: list[str] | None) -> argparse.Namespace:
 
 def _project_root() -> Path:
     return Path(__file__).resolve().parents[1]
+
+
+def _print_ground_truth_mismatch(comparison) -> None:
+    line_no = comparison.mismatch_line_no
+    expected = comparison.mismatch_expected
+    actual = comparison.mismatch_actual
+    print(
+        f"[ground-truth] {comparison.case.name}: mismatch at line {line_no}",
+        file=sys.stderr,
+    )
+    print(f"  expected: {expected}", file=sys.stderr)
+    if actual is None:
+        print("  actual:   <missing line>", file=sys.stderr)
+    else:
+        print(f"  actual:   {actual}", file=sys.stderr)
+    print(
+        "  Resolve the mismatch before appending new lines for this source.",
+        file=sys.stderr,
+    )
+
+
+def _print_ground_truth_render_error(case, exc: GroundTruthRenderError) -> None:
+    print(
+        f"[ground-truth] {case.name}: render error at line {exc.line_no}",
+        file=sys.stderr,
+    )
+    print(f"  item type: {type(exc.expr).__name__}", file=sys.stderr)
+    print(f"  item repr: {exc.expr!r}", file=sys.stderr)
+    if exc.cause is not None:
+        print(f"  cause: {exc.cause}", file=sys.stderr)
+    print(
+        "  Fix the source expression before reviewing new ground-truth lines.",
+        file=sys.stderr,
+    )
+
+
+def _print_ground_truth_source_load_error(
+    case, exc: GroundTruthSourceLoadError
+) -> None:
+    print(
+        f"[ground-truth] {case.name}: source could not be loaded",
+        file=sys.stderr,
+    )
+    print(f"  cause: {exc.cause}", file=sys.stderr)
+    print(
+        "  Fix the source module before reviewing new ground-truth lines.",
+        file=sys.stderr,
+    )
+
+
+def _prompt_ground_truth_choice(
+    prompt: str, *, input_fn: Callable[[str], str] = input
+) -> str:
+    while True:
+        choice = input_fn(prompt).strip().lower()
+        if choice in {"y", "n", "q"}:
+            return choice
+        print(
+            "Enter y to append, n to stop this source, or q to quit.", file=sys.stderr
+        )
+
+
+def _print_ground_truth_context(
+    case_name: str,
+    lines: list[str],
+    *,
+    context_lines: int = 10,
+) -> None:
+    if not lines:
+        return
+    start_line_no = max(1, len(lines) - context_lines + 1)
+    visible_lines = lines[start_line_no - 1 :]
+    print(f"[{case_name}] context", file=sys.stderr)
+    for offset, text in enumerate(visible_lines, start=start_line_no):
+        print(f"{offset:>4} | {text}", file=sys.stderr)
+
+
+def _review_case_updates(
+    comparison,
+    *,
+    input_fn: Callable[[str], str] = input,
+    context_lines: int = 10,
+) -> str:
+    if comparison.has_mismatch:
+        _print_ground_truth_mismatch(comparison)
+        return "blocked"
+    if not comparison.extra_lines:
+        print(f"[ground-truth] {comparison.case.name}: no new lines", file=sys.stderr)
+        return "unchanged"
+
+    case = comparison.case
+    accepted: list[str] = []
+    print(
+        f"[ground-truth] {case.name}: {len(comparison.extra_lines)} new line(s)",
+        file=sys.stderr,
+    )
+    for offset, line in enumerate(comparison.extra_lines, start=1):
+        line_no = len(comparison.expected_lines) + offset
+        previous_lines = comparison.expected_lines + accepted
+        print("", file=sys.stderr)
+        _print_ground_truth_context(
+            case.name,
+            previous_lines,
+            context_lines=context_lines,
+        )
+        print(f"[{case.name}] line {line_no}", file=sys.stderr)
+        print(line, file=sys.stderr)
+        choice = _prompt_ground_truth_choice(
+            "Append this line? [y]es/[n]o stop source/[q]uit: ",
+            input_fn=input_fn,
+        )
+        if choice == "q":
+            append_ground_truth_lines(case.ground_truth_path, accepted)
+            if accepted:
+                print(
+                    f"[ground-truth] {case.name}: appended {len(accepted)} line(s)",
+                    file=sys.stderr,
+                )
+            return "quit"
+        if choice == "n":
+            break
+        accepted.append(line)
+
+    append_ground_truth_lines(case.ground_truth_path, accepted)
+    if accepted:
+        print(
+            f"[ground-truth] {case.name}: appended {len(accepted)} line(s)",
+            file=sys.stderr,
+        )
+        return "updated"
+    print(
+        f"[ground-truth] {case.name}: stopped without appending lines",
+        file=sys.stderr,
+    )
+    return "stopped"
+
+
+def _review_case_by_name(
+    case,
+    *,
+    input_fn: Callable[[str], str] = input,
+) -> str:
+    try:
+        comparison = compare_case_lines(case)
+    except GroundTruthSourceLoadError as exc:
+        _print_ground_truth_source_load_error(case, exc)
+        return "blocked"
+    except GroundTruthRenderError as exc:
+        _print_ground_truth_render_error(case, exc)
+        return "blocked"
+    return _review_case_updates(comparison, input_fn=input_fn)
+
+
+def _update_ground_truth(args: argparse.Namespace) -> int:
+    if not sys.stdin.isatty():
+        print(
+            "--update-ground-truth requires an interactive terminal.",
+            file=sys.stderr,
+        )
+        return 2
+    cases = load_ground_truth_cases(include_synthetic=args.include_synthetic)
+    if args.ground_truth_source:
+        wanted = set(args.ground_truth_source)
+        cases = [case for case in cases if case.name in wanted]
+        missing = sorted(wanted - {case.name for case in cases})
+        for name in missing:
+            print(f"[ground-truth] unknown source: {name}", file=sys.stderr)
+        if not cases:
+            return 1
+    updated = 0
+    blocked = 0
+    for case in cases:
+        status = _review_case_by_name(case)
+        if status == "updated":
+            updated += 1
+        elif status == "blocked":
+            blocked += 1
+        elif status == "quit":
+            print(
+                f"[ground-truth] exiting after {updated} updated source(s)",
+                file=sys.stderr,
+            )
+            return 0
+    print(
+        f"[ground-truth] finished: {updated} updated source(s), {blocked} blocked",
+        file=sys.stderr,
+    )
+    return 0
 
 
 def _regenerate_tokens(args: argparse.Namespace) -> None:
@@ -272,6 +487,8 @@ def _regenerate_tokens(args: argparse.Namespace) -> None:
 
 def main(argv: list[str] | None = None) -> int:
     args = _parse_args(argv)
+    if args.update_ground_truth:
+        return _update_ground_truth(args)
     t0 = time.perf_counter()
     loader = unittest.TestLoader()
     if args.include_synthetic:

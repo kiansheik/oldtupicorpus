@@ -124,6 +124,7 @@ gûyrá = Noun("gûyrá")
 pab = Verb("pab", verb_class="(v.tr)", definition="to rear, animal husbandry")
 Enza = ProperNoun("Enza")
 iké = Verb("iké")
+kuesé = Adverb("kûesé", definition="ontem, yesterday")
 
 tom_story = [
     ((tyb + rakae) * gûyrá),
@@ -214,6 +215,9 @@ santos = ProperNoun("Santos")
 îaok = Verb("îa'ok")
 moîaoîaok = mo * îaok.redup()
 pytybõ = Verb("pytybõ")
+orébe = (oré * supé).var(1)
+orébo = (oré * supé).var(0)
+ekoangaîpaba = Noun("ekoangaîpaba")
 
 __all__ = [
     name for name in globals() if not name.startswith("_") and name not in {"os", "sys"}
