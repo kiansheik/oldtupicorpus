@@ -3,77 +3,38 @@ from __future__ import annotations
 import sys
 import time
 import unittest
-from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, Sequence
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from synthetic import primary_sources as sources
+TESTS_DIR = Path(__file__).resolve().parent
+if str(TESTS_DIR) not in sys.path:
+    sys.path.insert(0, str(TESTS_DIR))
 
-
-@dataclass(frozen=True)
-class SyntheticCase:
-    name: str
-    ground_truth_path: Path
-    expressions: Sequence[object]
-    allow_extra_lines: bool = True
-
-
-def _normalize_expected_lines(text: str) -> list[str]:
-    lines = []
-    for raw in text.splitlines():
-        stripped = raw.strip()
-        if not stripped:
-            continue
-        if stripped[-1] in ".;:!?":
-            stripped = stripped[:-1]
-        lines.append(stripped)
-    return lines
-
-
-def _render_lines(expressions: Iterable[object]) -> list[str]:
-    return [expr.eval().strip() for expr in expressions]
-
-
-GROUND_TRUTH_DIR = ROOT / "ground_truth" / "synthetic"
-
-
-def _load_synthetic_sources() -> list[SyntheticCase]:
-    cases: list[SyntheticCase] = []
-    for path in sorted(GROUND_TRUTH_DIR.glob("*.txt")):
-        name = path.stem
-        expressions = getattr(sources, name, None)
-        if expressions is None:
-            raise AttributeError(
-                f"Missing synthetic source for '{name}'. "
-                f"Define a list named '{name}' in synthetic/primary_sources.py."
-            )
-        if callable(expressions):
-            expressions = expressions()
-        cases.append(
-            SyntheticCase(
-                name=name,
-                ground_truth_path=path,
-                expressions=expressions,
-            )
-        )
-    return cases
+from ground_truth_cases import (
+    GroundTruthRenderError,
+    GroundTruthSourceLoadError,
+    SYNTHETIC_GROUND_TRUTH_DIR,
+    compare_case_lines,
+    load_synthetic_cases,
+)
 
 
 class SyntheticCaseTest(unittest.TestCase):
-    def __init__(self, case: SyntheticCase) -> None:
+    def __init__(self, case) -> None:
         super().__init__("run_case")
         self.case = case
 
     def run_case(self) -> None:
-        case = self.case
-        expected_lines = _normalize_expected_lines(
-            case.ground_truth_path.read_text(encoding="utf-8")
-        )
-        actual_lines = _render_lines(case.expressions)
+        try:
+            comparison = compare_case_lines(self.case)
+        except (GroundTruthRenderError, GroundTruthSourceLoadError) as exc:
+            self.fail(f"{self.case.name} could not be rendered: {exc}")
+        case = comparison.case
+        expected_lines = comparison.expected_lines
+        actual_lines = comparison.actual_lines
         if case.allow_extra_lines:
             self.assertGreaterEqual(
                 len(actual_lines),
@@ -134,12 +95,12 @@ def load_tests(
 ) -> unittest.TestSuite:
     suite = unittest.TestSuite()
     suite.addTests(tests)
-    cases = _load_synthetic_sources()
+    cases = load_synthetic_cases()
     if not cases:
 
         def _no_ground_truth() -> None:
             raise AssertionError(
-                f"No synthetic ground truth files found in {GROUND_TRUTH_DIR}."
+                f"No synthetic ground truth files found in {SYNTHETIC_GROUND_TRUTH_DIR}."
             )
 
         suite.addTest(unittest.FunctionTestCase(_no_ground_truth))

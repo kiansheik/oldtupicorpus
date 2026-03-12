@@ -119,6 +119,16 @@ def _get_annotated(expr: object) -> Optional[str]:
         value = _value_from_attr(expr, attr)
         if value:
             return value
+    hierarchy_fn = getattr(expr, "hierarchical_representation_v4", None)
+    if callable(hierarchy_fn):
+        try:
+            value = hierarchy_fn()
+        except TypeError:
+            value = None
+        if isinstance(value, str):
+            stripped = value.strip()
+            if stripped:
+                return stripped
     eval_fn = getattr(expr, "eval", None)
     if callable(eval_fn):
         try:

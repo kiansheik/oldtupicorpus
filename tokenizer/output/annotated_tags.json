@@ -1,5 +1,249 @@
 [
   {
+    "id": "T000200",
+    "tag": "[1p:DEEPEST_NODE_1:DEMONSTRATIVE:VISIBLE]"
+  },
+  {
+    "id": "T000088",
+    "tag": "[1ppe:DEEPEST_NODE_11:OBJECT:POSSESSIVE_PRONOUN:PRONOUN]"
+  },
+  {
+    "id": "T000183",
+    "tag": "[1ppe:DEEPEST_NODE_11:PRONOUN:SUBJECT]"
+  },
+  {
+    "id": "T000134",
+    "tag": "[1ppe:DEEPEST_NODE_12:PATIENT_PREFIX:PRONOUN]"
+  },
+  {
+    "id": "T000176",
+    "tag": "[1ppe:DEEPEST_NODE_14:PRONOUN:SUBJECT]"
+  },
+  {
+    "id": "T000089",
+    "tag": "[1ppe:DEEPEST_NODE_15:OBJECT:PRONOUN]"
+  },
+  {
+    "id": "T000223",
+    "tag": "[1ppe:DEEPEST_NODE_17:PRONOUN:SUBJECT]"
+  },
+  {
+    "id": "T000202",
+    "tag": "[1ppe:DEEPEST_NODE_1:POSSESSIVE_PRONOUN]"
+  },
+  {
+    "id": "T000137",
+    "tag": "[1ppe:DEEPEST_NODE_1:SUBJECT]"
+  },
+  {
+    "id": "T000189",
+    "tag": "[1ppe:DEEPEST_NODE_1:SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000085",
+    "tag": "[1ppe:DEEPEST_NODE_3:OBJECT:PRONOUN]"
+  },
+  {
+    "id": "T000103",
+    "tag": "[1ppe:DEEPEST_NODE_3:POSSESSIVE_PRONOUN:PRONOUN]"
+  },
+  {
+    "id": "T000196",
+    "tag": "[1ppe:DEEPEST_NODE_6:GERUND_SUBJECT_PREFIX:PRONOUN]"
+  },
+  {
+    "id": "T000127",
+    "tag": "[1ppe:DEEPEST_NODE_6:OBJECT:POSSESSIVE_PRONOUN:PRONOUN]"
+  },
+  {
+    "id": "T000216",
+    "tag": "[1ppe:DEEPEST_NODE_6:PRONOUN:SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000198",
+    "tag": "[1ppe:DEEPEST_NODE_7:GERUND_SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000169",
+    "tag": "[1ppe:DEEPEST_NODE_9:PRONOUN:SUBJECT]"
+  },
+  {
+    "id": "T000154",
+    "tag": "[1ppi:DEEPEST_NODE_3:POSSESSIVE_PRONOUN:PRONOUN]"
+  },
+  {
+    "id": "T000265",
+    "tag": "[1ps:DEEPEST_NODE_1:SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000204",
+    "tag": "[2p:DEEPEST_NODE_3:DEMONSTRATIVE:VISIBLE]"
+  },
+  {
+    "id": "T000111",
+    "tag": "[2ps:DEEPEST_NODE_12:POSSESSIVE_PRONOUN]"
+  },
+  {
+    "id": "T000136",
+    "tag": "[2ps:DEEPEST_NODE_1:IMPERATIVE:SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000131",
+    "tag": "[2ps:DEEPEST_NODE_1:IMPERATIVE_PREFIX]"
+  },
+  {
+    "id": "T000086",
+    "tag": "[2ps:DEEPEST_NODE_1:OBJECT_1P:PRONOUN:SUBJECT]"
+  },
+  {
+    "id": "T000159",
+    "tag": "[2ps:DEEPEST_NODE_1:SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000117",
+    "tag": "[2ps:DEEPEST_NODE_2:POSSESSIVE_PRONOUN]"
+  },
+  {
+    "id": "T000119",
+    "tag": "[2ps:DEEPEST_NODE_3:OBJECT:POSSESSIVE_PRONOUN]"
+  },
+  {
+    "id": "T000187",
+    "tag": "[2ps:DEEPEST_NODE_4:PATIENT_PREFIX:PRONOUN]"
+  },
+  {
+    "id": "T000205",
+    "tag": "[2ps:DEEPEST_NODE_4:POSSESSIVE_PRONOUN]"
+  },
+  {
+    "id": "T000168",
+    "tag": "[2ps:DEEPEST_NODE_5:IMPERATIVE_PREFIX]"
+  },
+  {
+    "id": "T000152",
+    "tag": "[2ps:DEEPEST_NODE_5:POSSESSIVE_PRONOUN]"
+  },
+  {
+    "id": "T000164",
+    "tag": "[2ps:DEEPEST_NODE_6:POSSESSIVE_PRONOUN]"
+  },
+  {
+    "id": "T000207",
+    "tag": "[2ps:DEEPEST_NODE_8:POSSESSIVE_PRONOUN]"
+  },
+  {
+    "id": "T000254",
+    "tag": "[3p:ADVERB:ALL:DEEPEST_NODE_1]"
+  },
+  {
+    "id": "T000228",
+    "tag": "[3p:ADVERB:ALL:DEEPEST_NODE_7]"
+  },
+  {
+    "id": "T000170",
+    "tag": "[3p:DEEPEST_NODE_10:SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000114",
+    "tag": "[3p:DEEPEST_NODE_11:SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000132",
+    "tag": "[3p:DEEPEST_NODE_1:DEFAULT:OBJECT_MARKER]"
+  },
+  {
+    "id": "T000242",
+    "tag": "[3p:DEEPEST_NODE_1:NON_MAIN_CLAUSE_SUBJECT:OBJECT]"
+  },
+  {
+    "id": "T000124",
+    "tag": "[3p:DEEPEST_NODE_1:SUBJECT]"
+  },
+  {
+    "id": "T000116",
+    "tag": "[3p:DEEPEST_NODE_1:SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000238",
+    "tag": "[3p:DEEPEST_NODE_2:DEMONSTRATIVE:HUMAN:VISIBLE]"
+  },
+  {
+    "id": "T000161",
+    "tag": "[3p:DEEPEST_NODE_2:NON_MAIN_CLAUSE_SUBJECT:OBJECT]"
+  },
+  {
+    "id": "T000231",
+    "tag": "[3p:DEEPEST_NODE_2:OBJECT]"
+  },
+  {
+    "id": "T000234",
+    "tag": "[3p:DEEPEST_NODE_3:SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000156",
+    "tag": "[3p:DEEPEST_NODE_4:NON_MAIN_CLAUSE_SUBJECT:OBJECT]"
+  },
+  {
+    "id": "T000191",
+    "tag": "[3p:DEEPEST_NODE_6:NON_MAIN_CLAUSE_SUBJECT:OBJECT]"
+  },
+  {
+    "id": "T000257",
+    "tag": "[3p:DEEPEST_NODE_6:SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000108",
+    "tag": "[3p:DEEPEST_NODE_9:NON_MAIN_CLAUSE_SUBJECT:OBJECT]"
+  },
+  {
+    "id": "T000259",
+    "tag": "[3p:DEEPEST_NODE_9:SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000252",
+    "tag": "[ABSOLUTE:DEEPEST_NODE_1:PLURIFORM_PREFIX:T]"
+  },
+  {
+    "id": "T000094",
+    "tag": "[ABSOLUTE:DEEPEST_NODE_4:PLURIFORM_PREFIX:T]"
+  },
+  {
+    "id": "T000179",
+    "tag": "[ABSOLUTE:DEEPEST_NODE_5:M:PLURIFORM_PREFIX]"
+  },
+  {
+    "id": "T000096",
+    "tag": "[ABSOLUTE:DEEPEST_NODE_5:PLURIFORM_PREFIX:T]"
+  },
+  {
+    "id": "T000227",
+    "tag": "[ABSOLUTE:DEEPEST_NODE_6:PLURIFORM_PREFIX:T]"
+  },
+  {
+    "id": "T000091",
+    "tag": "[ABSOLUTE_AGENT_SUFFIX:DEEPEST_NODE_13]"
+  },
+  {
+    "id": "T000229",
+    "tag": "[ABSOLUTE_AGENT_SUFFIX:DEEPEST_NODE_19]"
+  },
+  {
+    "id": "T000203",
+    "tag": "[ABSOLUTE_AGENT_SUFFIX:DEEPEST_NODE_1:VOCATIVE]"
+  },
+  {
+    "id": "T000141",
+    "tag": "[ABSOLUTE_AGENT_SUFFIX:DEEPEST_NODE_1]"
+  },
+  {
+    "id": "T000212",
+    "tag": "[ABSOLUTE_AGENT_SUFFIX:DEEPEST_NODE_3:VOCATIVE]"
+  },
+  {
+    "id": "T000107",
+    "tag": "[ABSOLUTE_AGENT_SUFFIX:DEEPEST_NODE_4:VOCATIVE]"
+  },
+  {
     "id": "T000012",
     "tag": "[ABSOLUTE_AGENT_SUFFIX]"
   },
@@ -12,6 +256,22 @@
     "tag": "[ADVERB:3p:ANY]"
   },
   {
+    "id": "T000133",
+    "tag": "[ADVERB:DEEPEST_NODE_10]"
+  },
+  {
+    "id": "T000174",
+    "tag": "[ADVERB:DEEPEST_NODE_12]"
+  },
+  {
+    "id": "T000175",
+    "tag": "[ADVERB:DEEPEST_NODE_1]"
+  },
+  {
+    "id": "T000255",
+    "tag": "[ADVERB:DEEPEST_NODE_3:FROM_THERE]"
+  },
+  {
     "id": "T000078",
     "tag": "[ADVERB:FROM_THERE]"
   },
@@ -20,24 +280,124 @@
     "tag": "[ADVERB]"
   },
   {
+    "id": "T000145",
+    "tag": "[ADVERSATIVE:DEEPEST_NODE_1:PARTICLE]"
+  },
+  {
+    "id": "T000240",
+    "tag": "[AGENTLESS_PATIENT_SUFFIX:DEEPEST_NODE_1]"
+  },
+  {
+    "id": "T000162",
+    "tag": "[AGENTLESS_PATIENT_SUFFIX:DEEPEST_NODE_2]"
+  },
+  {
+    "id": "T000157",
+    "tag": "[AGENTLESS_PATIENT_SUFFIX:DEEPEST_NODE_4]"
+  },
+  {
+    "id": "T000192",
+    "tag": "[AGENTLESS_PATIENT_SUFFIX:DEEPEST_NODE_6]"
+  },
+  {
+    "id": "T000109",
+    "tag": "[AGENTLESS_PATIENT_SUFFIX:DEEPEST_NODE_9]"
+  },
+  {
     "id": "T000021",
     "tag": "[AGENTLESS_PATIENT_SUFFIX]"
+  },
+  {
+    "id": "T000102",
+    "tag": "[AMEN:DEEPEST_NODE_1:INTERJECTION]"
+  },
+  {
+    "id": "T000268",
+    "tag": "[AMEN:DEEPEST_NODE_2:INTERJECTION]"
+  },
+  {
+    "id": "T000163",
+    "tag": "[AND:CONJUNCTION:DEEPEST_NODE_2]"
+  },
+  {
+    "id": "T000098",
+    "tag": "[AND:CONJUNCTION:DEEPEST_NODE_6:NOUN:POSSESSOR:PROPER_NOUN]"
+  },
+  {
+    "id": "T000190",
+    "tag": "[ASPECT:CONTINUOUS:DEEPEST_NODE_1:REDUPLICATION]"
+  },
+  {
+    "id": "T000210",
+    "tag": "[BEYOND:DEEPEST_NODE_1:POSTPOSITION]"
+  },
+  {
+    "id": "T000247",
+    "tag": "[CARDINAL:DEEPEST_NODE_8:NUMBER:THREE]"
   },
   {
     "id": "T000076",
     "tag": "[CARDINAL]"
   },
   {
+    "id": "T000143",
+    "tag": "[CAUSATIVE_PREFIX:DEEPEST_NODE_1:MO]"
+  },
+  {
+    "id": "T000267",
+    "tag": "[CAUSATIVE_PREFIX:DEEPEST_NODE_3:MO]"
+  },
+  {
     "id": "T000041",
     "tag": "[CAUSATIVE_PREFIX:MO]"
+  },
+  {
+    "id": "T000249",
+    "tag": "[CIRCUMSTANTIAL_SUFFIX:CONSONANT_ENDING:DEEPEST_NODE_1]"
   },
   {
     "id": "T000077",
     "tag": "[CIRCUMSTANTIAL_SUFFIX:CONSONANT_ENDING]"
   },
   {
+    "id": "T000155",
+    "tag": "[CIRCUMSTANTIAL_SUFFIX:DEEPEST_NODE_1:VOWEL_ENDING]"
+  },
+  {
     "id": "T000046",
     "tag": "[CIRCUMSTANTIAL_SUFFIX:VOWEL_ENDING]"
+  },
+  {
+    "id": "T000262",
+    "tag": "[CLASS_1:CONSONANT:CONSONANT_ENDING:DEEPEST_NODE_8:GERUND_SUFFIX:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000263",
+    "tag": "[CLASS_1:CONSONANT:DEEPEST_NODE_4:GERUND_SUFFIX]"
+  },
+  {
+    "id": "T000195",
+    "tag": "[CLASS_1:DATIVE:DEEPEST_NODE_3:GERUND_SUFFIX:ORAL_VOWEL:POSTPOSITION]"
+  },
+  {
+    "id": "T000199",
+    "tag": "[CLASS_1:DEEPEST_NODE_7:GERUND_SUFFIX:ORAL_VOWEL]"
+  },
+  {
+    "id": "T000197",
+    "tag": "[CLASS_2:DEEPEST_NODE_5:DEFAULT:GERUND_SUFFIX]"
+  },
+  {
+    "id": "T000123",
+    "tag": "[CLITIC:CONSONANT_ENDING:DEEPEST_NODE_1:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000244",
+    "tag": "[CLITIC:CONSONANT_ENDING:DEEPEST_NODE_3:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000104",
+    "tag": "[CLITIC:CONSONANT_ENDING:DEEPEST_NODE_4:SUBSTANTIVE_SUFFIX]"
   },
   {
     "id": "T000079",
@@ -48,16 +408,412 @@
     "tag": "[CONJUNCTION:AND]"
   },
   {
+    "id": "T000177",
+    "tag": "[CONJUNCTIVE_SUFFIX:DEEPEST_NODE_1]"
+  },
+  {
     "id": "T000049",
     "tag": "[CONJUNCTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000243",
+    "tag": "[CONSONANT_CLASH:DEEPEST_NODE_1]"
+  },
+  {
+    "id": "T000236",
+    "tag": "[CONSONANT_CLASH:DEEPEST_NODE_2]"
   },
   {
     "id": "T000072",
     "tag": "[CONSONANT_CLASH]"
   },
   {
+    "id": "T000221",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_10:NOUN:POSSESSOR:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000092",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_13:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000225",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_15:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000241",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_1:NOUN:POSSESSOR:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000253",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_1:NOUN:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000138",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_1:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000121",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_2:NOUN:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000100",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_2:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000147",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_3:LOAN_WORD:NOUN:PORTUGUESE:POSSESSOR:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000095",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_4:NOUN:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000082",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_5:NOUN:POSSESSOR:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000097",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_5:NOUN:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000165",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_6:NOUN:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000246",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_9:NOUN:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000185",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_9:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000135",
+    "tag": "[DATIVE:DEEPEST_NODE_11:POSTPOSITION]"
+  },
+  {
+    "id": "T000140",
+    "tag": "[DATIVE:DEEPEST_NODE_1:POSTPOSITION]"
+  },
+  {
+    "id": "T000188",
+    "tag": "[DATIVE:DEEPEST_NODE_3:POSTPOSITION]"
+  },
+  {
+    "id": "T000130",
+    "tag": "[DEADVERBAL:DEEPEST_NODE_7]"
+  },
+  {
     "id": "T000033",
     "tag": "[DEADVERBAL]"
+  },
+  {
+    "id": "T000194",
+    "tag": "[DEEPEST_NODE_10:NOUN:POSSESSOR:PROPER_NOUN]"
+  },
+  {
+    "id": "T000171",
+    "tag": "[DEEPEST_NODE_10:NOUN:POSSESSOR:RELATIVE_AGENT_SUFFIX]"
+  },
+  {
+    "id": "T000219",
+    "tag": "[DEEPEST_NODE_10:PATIENT_PREFIX]"
+  },
+  {
+    "id": "T000218",
+    "tag": "[DEEPEST_NODE_10:PLURIFORM_PREFIX:R]"
+  },
+  {
+    "id": "T000126",
+    "tag": "[DEEPEST_NODE_10:POSTPOSITION]"
+  },
+  {
+    "id": "T000113",
+    "tag": "[DEEPEST_NODE_11:PERMISSIVE_PREFIX:VOWEL]"
+  },
+  {
+    "id": "T000112",
+    "tag": "[DEEPEST_NODE_12:PLURIFORM_PREFIX:R]"
+  },
+  {
+    "id": "T000093",
+    "tag": "[DEEPEST_NODE_12:POSTPOSITION]"
+  },
+  {
+    "id": "T000186",
+    "tag": "[DEEPEST_NODE_13:HAIL:INTERJECTION]"
+  },
+  {
+    "id": "T000090",
+    "tag": "[DEEPEST_NODE_13:NEGATION_SUFFIX]"
+  },
+  {
+    "id": "T000226",
+    "tag": "[DEEPEST_NODE_13:POSTPOSITION]"
+  },
+  {
+    "id": "T000224",
+    "tag": "[DEEPEST_NODE_14:FUTURE_SUFFIX]"
+  },
+  {
+    "id": "T000208",
+    "tag": "[DEEPEST_NODE_1:FACILITY_SUFFIX]"
+  },
+  {
+    "id": "T000264",
+    "tag": "[DEEPEST_NODE_1:FUTURE]"
+  },
+  {
+    "id": "T000201",
+    "tag": "[DEEPEST_NODE_1:INTERJECTION]"
+  },
+  {
+    "id": "T000122",
+    "tag": "[DEEPEST_NODE_1:LOCATIVE:POSTPOSITION]"
+  },
+  {
+    "id": "T000144",
+    "tag": "[DEEPEST_NODE_1:NEGATION_PARTICLE:UME]"
+  },
+  {
+    "id": "T000125",
+    "tag": "[DEEPEST_NODE_1:OBJECT:REFLEXIVE]"
+  },
+  {
+    "id": "T000115",
+    "tag": "[DEEPEST_NODE_1:PERMISSIVE_PREFIX:VOWEL]"
+  },
+  {
+    "id": "T000139",
+    "tag": "[DEEPEST_NODE_1:PLURIFORM_PREFIX:R]"
+  },
+  {
+    "id": "T000211",
+    "tag": "[DEEPEST_NODE_1:PLURIFORM_PREFIX:S]"
+  },
+  {
+    "id": "T000256",
+    "tag": "[DEEPEST_NODE_1:PLURIFORM_PREFIX:T]"
+  },
+  {
+    "id": "T000239",
+    "tag": "[DEEPEST_NODE_1:POSTPOSITION:SIMULATIVE_SUFFIX:TRANSLATIONAL]"
+  },
+  {
+    "id": "T000101",
+    "tag": "[DEEPEST_NODE_1:POSTPOSITION]"
+  },
+  {
+    "id": "T000209",
+    "tag": "[DEEPEST_NODE_1:PRETERITE_SUFFIX]"
+  },
+  {
+    "id": "T000251",
+    "tag": "[DEEPEST_NODE_1:PROPER_NOUN]"
+  },
+  {
+    "id": "T000248",
+    "tag": "[DEEPEST_NODE_1:RELATIVE_AGENT_SUFFIX]"
+  },
+  {
+    "id": "T000232",
+    "tag": "[DEEPEST_NODE_2:LOCATIVE:POSTPOSITION]"
+  },
+  {
+    "id": "T000120",
+    "tag": "[DEEPEST_NODE_2:PATIENT_PREFIX]"
+  },
+  {
+    "id": "T000099",
+    "tag": "[DEEPEST_NODE_2:PLURIFORM_PREFIX:R]"
+  },
+  {
+    "id": "T000233",
+    "tag": "[DEEPEST_NODE_2:POSTPOSITION:SIMULATIVE_SUFFIX:TRANSLATIONAL]"
+  },
+  {
+    "id": "T000146",
+    "tag": "[DEEPEST_NODE_2:PROPER_NOUN]"
+  },
+  {
+    "id": "T000237",
+    "tag": "[DEEPEST_NODE_2:RELATIVE_AGENT_SUFFIX]"
+  },
+  {
+    "id": "T000245",
+    "tag": "[DEEPEST_NODE_3:LOCATIVE:POSTPOSITION]"
+  },
+  {
+    "id": "T000250",
+    "tag": "[DEEPEST_NODE_3:OBJECT:OBJECT_PREFIX:REFLEXIVE:refl]"
+  },
+  {
+    "id": "T000148",
+    "tag": "[DEEPEST_NODE_3:PLURIFORM_PREFIX:R]"
+  },
+  {
+    "id": "T000150",
+    "tag": "[DEEPEST_NODE_3:PLURIFORM_PREFIX:T]"
+  },
+  {
+    "id": "T000158",
+    "tag": "[DEEPEST_NODE_3:POSTPOSITION:SIMULATIVE_SUFFIX:TRANSLATIONAL]"
+  },
+  {
+    "id": "T000149",
+    "tag": "[DEEPEST_NODE_3:POSTPOSITION]"
+  },
+  {
+    "id": "T000178",
+    "tag": "[DEEPEST_NODE_3:PROPER_NOUN]"
+  },
+  {
+    "id": "T000151",
+    "tag": "[DEEPEST_NODE_3:RELATIVE_AGENT_SUFFIX]"
+  },
+  {
+    "id": "T000105",
+    "tag": "[DEEPEST_NODE_4:LOCATIVE:POSTPOSITION]"
+  },
+  {
+    "id": "T000167",
+    "tag": "[DEEPEST_NODE_4:NOUN:POSSESSOR:PROPER_NOUN]"
+  },
+  {
+    "id": "T000235",
+    "tag": "[DEEPEST_NODE_4:OBJECT:OBJECT_PREFIX:REFLEXIVE:refl]"
+  },
+  {
+    "id": "T000128",
+    "tag": "[DEEPEST_NODE_4:PATIENT_PREFIX]"
+  },
+  {
+    "id": "T000106",
+    "tag": "[DEEPEST_NODE_4:PERMISSIVE_PREFIX:PLURIFORM_PREFIX:T:VOWEL]"
+  },
+  {
+    "id": "T000083",
+    "tag": "[DEEPEST_NODE_4:PLURIFORM_PREFIX:R]"
+  },
+  {
+    "id": "T000153",
+    "tag": "[DEEPEST_NODE_4:POSTPOSITION:SIMULATIVE_SUFFIX:TRANSLATIONAL]"
+  },
+  {
+    "id": "T000084",
+    "tag": "[DEEPEST_NODE_4:POSTPOSITION]"
+  },
+  {
+    "id": "T000230",
+    "tag": "[DEEPEST_NODE_4:PROPER_NOUN]"
+  },
+  {
+    "id": "T000081",
+    "tag": "[DEEPEST_NODE_5:FACILITY_SUFFIX]"
+  },
+  {
+    "id": "T000118",
+    "tag": "[DEEPEST_NODE_5:OBJECT:OBJECT_PREFIX:REFLEXIVE:refl]"
+  },
+  {
+    "id": "T000215",
+    "tag": "[DEEPEST_NODE_5:PERMISSIVE_PREFIX:VOWEL]"
+  },
+  {
+    "id": "T000080",
+    "tag": "[DEEPEST_NODE_5:PLURIFORM_PREFIX:R]"
+  },
+  {
+    "id": "T000213",
+    "tag": "[DEEPEST_NODE_5:PLURIFORM_PREFIX:S]"
+  },
+  {
+    "id": "T000193",
+    "tag": "[DEEPEST_NODE_5:POSTPOSITION:SIMULATIVE_SUFFIX:TRANSLATIONAL]"
+  },
+  {
+    "id": "T000206",
+    "tag": "[DEEPEST_NODE_5:PROPER_NOUN]"
+  },
+  {
+    "id": "T000214",
+    "tag": "[DEEPEST_NODE_5:RELATIVE_AGENT_SUFFIX]"
+  },
+  {
+    "id": "T000266",
+    "tag": "[DEEPEST_NODE_6:OBJECT:OBJECT_PREFIX:REFLEXIVE:refl]"
+  },
+  {
+    "id": "T000180",
+    "tag": "[DEEPEST_NODE_6:PLURIFORM_PREFIX:T]"
+  },
+  {
+    "id": "T000160",
+    "tag": "[DEEPEST_NODE_6:POSTPOSITION]"
+  },
+  {
+    "id": "T000258",
+    "tag": "[DEEPEST_NODE_6:RELATIVE_AGENT_SUFFIX]"
+  },
+  {
+    "id": "T000217",
+    "tag": "[DEEPEST_NODE_7:FUTURE]"
+  },
+  {
+    "id": "T000172",
+    "tag": "[DEEPEST_NODE_7:PLURIFORM_PREFIX:R]"
+  },
+  {
+    "id": "T000181",
+    "tag": "[DEEPEST_NODE_7:PLURIFORM_PREFIX:S]"
+  },
+  {
+    "id": "T000173",
+    "tag": "[DEEPEST_NODE_7:POSTPOSITION]"
+  },
+  {
+    "id": "T000182",
+    "tag": "[DEEPEST_NODE_7:RELATIVE_AGENT_SUFFIX]"
+  },
+  {
+    "id": "T000129",
+    "tag": "[DEEPEST_NODE_8:EVERY:POSTPOSITION]"
+  },
+  {
+    "id": "T000222",
+    "tag": "[DEEPEST_NODE_8:PLURIFORM_PREFIX:R]"
+  },
+  {
+    "id": "T000110",
+    "tag": "[DEEPEST_NODE_8:POSTPOSITION:SIMULATIVE_SUFFIX:TRANSLATIONAL]"
+  },
+  {
+    "id": "T000142",
+    "tag": "[DEEPEST_NODE_8:POSTPOSITION]"
+  },
+  {
+    "id": "T000261",
+    "tag": "[DEEPEST_NODE_8:PRETERITE_SUFFIX]"
+  },
+  {
+    "id": "T000166",
+    "tag": "[DEEPEST_NODE_8:PROPER_NOUN]"
+  },
+  {
+    "id": "T000184",
+    "tag": "[DEEPEST_NODE_9:OBJECT:REFLEXIVE]"
+  },
+  {
+    "id": "T000220",
+    "tag": "[DEEPEST_NODE_9:PRETERITE_SUFFIX]"
+  },
+  {
+    "id": "T000087",
+    "tag": "[DEEPEST_NODE_9:PROPER_NOUN]"
+  },
+  {
+    "id": "T000260",
+    "tag": "[DEEPEST_NODE_9:RELATIVE_AGENT_SUFFIX]"
   },
   {
     "id": "T000059",

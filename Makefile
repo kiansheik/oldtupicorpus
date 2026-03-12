@@ -17,3 +17,9 @@ push:
 
 test:
 	python3 tests/run_tests.py $(ARGS)
+
+update-ground-truth:
+	python3 tests/run_tests.py --update-ground-truth $(ARGS)
+
+play:
+	python3 -i playground.py

@@ -222,12 +222,14 @@ def _node_meta_from_ast(ast: list[dict]) -> list[dict]:
         pos = _primary_pos(tag_infos)
         features = _tag_features(tag_infos)
         attrs = _attrs_from_tag_infos(tag_infos)
+        surface_canon = _canonical_surface_for_tags(node["surface"], tag_infos)
         meta.append(
             {
                 "pos": pos,
                 "tag_bases": features["bases"],
                 "features": features,
                 "attrs": attrs,
+                "surface_canon": surface_canon,
             }
         )
     return meta
@@ -248,6 +250,7 @@ def _roots_from_nodes(ast: list[dict], meta: list[dict]) -> list[dict]:
             {
                 "index": i,
                 "surface": node["surface"],
+                "surface_canon": info.get("surface_canon", node["surface"]),
                 "tags": node["tags"],
                 "pos": pos,
             }
@@ -267,6 +270,7 @@ def _group_morphemes(ast: list[dict], meta: list[dict]) -> list[dict]:
         idxs = current["prefixes"] + [current["root"]] + current["suffixes"]
         current["indices"] = idxs
         current["surface"] = " ".join(ast[i]["surface"] for i in idxs)
+        current["surface_canon"] = " ".join(meta[i]["surface_canon"] for i in idxs)
         current["tags"] = [t for i in idxs for t in ast[i]["tags"]]
         current["pos"] = meta[current["root"]]["pos"]
         groups.append(current)
@@ -362,6 +366,17 @@ def _code_for_ctor(ctor: str, surface: str, tag_str: str) -> str:
     )
 
 
+def _canonical_surface_for_tags(surface: str, tag_infos: list[TagInfo]) -> str:
+    # Normalization rule: POSTPOSITION:TRANSLATIONAL and SIMULATIVE_SUFFIX map to "amo".
+    for ti in tag_infos:
+        if ti.base == "POSTPOSITION" and ti.parts:
+            if ti.parts[0] == "TRANSLATIONAL":
+                return "amo"
+        if ti.base == "SIMULATIVE_SUFFIX":
+            return "amo"
+    return surface
+
+
 def ast_to_dsl(ast: list[dict]) -> tuple[str, str, dict]:
     """
     Build a best-effort Pydicate-ish DSL expression plus a literal fallback.
@@ -384,6 +399,18 @@ def ast_to_dsl(ast: list[dict]) -> tuple[str, str, dict]:
         tag_str = "".join(tags)
         primary = _primary_pos(tag_infos)
         features = _tag_features(tag_infos)
+        surface_canon = _canonical_surface_for_tags(surface, tag_infos)
+        is_translational = any(
+            (
+                (
+                    ti.base == "POSTPOSITION"
+                    and ti.parts
+                    and ti.parts[0] == "TRANSLATIONAL"
+                )
+                or (ti.base == "SIMULATIVE_SUFFIX")
+            )
+            for ti in tag_infos
+        )
 
         ctor = "Tok"
         if primary:
@@ -395,7 +422,11 @@ def ast_to_dsl(ast: list[dict]) -> tuple[str, str, dict]:
             ctor = "Tok"
             stats["affix_fallback"] += 1
 
-        code = _code_for_ctor(ctor, surface, tag_str)
+        if is_translational:
+            # Use the canonical translational postposition variable.
+            code = "amo"
+        else:
+            code = _code_for_ctor(ctor, surface_canon, tag_str)
         fallback = _code_for_ctor("Tok", surface, tag_str)
 
         codes.append(code)
@@ -601,6 +632,7 @@ def main(argv: list[str] | None = None) -> int:
             "dsl uses pydicate constructors when a POS tag is clear and the token is not an affix.",
             "dsl_fallback uses Tok(...) for every token to preserve exact annotated surfaces.",
             "structure includes node metadata, roots, grouped morphemes, and a light state change trace.",
+            "POSTPOSITION:TRANSLATIONAL and SIMULATIVE_SUFFIX are normalized to surface 'amo' in DSL and structure surface_canon.",
         ],
     }
     with meta_path.open("w", encoding="utf-8") as meta_f:
