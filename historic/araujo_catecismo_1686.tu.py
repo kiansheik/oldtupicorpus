@@ -68,7 +68,7 @@ l = [
     + (esé * (pûera * (emi * (christo * enõî))))
     + (
         ri * (rama * (saba * (oré * îekosub)))
-    ),  # îekosupagûama here is îekosuBagûama in bettendorf, displaying already some early divergences of loss of phonetic composition which we see in nheengatu
+    ),  # îekosubagûama here is îekosuBagûama in bettendorf, displaying already some early divergences of loss of phonetic composition which we see in nheengatu
     (amen),
     # Creio em Deus Padre
     erobîar * +ixé * ((ttomtmetkbae) * (sara * (monhang * (abé + ybaka + yby)))),
@@ -90,7 +90,7 @@ l = [
     (aebae * ar) + (suí * (cop() * (maria) * (ababykagûereyma))),
     (ponciopilato * ((amo * morubixaba) >> (ikó)))
     >> ((amo * (pyra * (erekó / memûã))) + (+aebae * ikó)),
-    (esé * (ybyrá / îoasaba))
+    (esé * ybyraîoasaba)
     + (amo * (pyra * moîar) + (ikó * +aebae))
     + (amo * (pyra * îuká))
     + (amo * (pyra * tym) + (ikó * +aebae)),
@@ -115,12 +115,59 @@ l = [
 
 
 l += arobiar * (rama * (saba * (asé * (ikobé / îebyr))))
-l += ((+(ixé)) * (erobîar)) * (((ikobé) @ (-(rama * (bae * (pab))))))
+l += ((+(ixé)) * (erobîar)) * (((ikobé) @ (opbrmym)))
 l += amen
-
+# artigos da fé
 l += catorse * (rama * (asé * (emi * erobîar)))
 l += ((sete * ((nduara * (tupan * esé))))) + ((nã) + (+ae * ei))
+credo = lambda x: ((arobiar * ((amo * (x)) + (ae * ikó))))
 l += arobiar * ((oîepé * (tupan)) @ (otmrme))
+l += credo(tuba)
+l += credo(tayra)
+l += credo(espirito_santo)
+l += credo(sara * opakatumonhanga)
+l += credo(sara.var(1) * (moro * pysyro))
+l += credo(
+    sara * (meeng * (ikobé @ opbrmym))
+)  # TODO: reconcile the bad r-ekobé grammar in the original, perhaps implement footnotes per line which can be added to the full version mentioning that in other versions it is tekobé and someone probably messed up so we corrected here as it is not linguistically significant that they most likely made a typo
+
+l += (sete * (nduara * ((pûera * (saba * (jesusxto * îar * (asé * carne)))) * esé))) + (
+    (nã) + (+ae * ei)
+)
+
+l += (arobiar << (aé)) * (
+    (
+        (
+            (
+                ((tupan @ tayra) + (pe * (saba * (espirito_santo * monhang * +ae))))
+                + ((amo * pitanga) + (pûera * (saba * (+ae * monhang * (îe)))))
+            )
+        )
+    )
+)
+
+saguera = lambda x: (pûera * (saba * x))
+l += (
+    arobiar
+    * (
+        ((virgem_maria * suí) + (saguera(ae * ar)))
+        + (((amo * ababykagûereyma) + (ikó * +ae)).base_nominal() * pupé)
+    )
+) + memen
+
+moîar = Verb("moîar")
+pyreramo = lambda x: (amo * (pûera * (pyra * x)))
+l += arobiar * (
+    (asé * esé)
+    + (
+        ybyraîoasaba * esé
+        + (pyreramo(moîar) + (pyreramo(îuká) + (pyreramo(tym) + (+ae * ikó))))
+    )
+)
+
+gûeîyb = Verb("gûeîyb")
+
+l += arobiar * ((pe * (yby * apytera)) + saguera(+ae * gûeîyb))
 
 
 araujo_catecismo_1686 = l

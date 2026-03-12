@@ -156,6 +156,10 @@
     "subtag": "DEEPEST_NODE_15"
   },
   {
+    "id": "S000113",
+    "subtag": "DEEPEST_NODE_16"
+  },
+  {
     "id": "S000107",
     "subtag": "DEEPEST_NODE_17"
   },
@@ -438,6 +442,10 @@
   {
     "id": "S000035",
     "subtag": "VOWEL_ENDING"
+  },
+  {
+    "id": "S000112",
+    "subtag": "gen"
   },
   {
     "id": "S000103",

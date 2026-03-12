@@ -92,6 +92,7 @@ amen = Interjection(
     "amém", definition="so be it, truly, let it be", tag="[INTERJECTION:AMEN]"
 )
 jesus = ProperNoun("Jesus")
+jesusxto = ProperNoun("Jesus Christo")
 ybaka = Noun("ybaka")
 moeté = Verb("moeté")
 reino = Noun(
@@ -177,6 +178,7 @@ erekó = Verb("erekó")
 poreaûsuberekó = Noun("poreaûsuberekó")
 virgem_maria = ProperNoun("Virgem Maria")
 angaturama = Noun("angaturama")
+angaturã = Noun("angaturã")
 christo = ProperNoun("Christo")
 enõî = Verb("enõî")
 îekosub = Verb("îekosub")
@@ -200,7 +202,8 @@ manõ = Verb("manõ")
 ikobé = Verb("ikobé")
 
 upir = Verb("upir")
-otmrme = bae * ((+tt * monhang * (opakatu + (mbae + tetiruã))) >> (+tt * eikatu))
+opakatumonhanga = +tt * monhang * (opakatu + (mbae + tetiruã))
+otmrme = bae * (opakatumonhanga >> (+tt * eikatu))
 ttomtmetkbae = (cop() * (tt)) * otmrme
 ekatûaba = Noun("'ekatuaba")
 ker = Verb("ker")
@@ -223,6 +226,16 @@ catorse = Number("catorse")
 sete = Number("sete")
 nã = Particle("nã", definition="assim, like this, the following")
 arobiar = +ixé * erobîar
+îar = Verb("îar")
+carne = Noun("o'o")
+
+opbrmym = -(rama * (bae * (pab)))
+aé = Adverb("aé", definition="de fato, realmente")
+pitanga = Noun("pitanga", definition="criança, child")
+
+memen = Adverb("mem˜e")
+
+ybyraîoasaba = ybyrá / îoasaba
 
 __all__ = [
     name for name in globals() if not name.startswith("_") and name not in {"os", "sys"}

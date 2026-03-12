@@ -31,7 +31,7 @@
   },
   {
     "value": "oré",
-    "tag": "[1ppe:DEEPEST_NODE_17:PRONOUN:SUBJECT]",
+    "tag": "[1ppe:DEEPEST_NODE_16:PRONOUN:SUBJECT]",
     "translation": ""
   },
   {
@@ -51,12 +51,12 @@
   },
   {
     "value": "oré",
-    "tag": "[1ppe:DEEPEST_NODE_3:OBJECT:PRONOUN]",
+    "tag": "[1ppe:DEEPEST_NODE_2:PRONOUN:SUBJECT_PREFIX]",
     "translation": ""
   },
   {
     "value": "oré",
-    "tag": "[1ppe:DEEPEST_NODE_3:POSSESSIVE_PRONOUN:PRONOUN]",
+    "tag": "[1ppe:DEEPEST_NODE_3:OBJECT:PRONOUN]",
     "translation": ""
   },
   {
@@ -71,7 +71,7 @@
   },
   {
     "value": "oré",
-    "tag": "[1ppe:DEEPEST_NODE_6:PRONOUN:SUBJECT_PREFIX]",
+    "tag": "[1ppe:DEEPEST_NODE_6:POSSESSIVE_PRONOUN:PRONOUN]",
     "translation": ""
   },
   {
@@ -97,11 +97,6 @@
   {
     "value": "eboûing",
     "tag": "[2p:DEEPEST_NODE_3:DEMONSTRATIVE:VISIBLE]",
-    "translation": ""
-  },
-  {
-    "value": "nde",
-    "tag": "[2ps:DEEPEST_NODE_12:POSSESSIVE_PRONOUN]",
     "translation": ""
   },
   {
@@ -145,11 +140,6 @@
     "translation": ""
   },
   {
-    "value": "e",
-    "tag": "[2ps:DEEPEST_NODE_5:IMPERATIVE_PREFIX]",
-    "translation": ""
-  },
-  {
     "value": "nde",
     "tag": "[2ps:DEEPEST_NODE_5:POSSESSIVE_PRONOUN]",
     "translation": ""
@@ -182,11 +172,6 @@
   {
     "value": "i",
     "tag": "[3p:DEEPEST_NODE_10:SUBJECT_PREFIX]",
-    "translation": ""
-  },
-  {
-    "value": "o",
-    "tag": "[3p:DEEPEST_NODE_11:SUBJECT_PREFIX]",
     "translation": ""
   },
   {
@@ -232,6 +217,11 @@
   {
     "value": "i",
     "tag": "[3p:DEEPEST_NODE_4:NON_MAIN_CLAUSE_SUBJECT:OBJECT]",
+    "translation": ""
+  },
+  {
+    "value": "i",
+    "tag": "[3p:DEEPEST_NODE_4:SUBJECT]",
     "translation": ""
   },
   {
@@ -295,6 +285,16 @@
     "translation": ""
   },
   {
+    "value": "an",
+    "tag": "[ABSOLUTE_AGENT_SUFFIX:DEEPEST_NODE_1]",
+    "translation": ""
+  },
+  {
+    "value": "ar",
+    "tag": "[ABSOLUTE_AGENT_SUFFIX:DEEPEST_NODE_1]",
+    "translation": ""
+  },
+  {
     "value": "sar",
     "tag": "[ABSOLUTE_AGENT_SUFFIX:DEEPEST_NODE_1]",
     "translation": ""
@@ -306,7 +306,7 @@
   },
   {
     "value": "ar",
-    "tag": "[ABSOLUTE_AGENT_SUFFIX:DEEPEST_NODE_4:VOCATIVE]",
+    "tag": "[ABSOLUTE_AGENT_SUFFIX:DEEPEST_NODE_7:VOCATIVE]",
     "translation": ""
   },
   {
@@ -322,6 +322,16 @@
   {
     "value": "ko'yr",
     "tag": "[ADVERB:DEEPEST_NODE_12]",
+    "translation": ""
+  },
+  {
+    "value": "memẽ",
+    "tag": "[ADVERB:DEEPEST_NODE_14]",
+    "translation": ""
+  },
+  {
+    "value": "aé",
+    "tag": "[ADVERB:DEEPEST_NODE_1]",
     "translation": ""
   },
   {
@@ -480,6 +490,11 @@
     "translation": ""
   },
   {
+    "value": "y",
+    "tag": "[CLITIC:CONSONANT_ENDING:DEEPEST_NODE_7:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
     "value": "eme",
     "tag": "[CONJUNCTIVE_SUFFIX:DEEPEST_NODE_1]",
     "translation": ""
@@ -501,17 +516,12 @@
   },
   {
     "value": "a",
-    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_10:NOUN:POSSESSOR:SUBSTANTIVE_SUFFIX]",
-    "translation": ""
-  },
-  {
-    "value": "a",
     "tag": "[CONSONANT_ENDING:DEEPEST_NODE_13:SUBSTANTIVE_SUFFIX]",
     "translation": ""
   },
   {
     "value": "a",
-    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_15:SUBSTANTIVE_SUFFIX]",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_14:SUBSTANTIVE_SUFFIX]",
     "translation": ""
   },
   {
@@ -556,6 +566,11 @@
   },
   {
     "value": "a",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_4:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "a",
     "tag": "[CONSONANT_ENDING:DEEPEST_NODE_5:NOUN:POSSESSOR:SUBSTANTIVE_SUFFIX]",
     "translation": ""
   },
@@ -572,6 +587,16 @@
   {
     "value": "a",
     "tag": "[CONSONANT_ENDING:DEEPEST_NODE_6:NOUN:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_8:NOUN:POSSESSOR:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_9:NOUN:POSSESSOR:SUBSTANTIVE_SUFFIX]",
     "translation": ""
   },
   {
@@ -640,33 +665,28 @@
     "translation": ""
   },
   {
-    "value": "emi",
-    "tag": "[DEEPEST_NODE_10:PATIENT_PREFIX]",
-    "translation": ""
-  },
-  {
-    "value": "r",
-    "tag": "[DEEPEST_NODE_10:PLURIFORM_PREFIX:R]",
-    "translation": ""
-  },
-  {
     "value": "îabé",
     "tag": "[DEEPEST_NODE_10:POSTPOSITION]",
     "translation": ""
   },
   {
-    "value": "t",
-    "tag": "[DEEPEST_NODE_11:PERMISSIVE_PREFIX:VOWEL]",
+    "value": "r",
+    "tag": "[DEEPEST_NODE_11:PLURIFORM_PREFIX:R]",
     "translation": ""
   },
   {
-    "value": "r",
-    "tag": "[DEEPEST_NODE_12:PLURIFORM_PREFIX:R]",
+    "value": "ri",
+    "tag": "[DEEPEST_NODE_12:POSTPOSITION]",
     "translation": ""
   },
   {
     "value": "suí",
     "tag": "[DEEPEST_NODE_12:POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "agûam",
+    "tag": "[DEEPEST_NODE_13:FUTURE_SUFFIX]",
     "translation": ""
   },
   {
@@ -680,16 +700,6 @@
     "translation": ""
   },
   {
-    "value": "ri",
-    "tag": "[DEEPEST_NODE_13:POSTPOSITION]",
-    "translation": ""
-  },
-  {
-    "value": "gûam",
-    "tag": "[DEEPEST_NODE_14:FUTURE_SUFFIX]",
-    "translation": ""
-  },
-  {
     "value": "sa",
     "tag": "[DEEPEST_NODE_1:FACILITY_SUFFIX]",
     "translation": ""
@@ -697,6 +707,11 @@
   {
     "value": "ne",
     "tag": "[DEEPEST_NODE_1:FUTURE]",
+    "translation": ""
+  },
+  {
+    "value": "ram",
+    "tag": "[DEEPEST_NODE_1:FUTURE_SUFFIX]",
     "translation": ""
   },
   {
@@ -720,6 +735,11 @@
     "translation": ""
   },
   {
+    "value": "e'ym",
+    "tag": "[DEEPEST_NODE_1:NEGATION_SUFFIX]",
+    "translation": ""
+  },
+  {
     "value": "catorse",
     "tag": "[DEEPEST_NODE_1:NUMBER]",
     "translation": ""
@@ -727,6 +747,11 @@
   {
     "value": "îe",
     "tag": "[DEEPEST_NODE_1:OBJECT:REFLEXIVE]",
+    "translation": ""
+  },
+  {
+    "value": "moro",
+    "tag": "[DEEPEST_NODE_1:OBJECT:gen]",
     "translation": ""
   },
   {
@@ -751,6 +776,11 @@
   },
   {
     "value": "amo",
+    "tag": "[DEEPEST_NODE_1:POSTPOSITION:SIMULATIVE_SUFFIX:TRANSLATIONAL]",
+    "translation": ""
+  },
+  {
+    "value": "ramo",
     "tag": "[DEEPEST_NODE_1:POSTPOSITION:SIMULATIVE_SUFFIX:TRANSLATIONAL]",
     "translation": ""
   },
@@ -785,7 +815,17 @@
     "translation": ""
   },
   {
+    "value": "ûer",
+    "tag": "[DEEPEST_NODE_1:PRETERITE_SUFFIX]",
+    "translation": ""
+  },
+  {
     "value": "Jesus",
+    "tag": "[DEEPEST_NODE_1:PROPER_NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "Santo",
     "tag": "[DEEPEST_NODE_1:PROPER_NOUN]",
     "translation": ""
   },
@@ -865,6 +905,11 @@
     "translation": ""
   },
   {
+    "value": "s",
+    "tag": "[DEEPEST_NODE_3:PLURIFORM_PREFIX:S]",
+    "translation": ""
+  },
+  {
     "value": "t",
     "tag": "[DEEPEST_NODE_3:PLURIFORM_PREFIX:T]",
     "translation": ""
@@ -885,6 +930,11 @@
     "translation": ""
   },
   {
+    "value": "agûer",
+    "tag": "[DEEPEST_NODE_3:PRETERITE_SUFFIX]",
+    "translation": ""
+  },
+  {
     "value": "Rainha",
     "tag": "[DEEPEST_NODE_3:PROPER_NOUN]",
     "translation": ""
@@ -897,11 +947,6 @@
   {
     "value": "pe",
     "tag": "[DEEPEST_NODE_4:LOCATIVE:POSTPOSITION]",
-    "translation": ""
-  },
-  {
-    "value": "Tupã",
-    "tag": "[DEEPEST_NODE_4:NOUN:POSSESSOR:PROPER_NOUN]",
     "translation": ""
   },
   {
@@ -925,11 +970,6 @@
     "translation": ""
   },
   {
-    "value": "t",
-    "tag": "[DEEPEST_NODE_4:PERMISSIVE_PREFIX:PLURIFORM_PREFIX:T:VOWEL]",
-    "translation": ""
-  },
-  {
     "value": "r",
     "tag": "[DEEPEST_NODE_4:PLURIFORM_PREFIX:R]",
     "translation": ""
@@ -937,6 +977,11 @@
   {
     "value": "t",
     "tag": "[DEEPEST_NODE_4:PLURIFORM_PREFIX:T]",
+    "translation": ""
+  },
+  {
+    "value": "amo",
+    "tag": "[DEEPEST_NODE_4:POSTPOSITION:SIMULATIVE_SUFFIX:TRANSLATIONAL]",
     "translation": ""
   },
   {
@@ -965,6 +1010,16 @@
     "translation": ""
   },
   {
+    "value": "Maria",
+    "tag": "[DEEPEST_NODE_4:PROPER_NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "Tupã",
+    "tag": "[DEEPEST_NODE_4:PROPER_NOUN]",
+    "translation": ""
+  },
+  {
     "value": "ab",
     "tag": "[DEEPEST_NODE_5:FACILITY_SUFFIX]",
     "translation": ""
@@ -982,11 +1037,6 @@
   {
     "value": "îe",
     "tag": "[DEEPEST_NODE_5:OBJECT:OBJECT_PREFIX:REFLEXIVE:refl]",
-    "translation": ""
-  },
-  {
-    "value": "t",
-    "tag": "[DEEPEST_NODE_5:PERMISSIVE_PREFIX:VOWEL]",
     "translation": ""
   },
   {
@@ -1025,6 +1075,11 @@
     "translation": ""
   },
   {
+    "value": "Tupã",
+    "tag": "[DEEPEST_NODE_6:NOUN:POSSESSOR:PROPER_NOUN]",
+    "translation": ""
+  },
+  {
     "value": "îe",
     "tag": "[DEEPEST_NODE_6:OBJECT:OBJECT_PREFIX:REFLEXIVE:refl]",
     "translation": ""
@@ -1060,13 +1115,18 @@
     "translation": ""
   },
   {
-    "value": "ne",
-    "tag": "[DEEPEST_NODE_7:FUTURE]",
+    "value": "pe",
+    "tag": "[DEEPEST_NODE_7:LOCATIVE:POSTPOSITION]",
     "translation": ""
   },
   {
     "value": "Tupã",
     "tag": "[DEEPEST_NODE_7:NOUN:POSSESSOR:PROPER_NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "t",
+    "tag": "[DEEPEST_NODE_7:PERMISSIVE_PREFIX:PLURIFORM_PREFIX:T:VOWEL]",
     "translation": ""
   },
   {
@@ -1090,6 +1150,11 @@
     "translation": ""
   },
   {
+    "value": "agûer",
+    "tag": "[DEEPEST_NODE_7:PRETERITE_SUFFIX]",
+    "translation": ""
+  },
+  {
     "value": "ba'e",
     "tag": "[DEEPEST_NODE_7:RELATIVE_AGENT_SUFFIX]",
     "translation": ""
@@ -1110,17 +1175,17 @@
     "translation": ""
   },
   {
-    "value": "esé",
-    "tag": "[DEEPEST_NODE_8:POSTPOSITION]",
-    "translation": ""
-  },
-  {
     "value": "îabé",
     "tag": "[DEEPEST_NODE_8:POSTPOSITION]",
     "translation": ""
   },
   {
     "value": "pûer",
+    "tag": "[DEEPEST_NODE_8:PRETERITE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "ûer",
     "tag": "[DEEPEST_NODE_8:PRETERITE_SUFFIX]",
     "translation": ""
   },
@@ -1135,8 +1200,13 @@
     "translation": ""
   },
   {
-    "value": "ûer",
-    "tag": "[DEEPEST_NODE_9:PRETERITE_SUFFIX]",
+    "value": "emi",
+    "tag": "[DEEPEST_NODE_9:PATIENT_PREFIX]",
+    "translation": ""
+  },
+  {
+    "value": "r",
+    "tag": "[DEEPEST_NODE_9:PLURIFORM_PREFIX:R]",
     "translation": ""
   },
   {
