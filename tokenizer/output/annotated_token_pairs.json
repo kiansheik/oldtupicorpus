@@ -171,6 +171,11 @@
   },
   {
     "value": "opakatu",
+    "tag": "[3p:ADVERB:ALL:DEEPEST_NODE_6]",
+    "translation": ""
+  },
+  {
+    "value": "opakatu",
     "tag": "[3p:ADVERB:ALL:DEEPEST_NODE_7]",
     "translation": ""
   },
@@ -431,7 +436,17 @@
   },
   {
     "value": "a",
+    "tag": "[CLASS_1:CONSONANT:DEEPEST_NODE_1:GERUND_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "a",
     "tag": "[CLASS_1:CONSONANT:DEEPEST_NODE_4:GERUND_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[CLASS_1:CONSONANT:DEEPEST_NODE_6:GERUND_SUFFIX]",
     "translation": ""
   },
   {
@@ -531,6 +546,11 @@
   },
   {
     "value": "a",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_3:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "a",
     "tag": "[CONSONANT_ENDING:DEEPEST_NODE_4:NOUN:SUBSTANTIVE_SUFFIX]",
     "translation": ""
   },
@@ -542,6 +562,11 @@
   {
     "value": "a",
     "tag": "[CONSONANT_ENDING:DEEPEST_NODE_5:NOUN:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_5:SUBSTANTIVE_SUFFIX]",
     "translation": ""
   },
   {
@@ -585,8 +610,18 @@
     "translation": ""
   },
   {
+    "value": "upé",
+    "tag": "[DATIVE:DEEPEST_NODE_1:POSTPOSITION]",
+    "translation": ""
+  },
+  {
     "value": "bo",
     "tag": "[DATIVE:DEEPEST_NODE_3:POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "ndûar",
+    "tag": "[DEADVERBAL:DEEPEST_NODE_5]",
     "translation": ""
   },
   {
@@ -665,6 +700,11 @@
     "translation": ""
   },
   {
+    "value": "moro",
+    "tag": "[DEEPEST_NODE_1:GENERIC:PATIENT_PREFIX:PEOPLE_IN_GENERAL]",
+    "translation": ""
+  },
+  {
     "value": "ene'ĩ",
     "tag": "[DEEPEST_NODE_1:INTERJECTION]",
     "translation": ""
@@ -677,6 +717,11 @@
   {
     "value": "umẽ",
     "tag": "[DEEPEST_NODE_1:NEGATION_PARTICLE:UME]",
+    "translation": ""
+  },
+  {
+    "value": "catorse",
+    "tag": "[DEEPEST_NODE_1:NUMBER]",
     "translation": ""
   },
   {
@@ -755,6 +800,11 @@
     "translation": ""
   },
   {
+    "value": "am",
+    "tag": "[DEEPEST_NODE_2:FUTURE_SUFFIX]",
+    "translation": ""
+  },
+  {
     "value": "pe",
     "tag": "[DEEPEST_NODE_2:LOCATIVE:POSTPOSITION]",
     "translation": ""
@@ -785,6 +835,11 @@
     "translation": ""
   },
   {
+    "value": "agûam",
+    "tag": "[DEEPEST_NODE_3:FUTURE_SUFFIX]",
+    "translation": ""
+  },
+  {
     "value": "pe",
     "tag": "[DEEPEST_NODE_3:LOCATIVE:POSTPOSITION]",
     "translation": ""
@@ -792,6 +847,16 @@
   {
     "value": "îe",
     "tag": "[DEEPEST_NODE_3:OBJECT:OBJECT_PREFIX:REFLEXIVE:refl]",
+    "translation": ""
+  },
+  {
+    "value": "nã",
+    "tag": "[DEEPEST_NODE_3:PARTICLE]",
+    "translation": ""
+  },
+  {
+    "value": "emi",
+    "tag": "[DEEPEST_NODE_3:PATIENT_PREFIX]",
     "translation": ""
   },
   {
@@ -840,6 +905,16 @@
     "translation": ""
   },
   {
+    "value": "oîepé",
+    "tag": "[DEEPEST_NODE_4:NUMBER:ONE]",
+    "translation": ""
+  },
+  {
+    "value": "sete",
+    "tag": "[DEEPEST_NODE_4:NUMBER]",
+    "translation": ""
+  },
+  {
     "value": "îe",
     "tag": "[DEEPEST_NODE_4:OBJECT:OBJECT_PREFIX:REFLEXIVE:refl]",
     "translation": ""
@@ -857,6 +932,11 @@
   {
     "value": "r",
     "tag": "[DEEPEST_NODE_4:PLURIFORM_PREFIX:R]",
+    "translation": ""
+  },
+  {
+    "value": "t",
+    "tag": "[DEEPEST_NODE_4:PLURIFORM_PREFIX:T]",
     "translation": ""
   },
   {
@@ -887,6 +967,16 @@
   {
     "value": "ab",
     "tag": "[DEEPEST_NODE_5:FACILITY_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "ram",
+    "tag": "[DEEPEST_NODE_5:FUTURE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "e'ym",
+    "tag": "[DEEPEST_NODE_5:NEGATION_SUFFIX]",
     "translation": ""
   },
   {
@@ -940,8 +1030,18 @@
     "translation": ""
   },
   {
+    "value": "r",
+    "tag": "[DEEPEST_NODE_6:PLURIFORM_PREFIX:R]",
+    "translation": ""
+  },
+  {
     "value": "t",
     "tag": "[DEEPEST_NODE_6:PLURIFORM_PREFIX:T]",
+    "translation": ""
+  },
+  {
+    "value": "esé",
+    "tag": "[DEEPEST_NODE_6:POSTPOSITION]",
     "translation": ""
   },
   {
@@ -962,6 +1062,11 @@
   {
     "value": "ne",
     "tag": "[DEEPEST_NODE_7:FUTURE]",
+    "translation": ""
+  },
+  {
+    "value": "Tupã",
+    "tag": "[DEEPEST_NODE_7:NOUN:POSSESSOR:PROPER_NOUN]",
     "translation": ""
   },
   {

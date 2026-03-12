@@ -2,7 +2,8 @@ from historic.lexicon import load_lexicon
 
 globals().update(load_lexicon())
 
-araujo_catecismo_1686 = [
+# call it l for writting convenience
+l = [
     # Santa Cruz
     ((saba * (santa_cruz * aang)) * esé)
     + (endé * (pysyro.imp()) * oré)
@@ -106,14 +107,23 @@ araujo_catecismo_1686 = [
         )
     )
     + ne,
-    (+ixé * erobîar * espirito_santo),
-    +ixé * erobîar * santa_igreja,
-    +ixé
-    * erobîar
-    * (((santos * (ikó / katu)).base_nominal(True) * (mo * îaok) * îe).redup()),
-    (+ixé * erobîar * ((ekoangaîpaba * esé) + (tupan * nhyron))),  # in progress
+    (arobiar * espirito_santo),
+    arobiar * santa_igreja,
+    arobiar * (((santos * (ikó / katu)).base_nominal(True) * (mo * îaok) * îe).redup()),
+    (arobiar * ((ekoangaîpaba * esé) + (moro * supé) + (tupan * nhyron))),
 ]
 
+
+l += arobiar * (rama * (saba * (asé * (ikobé / îebyr))))
+l += ((+(ixé)) * (erobîar)) * (((ikobé) @ (-(rama * (bae * (pab))))))
+l += amen
+
+l += catorse * (rama * (asé * (emi * erobîar)))
+l += ((sete * ((nduara * (tupan * esé))))) + ((nã) + (+ae * ei))
+l += arobiar * ((oîepé * (tupan)) @ (otmrme))
+
+
+araujo_catecismo_1686 = l
 if __name__ == "__main__":
     for expr in araujo_catecismo_1686:
         print(expr.eval())

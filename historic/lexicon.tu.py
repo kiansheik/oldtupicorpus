@@ -200,9 +200,8 @@ manõ = Verb("manõ")
 ikobé = Verb("ikobé")
 
 upir = Verb("upir")
-ttomtmetkbae = (cop() * (tt)) * (
-    bae * ((+tt * monhang * (opakatu + (mbae + tetiruã))) >> (+tt * eikatu))
-)
+otmrme = bae * ((+tt * monhang * (opakatu + (mbae + tetiruã))) >> (+tt * eikatu))
+ttomtmetkbae = (cop() * (tt)) * otmrme
 ekatûaba = Noun("'ekatuaba")
 ker = Verb("ker")
 pytá = Verb("pytá")
@@ -218,6 +217,12 @@ pytybõ = Verb("pytybõ")
 orébe = (oré * supé).var(1)
 orébo = (oré * supé).var(0)
 ekoangaîpaba = Noun("ekoangaîpaba")
+pab = Verb("pab")
+# artigos da fé
+catorse = Number("catorse")
+sete = Number("sete")
+nã = Particle("nã", definition="assim, like this, the following")
+arobiar = +ixé * erobîar
 
 __all__ = [
     name for name in globals() if not name.startswith("_") and name not in {"os", "sys"}

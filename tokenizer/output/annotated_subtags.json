@@ -228,6 +228,10 @@
     "subtag": "FUTURE_SUFFIX"
   },
   {
+    "id": "S000109",
+    "subtag": "GENERIC"
+  },
+  {
     "id": "S000065",
     "subtag": "GERUND_SUBJECT_PREFIX"
   },
@@ -308,6 +312,10 @@
     "subtag": "OBJECT_PREFIX"
   },
   {
+    "id": "S000111",
+    "subtag": "ONE"
+  },
+  {
     "id": "S000069",
     "subtag": "ORAL_VOWEL"
   },
@@ -318,6 +326,10 @@
   {
     "id": "S000039",
     "subtag": "PATIENT_PREFIX"
+  },
+  {
+    "id": "S000110",
+    "subtag": "PEOPLE_IN_GENERAL"
   },
   {
     "id": "S000032",
