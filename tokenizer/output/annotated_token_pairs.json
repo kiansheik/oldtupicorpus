@@ -175,8 +175,13 @@
     "translation": ""
   },
   {
-    "value": "i",
-    "tag": "[3p:DEEPEST_NODE_17:SUBJECT]",
+    "value": "o",
+    "tag": "[3p:DEEPEST_NODE_16:SUBJECT_PREFIX]",
+    "translation": ""
+  },
+  {
+    "value": "o",
+    "tag": "[3p:DEEPEST_NODE_18:SUBJECT_PREFIX]",
     "translation": ""
   },
   {
@@ -197,6 +202,11 @@
   {
     "value": "o",
     "tag": "[3p:DEEPEST_NODE_1:SUBJECT_PREFIX]",
+    "translation": ""
+  },
+  {
+    "value": "o",
+    "tag": "[3p:DEEPEST_NODE_21:SUBJECT_PREFIX]",
     "translation": ""
   },
   {
@@ -231,17 +241,17 @@
   },
   {
     "value": "i",
+    "tag": "[3p:DEEPEST_NODE_5:SUBJECT]",
+    "translation": ""
+  },
+  {
+    "value": "i",
     "tag": "[3p:DEEPEST_NODE_6:NON_MAIN_CLAUSE_SUBJECT:OBJECT]",
     "translation": ""
   },
   {
     "value": "o",
     "tag": "[3p:DEEPEST_NODE_6:SUBJECT_PREFIX]",
-    "translation": ""
-  },
-  {
-    "value": "o",
-    "tag": "[3p:DEEPEST_NODE_7:SUBJECT_PREFIX]",
     "translation": ""
   },
   {
@@ -257,6 +267,11 @@
   {
     "value": "t",
     "tag": "[ABSOLUTE:DEEPEST_NODE_1:PLURIFORM_PREFIX:T]",
+    "translation": ""
+  },
+  {
+    "value": "t",
+    "tag": "[ABSOLUTE:DEEPEST_NODE_3:PLURIFORM_PREFIX:T]",
     "translation": ""
   },
   {
@@ -486,11 +501,6 @@
   },
   {
     "value": "y",
-    "tag": "[CLITIC:CONSONANT_ENDING:DEEPEST_NODE_17:SUBSTANTIVE_SUFFIX]",
-    "translation": ""
-  },
-  {
-    "value": "y",
     "tag": "[CLITIC:CONSONANT_ENDING:DEEPEST_NODE_1:SUBSTANTIVE_SUFFIX]",
     "translation": ""
   },
@@ -502,6 +512,11 @@
   {
     "value": "y",
     "tag": "[CLITIC:CONSONANT_ENDING:DEEPEST_NODE_4:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "y",
+    "tag": "[CLITIC:CONSONANT_ENDING:DEEPEST_NODE_5:SUBSTANTIVE_SUFFIX]",
     "translation": ""
   },
   {
@@ -527,6 +542,16 @@
   {
     "value": "y",
     "tag": "[CONSONANT_CLASH:DEEPEST_NODE_2]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_11:NOUN:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_12:SUBSTANTIVE_SUFFIX]",
     "translation": ""
   },
   {
@@ -567,6 +592,11 @@
   {
     "value": "a",
     "tag": "[CONSONANT_ENDING:DEEPEST_NODE_3:LOAN_WORD:NOUN:PORTUGUESE:POSSESSOR:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_3:NOUN:SUBSTANTIVE_SUFFIX]",
     "translation": ""
   },
   {
@@ -690,6 +720,16 @@
     "translation": ""
   },
   {
+    "value": "agûer",
+    "tag": "[DEEPEST_NODE_11:PRETERITE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "r",
+    "tag": "[DEEPEST_NODE_12:PLURIFORM_PREFIX:R]",
+    "translation": ""
+  },
+  {
     "value": "ri",
     "tag": "[DEEPEST_NODE_12:POSTPOSITION]",
     "translation": ""
@@ -697,6 +737,11 @@
   {
     "value": "suí",
     "tag": "[DEEPEST_NODE_12:POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "gûer",
+    "tag": "[DEEPEST_NODE_12:PRETERITE_SUFFIX]",
     "translation": ""
   },
   {
@@ -715,13 +760,28 @@
     "translation": ""
   },
   {
-    "value": "agûer",
-    "tag": "[DEEPEST_NODE_16:PRETERITE_SUFFIX]",
+    "value": "r",
+    "tag": "[DEEPEST_NODE_13:PLURIFORM_PREFIX:R]",
     "translation": ""
   },
   {
-    "value": "pe",
-    "tag": "[DEEPEST_NODE_17:LOCATIVE:POSTPOSITION]",
+    "value": "r",
+    "tag": "[DEEPEST_NODE_15:PLURIFORM_PREFIX:R]",
+    "translation": ""
+  },
+  {
+    "value": "ba'e",
+    "tag": "[DEEPEST_NODE_16:RELATIVE_AGENT_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "ûer",
+    "tag": "[DEEPEST_NODE_17:PRETERITE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "ba'e",
+    "tag": "[DEEPEST_NODE_18:RELATIVE_AGENT_SUFFIX]",
     "translation": ""
   },
   {
@@ -865,6 +925,21 @@
     "translation": ""
   },
   {
+    "value": "gûer",
+    "tag": "[DEEPEST_NODE_20:PRETERITE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "s",
+    "tag": "[DEEPEST_NODE_21:PLURIFORM_PREFIX:S]",
+    "translation": ""
+  },
+  {
+    "value": "am",
+    "tag": "[DEEPEST_NODE_22:FUTURE_SUFFIX]",
+    "translation": ""
+  },
+  {
     "value": "am",
     "tag": "[DEEPEST_NODE_2:FUTURE_SUFFIX]",
     "translation": ""
@@ -950,6 +1025,11 @@
     "translation": ""
   },
   {
+    "value": "koty",
+    "tag": "[DEEPEST_NODE_3:POSTPOSITION]",
+    "translation": ""
+  },
+  {
     "value": "suí",
     "tag": "[DEEPEST_NODE_3:POSTPOSITION]",
     "translation": ""
@@ -961,6 +1041,11 @@
   },
   {
     "value": "Rainha",
+    "tag": "[DEEPEST_NODE_3:PROPER_NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "Tupã",
     "tag": "[DEEPEST_NODE_3:PROPER_NOUN]",
     "translation": ""
   },
@@ -1030,6 +1115,11 @@
     "translation": ""
   },
   {
+    "value": "agûer",
+    "tag": "[DEEPEST_NODE_4:PRETERITE_SUFFIX]",
+    "translation": ""
+  },
+  {
     "value": "JesusChristoabé",
     "tag": "[DEEPEST_NODE_4:PROPER_NOUN]",
     "translation": ""
@@ -1050,8 +1140,18 @@
     "translation": ""
   },
   {
+    "value": "agûam",
+    "tag": "[DEEPEST_NODE_5:FUTURE_SUFFIX]",
+    "translation": ""
+  },
+  {
     "value": "ram",
     "tag": "[DEEPEST_NODE_5:FUTURE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "pe",
+    "tag": "[DEEPEST_NODE_5:LOCATIVE:POSTPOSITION]",
     "translation": ""
   },
   {
@@ -1097,6 +1197,11 @@
   {
     "value": "ba'e",
     "tag": "[DEEPEST_NODE_5:RELATIVE_AGENT_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "pe",
+    "tag": "[DEEPEST_NODE_6:LOCATIVE:POSTPOSITION]",
     "translation": ""
   },
   {
@@ -1190,8 +1295,8 @@
     "translation": ""
   },
   {
-    "value": "am",
-    "tag": "[DEEPEST_NODE_8:FUTURE_SUFFIX]",
+    "value": "îe",
+    "tag": "[DEEPEST_NODE_8:OBJECT:OBJECT_PREFIX:REFLEXIVE:refl]",
     "translation": ""
   },
   {

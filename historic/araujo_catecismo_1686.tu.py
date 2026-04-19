@@ -164,35 +164,39 @@ l += arobiar * (
     )
 )
 
-enosem = Verb("enosem")
 
 l += arobiar * (
-    saguera(
-        (
-            bae
-            * (
+    (
+        (abé.var(1) * ((pe * (yby * apytera)) + saguera(+ae * gûeîyb)))
+        * (
+            saguera(
                 (
-                    rama
-                    * (
+                    (
                         (
-                            (abé * ((pe * (yby * apytera)) + saguera(+ae * gûeîyb)))
+                            (asé * (tuba / ypyOrigin))
+                            @ ((karaiba / etá) * (pûera * soul))
+                        )
+                        @ (
+                            bae
                             * (
                                 (
-                                    (asé * (tuba / ypyOrigin))
-                                    @ ((karaiba / etá) * (pûera * soul))
+                                    rama
+                                    * ((((((aepe >> (+tupan * îur)))).base_nominal())))
+                                    * arõ
                                 )
-                                * ((aepe >> îur))
-                            ).base_nominal()
+                            )
                         )
                     )
+                    * (enosem)
                 )
-                * arõ
             )
         )
-        * (enosem)
     )
-    + bé
 )
+n = lambda x: (x).base_nominal(True)
+l += arobiar * ((abé.var(1) * risetoheaven) * rightsidegod)
+payment = Verb("epyme'eng")
+l += arobiar * ((abé.var(1) * bondadenomundo * (pûera * n(ae * sinfullife))) * payment)
 
 
 araujo_catecismo_1686 = l

@@ -1,5 +1,9 @@
 [
   {
+    "id": "M000211",
+    "value": "'ang"
+  },
+  {
     "id": "M000204",
     "value": "'angûera"
   },
@@ -14,6 +18,10 @@
   {
     "id": "M000166",
     "value": "'ekatuab"
+  },
+  {
+    "id": "M000212",
+    "value": "'ekatûab"
   },
   {
     "id": "M000046",
@@ -252,6 +260,10 @@
     "value": "eko"
   },
   {
+    "id": "M000216",
+    "value": "ekoangaípa"
+  },
+  {
     "id": "M000180",
     "value": "ekoangaîpab"
   },
@@ -268,8 +280,16 @@
     "value": "ekokatu"
   },
   {
+    "id": "M000215",
+    "value": "ekokatûa"
+  },
+  {
     "id": "M000170",
     "value": "ekomonhang"
+  },
+  {
+    "id": "M000218",
+    "value": "ekosa"
   },
   {
     "id": "M000074",
@@ -310,6 +330,10 @@
   {
     "id": "M000132",
     "value": "enõî"
+  },
+  {
+    "id": "M000217",
+    "value": "epyme'eng"
   },
   {
     "id": "M000125",
@@ -552,6 +576,10 @@
     "value": "pabẽ"
   },
   {
+    "id": "M000214",
+    "value": "papá"
+  },
+  {
     "id": "M000027",
     "value": "pe"
   },
@@ -652,6 +680,10 @@
     "value": "sekó"
   },
   {
+    "id": "M000213",
+    "value": "sen"
+  },
+  {
     "id": "M000191",
     "value": "sete"
   },
@@ -702,6 +734,10 @@
   {
     "id": "M000018",
     "value": "ub"
+  },
+  {
+    "id": "M000210",
+    "value": "ubypy"
   },
   {
     "id": "M000062",

@@ -235,6 +235,7 @@ pitanga = Noun("pitanga", definition="criança, child")
 
 memen = Adverb("mem˜e")
 saguera = lambda x: (pûera * (saba * x))
+saguama = lambda x: (rama * (saba * x))
 ybyraîoasaba = ybyrá / îoasaba
 
 moîar = Verb("moîar")
@@ -249,6 +250,23 @@ arõ = Verb(
     verb_class="(s)",
     definition="(s) (v.tr.) - guardar, velar; olhar por (para que não se perca); proteger",
 )
+
+enosem = Verb("enosem")
+
+noceu = pe * ybaka
+risetoheaven = saguera(ae * (noceu + upir) * îe)
+en = Verb("in")
+rightside = Noun("'ekatûaba")
+rightsidegod = (((tt * rightside) * koty) + (ae * en)).base_nominal()
+inendofworld = (pe * (saba * (ara * pab))) + saguama(îur)
+
+vivos = bae * ikobé
+mortos = bae * manõ
+todosvivosemortos = abé.var(2) * vivos * mortos
+bondadenomundo = inendofworld + saguera(todosvivosemortos * (ikó / katu))
+magreza = Noun("angaíba")
+sinner = saba * v(magreza)
+sinfullife = ikó / sinner
 
 __all__ = [
     name for name in globals() if not name.startswith("_") and name not in {"os", "sys"}
