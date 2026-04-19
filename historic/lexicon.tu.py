@@ -92,6 +92,7 @@ amen = Interjection(
     "amém", definition="so be it, truly, let it be", tag="[INTERJECTION:AMEN]"
 )
 jesus = ProperNoun("Jesus")
+jesusxto = ProperNoun("Jesus Christo")
 ybaka = Noun("ybaka")
 moeté = Verb("moeté")
 reino = Noun(
@@ -177,6 +178,7 @@ erekó = Verb("erekó")
 poreaûsuberekó = Noun("poreaûsuberekó")
 virgem_maria = ProperNoun("Virgem Maria")
 angaturama = Noun("angaturama")
+angaturã = Noun("angaturã")
 christo = ProperNoun("Christo")
 enõî = Verb("enõî")
 îekosub = Verb("îekosub")
@@ -200,9 +202,9 @@ manõ = Verb("manõ")
 ikobé = Verb("ikobé")
 
 upir = Verb("upir")
-ttomtmetkbae = (cop() * (tt)) * (
-    bae * ((+tt * monhang * (opakatu + (mbae + tetiruã))) >> (+tt * eikatu))
-)
+opakatumonhanga = +tt * monhang * (opakatu + (mbae + tetiruã))
+otmrme = bae * (opakatumonhanga >> (+tt * eikatu))
+ttomtmetkbae = (cop() * (tt)) * otmrme
 ekatûaba = Noun("'ekatuaba")
 ker = Verb("ker")
 pytá = Verb("pytá")
@@ -218,6 +220,53 @@ pytybõ = Verb("pytybõ")
 orébe = (oré * supé).var(1)
 orébo = (oré * supé).var(0)
 ekoangaîpaba = Noun("ekoangaîpaba")
+pab = Verb("pab")
+# artigos da fé
+catorse = Number("catorse")
+sete = Number("sete")
+nã = Particle("nã", definition="assim, like this, the following")
+arobiar = +ixé * erobîar
+îar = Verb("îar")
+carne = Noun("o'o")
+
+opbrmym = -(rama * (bae * (pab)))
+aé = Adverb("aé", definition="de fato, realmente")
+pitanga = Noun("pitanga", definition="criança, child")
+
+memen = Adverb("mem˜e")
+saguera = lambda x: (pûera * (saba * x))
+saguama = lambda x: (rama * (saba * x))
+ybyraîoasaba = ybyrá / îoasaba
+
+moîar = Verb("moîar")
+gûeîyb = Verb("gûeîyb")
+ypyOrigin = Noun("ypy")
+karaiba = Noun("karaíba")
+etá = Noun("etá")
+soul = Noun("'anga")
+aepe = Adverb("a'epe")
+arõ = Verb(
+    "arõ",
+    verb_class="(s)",
+    definition="(s) (v.tr.) - guardar, velar; olhar por (para que não se perca); proteger",
+)
+
+enosem = Verb("enosem")
+
+noceu = pe * ybaka
+risetoheaven = saguera(ae * (noceu + upir) * îe)
+en = Verb("in")
+rightside = Noun("'ekatûaba")
+rightsidegod = (((tt * rightside) * koty) + (ae * en)).base_nominal()
+inendofworld = (pe * (saba * (ara * pab))) + saguama(îur)
+
+vivos = bae * ikobé
+mortos = bae * manõ
+todosvivosemortos = abé.var(2) * vivos * mortos
+bondadenomundo = inendofworld + saguera(todosvivosemortos * (ikó / katu))
+magreza = Noun("angaíba")
+sinner = saba * v(magreza)
+sinfullife = ikó / sinner
 
 __all__ = [
     name for name in globals() if not name.startswith("_") and name not in {"os", "sys"}

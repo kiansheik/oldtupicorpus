@@ -66,7 +66,7 @@ bettendorff_compendio = [
     + (esé * (pûera * (emi * (christo * enõî))))
     + (
         ri * (rama * (saba * (oré * îekosub)))
-    ),  # îekosupagûama here is îekosuBagûama in bettendorf, displaying already some early divergences of loss of phonetic composition which we see in nheengatu
+    ),  # îekosubagûama here is îekosuBagûama in bettendorf, displaying already some early divergences of loss of phonetic composition which we see in nheengatu
     (amen + jesus),
     # Creio em Deus Padre
     erobîar * +ixé * ((ttomtmetkbae) * (sara * (monhang * (abé + ybaka + yby)))),

@@ -156,8 +156,16 @@
     "subtag": "DEEPEST_NODE_15"
   },
   {
+    "id": "S000113",
+    "subtag": "DEEPEST_NODE_16"
+  },
+  {
     "id": "S000107",
     "subtag": "DEEPEST_NODE_17"
+  },
+  {
+    "id": "S000116",
+    "subtag": "DEEPEST_NODE_18"
   },
   {
     "id": "S000108",
@@ -166,6 +174,18 @@
   {
     "id": "S000100",
     "subtag": "DEEPEST_NODE_2"
+  },
+  {
+    "id": "S000117",
+    "subtag": "DEEPEST_NODE_20"
+  },
+  {
+    "id": "S000115",
+    "subtag": "DEEPEST_NODE_21"
+  },
+  {
+    "id": "S000114",
+    "subtag": "DEEPEST_NODE_22"
   },
   {
     "id": "S000092",
@@ -226,6 +246,10 @@
   {
     "id": "S000077",
     "subtag": "FUTURE_SUFFIX"
+  },
+  {
+    "id": "S000109",
+    "subtag": "GENERIC"
   },
   {
     "id": "S000065",
@@ -308,6 +332,10 @@
     "subtag": "OBJECT_PREFIX"
   },
   {
+    "id": "S000111",
+    "subtag": "ONE"
+  },
+  {
     "id": "S000069",
     "subtag": "ORAL_VOWEL"
   },
@@ -318,6 +346,10 @@
   {
     "id": "S000039",
     "subtag": "PATIENT_PREFIX"
+  },
+  {
+    "id": "S000110",
+    "subtag": "PEOPLE_IN_GENERAL"
   },
   {
     "id": "S000032",
@@ -426,6 +458,10 @@
   {
     "id": "S000035",
     "subtag": "VOWEL_ENDING"
+  },
+  {
+    "id": "S000112",
+    "subtag": "gen"
   },
   {
     "id": "S000103",
