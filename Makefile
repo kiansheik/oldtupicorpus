@@ -4,6 +4,7 @@ TAG_NAME="production"
 
 REPOSITORY=""
 FULL_IMAGE_NAME=${IMAGE_NAME}:${TAG_NAME}
+PORT ?= 8000
 
 lint:
 	black .
@@ -23,3 +24,9 @@ update-ground-truth:
 
 play:
 	python3 -i playground.py
+
+dict:
+	python3 -m dictionary.build_dict
+
+serve-dict: dict
+	python3 -m http.server $(PORT) --directory site

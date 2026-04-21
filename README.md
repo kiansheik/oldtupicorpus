@@ -68,6 +68,21 @@ Useful variants:
 - `make test ARGS="--tokenizer-orth-expand POTIGUARA TUPINAMBA SEM_DIACRITICO"`: add selected orthography variants.
 - `make test ARGS="--tokenizer-orth-expand-all"`: expand all known orthographies except `NAVARRO`.
 
+**3. Build and serve the static dictionary**
+```bash
+make dict
+make serve-dict
+```
+
+What it does:
+- Builds `site/data/rendered_corpus.json(.gz)` with structured historic corpus lines.
+- Builds `site/data/dictionary_entries.json(.gz)` with structured lexicon entries and corpus attestations.
+- Serves the static `site/` bundle locally at `http://localhost:8000` by default.
+
+Useful variants:
+- `make serve-dict PORT=4173`
+- `python3 -m dictionary.build_dict --include-navarro`: optionally include the Navarro-derived supplemental index exported from `../nhe-enga`.
+
 **3. Review and append ground truth manually**
 ```bash
 make update-ground-truth

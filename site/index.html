@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Old Tupi Dictionary</title>
+  <meta
+    name="description"
+    content="Search a structured Old Tupi dictionary built from the historic corpus and shared lexicon."
+  >
+  <link rel="stylesheet" href="./assets/styles.css">
+  <script src="./assets/app.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">Old Tupi Corpus</p>
+      <h1>Static Dictionary v1</h1>
+      <p class="lede">
+        Search structured lexicon entries built from the historic source-of-truth corpus,
+        with line-level attestations linked back to rendered corpus records.
+      </p>
+      <form id="search-form" class="search-panel">
+        <label class="sr-only" for="search-input">Search dictionary</label>
+        <input
+          id="search-input"
+          name="query"
+          type="search"
+          placeholder="Search headword, alias, gloss, or attested surface"
+          autocomplete="off"
+          spellcheck="false"
+        >
+        <button type="submit">Search</button>
+      </form>
+      <div class="search-toolbar">
+        <label class="control">
+          <span>Metric</span>
+          <select id="metric-select">
+            <option value="smart">Smart</option>
+            <option value="headword">Headword</option>
+            <option value="alias">Alias</option>
+            <option value="gloss">Gloss</option>
+            <option value="attestation">Attestation</option>
+            <option value="source">Source</option>
+            <option value="fulltext">Full Text</option>
+          </select>
+        </label>
+        <label class="control">
+          <span>Sort</span>
+          <select id="sort-select">
+            <option value="best_match">Best Match</option>
+            <option value="headword">Headword</option>
+            <option value="attestation_count">Attestation Count</option>
+            <option value="source_count">Source Count</option>
+            <option value="dataset">Dataset</option>
+          </select>
+        </label>
+        <label class="control">
+          <span>Direction</span>
+          <select id="direction-select">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        </label>
+      </div>
+      <div class="status-row">
+        <div id="summary" class="summary">Loading dictionary artifacts...</div>
+        <button id="clear-button" class="ghost" type="button">Clear</button>
+      </div>
+    </section>
+
+    <section class="layout">
+      <aside class="sidebar">
+        <div class="panel">
+          <h2>Build</h2>
+          <dl id="build-meta" class="meta-list">
+            <div>
+              <dt>Entries</dt>
+              <dd id="meta-entry-count">-</dd>
+            </div>
+            <div>
+              <dt>Corpus lines</dt>
+              <dd id="meta-line-count">-</dd>
+            </div>
+            <div>
+              <dt>Historic sources</dt>
+              <dd id="meta-source-count">-</dd>
+            </div>
+            <div>
+              <dt>Generated</dt>
+              <dd id="meta-generated-at">-</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="panel">
+          <h2>Search notes</h2>
+          <ul class="notes">
+            <li>`Smart` combines headword, alias, gloss, attestation, source, and full-text matches.</li>
+            <li>Use `Metric` to search one field family only.</li>
+            <li>`Best Match`, alphabetical, and count-based sorts all support ascending and descending order.</li>
+            <li>Attestations come from `historic/*.tu.py` renderings.</li>
+            <li>The UI only renders pre-structured JSON artifacts.</li>
+          </ul>
+        </div>
+      </aside>
+
+      <section class="results-panel">
+        <div id="results" class="results" aria-live="polite"></div>
+      </section>
+    </section>
+  </main>
+</body>
+</html>
