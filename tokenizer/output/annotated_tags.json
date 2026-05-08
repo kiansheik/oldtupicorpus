@@ -44,8 +44,20 @@
     "tag": "[1ppe:DEEPEST_NODE_1:SUBJECT_PREFIX]"
   },
   {
+    "id": "T000376",
+    "tag": "[1ppe:DEEPEST_NODE_1:SUBJECT_PRONOUN]"
+  },
+  {
+    "id": "T000348",
+    "tag": "[1ppe:DEEPEST_NODE_2:PRONOUN:SUBJECT]"
+  },
+  {
     "id": "T000304",
     "tag": "[1ppe:DEEPEST_NODE_2:PRONOUN:SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000369",
+    "tag": "[1ppe:DEEPEST_NODE_2:PRONOUN:SUBJECT_PRONOUN]"
   },
   {
     "id": "T000085",
@@ -80,16 +92,76 @@
     "tag": "[1ppe:DEEPEST_NODE_9:PRONOUN:SUBJECT]"
   },
   {
+    "id": "T000352",
+    "tag": "[1ppi:DEEPEST_NODE_1:SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000377",
+    "tag": "[1ppi:DEEPEST_NODE_1:SUBJECT_PRONOUN]"
+  },
+  {
+    "id": "T000351",
+    "tag": "[1ppi:DEEPEST_NODE_2:PRONOUN:SUBJECT]"
+  },
+  {
+    "id": "T000371",
+    "tag": "[1ppi:DEEPEST_NODE_2:PRONOUN:SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000370",
+    "tag": "[1ppi:DEEPEST_NODE_2:PRONOUN:SUBJECT_PRONOUN]"
+  },
+  {
+    "id": "T000366",
+    "tag": "[1ppi:DEEPEST_NODE_3:OBJECT:PRONOUN]"
+  },
+  {
     "id": "T000154",
     "tag": "[1ppi:DEEPEST_NODE_3:POSSESSIVE_PRONOUN:PRONOUN]"
+  },
+  {
+    "id": "T000364",
+    "tag": "[1ps:DEEPEST_NODE_1:OBJECT]"
   },
   {
     "id": "T000265",
     "tag": "[1ps:DEEPEST_NODE_1:SUBJECT_PREFIX]"
   },
   {
+    "id": "T000353",
+    "tag": "[1ps:DEEPEST_NODE_2:PRONOUN:SUBJECT]"
+  },
+  {
+    "id": "T000372",
+    "tag": "[1ps:DEEPEST_NODE_2:PRONOUN:SUBJECT_PRONOUN]"
+  },
+  {
     "id": "T000204",
     "tag": "[2p:DEEPEST_NODE_3:DEMONSTRATIVE:VISIBLE]"
+  },
+  {
+    "id": "T000362",
+    "tag": "[2pp:DEEPEST_NODE_1:OBJECT:SUBJECT_1P]"
+  },
+  {
+    "id": "T000368",
+    "tag": "[2pp:DEEPEST_NODE_1:OBJECT]"
+  },
+  {
+    "id": "T000365",
+    "tag": "[2pp:DEEPEST_NODE_1:OBJECT_1P:PRONOUN:SUBJECT]"
+  },
+  {
+    "id": "T000355",
+    "tag": "[2pp:DEEPEST_NODE_1:SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000354",
+    "tag": "[2pp:DEEPEST_NODE_2:PRONOUN:SUBJECT]"
+  },
+  {
+    "id": "T000373",
+    "tag": "[2pp:DEEPEST_NODE_2:PRONOUN:SUBJECT_PRONOUN]"
   },
   {
     "id": "T000111",
@@ -104,6 +176,14 @@
     "tag": "[2ps:DEEPEST_NODE_1:IMPERATIVE_PREFIX]"
   },
   {
+    "id": "T000360",
+    "tag": "[2ps:DEEPEST_NODE_1:OBJECT:SUBJECT_1P]"
+  },
+  {
+    "id": "T000367",
+    "tag": "[2ps:DEEPEST_NODE_1:OBJECT]"
+  },
+  {
     "id": "T000086",
     "tag": "[2ps:DEEPEST_NODE_1:OBJECT_1P:PRONOUN:SUBJECT]"
   },
@@ -114,6 +194,14 @@
   {
     "id": "T000117",
     "tag": "[2ps:DEEPEST_NODE_2:POSSESSIVE_PRONOUN]"
+  },
+  {
+    "id": "T000357",
+    "tag": "[2ps:DEEPEST_NODE_2:PRONOUN:SUBJECT]"
+  },
+  {
+    "id": "T000374",
+    "tag": "[2ps:DEEPEST_NODE_2:PRONOUN:SUBJECT_PRONOUN]"
   },
   {
     "id": "T000119",
@@ -188,6 +276,14 @@
     "tag": "[3p:DEEPEST_NODE_1:DEFAULT:OBJECT_MARKER]"
   },
   {
+    "id": "T000379",
+    "tag": "[3p:DEEPEST_NODE_1:MONOSYLLABIC:OBJECT_MARKER:PLURIFORM_PREFIX]"
+  },
+  {
+    "id": "T000378",
+    "tag": "[3p:DEEPEST_NODE_1:MONOSYLLABIC:OBJECT_MARKER]"
+  },
+  {
     "id": "T000242",
     "tag": "[3p:DEEPEST_NODE_1:NON_MAIN_CLAUSE_SUBJECT:OBJECT]"
   },
@@ -214,6 +310,14 @@
   {
     "id": "T000231",
     "tag": "[3p:DEEPEST_NODE_2:OBJECT]"
+  },
+  {
+    "id": "T000358",
+    "tag": "[3p:DEEPEST_NODE_2:PRONOUN:SUBJECT]"
+  },
+  {
+    "id": "T000375",
+    "tag": "[3p:DEEPEST_NODE_2:PRONOUN:SUBJECT_PRONOUN]"
   },
   {
     "id": "T000234",
@@ -500,6 +604,10 @@
     "tag": "[CONJUNCTIVE_SUFFIX]"
   },
   {
+    "id": "T000359",
+    "tag": "[CONSONANT:DEEPEST_NODE_1:PERMISSIVE_PREFIX]"
+  },
+  {
     "id": "T000243",
     "tag": "[CONSONANT_CLASH:DEEPEST_NODE_1]"
   },
@@ -534,6 +642,10 @@
   {
     "id": "T000225",
     "tag": "[CONSONANT_ENDING:DEEPEST_NODE_15:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000350",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_1:NEGATION_SUFFIX]"
   },
   {
     "id": "T000241",
@@ -764,8 +876,20 @@
     "tag": "[DEEPEST_NODE_1:LOCATIVE:POSTPOSITION]"
   },
   {
+    "id": "T000356",
+    "tag": "[DEEPEST_NODE_1:NA:NEGATION_PARTICLE]"
+  },
+  {
     "id": "T000144",
     "tag": "[DEEPEST_NODE_1:NEGATION_PARTICLE:UME]"
+  },
+  {
+    "id": "T000349",
+    "tag": "[DEEPEST_NODE_1:NEGATION_PREFIX]"
+  },
+  {
+    "id": "T000361",
+    "tag": "[DEEPEST_NODE_1:NEGATION_SUFFIX:VOWEL_ENDING]"
   },
   {
     "id": "T000291",
@@ -866,6 +990,10 @@
   {
     "id": "T000245",
     "tag": "[DEEPEST_NODE_3:LOCATIVE:POSTPOSITION]"
+  },
+  {
+    "id": "T000363",
+    "tag": "[DEEPEST_NODE_3:MUTUAL:OBJECT:OBJECT_PREFIX:RECIPROCAL:mut]"
   },
   {
     "id": "T000250",

@@ -20,6 +20,10 @@
     "subtag": "2p"
   },
   {
+    "id": "S000119",
+    "subtag": "2pp"
+  },
+  {
     "id": "S000013",
     "subtag": "2ps"
   },
@@ -296,8 +300,24 @@
     "subtag": "MO"
   },
   {
+    "id": "S000126",
+    "subtag": "MONOSYLLABIC"
+  },
+  {
+    "id": "S000122",
+    "subtag": "MUTUAL"
+  },
+  {
+    "id": "S000120",
+    "subtag": "NA"
+  },
+  {
     "id": "S000050",
     "subtag": "NEGATION_PARTICLE"
+  },
+  {
+    "id": "S000118",
+    "subtag": "NEGATION_PREFIX"
   },
   {
     "id": "S000017",
@@ -392,6 +412,10 @@
     "subtag": "R"
   },
   {
+    "id": "S000123",
+    "subtag": "RECIPROCAL"
+  },
+  {
     "id": "S000062",
     "subtag": "REDUPLICATION"
   },
@@ -416,8 +440,16 @@
     "subtag": "SUBJECT"
   },
   {
+    "id": "S000121",
+    "subtag": "SUBJECT_1P"
+  },
+  {
     "id": "S000034",
     "subtag": "SUBJECT_PREFIX"
+  },
+  {
+    "id": "S000125",
+    "subtag": "SUBJECT_PRONOUN"
   },
   {
     "id": "S000005",
@@ -462,6 +494,10 @@
   {
     "id": "S000112",
     "subtag": "gen"
+  },
+  {
+    "id": "S000124",
+    "subtag": "mut"
   },
   {
     "id": "S000103",

@@ -1,0 +1,61 @@
+{
+  "timestamp": "2026-05-08T12:23:39+00:00",
+  "build_config": {
+    "force_rebuild": true,
+    "include_synthetic": true,
+    "label_from_annotated": true,
+    "orth_expand": [
+      "POTIGUARA",
+      "TUPINAMBA",
+      "SEM_DIACRITICO"
+    ],
+    "orth_expand_all": false,
+    "orth_workers": 1,
+    "orth_batch_size": 200,
+    "build_log_every": 10000
+  },
+  "factorization_config": {
+    "drop_feature_prefixes": [
+      "DEEPEST_NODE"
+    ],
+    "drop_features": [
+      "DIRECT"
+    ],
+    "keep_root_feature": true,
+    "use_explicit_s_ids": false
+  },
+  "row_count": 2014384,
+  "unique_input_char_count": 59,
+  "m_token_count": 5200,
+  "g_token_count": 101,
+  "dropped_features": {
+    "drop_feature_prefixes": [
+      "DEEPEST_NODE"
+    ],
+    "drop_features": [
+      "DIRECT"
+    ],
+    "keep_root_feature": true
+  },
+  "counts": {
+    "corpus_rows": 2014384,
+    "historic_rows": 358,
+    "synthetic_rows": 2014026,
+    "orthographic_variant_rows": 1319996,
+    "by_corpus": {
+      "historic": 358,
+      "synthetic": 2014026
+    },
+    "by_source": {
+      "araujo_catecismo_1686": 215,
+      "bettendorff_compendio": 143,
+      "verb": 2014026
+    },
+    "by_orth": {
+      "NAVARRO": 694388,
+      "POTIGUARA": 539119,
+      "SEM_DIACRITICO": 642854,
+      "TUPINAMBA": 138023
+    }
+  }
+}

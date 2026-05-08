@@ -217,3 +217,10 @@ __marimo__/
 # model artifacts
 tokenizer/output/tupi_canonicalizer/final_model/
 *.safetensors
+
+# Generated tokenizer experiment artifacts
+tokenizer/output/morph_io.jsonl
+tokenizer/output/morph_tokenizer_poc.pt
+tokenizer/output/morph_vocab.json
+tokenizer/output/morph_experiment_history.jsonl
+tokenizer/output/*.pt
