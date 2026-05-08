@@ -153,14 +153,12 @@ venv.bak/
 
 # mkdocs documentation
 /site/*
-!/site/index.html
-!/site/assets/
-!/site/assets/app.js
-!/site/assets/styles.css
 !/site/data/
 !/site/data/.gitignore
 /site/data/*.json
 /site/data/*.json.gz
+frontend/node_modules/
+frontend/.vite/
 
 # mypy
 .mypy_cache/

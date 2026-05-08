@@ -7,7 +7,7 @@ import re
 import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Iterator
+from typing import Iterator, NamedTuple
 
 from historic import primary_sources as historic_sources
 from tokenizer.build_corpus_json import (
@@ -33,6 +33,17 @@ NODE_LIST_ATTRS = (
 
 NON_SEARCH_RE = re.compile(r"[^0-9A-Za-zÀ-ÿ'’\- ]+")
 WHITESPACE_RE = re.compile(r"\s+")
+ANNOTATED_CHUNK_RE = re.compile(r"([^\[]*)\[([^\]]+)\]")
+DEEPEST_NODE_RE = re.compile(r"^DEEPEST_NODE_(\d+)$")
+
+
+class HierarchyNode(NamedTuple):
+    node_id: int
+    parent_id: int | None
+    depth: int
+    relation: str
+    kind: str
+    node: object
 
 
 def generated_at_iso() -> str:
@@ -102,6 +113,18 @@ def parse_gloss_definition(raw_definition: str | None) -> dict[str, object]:
     }
 
 
+def parse_annotated_chunks(annotated: str) -> list[dict[str, object]]:
+    chunks: list[dict[str, object]] = []
+    last_index = 0
+    for match in ANNOTATED_CHUNK_RE.finditer(annotated):
+        tags = [tag for tag in match.group(2).split(":") if tag]
+        chunks.append({"text": match.group(1), "tags": tags})
+        last_index = match.end()
+    if last_index < len(annotated):
+        chunks.append({"text": annotated[last_index:], "tags": []})
+    return chunks
+
+
 def ensure_directory(path: Path) -> None:
     path.mkdir(parents=True, exist_ok=True)
 
@@ -147,6 +170,8 @@ def expression_to_line_record(
         "expression_index": expression_index,
         "surface": surface,
         "annotated": annotated,
+        "morphemes": build_annotated_morpheme_metadata(annotated, expression),
+        "syntax_spans": build_annotated_syntax_spans(annotated, expression),
         "normalized": normalize_text(surface),
     }
 
@@ -204,6 +229,225 @@ def extract_headword(node: object) -> str | None:
         if value:
             return value
     return None
+
+
+def iter_hierarchy_node_records(root: object) -> Iterator[HierarchyNode]:
+    if not is_expression_node(root):
+        return
+
+    counter = 0
+
+    def visit(
+        node: object,
+        *,
+        parent_id: int | None,
+        depth: int,
+        relation: str,
+        kind: str,
+    ) -> Iterator[HierarchyNode]:
+        nonlocal counter
+        if not is_expression_node(node):
+            return
+        counter += 1
+        node_id = counter
+        yield HierarchyNode(
+            node_id=node_id,
+            parent_id=parent_id,
+            depth=depth,
+            relation=relation,
+            kind=kind,
+            node=node,
+        )
+
+        for child in getattr(node, "arguments", []) or []:
+            yield from visit(
+                child,
+                parent_id=node_id,
+                depth=depth + 1,
+                relation="*",
+                kind="argument",
+            )
+        for child in getattr(node, "pre_adjuncts", []) or []:
+            yield from visit(
+                child,
+                parent_id=node_id,
+                depth=depth + 1,
+                relation="+",
+                kind="pre_adjunct",
+            )
+        for child in getattr(node, "post_adjuncts", []) or []:
+            yield from visit(
+                child,
+                parent_id=node_id,
+                depth=depth + 1,
+                relation="+",
+                kind="post_adjunct",
+            )
+
+    yield from visit(root, parent_id=None, depth=0, relation="-", kind="root")
+
+
+def iter_hierarchical_nodes(root: object) -> Iterator[object]:
+    for record in iter_hierarchy_node_records(root):
+        yield record.node
+
+
+def build_hierarchy_node_lookup(expression: object) -> dict[int, dict[str, object]]:
+    lookup: dict[int, dict[str, object]] = {}
+    for record in iter_hierarchy_node_records(expression):
+        definition_raw = get_string_attr(record.node, "definition")
+        lookup[record.node_id] = {
+            "node_id": record.node_id,
+            "parent_id": record.parent_id,
+            "depth": record.depth,
+            "relation": record.relation,
+            "kind": record.kind,
+            "headword": extract_headword(record.node),
+            "definition": (
+                parse_gloss_definition(definition_raw) if definition_raw else None
+            ),
+        }
+    return lookup
+
+
+def build_annotated_morpheme_metadata(
+    annotated: str, expression: object
+) -> list[dict[str, object]]:
+    node_lookup = build_hierarchy_node_lookup(expression)
+
+    morphemes: list[dict[str, object]] = []
+    for chunk in parse_annotated_chunks(annotated):
+        tags = chunk["tags"]
+        if not tags:
+            continue
+
+        deepest_node_id = None
+        for tag in tags:
+            match = DEEPEST_NODE_RE.match(tag)
+            if match:
+                deepest_node_id = int(match.group(1))
+                break
+
+        node_meta = node_lookup.get(deepest_node_id or -1, {})
+        morphemes.append(
+            {
+                "deepest_node_id": deepest_node_id,
+                "headword": node_meta.get("headword"),
+                "definition": node_meta.get("definition"),
+            }
+        )
+
+    return morphemes
+
+
+def _is_contiguous(indices: list[int]) -> bool:
+    return bool(indices) and indices == list(range(indices[0], indices[-1] + 1))
+
+
+def build_annotated_syntax_spans(
+    annotated: str, expression: object
+) -> list[dict[str, object]]:
+    node_lookup = build_hierarchy_node_lookup(expression)
+    if not node_lookup:
+        return []
+
+    children_by_parent: dict[int | None, list[int]] = {}
+    for node_id, node_meta in node_lookup.items():
+        parent_id = node_meta["parent_id"]
+        children_by_parent.setdefault(parent_id, []).append(node_id)
+
+    descendants_cache: dict[int, set[int]] = {}
+
+    def descendants(node_id: int) -> set[int]:
+        if node_id in descendants_cache:
+            return descendants_cache[node_id]
+        output = {node_id}
+        for child_id in children_by_parent.get(node_id, []):
+            output.update(descendants(child_id))
+        descendants_cache[node_id] = output
+        return output
+
+    deepest_by_morpheme: list[int | None] = []
+    for chunk in parse_annotated_chunks(annotated):
+        tags = chunk["tags"]
+        if not tags:
+            continue
+
+        deepest_node_id = None
+        for tag in tags:
+            match = DEEPEST_NODE_RE.match(tag)
+            if match:
+                deepest_node_id = int(match.group(1))
+                break
+        deepest_by_morpheme.append(deepest_node_id)
+
+    morpheme_count = len(deepest_by_morpheme)
+    if morpheme_count < 2:
+        return []
+
+    spans: list[dict[str, object]] = []
+    seen_ranges: set[tuple[int, int]] = set()
+
+    def add_span(
+        *,
+        node_id: int,
+        indices: list[int],
+        span_kind: str,
+    ) -> None:
+        if len(indices) < 2:
+            return
+        indices = sorted(indices)
+        if not _is_contiguous(indices):
+            return
+        start = indices[0]
+        end = indices[-1]
+        if start == 0 and end == morpheme_count - 1:
+            return
+        range_key = (start, end)
+        if range_key in seen_ranges:
+            return
+        seen_ranges.add(range_key)
+
+        node_meta = node_lookup[node_id]
+        spans.append(
+            {
+                "node_id": node_id,
+                "parent_id": node_meta["parent_id"],
+                "depth": node_meta["depth"],
+                "relation": node_meta["relation"],
+                "kind": node_meta["kind"],
+                "span_kind": span_kind,
+                "label": node_meta["headword"],
+                "start": start,
+                "end": end,
+            }
+        )
+
+    for node_id in sorted(node_lookup):
+        own_indices = [
+            index
+            for index, deepest_node_id in enumerate(deepest_by_morpheme)
+            if deepest_node_id == node_id
+        ]
+        add_span(node_id=node_id, indices=own_indices, span_kind="node")
+
+        subtree_ids = descendants(node_id)
+        subtree_indices = [
+            index
+            for index, deepest_node_id in enumerate(deepest_by_morpheme)
+            if deepest_node_id in subtree_ids
+        ]
+        add_span(node_id=node_id, indices=subtree_indices, span_kind="subtree")
+
+    spans.sort(
+        key=lambda span: (
+            int(span["end"]) - int(span["start"]),
+            -int(span["depth"]),
+            int(span["start"]),
+            int(span["node_id"]),
+        )
+    )
+    return spans
 
 
 def source_sort_key(line_id: str) -> tuple[str, int]:

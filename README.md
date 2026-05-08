@@ -77,10 +77,12 @@ make serve-dict
 What it does:
 - Builds `site/data/rendered_corpus.json(.gz)` with structured historic corpus lines.
 - Builds `site/data/dictionary_entries.json(.gz)` with structured lexicon entries and corpus attestations.
-- Serves the static `site/` bundle locally at `http://localhost:8000` by default.
+- Serves the `site/` bundle locally at `http://localhost:8000` by default.
+- Exposes a local SQLite-backed tooltip API so sentence-breakdown notes can be edited in the UI and reused across matching tag scopes.
 
 Useful variants:
 - `make serve-dict PORT=4173`
+- `make serve-dict TOOLTIP_DB=var/my_tooltips.sqlite3`
 - `python3 -m dictionary.build_dict --include-navarro`: optionally include the Navarro-derived supplemental index exported from `../nhe-enga`.
 
 **3. Review and append ground truth manually**
