@@ -21,10 +21,6 @@ Use estas marcas diretamente no texto reconhecido/exportado da página.
   - Exemplo digitado: `a-p-aba -p-`
   - Como aparece no HTML: `aꝑaba ꝑ`
   - Uso: escrever o glifo abreviado `ꝑ`.
-- Sintaxe: `&`
-  - Exemplo digitado: `R. & aba`
-  - Como aparece no HTML: `R. & aba`
-  - Uso: caractere literal. Não vira `R.` e não vira marca de parágrafo.
 
 ### Diacríticos antes da letra
 
@@ -75,7 +71,6 @@ o texto marcado continua aparecendo.
   - Como aparece no HTML: `R.` continua sendo texto, mas recebe uma estilização
     parecida com a marca manuscrita.
 - `R.` não vira `¶`.
-- `&` não produz marca de resposta.
 
 ## Manutenção
 
