@@ -166,16 +166,29 @@ def strip_formatting_markers(input_text):
     return input_text
 
 
+def unescape_literal_brackets(input_text):
+    return input_text.replace(r"\[", "[").replace(r"\]", "]")
+
+
 def find_closing_bracket(input_text, start_index):
     depth = 1
+    index = start_index + 1
 
-    for index in range(start_index + 1, len(input_text)):
+    while index < len(input_text):
+        if (
+            input_text[index] == "\\"
+            and index + 1 < len(input_text)
+            and input_text[index + 1] in "[]"
+        ):
+            index += 2
+            continue
         if input_text[index] == "[":
             depth += 1
         elif input_text[index] == "]":
             depth -= 1
             if depth == 0:
                 return index
+        index += 1
 
     return None
 
@@ -187,23 +200,27 @@ def format_line_text(raw_text, footnotes):
     index = 0
 
     while index < len(text):
-        note_start = text.find("[", index)
-        if note_start < 0:
-            html_parts.append(text[index:])
-            visible_parts.append(text[index:])
-            break
+        if text[index] == "\\" and index + 1 < len(text) and text[index + 1] in "[]":
+            literal_bracket = text[index + 1]
+            html_parts.append(literal_bracket)
+            visible_parts.append(literal_bracket)
+            index += 2
+            continue
 
-        before = text[index:note_start]
-        html_parts.append(before)
-        visible_parts.append(before)
+        if text[index] != "[":
+            html_parts.append(text[index])
+            visible_parts.append(text[index])
+            index += 1
+            continue
 
-        note_end = find_closing_bracket(text, note_start)
+        note_end = find_closing_bracket(text, index)
         if note_end is None:
-            html_parts.append(text[note_start:])
-            visible_parts.append(text[note_start:])
+            literal_tail = unescape_literal_brackets(text[index:])
+            html_parts.append(literal_tail)
+            visible_parts.append(literal_tail)
             break
 
-        note_text = text[note_start + 1 : note_end].strip()
+        note_text = unescape_literal_brackets(text[index + 1 : note_end]).strip()
         if note_text:
             footnote_number = len(footnotes) + 1
             footnotes.append(note_text)
@@ -215,7 +232,7 @@ def format_line_text(raw_text, footnotes):
                 f"</sup>"
             )
         else:
-            literal_brackets = text[note_start : note_end + 1]
+            literal_brackets = text[index : note_end + 1]
             html_parts.append(literal_brackets)
             visible_parts.append(literal_brackets)
 

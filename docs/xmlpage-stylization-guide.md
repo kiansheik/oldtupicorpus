@@ -21,6 +21,10 @@ Use estas marcas diretamente no texto reconhecido/exportado da página.
   - Exemplo digitado: `a-p-aba -p-`
   - Como aparece no HTML: `aꝑaba ꝑ`
   - Uso: escrever o glifo abreviado `ꝑ`.
+- Sintaxe: `&`
+  - Exemplo digitado: `R. & aba`
+  - Como aparece no HTML: `R. & aba`
+  - Uso: caractere literal. Não vira `R.` e não vira marca de parágrafo.
 
 ### Diacríticos antes da letra
 
@@ -61,6 +65,11 @@ o texto marcado continua aparecendo.
     caixa da página.
 - Sintaxe: `[]`
   - Como aparece no HTML: os colchetes vazios ficam no texto.
+- Sintaxe: `\[texto literal\]`
+  - Como aparece no HTML: `[texto literal]`
+  - Uso: quando os colchetes fazem parte do texto e não devem virar nota.
+- Sintaxe dentro de nota: `[ver \[sic\]]`
+  - Como aparece na nota: `ver [sic]`
 - Colchetes sem fechamento ficam no texto.
 - Colchetes internos ficam dentro da mesma nota: `[g[eral]]` vira uma nota com
   texto `g[eral]`.
@@ -71,6 +80,7 @@ o texto marcado continua aparecendo.
   - Como aparece no HTML: `R.` continua sendo texto, mas recebe uma estilização
     parecida com a marca manuscrita.
 - `R.` não vira `¶`.
+- `&` não produz marca de resposta.
 
 ## Manutenção
 

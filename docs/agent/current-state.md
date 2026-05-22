@@ -32,7 +32,9 @@ Last updated: 2026-05-22
   `ˆu`, `´a`, `` `e ``, `¨i`, and `¸c` into Unicode normalized letters. Inline
   `|text|` markers now render as a handwritten-style vertical strike through
   the marked text, while line-width estimation treats the marked text as visible
-  without the pipes.
+  without the pipes. Escaped brackets `\[` and `\]` render as literal brackets
+  instead of starting or ending footnotes; escaped brackets also work inside
+  footnote text.
   `R.` response markers are no longer rewritten to `¶`; the text remains `R.`
   and is wrapped in a stylized manuscript-like inline span. `& ` is no longer
   treated as shorthand for `R. `; it remains literal input text.

@@ -2,6 +2,11 @@
 
 ## 2026-05-22
 
+- Added PAGE XML escaping for literal brackets: `\[` and `\]` now render as
+  literal brackets instead of triggering footnotes, including inside footnote
+  text.
+- Updated the Portuguese stylization guide's `Notas` section and help-output
+  tests with escaped bracket examples.
 - Rewrote `docs/xmlpage-stylization-guide.md` in Portuguese for Brazilian
   users, moved user syntax plus rendered examples to the top, and moved
   converter usage to the bottom.

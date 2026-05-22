@@ -47,6 +47,35 @@ class XmlPageToHtmlFootnoteTest(unittest.TestCase):
         self.assertIn("[]", html_text)
         self.assertEqual(visible_text, "Aba []")
 
+    def test_escaped_brackets_stay_inline(self):
+        footnotes = []
+
+        html_text, visible_text = xmlpage_to_html.format_line_text(
+            r"Aba \[literal\] [note]",
+            footnotes,
+        )
+
+        self.assertEqual(footnotes, ["note"])
+        self.assertIn("Aba [literal] ", html_text)
+        self.assertNotIn(r"\[literal\]", html_text)
+        self.assertEqual(visible_text, "Aba [literal] ")
+
+    def test_escaped_brackets_work_inside_footnotes(self):
+        footnotes = []
+
+        html_text, visible_text = xmlpage_to_html.format_line_text(
+            r"Aba [ver \[sic\]] oca",
+            footnotes,
+        )
+
+        self.assertEqual(footnotes, ["ver [sic]"])
+        self.assertEqual(html_text.count('class="footnote-ref"'), 1)
+        self.assertEqual(visible_text, "Aba  oca")
+        self.assertIn(
+            '<li id="fn-1">ver [sic]</li>',
+            xmlpage_to_html.render_footnotes(footnotes),
+        )
+
     def test_dollar_sign_becomes_long_s(self):
         footnotes = []
 
@@ -86,6 +115,8 @@ class XmlPageToHtmlFootnoteTest(unittest.TestCase):
         self.assertIn("Como aparece no HTML: aꝑaba ꝑ", help_text)
         self.assertIn("Sintaxe: **texto**", help_text)
         self.assertIn("Sintaxe: |texto|", help_text)
+        self.assertIn(r"Sintaxe: \[texto literal\]", help_text)
+        self.assertIn("Sintaxe: &", help_text)
         self.assertIn("Transkribus", help_text)
         self.assertIn("escolha Export no menu", help_text)
         self.assertLess(
