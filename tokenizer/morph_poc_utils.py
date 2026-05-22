@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import json
+import math
 import re
+import sys
 import unicodedata
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field
@@ -15,6 +17,26 @@ from typing import Callable, Iterable
 
 SPECIAL_TOKENS = ["<PAD>", "<BOS>", "<EOS>", "<UNK>", "<RAW>"]
 CANONICAL_ID_RE = re.compile(r"^([MTS])(\d{6})$")
+DEFAULT_NAVARRO_CLASSES = ["noun", "verb", "postposition", "adverb", "pronoun"]
+NAVARRO_CLASS_FEATURES = {
+    "noun": ("NOUN", "ROOT"),
+    "verb": ("VERB", "ROOT"),
+    "postposition": ("POSTPOSITION",),
+    "adverb": ("ADVERB",),
+    "pronoun": ("PRONOUN",),
+}
+COMMON_POSTPOSITION_SURFACES = {
+    "pe",
+    "me",
+    "bo",
+    "reme",
+    "eme",
+    "neme",
+    "pupé",
+    "resé",
+    "supé",
+    "suí",
+}
 
 
 @dataclass(frozen=True)
@@ -33,6 +55,45 @@ class FactorizationConfig:
         }
 
 
+@dataclass(frozen=True)
+class LexiconEntry:
+    lexeme_id: str
+    surface: str
+    normalized_surface: str
+    classname: str
+    definition: str
+    english_glosses: list[str]
+    portuguese_glosses: list[str]
+    features: tuple[str, ...]
+    vid: str | None = None
+
+    @property
+    def token(self) -> str:
+        return f"<LEX:{self.lexeme_id}>"
+
+
+@dataclass(frozen=True)
+class SegmentEdge:
+    start: int
+    end: int
+    emitted_tokens: tuple[str, ...]
+    score: float
+    source: str
+    surface: str
+    reason: str
+
+    def to_json(self) -> dict:
+        return {
+            "start": self.start,
+            "end": self.end,
+            "surface": self.surface,
+            "emitted_tokens": list(self.emitted_tokens),
+            "score": self.score,
+            "source": self.source,
+            "reason": self.reason,
+        }
+
+
 def utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
@@ -40,6 +101,138 @@ def utc_now_iso() -> str:
 def normalize_surface(text: str) -> str:
     text = unicodedata.normalize("NFC", text)
     return re.sub(r"\s+", " ", text).strip()
+
+
+def strip_diacritics_for_match(text: str) -> str:
+    decomposed = unicodedata.normalize("NFD", text)
+    return "".join(ch for ch in decomposed if unicodedata.category(ch) != "Mn")
+
+
+def normalize_lexicon_surface(text: str) -> str:
+    text = normalize_surface(text)
+    # Navarro writes many bound postpositions as -pe, -bo, etc. For lexical
+    # matching and IDs we want the surface that actually appears in compounds.
+    return text.strip("-")
+
+
+def _lexeme_surface_key(surface: str) -> str:
+    return re.sub(r"\s+", "_", surface).replace("<", "").replace(">", "")
+
+
+def lexeme_token(entry: LexiconEntry) -> str:
+    return entry.token
+
+
+def _split_glosses(value) -> list[str]:
+    if value is None:
+        return []
+    if isinstance(value, list):
+        return [str(item).strip() for item in value if str(item).strip()]
+    return [item.strip() for item in str(value).split(",") if item.strip()]
+
+
+def _append_unique(values: list[str], new_value: str) -> None:
+    if new_value not in values:
+        values.append(new_value)
+
+
+def _infer_navarro_features(
+    classname: str,
+    definition: str,
+    english_glosses: list[str],
+    portuguese_glosses: list[str],
+) -> tuple[str, ...]:
+    features = list(NAVARRO_CLASS_FEATURES.get(classname, (classname.upper(),)))
+    text = " ".join([definition, *english_glosses, *portuguese_glosses]).lower()
+    text_ascii = strip_diacritics_for_match(text)
+    gloss_terms = {item.lower() for item in english_glosses + portuguese_glosses}
+
+    if (
+        "locativo" in text_ascii
+        or "locative" in text_ascii
+        or gloss_terms.intersection({"in", "on", "at", "inside", "within"})
+        or re.search(r"(^|[^a-z])em([^a-z]|$)", text_ascii)
+    ):
+        _append_unique(features, "LOCATIVE")
+    if (
+        "dativo" in text_ascii
+        or "dative" in text_ascii
+        or gloss_terms.intersection({"to", "for"})
+        or re.search(r"(^|[^a-z])para([^a-z]|$)", text_ascii)
+    ):
+        _append_unique(features, "DATIVE")
+    if (
+        "ablativo" in text_ascii
+        or "ablative" in text_ascii
+        or gloss_terms.intersection({"from", "since"})
+        or re.search(r"(^|[^a-z])desde([^a-z]|$)", text_ascii)
+    ):
+        _append_unique(features, "ABLATIVE")
+
+    return tuple(features)
+
+
+def load_navarro_lexicon(
+    nhe_enga_path: Path | str,
+    classes: list[str] | tuple[str, ...] | None = None,
+) -> list[LexiconEntry]:
+    nhe_enga_path = Path(nhe_enga_path).resolve()
+    for path in [nhe_enga_path / "tupi", nhe_enga_path / "pydicate"]:
+        path_str = str(path)
+        if path.exists() and path_str not in sys.path:
+            sys.path.insert(0, path_str)
+
+    from pydicate.dbexplorer import NavarroDB
+
+    classes = list(classes or DEFAULT_NAVARRO_CLASSES)
+    entries: list[LexiconEntry] = []
+    seen: set[tuple[str, str]] = set()
+    db = NavarroDB()
+
+    def add_entry(classname: str, verbete) -> None:
+        surface = str(getattr(verbete, "verbete", "") or "").strip()
+        normalized = normalize_lexicon_surface(surface)
+        if not normalized or " " in normalized:
+            return
+        key = (classname, normalized)
+        if key in seen:
+            return
+        seen.add(key)
+        english = _split_glosses(getattr(verbete, "english_glosses", []))
+        portuguese = _split_glosses(getattr(verbete, "portuguese_glosses", []))
+        definition = str(getattr(verbete, "definition", "") or "")
+        vid = getattr(verbete, "vid", None)
+        surface_key = _lexeme_surface_key(normalized)
+        lexeme_id = f"NAVARRO:{classname}:{surface_key}"
+        entries.append(
+            LexiconEntry(
+                lexeme_id=lexeme_id,
+                surface=surface,
+                normalized_surface=normalized,
+                classname=classname,
+                definition=definition,
+                english_glosses=english,
+                portuguese_glosses=portuguese,
+                features=_infer_navarro_features(
+                    classname, definition, english, portuguese
+                ),
+                vid=str(vid) if vid is not None else None,
+            )
+        )
+
+    for classname in classes:
+        for verbete in db.iter_words_by_classname(classname) or []:
+            add_entry(classname, verbete)
+        if classname == "postposition":
+            # NavarroDB's class filter looks for "(posp.)"; entries like "-pe"
+            # are written "(posp. átona...)" and need a small public-API fallback.
+            for surface in sorted(COMMON_POSTPOSITION_SURFACES):
+                for query in (surface, f"-{surface}"):
+                    for verbete in db.search_word(query) or []:
+                        definition = str(getattr(verbete, "definition", "") or "")
+                        if "posp" in strip_diacritics_for_match(definition).lower():
+                            add_entry("postposition", verbete)
+    return entries
 
 
 def load_jsonl(path: Path | str, limit: int | None = None) -> list[dict]:
@@ -201,12 +394,21 @@ def build_morph_rows(
     return rows, stats
 
 
-def morph_vocab_from_rows(rows: list[dict]) -> dict:
+def morph_vocab_from_rows(
+    rows: list[dict],
+    lexicon_entries: list[LexiconEntry] | None = None,
+    add_lexeme_tokens: bool = False,
+) -> dict:
     target_tokens = sorted(
         {tok for row in rows for tok in row.get("target", "").split()}
     )
+    if add_lexeme_tokens and lexicon_entries:
+        target_tokens = sorted(
+            {*target_tokens, *(entry.token for entry in lexicon_entries)}
+        )
     m_tokens = sorted(tok for tok in target_tokens if tok.startswith("<M:"))
     g_tokens = sorted(tok for tok in target_tokens if tok.startswith("<G:"))
+    lex_tokens = sorted(tok for tok in target_tokens if tok.startswith("<LEX:"))
     tokens = SPECIAL_TOKENS + [
         tok for tok in target_tokens if tok not in SPECIAL_TOKENS
     ]
@@ -215,6 +417,7 @@ def morph_vocab_from_rows(rows: list[dict]) -> dict:
         "tokens": tokens,
         "m_tokens": m_tokens,
         "g_tokens": g_tokens,
+        "lex_tokens": lex_tokens,
         "token_to_id": {tok: i for i, tok in enumerate(tokens)},
     }
 
@@ -253,9 +456,15 @@ def write_morph_dataset(
     corpus_rows: list[dict],
     build_config: dict,
     factorization_config: FactorizationConfig,
+    lexicon_entries: list[LexiconEntry] | None = None,
+    add_lexeme_tokens: bool = False,
 ) -> tuple[dict, dict]:
     write_jsonl(morph_io_path, morph_rows)
-    vocab = morph_vocab_from_rows(morph_rows)
+    vocab = morph_vocab_from_rows(
+        morph_rows,
+        lexicon_entries=lexicon_entries,
+        add_lexeme_tokens=add_lexeme_tokens,
+    )
     write_json(morph_vocab_path, vocab)
 
     input_chars = sorted({ch for row in morph_rows for ch in row.get("input", "")})
@@ -267,15 +476,123 @@ def write_morph_dataset(
         "unique_input_char_count": len(input_chars),
         "m_token_count": len(vocab["m_tokens"]),
         "g_token_count": len(vocab["g_tokens"]),
+        "lex_token_count": len(vocab.get("lex_tokens", [])),
         "dropped_features": {
             "drop_feature_prefixes": sorted(factorization_config.drop_feature_prefixes),
             "drop_features": sorted(factorization_config.drop_features),
             "keep_root_feature": factorization_config.keep_root_feature,
         },
         "counts": summarize_corpus_rows(corpus_rows),
+        "morph_counts": {
+            "by_corpus": count_by(morph_rows, "corpus"),
+            "by_source": count_by(morph_rows, "source"),
+            "by_orth": count_by(morph_rows, "orth", "NAVARRO"),
+        },
     }
     write_json(morph_meta_path, meta)
     return vocab, meta
+
+
+def _target_for_lexicon_entry(entry: LexiconEntry) -> str:
+    return " ".join([entry.token, *(f"<G:{feature}>" for feature in entry.features)])
+
+
+def generate_navarro_lexicon_rows(
+    entries: list[LexiconEntry],
+    generate_postposition_combos: bool = True,
+    max_rows: int = 10000,
+    common_postpositions: set[str] | None = None,
+) -> list[dict]:
+    rows: list[dict] = []
+    if max_rows <= 0:
+        return rows
+
+    class_order = {
+        "postposition": 0,
+        "pronoun": 1,
+        "adverb": 2,
+        "noun": 3,
+        "verb": 4,
+    }
+    sorted_entries = sorted(
+        entries,
+        key=lambda entry: (
+            class_order.get(entry.classname, 99),
+            len(entry.normalized_surface),
+            entry.normalized_surface,
+            entry.lexeme_id,
+        ),
+    )
+
+    simple_limit = max_rows // 2 if generate_postposition_combos else max_rows
+    for entry in sorted_entries[:simple_limit]:
+        rows.append(
+            {
+                "input": entry.normalized_surface,
+                "target": _target_for_lexicon_entry(entry),
+                "source": "navarro_lexicon",
+                "corpus": "lexicon",
+                "orth": "NAVARRO",
+                "index": len(rows),
+                "lexicon_generated": True,
+                "lexeme_id": entry.lexeme_id,
+                "classname": entry.classname,
+            }
+        )
+
+    if not generate_postposition_combos or len(rows) >= max_rows:
+        return rows[:max_rows]
+
+    common_postpositions = common_postpositions or COMMON_POSTPOSITION_SURFACES
+    postpositions = [
+        entry
+        for entry in entries
+        if entry.classname == "postposition"
+        and entry.normalized_surface in common_postpositions
+    ]
+    postpositions.sort(
+        key=lambda entry: (len(entry.normalized_surface), entry.normalized_surface)
+    )
+
+    roots = [
+        entry
+        for entry in entries
+        if entry.classname in {"noun", "verb"}
+        and 2 <= len(entry.normalized_surface) <= 14
+        and "-" not in entry.normalized_surface
+        and " " not in entry.normalized_surface
+    ]
+    roots.sort(
+        key=lambda entry: (len(entry.normalized_surface), entry.normalized_surface)
+    )
+
+    for root in roots:
+        for postposition in postpositions:
+            if len(rows) >= max_rows:
+                return rows
+            input_text = root.normalized_surface + postposition.normalized_surface
+            target = " ".join(
+                [
+                    root.token,
+                    *(f"<G:{feature}>" for feature in root.features),
+                    postposition.token,
+                    *(f"<G:{feature}>" for feature in postposition.features),
+                ]
+            )
+            rows.append(
+                {
+                    "input": input_text,
+                    "target": target,
+                    "source": "navarro_lexicon_combo",
+                    "corpus": "lexicon",
+                    "orth": "NAVARRO",
+                    "index": len(rows),
+                    "lexicon_generated": True,
+                    "root_lexeme_id": root.lexeme_id,
+                    "postposition_lexeme_id": postposition.lexeme_id,
+                }
+            )
+    return rows
 
 
 class MorphBaseline:
@@ -422,7 +739,11 @@ class MorphBaseline:
     @staticmethod
     def raw_rate(tokens: list[str]) -> float:
         morpheme_like = [
-            tok for tok in tokens if tok.startswith("<M:") or tok.startswith("<RAW:")
+            tok
+            for tok in tokens
+            if tok.startswith("<M:")
+            or tok.startswith("<LEX:")
+            or tok.startswith("<RAW:")
         ]
         if not morpheme_like:
             return 0.0
@@ -431,9 +752,240 @@ class MorphBaseline:
         )
 
 
-def inspect_tokens(tokens: list[str], id_to_morpheme: dict[str, str]) -> list[dict]:
+class LexiconAwareMorphBaseline(MorphBaseline):
+    def __init__(
+        self,
+        id_to_morpheme: dict[str, str],
+        id_to_tag: dict[str, str],
+        canonical_rows: list[dict],
+        token_variants: list[dict],
+        factorization_config: FactorizationConfig,
+        lexicon_entries: list[LexiconEntry],
+        navarro_root_bonus: float = 6.0,
+        navarro_postposition_bonus: float = 5.0,
+        navarro_feature_bonus: float = 1.5,
+        raw_penalty: float = 8.0,
+        segment_penalty: float = 0.2,
+    ) -> None:
+        super().__init__(
+            id_to_morpheme,
+            id_to_tag,
+            canonical_rows,
+            token_variants,
+            factorization_config,
+        )
+        self.lexicon_entries = lexicon_entries
+        self.lexicon_by_token = {entry.token: entry for entry in lexicon_entries}
+        self.lexicon_by_first: dict[str, list[LexiconEntry]] = defaultdict(list)
+        self.navarro_root_bonus = navarro_root_bonus
+        self.navarro_postposition_bonus = navarro_postposition_bonus
+        self.navarro_feature_bonus = navarro_feature_bonus
+        self.raw_penalty = raw_penalty
+        self.segment_penalty = segment_penalty
+        for entry in lexicon_entries:
+            if entry.normalized_surface:
+                first = strip_diacritics_for_match(entry.normalized_surface[0]).lower()
+                self.lexicon_by_first[first].append(entry)
+        for entries in self.lexicon_by_first.values():
+            entries.sort(
+                key=lambda entry: (
+                    len(entry.normalized_surface),
+                    entry.classname == "postposition",
+                    entry.normalized_surface,
+                ),
+                reverse=True,
+            )
+
+    def _surface_matches_at(self, word: str, index: int, surface: str) -> bool:
+        end = index + len(surface)
+        if end > len(word):
+            return False
+        return word.startswith(surface, index)
+
+    def _lexicon_matches_at(self, word: str, index: int, surface: str) -> bool:
+        end = index + len(surface)
+        if end > len(word):
+            return False
+        chunk = word[index:end]
+        if chunk == surface:
+            return True
+        # Let unaccented dictionary entries match accented input variants
+        # (ka'a -> ka'á), but avoid letting accented dictionary entries match
+        # unaccented input (ká should not shadow ka'a in ka'ape).
+        if strip_diacritics_for_match(surface) != surface:
+            return False
+        return strip_diacritics_for_match(chunk).lower() == surface.lower()
+
+    def _observed_edges_at(self, word: str, index: int) -> list[SegmentEdge]:
+        edges: list[SegmentEdge] = []
+        for surface in self.known_surfaces_by_first.get(word[index], []):
+            if not self._surface_matches_at(word, index, surface):
+                continue
+            mid = self._best_mid_for_surface(surface)
+            if not mid:
+                continue
+            source = "morpheme"
+            if self.id_to_morpheme.get(mid) != surface:
+                source = "variant"
+            features = self._best_feature_sequence(mid)
+            emitted = (f"<M:{mid[1:]}>", *(f"<G:{feature}>" for feature in features))
+            score = math.log(self.m_frequency[mid] + 1.0) - self.segment_penalty
+            edges.append(
+                SegmentEdge(
+                    start=index,
+                    end=index + len(surface),
+                    emitted_tokens=emitted,
+                    score=score,
+                    source=source,
+                    surface=surface,
+                    reason=f"{source}: freq={self.m_frequency[mid]}",
+                )
+            )
+        return edges
+
+    def _feature_alignment_bonus(self, entry: LexiconEntry) -> float:
+        observed_mids = self.surface_candidates.get(entry.normalized_surface, set())
+        entry_features = set(entry.features)
+        if not observed_mids or not entry_features:
+            return 0.0
+        best_overlap = 0
+        for mid in observed_mids:
+            observed_features = set(self._best_feature_sequence(mid))
+            best_overlap = max(best_overlap, len(entry_features & observed_features))
+        return self.navarro_feature_bonus if best_overlap else 0.0
+
+    def _lexicon_edges_at(self, word: str, index: int) -> list[SegmentEdge]:
+        first = strip_diacritics_for_match(word[index]).lower()
+        edges: list[SegmentEdge] = []
+        for entry in self.lexicon_by_first.get(first, []):
+            surface = entry.normalized_surface
+            if not self._lexicon_matches_at(word, index, surface):
+                continue
+            score = -self.segment_penalty
+            reasons = []
+            if entry.classname in {"noun", "verb"} and "ROOT" in entry.features:
+                score += self.navarro_root_bonus
+                reasons.append(f"root_bonus={self.navarro_root_bonus:g}")
+            if entry.classname == "postposition":
+                score += self.navarro_postposition_bonus
+                reasons.append(
+                    f"postposition_bonus={self.navarro_postposition_bonus:g}"
+                )
+            feature_bonus = self._feature_alignment_bonus(entry)
+            if feature_bonus:
+                score += feature_bonus
+                reasons.append(f"feature_bonus={feature_bonus:g}")
+            emitted = (entry.token, *(f"<G:{feature}>" for feature in entry.features))
+            edges.append(
+                SegmentEdge(
+                    start=index,
+                    end=index + len(surface),
+                    emitted_tokens=emitted,
+                    score=score,
+                    source="navarro",
+                    surface=surface,
+                    reason=", ".join(reasons) or "navarro",
+                )
+            )
+        return edges
+
+    def _candidate_edges_at(self, word: str, index: int) -> list[SegmentEdge]:
+        edges = self._observed_edges_at(word, index) + self._lexicon_edges_at(
+            word, index
+        )
+        raw = word[index]
+        edges.append(
+            SegmentEdge(
+                start=index,
+                end=index + 1,
+                emitted_tokens=(f"<RAW:{raw}>",),
+                score=-(self.raw_penalty + self.segment_penalty),
+                source="raw",
+                surface=raw,
+                reason=f"raw_penalty={self.raw_penalty:g}",
+            )
+        )
+        return edges
+
+    def segment_word_with_trace(self, word: str) -> tuple[list[str], list[dict]]:
+        word = normalize_surface(word)
+        n = len(word)
+        dp: list[tuple[float, int, SegmentEdge | None] | None] = [None] * (n + 1)
+        dp[0] = (0.0, -1, None)
+        for i in range(n):
+            state = dp[i]
+            if state is None:
+                continue
+            base_score = state[0]
+            for edge in self._candidate_edges_at(word, i):
+                candidate_score = base_score + edge.score
+                current = dp[edge.end]
+                if current is None or candidate_score > current[0]:
+                    dp[edge.end] = (candidate_score, i, edge)
+
+        if dp[n] is None:
+            return [f"<RAW:{word}>"], [
+                {
+                    "start": 0,
+                    "end": n,
+                    "surface": word,
+                    "source": "raw",
+                    "score": -self.raw_penalty,
+                    "reason": "full word fallback",
+                    "emitted_tokens": [f"<RAW:{word}>"],
+                }
+            ]
+
+        edges_reversed: list[SegmentEdge] = []
+        i = n
+        while i > 0:
+            state = dp[i]
+            if state is None or state[2] is None:
+                break
+            edge = state[2]
+            edges_reversed.append(edge)
+            i = state[1]
+        edges = list(reversed(edges_reversed))
+        tokens = [token for edge in edges for token in edge.emitted_tokens]
+        trace = []
+        total = 0.0
+        for edge in edges:
+            total += edge.score
+            item = edge.to_json()
+            item["cumulative_score"] = total
+            trace.append(item)
+        return tokens, trace
+
+    def tokenize_with_trace(self, text: str) -> tuple[list[str], list[dict]]:
+        text = normalize_surface(text)
+        tokens: list[str] = []
+        trace: list[dict] = []
+        offset = 0
+        for word in text.split(" ") if text else []:
+            word_tokens, word_trace = self.segment_word_with_trace(word)
+            tokens.extend(word_tokens)
+            for item in word_trace:
+                item = dict(item)
+                item["word"] = word
+                item["global_start"] = offset + item["start"]
+                item["global_end"] = offset + item["end"]
+                trace.append(item)
+            offset += len(word) + 1
+        return tokens, trace
+
+    def tokenize(self, text: str) -> list[str]:
+        tokens, _trace = self.tokenize_with_trace(text)
+        return tokens
+
+
+def inspect_tokens(
+    tokens: list[str],
+    id_to_morpheme: dict[str, str],
+    lexicon_by_token: dict[str, LexiconEntry] | None = None,
+) -> list[dict]:
     groups: list[dict] = []
     current: dict | None = None
+    lexicon_by_token = lexicon_by_token or {}
 
     def flush() -> None:
         nonlocal current
@@ -461,10 +1013,36 @@ def inspect_tokens(tokens: list[str], id_to_morpheme: dict[str, str]) -> list[di
                     "raw": True,
                 }
             )
+        elif token.startswith("<LEX:") and token.endswith(">"):
+            flush()
+            entry = lexicon_by_token.get(token)
+            if entry is None:
+                current = {
+                    "token": token,
+                    "surface": token[5:-1],
+                    "grammar": [],
+                    "raw": False,
+                    "source": "lexicon",
+                }
+            else:
+                definition = entry.definition
+                if len(definition) > 240:
+                    definition = definition[:237] + "..."
+                current = {
+                    "token": token,
+                    "surface": entry.normalized_surface,
+                    "grammar": list(entry.features),
+                    "definition": definition,
+                    "source": "navarro",
+                    "classname": entry.classname,
+                    "raw": False,
+                }
         elif token.startswith("<G:") and token.endswith(">"):
             if current is None:
                 current = {"token": None, "surface": None, "grammar": [], "raw": False}
-            current["grammar"].append(token[3:-1])
+            feature = token[3:-1]
+            if feature not in current["grammar"]:
+                current["grammar"].append(feature)
         else:
             flush()
             groups.append(

@@ -1,18 +1,39 @@
 {
-  "timestamp": "2026-05-08T12:23:39+00:00",
+  "timestamp": "2026-05-11T15:09:38+00:00",
   "build_config": {
-    "force_rebuild": true,
-    "include_synthetic": true,
-    "label_from_annotated": true,
-    "orth_expand": [
-      "POTIGUARA",
-      "TUPINAMBA",
-      "SEM_DIACRITICO"
-    ],
-    "orth_expand_all": false,
-    "orth_workers": 1,
-    "orth_batch_size": 200,
-    "build_log_every": 10000
+    "corpus_build": {
+      "force_rebuild": true,
+      "include_synthetic": true,
+      "label_from_annotated": true,
+      "orth_expand": [
+        "POTIGUARA",
+        "TUPINAMBA",
+        "SEM_DIACRITICO"
+      ],
+      "orth_expand_all": false,
+      "orth_workers": 1,
+      "orth_batch_size": 200,
+      "build_log_every": 10000
+    },
+    "lexicon": {
+      "use_navarro_lexicon": true,
+      "add_lexeme_tokens": true,
+      "navarro_classes": [
+        "noun",
+        "verb",
+        "postposition",
+        "adverb",
+        "pronoun"
+      ],
+      "generate_navarro_lexicon_rows": true,
+      "generate_navarro_postposition_combos": true,
+      "max_navarro_augment_rows": 10000,
+      "navarro_root_bonus": 6.0,
+      "navarro_postposition_bonus": 5.0,
+      "navarro_feature_bonus": 1.5,
+      "raw_penalty": 8.0,
+      "segment_penalty": 0.2
+    }
   },
   "factorization_config": {
     "drop_feature_prefixes": [
@@ -24,10 +45,11 @@
     "keep_root_feature": true,
     "use_explicit_s_ids": false
   },
-  "row_count": 2014384,
-  "unique_input_char_count": 59,
+  "row_count": 2024384,
+  "unique_input_char_count": 65,
   "m_token_count": 5200,
-  "g_token_count": 101,
+  "g_token_count": 104,
+  "lex_token_count": 6882,
   "dropped_features": {
     "drop_feature_prefixes": [
       "DEEPEST_NODE"
@@ -53,6 +75,26 @@
     },
     "by_orth": {
       "NAVARRO": 694388,
+      "POTIGUARA": 539119,
+      "SEM_DIACRITICO": 642854,
+      "TUPINAMBA": 138023
+    }
+  },
+  "morph_counts": {
+    "by_corpus": {
+      "historic": 358,
+      "lexicon": 10000,
+      "synthetic": 2014026
+    },
+    "by_source": {
+      "araujo_catecismo_1686": 215,
+      "bettendorff_compendio": 143,
+      "navarro_lexicon": 5000,
+      "navarro_lexicon_combo": 5000,
+      "verb": 2014026
+    },
+    "by_orth": {
+      "NAVARRO": 704388,
       "POTIGUARA": 539119,
       "SEM_DIACRITICO": 642854,
       "TUPINAMBA": 138023
