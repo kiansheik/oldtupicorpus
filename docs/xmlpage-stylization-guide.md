@@ -1,75 +1,106 @@
-# PAGE XML Stylization Guide
+# Guia de estilização do PAGE XML
 
-This guide is the human-facing reference for the lightweight syntax, shorthand,
-and sugar accepted by `scripts/xmlpage_to_html.py`.
+Este guia é a referência para a sintaxe leve, os atalhos e os açúcares de
+edição aceitos por `scripts/xmlpage_to_html.py`.
 
-When adding or changing PAGE XML stylization behavior, update this guide in the
-same patch as the code and tests. The script's `--help` output reads this file,
-so the command-line help should stay current when this document does.
+Sempre que uma nova sintaxe ou substituição for adicionada ao conversor, atualize
+este documento no mesmo patch que altera o código e os testes. O comando
+`--help` lê este arquivo, então a ajuda do terminal acompanha este guia.
 
-## Usage
+## Sintaxe do usuário
 
-Run the converter with a PAGE XML file:
+Use estas marcas diretamente no texto reconhecido/exportado da página.
+
+### Atalhos de caracteres
+
+- Sintaxe: `$`
+  - Exemplo digitado: `coelum, $olem`
+  - Como aparece no HTML: `coelum, ſolem`
+  - Uso: transcrever o s longo.
+- Sintaxe: `-p-`
+  - Exemplo digitado: `a-p-aba -p-`
+  - Como aparece no HTML: `aꝑaba ꝑ`
+  - Uso: escrever o glifo abreviado `ꝑ`.
+- Sintaxe: `&`
+  - Exemplo digitado: `R. & aba`
+  - Como aparece no HTML: `R. & aba`
+  - Uso: caractere literal. Não vira `R.` e não vira marca de parágrafo.
+
+### Diacríticos antes da letra
+
+- Sintaxe: `˜q`
+  - Como aparece no HTML: `q̃`
+- Sintaxe: `^y` ou `ˆu`
+  - Como aparece no HTML: `ŷ` ou `û`
+- Sintaxe: `´a`, acento grave + `e`, `¨i`, `¸c`
+  - Como aparece no HTML: `á`, `è`, `ï`, `ç`
+- Outros sinais aceitos antes de uma letra: `˙`, `˚`, `ˇ`, `˘`, `¯`
+- Se o próximo caractere não for uma letra, o sinal fica literal.
+
+### Formatação em linha
+
+- Sintaxe: `**texto**`
+  - Como aparece no HTML: texto em negrito.
+- Sintaxe: `*texto*`
+  - Como aparece no HTML: texto em itálico.
+- Sintaxe: `__texto__`
+  - Como aparece no HTML: texto sublinhado.
+- Sintaxe: `~texto~`
+  - Como aparece no HTML: texto riscado horizontalmente.
+- Sintaxe: `|texto|`
+  - Exemplo digitado: `ocäu|m|baeráma? oporomonhang|m|bae-`
+  - Como aparece no HTML: as letras `m` recebem um risco vertical de manuscrito.
+- Sintaxe: `++texto++`
+  - Como aparece no HTML: texto sobrescrito.
+- Sintaxe: `--texto--`
+  - Como aparece no HTML: texto subscrito.
+
+As marcas de formatação não entram no cálculo visível de largura da linha, mas
+o texto marcado continua aparecendo.
+
+### Notas
+
+- Sintaxe: `[texto da nota]`
+  - Como aparece no HTML: uma referência numerada na linha e uma nota abaixo da
+    caixa da página.
+- Sintaxe: `[]`
+  - Como aparece no HTML: os colchetes vazios ficam no texto.
+- Colchetes sem fechamento ficam no texto.
+- Colchetes internos ficam dentro da mesma nota: `[g[eral]]` vira uma nota com
+  texto `g[eral]`.
+
+### Marca de resposta
+
+- Sintaxe: `R.`
+  - Como aparece no HTML: `R.` continua sendo texto, mas recebe uma estilização
+    parecida com a marca manuscrita.
+- `R.` não vira `¶`.
+- `&` não produz marca de resposta.
+
+## Manutenção
+
+- Atualize este guia sempre que adicionar sintaxe, atalho ou açúcar visual.
+- Atualize `tests/xmlpage_to_html_test.py` no mesmo patch.
+- Verifique se a nova marca afeta o texto pesquisável ou o cálculo de largura
+  da linha.
+- Prefira sintaxe explícita a substituições automáticas amplas.
+
+## Uso do conversor
+
+No Transkribus, abra a página do manuscrito e escolha `Export` no menu para
+obter a representação XML/PAGE XML da página. Esse XML é a entrada usada pelo
+conversor para gerar o HTML do livro.
+
+Depois de exportar o XML, rode:
 
 ```bash
 python3 scripts/xmlpage_to_html.py input.xml
 ```
 
-Print this guide in terminal-friendly form:
+O conversor escreve `output.html` no diretório atual.
+
+Para imprimir este guia no terminal:
 
 ```bash
 python3 scripts/xmlpage_to_html.py --help
 ```
-
-The converter writes `output.html` in the current working directory.
-
-## Character Shorthands
-
-- `$` becomes `ſ`, for long-s transcription.
-- `-p-` becomes `ꝑ`, for the per-style p glyph.
-- `&` is literal text. It is not shorthand for `R.` or for a paragraph mark.
-
-## Prefix Diacritics
-
-The following prefix marks combine with a following letter when possible:
-
-- `˜q` becomes `q̃`.
-- `^y` and `ˆu` become `ŷ` and `û`.
-- `´a`, grave-e, `¨i`, and `¸c` become `á`, `è`, `ï`, and `ç`.
-- Other supported prefix marks include `˙`, `˚`, `ˇ`, `˘`, and `¯`.
-- If the next character is not a letter, the prefix mark stays literal.
-
-## Inline Formatting
-
-- `**text**` renders bold.
-- `*text*` renders italic.
-- `__text__` renders underlined.
-- `~text~` renders horizontal strikethrough.
-- `|text|` renders a manuscript-style vertical strike through the marked text.
-- `++text++` renders superscript.
-- `--text--` renders subscript.
-
-Formatting markers are removed from the visible-text estimate used for line
-width fitting, but the marked text itself remains visible.
-
-## Footnotes
-
-- `[note text]` becomes a numbered inline reference.
-- The note text is rendered below the generated page box.
-- Empty brackets such as `[]` remain literal inline text.
-- Unclosed brackets remain literal inline text.
-- Nested brackets stay inside one top-level note, so `[g[eral]]` becomes one
-  footnote with note text `g[eral]`.
-
-## Response Marks
-
-- Literal standalone `R.` renders as a stylized manuscript-like response mark.
-- `R.` remains text; it is not rewritten to `¶`.
-- `&` does not produce a response mark.
-
-## Maintenance Checklist
-
-- Update this guide when adding syntax, shorthand, or visual sugar.
-- Add or update `tests/xmlpage_to_html_test.py` coverage in the same patch.
-- Keep searchable text and line-width estimation in mind when adding markup.
-- Prefer explicit literal syntax over broad automatic replacements.

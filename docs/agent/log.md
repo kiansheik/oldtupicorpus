@@ -2,6 +2,14 @@
 
 ## 2026-05-22
 
+- Rewrote `docs/xmlpage-stylization-guide.md` in Portuguese for Brazilian
+  users, moved user syntax plus rendered examples to the top, and moved
+  converter usage to the bottom.
+- Added Transkribus workflow guidance to the PAGE XML guide: choose `Export`
+  from the menu to obtain the XML/PAGE XML representation used to generate the
+  book HTML.
+- Updated help-output tests to assert the Portuguese guide structure and
+  Transkribus export instruction.
 - Added `docs/xmlpage-stylization-guide.md` as the maintained human reference
   for PAGE XML shorthand, inline syntax, footnotes, response marks, and future
   sugar additions.

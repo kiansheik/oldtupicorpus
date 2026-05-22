@@ -5,9 +5,9 @@
 - `README.md`: detailed project overview, workflows, source conventions, and
   tokenizer/dictionary command documentation.
 - `CLAUDE.md`: compact agent-oriented overview that predates this wiki.
-- `docs/xmlpage-stylization-guide.md`: human guide for PAGE XML shorthand,
-  inline formatting, footnotes, response marks, and the maintenance checklist
-  for adding new `scripts/xmlpage_to_html.py` sugar.
+- `docs/xmlpage-stylization-guide.md`: Portuguese user guide for PAGE XML
+  shorthand, inline formatting, footnotes, response marks, rendered examples,
+  and the Transkribus export workflow for `scripts/xmlpage_to_html.py`.
 - `docs/tokenizer-theory.md`: teaching document for the tokenizer/canonicalizer
   passes, ML assumptions, baselines, metrics, and current goals.
 - `Makefile`: primary command surface for tests, REPL, dictionary builds,

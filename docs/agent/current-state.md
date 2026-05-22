@@ -36,11 +36,14 @@ Last updated: 2026-05-22
   `R.` response markers are no longer rewritten to `¶`; the text remains `R.`
   and is wrapped in a stylized manuscript-like inline span. `& ` is no longer
   treated as shorthand for `R. `; it remains literal input text.
-- `docs/xmlpage-stylization-guide.md` is the human-facing source of truth for
-  PAGE XML shorthand, inline syntax, and stylization sugar. Update it whenever
-  `scripts/xmlpage_to_html.py` gains new syntax. The script's `--help` and
-  missing-argument output read this guide and render it in a terminal-friendly
-  plain-text form.
+- `docs/xmlpage-stylization-guide.md` is the Portuguese human-facing source of
+  truth for PAGE XML shorthand, inline syntax, and stylization sugar. It should
+  keep user syntax plus rendered examples at the top, and usage/workflow notes
+  at the bottom. Update it whenever `scripts/xmlpage_to_html.py` gains new
+  syntax. The script's `--help` and missing-argument output read this guide and
+  render it in a terminal-friendly plain-text form. The usage section mentions
+  that users should choose `Export` from the Transkribus menu to obtain the
+  XML/PAGE XML representation used to generate the book HTML.
 - PAGE XML line fitting now uses the baseline polyline length as the target
   width, renders source text with a fixed manuscript-style font size, and emits
   browser JavaScript that measures each rendered `.text` span before fitting it.

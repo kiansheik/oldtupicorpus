@@ -80,12 +80,17 @@ class XmlPageToHtmlFootnoteTest(unittest.TestCase):
         help_text = stdout.getvalue()
         self.assertEqual(exit_code, 0)
         self.assertIn("Usage: python scripts/xmlpage_to_html.py input.xml", help_text)
-        self.assertIn("PAGE XML STYLIZATION GUIDE", help_text)
-        self.assertIn("-p- becomes ꝑ", help_text)
-        self.assertIn("**text** renders bold", help_text)
-        self.assertIn("|text| renders a manuscript-style vertical strike", help_text)
-        self.assertIn("grave-e", help_text)
-        self.assertIn("R. remains text", help_text)
+        self.assertIn("GUIA DE ESTILIZAÇÃO DO PAGE XML", help_text)
+        self.assertIn("SINTAXE DO USUÁRIO", help_text)
+        self.assertIn("Sintaxe: -p-", help_text)
+        self.assertIn("Como aparece no HTML: aꝑaba ꝑ", help_text)
+        self.assertIn("Sintaxe: **texto**", help_text)
+        self.assertIn("Sintaxe: |texto|", help_text)
+        self.assertIn("Transkribus", help_text)
+        self.assertIn("escolha Export no menu", help_text)
+        self.assertLess(
+            help_text.index("SINTAXE DO USUÁRIO"), help_text.index("USO DO CONVERSOR")
+        )
         self.assertNotIn("```", help_text)
 
     def test_missing_arg_prints_help_with_error_exit(self):
@@ -95,7 +100,7 @@ class XmlPageToHtmlFootnoteTest(unittest.TestCase):
             exit_code = xmlpage_to_html.main([])
 
         self.assertEqual(exit_code, 1)
-        self.assertIn("PAGE XML STYLIZATION GUIDE", stdout.getvalue())
+        self.assertIn("GUIA DE ESTILIZAÇÃO DO PAGE XML", stdout.getvalue())
 
     def test_response_marker_stays_r_and_is_styled(self):
         footnotes = []
