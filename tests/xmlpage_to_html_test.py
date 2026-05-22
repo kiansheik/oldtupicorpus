@@ -100,6 +100,18 @@ class XmlPageToHtmlFootnoteTest(unittest.TestCase):
         self.assertEqual(html_text, "aꝑaba ꝑ")
         self.assertEqual(visible_text, "aꝑaba ꝑ")
 
+    def test_ligature_shorthands_join_latin_letter_pairs(self):
+        footnotes = []
+
+        html_text, visible_text = xmlpage_to_html.format_line_text(
+            "a=e o=e A=e O=e A=E O=E ae oe a-e o-e",
+            footnotes,
+        )
+
+        self.assertEqual(footnotes, [])
+        self.assertEqual(html_text, "æ œ Æ Œ Æ Œ ae oe a-e o-e")
+        self.assertEqual(visible_text, "æ œ Æ Œ Æ Œ ae oe a-e o-e")
+
     def test_help_output_prints_stylization_guide(self):
         stdout = io.StringIO()
 
@@ -112,6 +124,8 @@ class XmlPageToHtmlFootnoteTest(unittest.TestCase):
         self.assertIn("GUIA DE ESTILIZAÇÃO DO PAGE XML", help_text)
         self.assertIn("SINTAXE DO USUÁRIO", help_text)
         self.assertIn("Sintaxe: -p-", help_text)
+        self.assertIn("Sintaxe: a=e, o=e", help_text)
+        self.assertIn("Como aparece no HTML: æ œ Æ Œ", help_text)
         self.assertIn("Como aparece no HTML: aꝑaba ꝑ", help_text)
         self.assertIn("Sintaxe: **texto**", help_text)
         self.assertIn("Sintaxe: |texto|", help_text)

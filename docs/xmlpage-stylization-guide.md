@@ -21,6 +21,12 @@ Use estas marcas diretamente no texto reconhecido/exportado da página.
   - Exemplo digitado: `a-p-aba -p-`
   - Como aparece no HTML: `aꝑaba ꝑ`
   - Uso: escrever o glifo abreviado `ꝑ`.
+- Sintaxe: `a=e`, `o=e`
+  - Exemplo digitado: `a=e o=e A=e O=e`
+  - Como aparece no HTML: `æ œ Æ Œ`
+  - Uso: escrever rapidamente as ligaduras latinas `æ` e `œ` sem trocar todo
+    `ae` ou `oe` automaticamente. O sinal `=` evita colisões com trechos reais
+    como `a-e` ou `o-e`.
 - Sintaxe: `&`
   - Exemplo digitado: `R. & aba`
   - Como aparece no HTML: `R. & aba`

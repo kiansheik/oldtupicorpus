@@ -27,17 +27,18 @@ Last updated: 2026-05-22
   literal, so `[g[eral]]` is one note rather than an inner-note parse. OCR line
   wrappers are zero-height baseline anchors with the visible text positioned
   from `bottom: 0`, keeping browser line-box spacing from drifting away from the
-  PAGE XML baselines. PAGE text normalization also converts `$` to `ſ` and
-  `-p-` to `ꝑ`, and combines prefix diacritic markers such as `˜q`, `^y`,
-  `ˆu`, `´a`, `` `e ``, `¨i`, and `¸c` into Unicode normalized letters. Inline
-  `|text|` markers now render as a handwritten-style vertical strike through
-  the marked text, while line-width estimation treats the marked text as visible
-  without the pipes. Escaped brackets `\[` and `\]` render as literal brackets
-  instead of starting or ending footnotes; escaped brackets also work inside
-  footnote text.
-  `R.` response markers are no longer rewritten to `¶`; the text remains `R.`
-  and is wrapped in a stylized manuscript-like inline span. `& ` is no longer
-  treated as shorthand for `R. `; it remains literal input text.
+  PAGE XML baselines. PAGE text normalization also converts `$` to `ſ`,
+  `-p-` to `ꝑ`, and `a=e`/`o=e` plus capitalized variants to
+  `æ`/`œ`/`Æ`/`Œ`; it also combines prefix diacritic markers such as `˜q`,
+  `^y`, `ˆu`, `´a`, `` `e ``, `¨i`, and `¸c` into Unicode normalized letters.
+  Inline `|text|` markers now render as a handwritten-style vertical strike
+  through the marked text, while line-width estimation treats the marked text as
+  visible without the pipes. Escaped brackets `\[` and `\]` render as literal
+  brackets instead of starting or ending footnotes; escaped brackets also work
+  inside footnote text. `R.` response markers are no longer rewritten to `¶`;
+  the text remains `R.` and is wrapped in a stylized manuscript-like inline
+  span. `& ` is no longer treated as shorthand for `R. `; it remains literal
+  input text.
 - `docs/xmlpage-stylization-guide.md` is the Portuguese human-facing source of
   truth for PAGE XML shorthand, inline syntax, and stylization sugar. It should
   keep user syntax plus rendered examples at the top, and usage/workflow notes

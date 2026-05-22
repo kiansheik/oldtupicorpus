@@ -2,6 +2,9 @@
 
 ## 2026-05-22
 
+- Added PAGE XML ligature shorthands: `a=e`/`o=e` now render as `æ`/`œ`, with
+  capitalized variants for `Æ`/`Œ`, so Latin ligatures can be typed from a US
+  keyboard without broad automatic `ae`/`oe` replacement.
 - Added PAGE XML escaping for literal brackets: `\[` and `\]` now render as
   literal brackets instead of triggering footnotes, including inside footnote
   text.
