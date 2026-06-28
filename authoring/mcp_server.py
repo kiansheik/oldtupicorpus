@@ -114,7 +114,9 @@ def handle_request(request: dict[str, Any]) -> dict[str, Any] | None:
         return result_message(
             request_id,
             {
-                "protocolVersion": request.get("params", {}).get("protocolVersion", "2024-11-05"),
+                "protocolVersion": request.get("params", {}).get(
+                    "protocolVersion", "2024-11-05"
+                ),
                 "capabilities": {"tools": {"listChanged": False}},
                 "serverInfo": SERVER_INFO,
             },
@@ -126,14 +128,20 @@ def handle_request(request: dict[str, Any]) -> dict[str, Any] | None:
         name = params.get("name")
         arguments = params.get("arguments") or {}
         if not isinstance(name, str) or not isinstance(arguments, dict):
-            return error_message(request_id, -32602, "tools/call needs a string name and object arguments.")
+            return error_message(
+                request_id,
+                -32602,
+                "tools/call needs a string name and object arguments.",
+            )
         try:
             structured = call_tool(name, arguments)
         except Exception as exc:
             return result_message(
                 request_id,
                 {
-                    "content": [{"type": "text", "text": f"{exc.__class__.__name__}: {exc}"}],
+                    "content": [
+                        {"type": "text", "text": f"{exc.__class__.__name__}: {exc}"}
+                    ],
                     "isError": True,
                 },
             )

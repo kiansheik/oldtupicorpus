@@ -27,9 +27,20 @@ Last updated: 2026-06-28
   `eporoapiti` and the negated Araujo commandment line renders
   `eporoapiti umẽ`. The local regression test is
   `tests/moro_incorporation_test.py`.
-- A broad `python3 tests/run_tests.py --skip-tokenizer` check is currently
-  blocked by an existing historic mismatch at line 18 in both Araujo and
-  Bettendorff: actual `îeerobîasaba` vs expected `îerobîasaba`.
+- `../nhe-enga/pydicate/pydicate/lang/tupilang/pos/verb.py` now handles
+  non-pronoun 3p subjects marked with `+` in nominal contexts by suppressing
+  the displaced noun while preserving the 3p nominal prefix slot. This makes
+  `saguera(+jesus * ikobé)` render `sekobesagûera`, while explicit
+  `saguera(jesus * ikobé)` still renders `Jesus rekobesagûera`. The local
+  regression test is `tests/nominal_pro_drop_test.py`. Araujo ground truth now
+  includes the resulting approved line `arobîar 'ara mosapyra resé
+  sekobesagûera` and the earlier displaced-3p nominal line with `i a'epe`.
+- The local `agent-authoring-mcp-framework` branch has been rebased onto remote
+  `origin/agent-authoring-mcp-framework` commit `2464d79`. The conflict
+  resolution keeps remote source-annotation subsection support and the existing
+  ground-truth append/replace helpers. `make verify-ground-truth` passes as of
+  2026-06-28.
+- `python3 tests/run_tests.py --skip-tokenizer` passes as of 2026-06-28.
 - `docs/agent/` now exists as the repo-local agent wiki.
 - `docs/tokenizer-theory.md` now exists as a teaching document for the current
   tokenizer/canonicalizer and notebook ML pipeline.

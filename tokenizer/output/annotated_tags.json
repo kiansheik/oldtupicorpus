@@ -500,6 +500,10 @@
     "tag": "[BEYOND:DEEPEST_NODE_1:POSTPOSITION]"
   },
   {
+    "id": "T000386",
+    "tag": "[CARDINAL:DEEPEST_NODE_4:NOUN:NUMBER:POSSESSOR:THREE]"
+  },
+  {
     "id": "T000247",
     "tag": "[CARDINAL:DEEPEST_NODE_8:NUMBER:THREE]"
   },
@@ -1090,6 +1094,10 @@
   {
     "id": "T000083",
     "tag": "[DEEPEST_NODE_4:PLURIFORM_PREFIX:R]"
+  },
+  {
+    "id": "T000387",
+    "tag": "[DEEPEST_NODE_4:PLURIFORM_PREFIX:S]"
   },
   {
     "id": "T000276",

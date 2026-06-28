@@ -98,7 +98,9 @@ def get_source_context(
     }
 
 
-def render_candidate(source: str, expression: str, *, record_id: str | int | None = None) -> dict[str, Any]:
+def render_candidate(
+    source: str, expression: str, *, record_id: str | int | None = None
+) -> dict[str, Any]:
     validate_candidate_expression(expression)
     namespace = load_source_namespace(source)
     try:
@@ -255,7 +257,9 @@ def get_case(source: str) -> GroundTruthCase:
     raise KeyError(f"Unknown historic source: {source}")
 
 
-def get_record(records: Iterable[GroundTruthRecord], record_id: str | int) -> GroundTruthRecord:
+def get_record(
+    records: Iterable[GroundTruthRecord], record_id: str | int
+) -> GroundTruthRecord:
     records_list = list(records)
     if isinstance(record_id, int) or str(record_id).isdigit():
         ordinal = int(record_id)
@@ -279,15 +283,29 @@ def validate_candidate_expression(expression: str) -> None:
     try:
         tree = ast.parse(expression, mode="eval")
     except SyntaxError as exc:
-        raise CandidateSafetyError(f"Candidate is not a Python expression: {exc.msg}") from exc
+        raise CandidateSafetyError(
+            f"Candidate is not a Python expression: {exc.msg}"
+        ) from exc
 
     for node in ast.walk(tree):
-        if isinstance(node, (ast.Lambda, ast.ListComp, ast.SetComp, ast.DictComp, ast.GeneratorExp, ast.NamedExpr)):
+        if isinstance(
+            node,
+            (
+                ast.Lambda,
+                ast.ListComp,
+                ast.SetComp,
+                ast.DictComp,
+                ast.GeneratorExp,
+                ast.NamedExpr,
+            ),
+        ):
             raise CandidateSafetyError(f"Candidate may not use {type(node).__name__}.")
         if isinstance(node, ast.Name) and node.id.startswith("__"):
             raise CandidateSafetyError("Candidate may not access dunder names.")
         if isinstance(node, ast.Attribute) and node.attr.startswith("_"):
-            raise CandidateSafetyError("Candidate may not access private or dunder attributes.")
+            raise CandidateSafetyError(
+                "Candidate may not access private or dunder attributes."
+            )
         if isinstance(node, ast.Call):
             name = callable_name(node.func)
             if name in BLOCKED_CALLS:
@@ -319,7 +337,9 @@ def load_source_namespace(source: str) -> dict[str, Any]:
 
 def load_lexicon_namespace() -> dict[str, Any]:
     lexicon_path = HISTORIC_SOURCE_DIR / "lexicon.tu.py"
-    spec = importlib.util.spec_from_file_location("historic._authoring_lexicon", lexicon_path)
+    spec = importlib.util.spec_from_file_location(
+        "historic._authoring_lexicon", lexicon_path
+    )
     if spec is None or spec.loader is None:
         raise ImportError(f"Unable to load lexicon module {lexicon_path}")
     module = importlib.util.module_from_spec(spec)

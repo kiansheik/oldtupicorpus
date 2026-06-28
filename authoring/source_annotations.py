@@ -9,9 +9,21 @@ from typing import Iterable
 from authoring.records import GroundTruthRecord, PhilologicalLocation, normalize_surface
 
 
-DIRECTIVE_RE = re.compile(r"^\s*#\s*@(?P<key>[a-z][a-z0-9_-]*)\s*(?P<value>.*?)\s*$", re.IGNORECASE)
+DIRECTIVE_RE = re.compile(
+    r"^\s*#\s*@(?P<key>[a-z][a-z0-9_-]*)\s*(?P<value>.*?)\s*$", re.IGNORECASE
+)
 LOCATION_KEYS = frozenset(
-    {"witness", "edition", "page", "folio", "line", "section", "subsection", "url", "note"}
+    {
+        "witness",
+        "edition",
+        "page",
+        "folio",
+        "line",
+        "section",
+        "subsection",
+        "url",
+        "note",
+    }
 )
 RECORD_KEYS = frozenset({"diplomatic", "target", "translation", "analysis", "status"})
 
@@ -86,7 +98,9 @@ def source_records_from_file(
     ]
 
 
-def source_entries(source_path: Path, *, source_name: str | None = None) -> list[SourceEntry]:
+def source_entries(
+    source_path: Path, *, source_name: str | None = None
+) -> list[SourceEntry]:
     """Find source expressions in either `l = [...]` or `<source> = [...]` style.
 
     Older files use a convenience list named `l` and add entries with `l +=`.
@@ -99,7 +113,9 @@ def source_entries(source_path: Path, *, source_name: str | None = None) -> list
 
     for statement in tree.body:
         if _is_append_to(statement, collection_name):
-            entries.extend(SourceEntry(statement.lineno) for _ in _append_values(statement.value))
+            entries.extend(
+                SourceEntry(statement.lineno) for _ in _append_values(statement.value)
+            )
 
     return entries
 
@@ -207,7 +223,9 @@ def _initial_collection(
         if not isinstance(statement, ast.Assign) or len(statement.targets) != 1:
             continue
         target = statement.targets[0]
-        if not isinstance(target, ast.Name) or not isinstance(statement.value, (ast.List, ast.Tuple)):
+        if not isinstance(target, ast.Name) or not isinstance(
+            statement.value, (ast.List, ast.Tuple)
+        ):
             continue
         candidates.append((target.id, statement.value))
 
@@ -227,7 +245,9 @@ def _initial_collection(
     )
 
 
-def _annotation_before(lines: list[str], expression_line: int) -> SourceAnnotation | None:
+def _annotation_before(
+    lines: list[str], expression_line: int
+) -> SourceAnnotation | None:
     directives: list[tuple[str, str]] = []
     line_index = expression_line - 2
     while line_index >= 0:

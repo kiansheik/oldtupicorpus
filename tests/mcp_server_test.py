@@ -15,7 +15,9 @@ class McpServerTest(unittest.TestCase):
                 "params": {"protocolVersion": "2024-11-05"},
             }
         )
-        self.assertEqual(response["result"]["capabilities"], {"tools": {"listChanged": False}})
+        self.assertEqual(
+            response["result"]["capabilities"], {"tools": {"listChanged": False}}
+        )
         self.assertEqual(response["result"]["serverInfo"]["name"], "oldtupi-authoring")
 
     def test_tools_list_contains_only_read_or_evaluation_tools(self) -> None:

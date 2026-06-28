@@ -2,6 +2,38 @@
 
 ## 2026-06-28
 
+- Rebasing local commit `a06a53a` onto remote
+  `origin/agent-authoring-mcp-framework` resolved conflicts in
+  `authoring/records.py`, `authoring/source_annotations.py`, and
+  `tests/ground_truth_records_test.py`.
+- The resolution keeps remote page/section/subsection source-annotation
+  waterfall behavior and preserves local structured ground-truth helper APIs
+  such as `append_records()` and `replace_record_surface()`.
+- Regenerated Araujo structured ground truth from source annotations so JSONL
+  records include source-derived locations while preserving the 67 rendered
+  surfaces.
+- Verified with `python3 -m unittest tests.ground_truth_records_test tests.source_annotations_test tests.mcp_server_test tests.nominal_pro_drop_test tests.moro_incorporation_test`,
+  `python3 tests/run_tests.py --skip-tokenizer`, `make verify-ground-truth`,
+  and `python3 tests/run_tests.py --accept-new-ground-truth --ground-truth-source araujo_catecismo_1686`.
+- Added session handoff:
+  `docs/agent/session-handoffs/2026-06-28T12-56-19-0300-rebase-authoring-framework.md`.
+- Fixed nominal pro-drop for displaced explicit 3p subjects in sibling
+  `../nhe-enga/pydicate/pydicate/lang/tupilang/pos/verb.py`: `+jesus` is
+  suppressed in nominal contexts, but the 3p nominal prefix slot is still
+  realized, so `saguera(+jesus * ikobé)` renders `sekobesagûera`.
+- Added `tests/nominal_pro_drop_test.py` covering explicit
+  `Jesus rekobesagûera`, displaced `sekobesagûera`, and the existing pronoun
+  precedent for `+ae`.
+- Inserted the missed Araujo page-5 line
+  `arobîar 'ara mosapyra resé sekobesagûera` into both legacy text and
+  structured JSONL ground truth, and updated the preceding approved line to
+  `i a'epe` for the same displaced-3p nominal behavior.
+- Verified with `python3 -m unittest tests.nominal_pro_drop_test tests.moro_incorporation_test`,
+  `python3 tests/run_tests.py --skip-tokenizer --ground-truth-source araujo_catecismo_1686`,
+  `python3 tests/run_tests.py --skip-tokenizer`, and
+  `python3 tests/run_tests.py --accept-new-ground-truth --ground-truth-source araujo_catecismo_1686`.
+- Added session handoff:
+  `docs/agent/session-handoffs/2026-06-28T12-40-56-0300-nominal-pro-drop.md`.
 - Reverted the broad shared `gen` inflection leak by keeping the shared generic
   person prefix as `moro` for nominal/deverbal forms, while hardcoding `poro`
   only in the conjugated generic-object verb branch. This restores Araujo line

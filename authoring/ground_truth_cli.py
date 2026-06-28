@@ -25,27 +25,49 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "verify",
         help="Verify renderings and ensure generated artifacts match source annotations.",
     )
-    verify.add_argument("--source", action="append", default=[], help="Historic source name; repeatable.")
-    verify.add_argument("--json", action="store_true", help="Emit machine-readable output.")
+    verify.add_argument(
+        "--source",
+        action="append",
+        default=[],
+        help="Historic source name; repeatable.",
+    )
+    verify.add_argument(
+        "--json", action="store_true", help="Emit machine-readable output."
+    )
 
     regenerate = subparsers.add_parser(
         "regenerate",
         help="Rebuild JSONL records and legacy text mirrors from `.tu.py` source entries.",
     )
-    regenerate.add_argument("--source", action="append", default=[], help="Historic source name; repeatable.")
+    regenerate.add_argument(
+        "--source",
+        action="append",
+        default=[],
+        help="Historic source name; repeatable.",
+    )
 
     migrate = subparsers.add_parser(
         "migrate",
         help="Compatibility alias for source-driven regeneration.",
     )
-    migrate.add_argument("--source", action="append", default=[], help="Historic source name; repeatable.")
+    migrate.add_argument(
+        "--source",
+        action="append",
+        default=[],
+        help="Historic source name; repeatable.",
+    )
     migrate.add_argument("--overwrite", action="store_true", help=argparse.SUPPRESS)
 
     review = subparsers.add_parser(
         "review",
         help="Inspect whether generated artifacts are current. Editing happens in `.tu.py` source files.",
     )
-    review.add_argument("--source", action="append", default=[], help="Historic source name; repeatable.")
+    review.add_argument(
+        "--source",
+        action="append",
+        default=[],
+        help="Historic source name; repeatable.",
+    )
     return parser.parse_args(argv)
 
 
@@ -79,7 +101,12 @@ def verify(cases) -> tuple[int, list[dict[str, object]]]:
             saved = get_case_records(case)
             stale_ordinal = _first_record_difference(generated, saved)
             comparison = compare_case_lines(case)
-        except (GroundTruthRenderError, GroundTruthSourceLoadError, ValueError, RuntimeError) as exc:
+        except (
+            GroundTruthRenderError,
+            GroundTruthSourceLoadError,
+            ValueError,
+            RuntimeError,
+        ) as exc:
             failures += 1
             results.append({"source": case.name, "ok": False, "error": str(exc)})
             continue
@@ -133,7 +160,12 @@ def regenerate(cases) -> int:
     for case in cases:
         try:
             structured, legacy, records = regenerate_case(case)
-        except (GroundTruthRenderError, GroundTruthSourceLoadError, ValueError, RuntimeError) as exc:
+        except (
+            GroundTruthRenderError,
+            GroundTruthSourceLoadError,
+            ValueError,
+            RuntimeError,
+        ) as exc:
             print(f"[ground-truth] {case.name}: blocked: {exc}", file=sys.stderr)
             return 1
         print(
@@ -149,7 +181,9 @@ def review(cases, *, input_fn: Callable[[str], str] = input) -> int:
     failures, results = verify(cases)
     for result in results:
         if result["ok"]:
-            print(f"[ground-truth] {result['source']}: source annotations and artifacts are current")
+            print(
+                f"[ground-truth] {result['source']}: source annotations and artifacts are current"
+            )
             continue
         print(f"[ground-truth] {result['source']}: requires source-driven regeneration")
         if "stale" in result:
@@ -161,7 +195,9 @@ def review(cases, *, input_fn: Callable[[str], str] = input) -> int:
         elif "error" in result:
             print(f"  {result['error']}")
         else:
-            print("  Add or edit the source entry and its `# @...` comments, then run regenerate.")
+            print(
+                "  Add or edit the source entry and its `# @...` comments, then run regenerate."
+            )
     return 1 if failures else 0
 
 
@@ -180,7 +216,11 @@ def main(argv: list[str] | None = None) -> int:
 
     failures, results = verify(cases)
     if args.json:
-        print(json.dumps({"ok": failures == 0, "sources": results}, ensure_ascii=False, indent=2))
+        print(
+            json.dumps(
+                {"ok": failures == 0, "sources": results}, ensure_ascii=False, indent=2
+            )
+        )
     else:
         for result in results:
             if result["ok"]:
@@ -198,7 +238,9 @@ def main(argv: list[str] | None = None) -> int:
                 print("  Run: make regenerate-ground-truth")
             elif "mismatch" in result:
                 mismatch = result["mismatch"]
-                print(f"  record {mismatch['ordinal']}: expected {mismatch['expected']}")
+                print(
+                    f"  record {mismatch['ordinal']}: expected {mismatch['expected']}"
+                )
                 print(f"  rendered: {mismatch['actual']}")
             elif "new_unapproved_lines" in result:
                 print("  source has rendered lines absent from generated artifacts.")

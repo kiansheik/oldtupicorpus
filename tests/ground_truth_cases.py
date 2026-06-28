@@ -83,9 +83,10 @@ class GroundTruthSourceLoadError(Exception):
 
 def normalize_expected_lines(text: str) -> list[str]:
     """Legacy compatibility helper for callers and old text fixtures."""
-    return [record.expected_surface for record in records_from_legacy_text(
-        text, source="legacy", kind="legacy"
-    )]
+    return [
+        record.expected_surface
+        for record in records_from_legacy_text(text, source="legacy", kind="legacy")
+    ]
 
 
 def get_case_records(case: GroundTruthCase) -> list[GroundTruthRecord]:
@@ -199,7 +200,9 @@ def append_case_ground_truth_lines(case: GroundTruthCase, lines: list[str]) -> N
     append_ground_truth_lines(case.ground_truth_path, lines)
 
 
-def replace_case_ground_truth_line(case: GroundTruthCase, line_no: int, line: str) -> None:
+def replace_case_ground_truth_line(
+    case: GroundTruthCase, line_no: int, line: str
+) -> None:
     """Replace an approved target in canonical JSONL and the legacy text mirror."""
     records = get_case_records(case)
     updated = replace_record_surface(records, line_no, line)

@@ -441,6 +441,11 @@
   },
   {
     "value": "mosapyra",
+    "tag": "[CARDINAL:DEEPEST_NODE_4:NOUN:NUMBER:POSSESSOR:THREE]",
+    "translation": ""
+  },
+  {
+    "value": "mosapyra",
     "tag": "[CARDINAL:DEEPEST_NODE_8:NUMBER:THREE]",
     "translation": ""
   },
@@ -1117,6 +1122,11 @@
   {
     "value": "r",
     "tag": "[DEEPEST_NODE_4:PLURIFORM_PREFIX:R]",
+    "translation": ""
+  },
+  {
+    "value": "s",
+    "tag": "[DEEPEST_NODE_4:PLURIFORM_PREFIX:S]",
     "translation": ""
   },
   {

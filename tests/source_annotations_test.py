@@ -35,7 +35,9 @@ l += second
         self.assertEqual(location.line_start, "25")
         self.assertEqual(location.line_end, "34")
 
-    def test_directives_attach_to_a_list_entry_without_wrapping_expression(self) -> None:
+    def test_directives_attach_to_a_list_entry_without_wrapping_expression(
+        self,
+    ) -> None:
         source = """\
 l = [
     # @folio 10r

@@ -25,7 +25,9 @@ def generated_records(case: GroundTruthCase) -> list[GroundTruthRecord]:
     )
 
 
-def regenerate_case(case: GroundTruthCase) -> tuple[Path, Path, list[GroundTruthRecord]]:
+def regenerate_case(
+    case: GroundTruthCase,
+) -> tuple[Path, Path, list[GroundTruthRecord]]:
     """Rebuild JSONL and legacy text artifacts from one annotated source file."""
     records = generated_records(case)
     structured = record_path(ROOT, kind=case.kind, source=case.name)
