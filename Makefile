@@ -41,9 +41,8 @@ verify-ground-truth: ## Compare rendered historic sources to approved records wi
 migrate-ground-truth-records: ## Create structured JSONL records from legacy ground-truth text
 	python3 -m authoring.ground_truth_cli migrate $(ARGS)
 
-update-ground-truth: ## Legacy updater; prefer review-ground-truth for human-approved structured records
-	$(MAKE) test ARGS="$(ARGS)"
-	python3 tests/run_tests.py --accept-new-ground-truth $(ARGS)
+update-ground-truth: ## Backward-compatible alias for human-approved structured review
+	$(MAKE) review-ground-truth ARGS="$(ARGS)"
 
 review-ground-truth: ## Interactively approve new trailing targets into structured JSONL and legacy mirrors
 	python3 -m authoring.ground_truth_cli review $(ARGS)
