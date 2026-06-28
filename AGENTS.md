@@ -23,11 +23,10 @@ This repository is a computational-linguistics research corpus. A passing render
 ## Ground truth
 
 - Historic `.tu.py` source expressions and their adjacent `# @...` comments are authoritative.
-- `ground_truth/records/<kind>/<source>.jsonl` is generated structured data, not a second place to edit citations or analysis.
-- `ground_truth/<kind>/<source>.txt` is a generated compatibility mirror for legacy consumers.
+- `ground_truth/records/<kind>/<source>.jsonl` is the sole generated ground-truth artifact. Do not hand-edit it.
 - Use `make regenerate-ground-truth` after changing a source expression or attached directives.
-- Use `make verify-ground-truth` to check both renderings and whether generated artifacts are current.
-- `@witness`, `@edition`, `@page`, `@folio`, `@line`, `@section`, `@url`, and `@note` add a location to the next list item or `l +=` entry. `@diplomatic`, `@target`, `@translation`, `@analysis`, and `@status` add editorial metadata.
+- Use `make verify-ground-truth` to check both renderings and whether generated JSONL is current.
+- `@witness`, `@edition`, `@page`, `@folio`, `@line`, `@section`, `@subsection`, `@url`, and `@note` add a location to the next list item or `l +=` entry. `@page`, `@section`, and `@subsection` inherit forward. `@diplomatic`, `@target`, `@translation`, `@analysis`, and `@status` add editorial metadata.
 
 ## Morphology engine changes
 
