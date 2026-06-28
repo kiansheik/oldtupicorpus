@@ -8,6 +8,8 @@ Use comment directives immediately above the next list item or `l +=` entry. The
 
 ```python
 # @page 25-26
+# @section 2
+# @subsection 2.1
 # @line 25-34
 l += (...)
 ```
@@ -21,7 +23,31 @@ For manuscripts, use a folio instead of a page:
 l += (...)
 ```
 
-Available locator directives are `@witness`, `@edition`, `@page`, `@folio`, `@line`, `@section`, `@url`, and `@note`. Singular and plural spellings are both accepted, so `@page` and `@pages` behave the same way. Ranges may use `-`, `–`, or `—`.
+Available locator directives are `@witness`, `@edition`, `@page`, `@folio`, `@line`, `@section`, `@subsection`, `@url`, and `@note`. Singular and plural spellings are accepted, so `@page` and `@pages` behave the same way. Ranges may use `-`, `–`, or `—`.
+
+### Sequential locator inheritance
+
+The authoring file is read in source order. `@page`, `@section`, and `@subsection` waterfall forward, so repeated locators do not need to be written on every expression.
+
+```python
+# @page 25-26
+# @section 2
+# @subsection 2.1
+# @line 25-34
+l += first_expression
+
+# @line 35-39
+l += second_expression
+
+l += third_expression
+
+# @section 3
+l += fourth_expression
+```
+
+Here, the second and third expressions receive page `26`, section `2`, and subsection `2.1`. The second receives only its own `35-39` line range; the third has no line span. The fourth receives page `26` and section `3`, but its inherited subsection is deliberately cleared. Add `# @subsection ...` beside a new section when one applies.
+
+Only pages, sections, and subsections inherit. Line numbers, folios, witnesses, editions, URLs, notes, and editorial fields remain local to the expression where they are written.
 
 Optional editorial directives are `@diplomatic`, `@target`, `@translation`, `@analysis`, and `@status`. They attach to the same next expression. A directive block must be immediately adjacent to its expression, apart from blank lines.
 
@@ -37,6 +63,8 @@ Example generated location:
     {
       "page_start": "25",
       "page_end": "26",
+      "section": "2",
+      "subsection": "2.1",
       "line_start": "25",
       "line_end": "34"
     }
@@ -61,7 +89,7 @@ make verify-ground-truth
 3. Ask for a candidate plus alternatives, not a silent edit.
 4. Render the candidate in the relevant source namespace.
 5. The human editor approves, rejects, or supplies a corrected target or analysis.
-6. Put the desired expression and any page, folio, or line locator directly in the `.tu.py` file.
+6. Put the desired expression and any page, folio, line, section, or subsection locator directly in the `.tu.py` file.
 7. Run `make regenerate-ground-truth` and then `make verify-ground-truth`.
 8. When reusable grammar behavior changed, add a focused regression and an evidence note.
 
