@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import ast
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import Iterable
 
@@ -51,6 +51,8 @@ def source_records_from_file(
         # @line 25-34
         l += (...)
 
+    Pages waterfall in source order. When an entry has no `@page`, it inherits
+    the ending page of the prior page-bearing entry. Lines never waterfall.
     The directive comments do not alter the Pydicate expression, its rendering,
     or the ordinary Python source syntax.
     """
@@ -62,7 +64,9 @@ def source_records_from_file(
             f"{len(rendered_expressions)} runtime expressions. Keep the declared source "
             "list and its additions in positional correspondence."
         )
-    annotations = annotations_by_source_line(source_path, entries)
+    annotations = waterfall_page_annotations(
+        entries, annotations_by_source_line(source_path, entries)
+    )
     return [
         record_from_expression(
             expression,
@@ -104,6 +108,35 @@ def annotations_by_source_line(
         for entry in entries
         if (annotation := _annotation_before(lines, entry.source_line)) is not None
     }
+
+
+def waterfall_page_annotations(
+    entries: Iterable[SourceEntry],
+    annotations: dict[int, SourceAnnotation],
+) -> dict[int, SourceAnnotation]:
+    """Fill an omitted page from the nearest preceding page-bearing source entry.
+
+    `@page 25-26` establishes page 26 as the active page for later entries.
+    An inherited page is written as a single page, never a copied range. Line
+    locators are intentionally not inherited.
+    """
+    effective: dict[int, SourceAnnotation] = {}
+    active_page: str | None = None
+
+    for entry in entries:
+        annotation = _with_inherited_page(
+            annotations.get(entry.source_line),
+            active_page,
+            source_line=entry.source_line,
+        )
+        if annotation is not None:
+            effective[entry.source_line] = annotation
+
+        ending_page = _ending_page(annotation)
+        if ending_page is not None:
+            active_page = ending_page
+
+    return effective
 
 
 def record_from_expression(
@@ -226,6 +259,37 @@ def _parse_directives(
         status=status,
         notes=tuple(note for note in notes if note),
     )
+
+
+def _with_inherited_page(
+    annotation: SourceAnnotation | None,
+    active_page: str | None,
+    *,
+    source_line: int,
+) -> SourceAnnotation | None:
+    if active_page is None or _ending_page(annotation) is not None:
+        return annotation
+
+    inherited_location = PhilologicalLocation(page_start=active_page)
+    if annotation is None:
+        return SourceAnnotation(source_line=source_line, locations=(inherited_location,))
+    if not annotation.locations:
+        return replace(annotation, locations=(inherited_location,))
+
+    locations = list(annotation.locations)
+    locations[-1] = replace(locations[-1], page_start=active_page)
+    return replace(annotation, locations=tuple(locations))
+
+
+def _ending_page(annotation: SourceAnnotation | None) -> str | None:
+    if annotation is None:
+        return None
+    for location in reversed(annotation.locations):
+        if location.page_end is not None:
+            return location.page_end
+        if location.page_start is not None:
+            return location.page_start
+    return None
 
 
 def _location_from_values(values: dict[str, str]) -> PhilologicalLocation:
