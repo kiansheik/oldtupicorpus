@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -18,14 +18,103 @@ def normalize_surface(value: str) -> str:
 
 
 @dataclass(frozen=True)
+class PhilologicalLocation:
+    """One repeatable bibliographic or manuscript locator for a source record.
+
+    Page and line fields deliberately remain strings. That permits ordinary Arabic
+    pages, Roman numerals, folio forms such as ``10r``, bracketed pages, and
+    edition-specific line labels without lossy coercion.
+    """
+
+    witness: str | None = None
+    edition: str | None = None
+    page_start: str | None = None
+    page_end: str | None = None
+    folio_start: str | None = None
+    folio_end: str | None = None
+    line_start: str | None = None
+    line_end: str | None = None
+    section: str | None = None
+    url: str | None = None
+    note: str | None = None
+
+    def to_dict(self) -> dict[str, str]:
+        return {
+            key: value
+            for key, value in {
+                "witness": self.witness,
+                "edition": self.edition,
+                "page_start": self.page_start,
+                "page_end": self.page_end,
+                "folio_start": self.folio_start,
+                "folio_end": self.folio_end,
+                "line_start": self.line_start,
+                "line_end": self.line_end,
+                "section": self.section,
+                "url": self.url,
+                "note": self.note,
+            }.items()
+            if value is not None
+        }
+
+    @classmethod
+    def from_dict(cls, value: dict[str, Any]) -> "PhilologicalLocation":
+        if not isinstance(value, dict):
+            raise ValueError("A philological location must be a JSON object.")
+        known = {
+            "witness",
+            "edition",
+            "page_start",
+            "page_end",
+            "folio_start",
+            "folio_end",
+            "line_start",
+            "line_end",
+            "section",
+            "url",
+            "note",
+        }
+        unknown = sorted(set(value) - known)
+        if unknown:
+            raise ValueError(
+                "Philological location has unsupported field(s): " + ", ".join(unknown)
+            )
+        location = cls(**{key: _optional_text(value.get(key)) for key in known})
+        if not any(location.to_dict().values()):
+            raise ValueError("A philological location must contain at least one locator field.")
+        return location
+
+    @property
+    def display(self) -> str:
+        """Compact human-readable locator for editor and MCP clients."""
+        parts = [part for part in (self.witness, self.edition, self.section) if part]
+        if self.folio_start:
+            folio = f"f. {self.folio_start}"
+            if self.folio_end and self.folio_end != self.folio_start:
+                folio += f"-{self.folio_end}"
+            parts.append(folio)
+        elif self.page_start:
+            page = f"p. {self.page_start}"
+            if self.page_end and self.page_end != self.page_start:
+                page += f"-{self.page_end}"
+            parts.append(page)
+        if self.line_start:
+            lines = f"l. {self.line_start}"
+            if self.line_end and self.line_end != self.line_start:
+                lines += f"-{self.line_end}"
+            parts.append(lines)
+        return ", ".join(parts)
+
+
+@dataclass(frozen=True)
 class GroundTruthRecord:
     """One human-owned editorial target for one executable source expression.
 
     ``surface`` is the canonical comparison target. ``diplomatic`` may preserve a
     source transcription, while ``normalized_target`` records an explicitly
     editorial modern-orthography form when it differs from the diplomatic text.
-    Unknown JSON fields are retained under ``metadata`` so the format can grow
-    without forcing migrations.
+    ``locations`` provides a repeatable, structured philological path back to
+    pages, folios, line spans, editions, witnesses, or sections.
     """
 
     id: str
@@ -38,6 +127,7 @@ class GroundTruthRecord:
     normalized_target: str | None = None
     translation: str | None = None
     analysis: str | None = None
+    locations: tuple[PhilologicalLocation, ...] = ()
     notes: tuple[str, ...] = ()
     metadata: dict[str, Any] = field(default_factory=dict)
 
@@ -61,6 +151,8 @@ class GroundTruthRecord:
             "analysis": self.analysis,
         }
         value.update({key: item for key, item in optional.items() if item is not None})
+        if self.locations:
+            value["locations"] = [location.to_dict() for location in self.locations]
         if self.notes:
             value["notes"] = list(self.notes)
         value.update(self.metadata)
@@ -107,11 +199,15 @@ class GroundTruthRecord:
             "normalized_target",
             "translation",
             "analysis",
+            "locations",
             "notes",
         }
         notes = value.get("notes") or []
         if not isinstance(notes, list) or not all(isinstance(note, str) for note in notes):
             raise ValueError(f"Ground-truth record {record_id!r} has invalid 'notes'.")
+        raw_locations = value.get("locations") or []
+        if not isinstance(raw_locations, list):
+            raise ValueError(f"Ground-truth record {record_id!r} has invalid 'locations'.")
 
         return cls(
             id=record_id,
@@ -124,6 +220,7 @@ class GroundTruthRecord:
             normalized_target=_optional_text(value.get("normalized_target")),
             translation=_optional_text(value.get("translation")),
             analysis=_optional_text(value.get("analysis")),
+            locations=tuple(PhilologicalLocation.from_dict(item) for item in raw_locations),
             notes=tuple(notes),
             metadata={key: item for key, item in value.items() if key not in known},
         )
@@ -249,17 +346,30 @@ def append_records(
     return updated
 
 
+def add_record_location(
+    records: Iterable[GroundTruthRecord],
+    record_id: str | int,
+    location: PhilologicalLocation,
+) -> list[GroundTruthRecord]:
+    """Attach a new witness/page/line locator without changing a target or analysis."""
+    updated = list(records)
+    for index, record in enumerate(updated):
+        if record.id == str(record_id) or str(record.ordinal) == str(record_id):
+            updated[index] = replace(record, locations=record.locations + (location,))
+            return updated
+    raise KeyError(f"Ground-truth record {record_id!r} not found.")
+
+
 def replace_record_surface(
-    records: Iterable[GroundTruthRecord], line_no: int, surface: str) -> list[GroundTruthRecord]:
+    records: Iterable[GroundTruthRecord], line_no: int, surface: str
+) -> list[GroundTruthRecord]:
     updated = list(records)
     if line_no < 1 or line_no > len(updated):
         raise IndexError(f"Ground-truth record {line_no} not found.")
     record = updated[line_no - 1]
     normalized = normalize_surface(surface)
     if record.normalized_target is not None:
-        updated[line_no - 1] = GroundTruthRecord(
-            **{**record.__dict__, "normalized_target": normalized}
-        )
+        updated[line_no - 1] = replace(record, normalized_target=normalized)
     else:
-        updated[line_no - 1] = GroundTruthRecord(**{**record.__dict__, "surface": normalized})
+        updated[line_no - 1] = replace(record, surface=normalized)
     return updated
