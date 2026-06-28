@@ -10,7 +10,9 @@ from authoring.records import GroundTruthRecord, PhilologicalLocation, normalize
 
 
 DIRECTIVE_RE = re.compile(r"^\s*#\s*@(?P<key>[a-z][a-z0-9_-]*)\s*(?P<value>.*?)\s*$", re.IGNORECASE)
-LOCATION_KEYS = frozenset({"witness", "edition", "page", "folio", "line", "section", "url", "note"})
+LOCATION_KEYS = frozenset(
+    {"witness", "edition", "page", "folio", "line", "section", "subsection", "url", "note"}
+)
 RECORD_KEYS = frozenset({"diplomatic", "target", "translation", "analysis", "status"})
 
 
@@ -48,13 +50,16 @@ def source_records_from_file(
     list item or `l += expression` statement attaches to that next entry:
 
         # @page 25-26
+        # @section 3
+        # @subsection 3.2
         # @line 25-34
         l += (...)
 
-    Pages waterfall in source order. When an entry has no `@page`, it inherits
-    the ending page of the prior page-bearing entry. Lines never waterfall.
-    The directive comments do not alter the Pydicate expression, its rendering,
-    or the ordinary Python source syntax.
+    Page, section, and subsection locators waterfall in source order. An omitted
+    page inherits the ending page of the prior page-bearing entry. Sections and
+    subsections carry forward until explicitly replaced. An explicit new section
+    clears the active subsection unless that entry also declares `@subsection`.
+    Lines never waterfall.
     """
     entries = source_entries(source_path, source_name=source)
     rendered_expressions = list(expressions)
@@ -64,7 +69,7 @@ def source_records_from_file(
             f"{len(rendered_expressions)} runtime expressions. Keep the declared source "
             "list and its additions in positional correspondence."
         )
-    annotations = waterfall_page_annotations(
+    annotations = waterfall_locator_annotations(
         entries, annotations_by_source_line(source_path, entries)
     )
     return [
@@ -110,33 +115,59 @@ def annotations_by_source_line(
     }
 
 
-def waterfall_page_annotations(
+def waterfall_locator_annotations(
     entries: Iterable[SourceEntry],
     annotations: dict[int, SourceAnnotation],
 ) -> dict[int, SourceAnnotation]:
-    """Fill an omitted page from the nearest preceding page-bearing source entry.
+    """Fill omitted sequential page and hierarchy locators from prior entries.
 
-    `@page 25-26` establishes page 26 as the active page for later entries.
-    An inherited page is written as a single page, never a copied range. Line
-    locators are intentionally not inherited.
+    `@page 25-26` makes page 26 active. `@section 3` and `@subsection 3.2`
+    remain active for following expressions. A later `@section 4` resets any
+    active subsection unless it is accompanied by an explicit `@subsection`.
     """
     effective: dict[int, SourceAnnotation] = {}
     active_page: str | None = None
+    active_section: str | None = None
+    active_subsection: str | None = None
 
     for entry in entries:
-        annotation = _with_inherited_page(
-            annotations.get(entry.source_line),
-            active_page,
+        raw_annotation = annotations.get(entry.source_line)
+        raw_location = _last_location(raw_annotation)
+        explicit_section = raw_location.section if raw_location else None
+        explicit_subsection = raw_location.subsection if raw_location else None
+        if explicit_section is not None and explicit_subsection is None:
+            active_subsection = None
+
+        annotation = _with_inherited_locators(
+            raw_annotation,
+            page=active_page,
+            section=active_section,
+            subsection=active_subsection,
             source_line=entry.source_line,
         )
         if annotation is not None:
             effective[entry.source_line] = annotation
 
-        ending_page = _ending_page(annotation)
+        location = _last_location(annotation)
+        if location is None:
+            continue
+        ending_page = location.page_end or location.page_start
         if ending_page is not None:
             active_page = ending_page
+        if location.section is not None:
+            active_section = location.section
+        if location.subsection is not None:
+            active_subsection = location.subsection
 
     return effective
+
+
+def waterfall_page_annotations(
+    entries: Iterable[SourceEntry],
+    annotations: dict[int, SourceAnnotation],
+) -> dict[int, SourceAnnotation]:
+    """Compatibility alias for callers that only know the original page waterfall API."""
+    return waterfall_locator_annotations(entries, annotations)
 
 
 def record_from_expression(
@@ -232,6 +263,10 @@ def _parse_directives(
             key = "page"
         elif key == "folios":
             key = "folio"
+        elif key == "sections":
+            key = "section"
+        elif key == "subsections":
+            key = "subsection"
         if key in LOCATION_KEYS:
             if key == "note":
                 notes.append(value)
@@ -261,35 +296,49 @@ def _parse_directives(
     )
 
 
-def _with_inherited_page(
+def _with_inherited_locators(
     annotation: SourceAnnotation | None,
-    active_page: str | None,
     *,
+    page: str | None,
+    section: str | None,
+    subsection: str | None,
     source_line: int,
 ) -> SourceAnnotation | None:
-    if active_page is None or _ending_page(annotation) is not None:
+    location = _last_location(annotation)
+    explicit_page = location.page_end or location.page_start if location else None
+    explicit_section = location.section if location else None
+    explicit_subsection = location.subsection if location else None
+
+    inherited = {
+        "page_start": None if explicit_page is not None else page,
+        "section": None if explicit_section is not None else section,
+        "subsection": None if explicit_subsection is not None else subsection,
+    }
+    if not any(inherited.values()):
         return annotation
 
-    inherited_location = PhilologicalLocation(page_start=active_page)
     if annotation is None:
-        return SourceAnnotation(source_line=source_line, locations=(inherited_location,))
-    if not annotation.locations:
-        return replace(annotation, locations=(inherited_location,))
+        return SourceAnnotation(
+            source_line=source_line,
+            locations=(PhilologicalLocation(**inherited),),
+        )
+    if location is None:
+        return replace(annotation, locations=(PhilologicalLocation(**inherited),))
 
     locations = list(annotation.locations)
-    locations[-1] = replace(locations[-1], page_start=active_page)
+    locations[-1] = replace(
+        location,
+        page_start=location.page_start or inherited["page_start"],
+        section=location.section or inherited["section"],
+        subsection=location.subsection or inherited["subsection"],
+    )
     return replace(annotation, locations=tuple(locations))
 
 
-def _ending_page(annotation: SourceAnnotation | None) -> str | None:
-    if annotation is None:
+def _last_location(annotation: SourceAnnotation | None) -> PhilologicalLocation | None:
+    if annotation is None or not annotation.locations:
         return None
-    for location in reversed(annotation.locations):
-        if location.page_end is not None:
-            return location.page_end
-        if location.page_start is not None:
-            return location.page_start
-    return None
+    return annotation.locations[-1]
 
 
 def _location_from_values(values: dict[str, str]) -> PhilologicalLocation:
@@ -309,6 +358,7 @@ def _location_from_values(values: dict[str, str]) -> PhilologicalLocation:
                 "line_start": line_start,
                 "line_end": line_end,
                 "section": _optional(values.get("section")),
+                "subsection": _optional(values.get("subsection")),
                 "url": _optional(values.get("url")),
             }.items()
             if value is not None
