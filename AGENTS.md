@@ -4,11 +4,11 @@ This repository is a computational-linguistics research corpus. A passing render
 
 ## Authority and write boundaries
 
-- The human editor is the authority for diplomatic transcription, normalized target forms, translations, grammatical analyses, and editorial status.
-- Never replace an approved ground-truth target with the renderer's output merely to make a comparison pass.
-- Never use a ground-truth update command to create a target the human has not inspected.
-- Work on one source record at a time. Do not batch-edit unrelated source lines.
+- The human editor is the authority for diplomatic transcription, normalized target forms, translations, grammatical analyses, editorial status, and philological citations.
+- Never replace a historical target with the renderer's output merely to make a comparison pass.
+- Work on one source expression at a time. Do not batch-edit unrelated source lines.
 - Keep a candidate expression separate from an applied source edit until the human has approved the analysis.
+- Put scholarly metadata directly above its expression as `# @...` source comments. Do not hand-edit generated JSONL as a parallel editorial source.
 
 ## Required line-authoring loop
 
@@ -16,16 +16,18 @@ This repository is a computational-linguistics research corpus. A passing render
 2. Search the lexicon and rendered precedents before inventing a new analysis.
 3. Propose a Pydicate expression, explain the morphological assumptions, and state uncertainty or alternatives.
 4. Call `render_candidate`; do not edit a source until the human approves the candidate.
-5. After an approved edit, run the narrowest relevant regression first, then `make test ARGS="--skip-tokenizer"` and `make verify-ground-truth` when the change can affect historic rendering.
-6. Document reusable behavior in `docs/agent/` with a source record id, expression, target, contrast, and test location.
+5. After an approved edit, place any source locator directly above the entry, for example `# @page 25-26` and `# @line 25-34`.
+6. Run `make regenerate-ground-truth`, then the narrowest relevant regression, then `make test ARGS="--skip-tokenizer"` and `make verify-ground-truth` when the change can affect historic rendering.
+7. Document reusable behavior in `docs/agent/` with a source record id, expression, target, contrast, and test location.
 
 ## Ground truth
 
-- `ground_truth/records/<kind>/<source>.jsonl` is the canonical structured target format when present.
-- `ground_truth/<kind>/<source>.txt` is a compatibility mirror for legacy consumers.
-- Use `make verify-ground-truth` to compare current renderings without writing files.
-- Use `make review-ground-truth` only for new trailing lines after a human reviews the proposed target.
-- Use `make migrate-ground-truth-records` to create JSONL records from legacy text. Migration creates identifiers but does not invent diplomatic text, translations, or analyses.
+- Historic `.tu.py` source expressions and their adjacent `# @...` comments are authoritative.
+- `ground_truth/records/<kind>/<source>.jsonl` is generated structured data, not a second place to edit citations or analysis.
+- `ground_truth/<kind>/<source>.txt` is a generated compatibility mirror for legacy consumers.
+- Use `make regenerate-ground-truth` after changing a source expression or attached directives.
+- Use `make verify-ground-truth` to check both renderings and whether generated artifacts are current.
+- `@witness`, `@edition`, `@page`, `@folio`, `@line`, `@section`, `@url`, and `@note` add a location to the next list item or `l +=` entry. `@diplomatic`, `@target`, `@translation`, `@analysis`, and `@status` add editorial metadata.
 
 ## Morphology engine changes
 
@@ -40,6 +42,6 @@ Before changing it:
 
 ## MCP tools
 
-The local `oldtupi-authoring` MCP server is read-only/evaluation-only. Use it to retrieve context, search precedents, render a candidate, and verify targets. It intentionally cannot apply edits or modify ground truth.
+The local `oldtupi-authoring` MCP server is read-only/evaluation-only. Use it to retrieve context, search precedents, render a candidate, and verify targets. It intentionally cannot apply edits or modify source files, generated ground truth, or Git state.
 
 Read `docs/agent/source-authoring.md` before authoring a source record.
