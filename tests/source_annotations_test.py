@@ -53,6 +53,26 @@ l = [
         self.assertEqual(location.line_end, "7")
         self.assertNotIn(5, annotations)
 
+    def test_direct_source_list_style_is_supported(self) -> None:
+        source = """\
+bettendorff_compendio = [
+    # @page 10
+    # @line 2-3
+    first,
+]
+"""
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bettendorff_compendio.tu.py"
+            path.write_text(source, encoding="utf-8")
+            entries = source_entries(path, source_name="bettendorff_compendio")
+            annotations = annotations_by_source_line(path, entries)
+
+        self.assertEqual([entry.source_line for entry in entries], [4])
+        location = annotations[4].locations[0]
+        self.assertEqual(location.page_start, "10")
+        self.assertEqual(location.line_start, "2")
+        self.assertEqual(location.line_end, "3")
+
     def test_unrecognized_directive_is_rejected(self) -> None:
         source = """\
 l = []
