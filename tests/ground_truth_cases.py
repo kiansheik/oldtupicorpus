@@ -15,6 +15,8 @@ from authoring.records import GroundTruthRecord, load_records, record_path
 ExpressionSource = Iterable[object] | Callable[[], Iterable[object]]
 HISTORIC_SOURCE_DIR = ROOT / "historic"
 RECORDS_DIR = ROOT / "ground_truth" / "records"
+HISTORIC_GROUND_TRUTH_DIR = RECORDS_DIR / "historic"
+SYNTHETIC_GROUND_TRUTH_DIR = RECORDS_DIR / "synthetic"
 
 
 @dataclass(frozen=True)
@@ -48,7 +50,9 @@ class GroundTruthComparison:
 
 
 class GroundTruthRenderError(Exception):
-    def __init__(self, line_no: int, expr: object, cause: Exception | None = None) -> None:
+    def __init__(
+        self, line_no: int, expr: object, cause: Exception | None = None
+    ) -> None:
         self.line_no = line_no
         self.expr = expr
         self.cause = cause
@@ -61,7 +65,9 @@ class GroundTruthRenderError(Exception):
 class GroundTruthSourceLoadError(Exception):
     def __init__(self, cause: Exception) -> None:
         self.cause = cause
-        super().__init__(f"source could not be loaded ({cause.__class__.__name__}: {cause})")
+        super().__init__(
+            f"source could not be loaded ({cause.__class__.__name__}: {cause})"
+        )
 
 
 def get_case_records(case: GroundTruthCase) -> list[GroundTruthRecord]:
@@ -84,7 +90,9 @@ def render_lines(expressions: ExpressionSource) -> list[str]:
             raise GroundTruthRenderError(line_no, expr, exc) from exc
         if not isinstance(rendered, str):
             raise GroundTruthRenderError(
-                line_no, expr, TypeError(f"eval() returned {type(rendered).__name__}, expected str")
+                line_no,
+                expr,
+                TypeError(f"eval() returned {type(rendered).__name__}, expected str"),
             )
         lines.append(rendered.strip())
     return lines
@@ -98,9 +106,13 @@ def compare_case_lines(case: GroundTruthCase) -> GroundTruthComparison:
     for index, expected_line in enumerate(expected):
         line_no = index + 1
         if index >= len(actual):
-            return GroundTruthComparison(case, expected, actual, line_no, expected_line, None)
+            return GroundTruthComparison(
+                case, expected, actual, line_no, expected_line, None
+            )
         if actual[index] != expected_line:
-            return GroundTruthComparison(case, expected, actual, line_no, expected_line, actual[index])
+            return GroundTruthComparison(
+                case, expected, actual, line_no, expected_line, actual[index]
+            )
     return GroundTruthComparison(case, expected, actual)
 
 
@@ -148,7 +160,9 @@ def _load_historic_expressions(source_name: str) -> ExpressionSource:
     source_path = tu_path if tu_path.exists() else py_path if py_path.exists() else None
     if source_path is None:
         raise AttributeError(f"Missing primary source for '{source_name}'.")
-    module = _load_module_from_path(f"historic._ground_truth_case_{source_name}", source_path)
+    module = _load_module_from_path(
+        f"historic._ground_truth_case_{source_name}", source_path
+    )
     expressions = getattr(module, source_name, None)
     if expressions is None:
         raise AttributeError(
@@ -159,7 +173,8 @@ def _load_historic_expressions(source_name: str) -> ExpressionSource:
 
 def _load_synthetic_expressions(source_name: str) -> ExpressionSource:
     module = _load_module_from_path(
-        "synthetic._ground_truth_primary_sources", ROOT / "synthetic" / "primary_sources.py"
+        "synthetic._ground_truth_primary_sources",
+        ROOT / "synthetic" / "primary_sources.py",
     )
     expressions = getattr(module, source_name, None)
     if expressions is None:
@@ -168,14 +183,20 @@ def _load_synthetic_expressions(source_name: str) -> ExpressionSource:
 
 
 def load_historic_cases() -> list[GroundTruthCase]:
-    return _load_cases_from_records(kind="historic", expression_loader=_load_historic_expressions)
+    return _load_cases_from_records(
+        kind="historic", expression_loader=_load_historic_expressions
+    )
 
 
 def load_synthetic_cases() -> list[GroundTruthCase]:
-    return _load_cases_from_records(kind="synthetic", expression_loader=_load_synthetic_expressions)
+    return _load_cases_from_records(
+        kind="synthetic", expression_loader=_load_synthetic_expressions
+    )
 
 
-def load_ground_truth_cases(*, include_synthetic: bool = False) -> list[GroundTruthCase]:
+def load_ground_truth_cases(
+    *, include_synthetic: bool = False
+) -> list[GroundTruthCase]:
     cases = load_historic_cases()
     if include_synthetic:
         cases.extend(load_synthetic_cases())

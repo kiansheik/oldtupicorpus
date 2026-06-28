@@ -210,6 +210,15 @@ l += eimoeté * (domingo_e_feriado)
 
 l += eimoeté * pais
 l += -(+nde * apiti * moro).imp()
+l += -(+nde * potar * moro).imp()
+mondarõ = Verb("mondarõ")
+l += -(+nde * mondarõ).imp()
+moem = Noun("emo'em", "(t)")
+l += -(+nde * v(moem)).imp() + (esé * abá)
+momotar = Verb("momotar")
+apixara = Noun("apixara", "(t)")
+emirekó = Noun("emirekó", "(t)")
+l += -(+nde * momotar * îe).imp() + esé * ((nde * apixara) * emirekó)
 
 
 araujo_catecismo_1686 = l

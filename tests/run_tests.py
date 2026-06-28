@@ -10,9 +10,18 @@ import traceback
 import unittest
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+TESTS_DIR = ROOT / "tests"
+if str(TESTS_DIR) not in sys.path:
+    sys.path.insert(0, str(TESTS_DIR))
+
 
 class SlimTextTestResult(unittest.TextTestResult):
-    def __init__(self, stream, descriptions: bool, verbosity: int, show_tracebacks: bool) -> None:
+    def __init__(
+        self, stream, descriptions: bool, verbosity: int, show_tracebacks: bool
+    ) -> None:
         super().__init__(stream, descriptions, verbosity)
         self.show_tracebacks = show_tracebacks
         self._raw_failures: list[tuple[unittest.TestCase, tuple]] = []
@@ -26,7 +35,9 @@ class SlimTextTestResult(unittest.TextTestResult):
         self._raw_errors.append((test, err))
         super().addError(test, err)
 
-    def addSubTest(self, test: unittest.TestCase, subtest: unittest.TestCase, err) -> None:
+    def addSubTest(
+        self, test: unittest.TestCase, subtest: unittest.TestCase, err
+    ) -> None:
         super().addSubTest(test, subtest, err)
         if err is None:
             return
@@ -67,10 +78,23 @@ class SlimTextTestRunner(unittest.TextTestRunner):
 
 def _parse_args(argv: list[str] | None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run the test suite.")
-    parser.add_argument("-v", "--verbose", action="store_true", help="Show failure tracebacks.")
-    parser.add_argument("-s", "--start-directory", default="tests", help="Directory to discover tests from.")
-    parser.add_argument("-p", "--pattern", default="*_test.py", help="Pattern to match test files.")
-    parser.add_argument("--skip-tokenizer", action="store_true", help="Skip tokenizer artifact regeneration.")
+    parser.add_argument(
+        "-v", "--verbose", action="store_true", help="Show failure tracebacks."
+    )
+    parser.add_argument(
+        "-s",
+        "--start-directory",
+        default="tests",
+        help="Directory to discover tests from.",
+    )
+    parser.add_argument(
+        "-p", "--pattern", default="*_test.py", help="Pattern to match test files."
+    )
+    parser.add_argument(
+        "--skip-tokenizer",
+        action="store_true",
+        help="Skip tokenizer artifact regeneration.",
+    )
     parser.add_argument("--tokenizer-out-dir", default="tokenizer/output")
     parser.add_argument("--tokenizer-out-jsonl", default="canonical_io.jsonl")
     parser.add_argument("--tokenizer-corpus-json", default="")
@@ -83,13 +107,17 @@ def _parse_args(argv: list[str] | None) -> argparse.Namespace:
     parser.add_argument("--tokenizer-orth-workers", type=int, default=1)
     parser.add_argument("--tokenizer-orth-batch-size", type=int, default=200)
     parser.add_argument("--tokenizer-include-synthetic", action="store_true")
-    parser.add_argument("--include-synthetic", action="store_true", help="Include synthetic tests.")
-    parser.add_argument("--timings", action="store_true", help="Print timing information.")
+    parser.add_argument(
+        "--include-synthetic", action="store_true", help="Include synthetic tests."
+    )
+    parser.add_argument(
+        "--timings", action="store_true", help="Print timing information."
+    )
     return parser.parse_args(argv)
 
 
 def _project_root() -> Path:
-    return Path(__file__).resolve().parents[1]
+    return ROOT
 
 
 def _regenerate_tokens(args: argparse.Namespace) -> None:
@@ -197,14 +225,23 @@ def main(argv: list[str] | None = None) -> int:
     suite = (
         loader.discover(args.start_directory, pattern=args.pattern)
         if args.include_synthetic
-        else _discover_tests_excluding_synthetic(loader, args.start_directory, args.pattern)
+        else _discover_tests_excluding_synthetic(
+            loader, args.start_directory, args.pattern
+        )
     )
     if args.timings:
-        print(f"[timing] discovery: {time.perf_counter() - started:.3f}s", file=sys.stderr)
+        print(
+            f"[timing] discovery: {time.perf_counter() - started:.3f}s", file=sys.stderr
+        )
     tests_started = time.perf_counter()
-    result = SlimTextTestRunner(verbosity=2 if args.verbose else 0, show_tracebacks=args.verbose).run(suite)
+    result = SlimTextTestRunner(
+        verbosity=2 if args.verbose else 0, show_tracebacks=args.verbose
+    ).run(suite)
     if args.timings:
-        print(f"[timing] tests: {time.perf_counter() - tests_started:.3f}s", file=sys.stderr)
+        print(
+            f"[timing] tests: {time.perf_counter() - tests_started:.3f}s",
+            file=sys.stderr,
+        )
     if not result.wasSuccessful():
         return 1
     if args.skip_tokenizer:
@@ -212,7 +249,9 @@ def main(argv: list[str] | None = None) -> int:
     try:
         _regenerate_tokens(args)
     except subprocess.CalledProcessError as exc:
-        print(f"Tokenizer regeneration failed (exit {exc.returncode}).", file=sys.stderr)
+        print(
+            f"Tokenizer regeneration failed (exit {exc.returncode}).", file=sys.stderr
+        )
         return 1
     except OSError as exc:
         print(f"Tokenizer regeneration failed: {exc}.", file=sys.stderr)

@@ -6,7 +6,9 @@ from pathlib import Path
 from typing import Any, Iterable
 
 
-VALID_RECORD_STATUSES = frozenset({"draft", "human_review", "approved", "implemented", "unresolved"})
+VALID_RECORD_STATUSES = frozenset(
+    {"draft", "human_review", "approved", "implemented", "unresolved"}
+)
 
 
 def normalize_surface(value: str) -> str:
@@ -48,15 +50,23 @@ class PhilologicalLocation:
         known = set(cls.__dataclass_fields__)
         unknown = sorted(set(value) - known)
         if unknown:
-            raise ValueError("Philological location has unsupported field(s): " + ", ".join(unknown))
+            raise ValueError(
+                "Philological location has unsupported field(s): " + ", ".join(unknown)
+            )
         location = cls(**{key: _optional_text(value.get(key)) for key in known})
         if not location.to_dict():
-            raise ValueError("A philological location must contain at least one locator field.")
+            raise ValueError(
+                "A philological location must contain at least one locator field."
+            )
         return location
 
     @property
     def display(self) -> str:
-        parts = [item for item in (self.witness, self.edition, self.section, self.subsection) if item]
+        parts = [
+            item
+            for item in (self.witness, self.edition, self.section, self.subsection)
+            if item
+        ]
         if self.folio_start:
             value = f"f. {self.folio_start}"
             if self.folio_end and self.folio_end != self.folio_start:
@@ -136,17 +146,39 @@ class GroundTruthRecord:
             raise ValueError("Ground-truth record ordinal must be >= 1.")
         if not surface:
             raise ValueError("Ground-truth record is missing 'surface'.")
-        record_id = str(value.get("id") or f"{record_source}:{record_ordinal:04d}").strip()
+        record_id = str(
+            value.get("id") or f"{record_source}:{record_ordinal:04d}"
+        ).strip()
         status = str(value.get("status") or "approved").strip()
         if status not in VALID_RECORD_STATUSES:
-            raise ValueError(f"Ground-truth record {record_id!r} has unsupported status {status!r}.")
+            raise ValueError(
+                f"Ground-truth record {record_id!r} has unsupported status {status!r}."
+            )
         notes = value.get("notes") or []
         locations = value.get("locations") or []
-        if not isinstance(notes, list) or not all(isinstance(note, str) for note in notes):
+        if not isinstance(notes, list) or not all(
+            isinstance(note, str) for note in notes
+        ):
             raise ValueError(f"Ground-truth record {record_id!r} has invalid 'notes'.")
         if not isinstance(locations, list):
-            raise ValueError(f"Ground-truth record {record_id!r} has invalid 'locations'.")
-        known = {"id", "source", "kind", "ordinal", "surface", "target", "status", "diplomatic", "normalized_target", "translation", "analysis", "locations", "notes"}
+            raise ValueError(
+                f"Ground-truth record {record_id!r} has invalid 'locations'."
+            )
+        known = {
+            "id",
+            "source",
+            "kind",
+            "ordinal",
+            "surface",
+            "target",
+            "status",
+            "diplomatic",
+            "normalized_target",
+            "translation",
+            "analysis",
+            "locations",
+            "notes",
+        }
         return cls(
             id=record_id,
             source=record_source,
@@ -172,29 +204,42 @@ def load_records(path: Path, *, source: str, kind: str) -> list[GroundTruthRecor
     records: list[GroundTruthRecord] = []
     seen_ids: set[str] = set()
     seen_ordinals: set[int] = set()
-    for physical_line, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+    for physical_line, raw in enumerate(
+        path.read_text(encoding="utf-8").splitlines(), start=1
+    ):
         if not raw.strip():
             continue
         try:
             payload = json.loads(raw)
         except json.JSONDecodeError as exc:
-            raise ValueError(f"Invalid JSON in {path}:{physical_line}: {exc.msg}") from exc
+            raise ValueError(
+                f"Invalid JSON in {path}:{physical_line}: {exc.msg}"
+            ) from exc
         if not isinstance(payload, dict):
-            raise ValueError(f"Ground-truth record {path}:{physical_line} must be a JSON object.")
-        record = GroundTruthRecord.from_dict(payload, source=source, kind=kind, ordinal=len(records) + 1)
+            raise ValueError(
+                f"Ground-truth record {path}:{physical_line} must be a JSON object."
+            )
+        record = GroundTruthRecord.from_dict(
+            payload, source=source, kind=kind, ordinal=len(records) + 1
+        )
         if record.id in seen_ids or record.ordinal in seen_ordinals:
             raise ValueError(f"Duplicate ground-truth record identity in {path}.")
         seen_ids.add(record.id)
         seen_ordinals.add(record.ordinal)
         records.append(record)
     if [record.ordinal for record in records] != list(range(1, len(records) + 1)):
-        raise ValueError(f"Ground-truth records in {path} must use contiguous ordinals.")
+        raise ValueError(
+            f"Ground-truth records in {path} must use contiguous ordinals."
+        )
     return records
 
 
 def write_records(path: Path, records: Iterable[GroundTruthRecord]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    rows = [json.dumps(record.to_dict(), ensure_ascii=False, sort_keys=True) for record in records]
+    rows = [
+        json.dumps(record.to_dict(), ensure_ascii=False, sort_keys=True)
+        for record in records
+    ]
     path.write_text("\n".join(rows) + ("\n" if rows else ""), encoding="utf-8")
 
 
@@ -211,14 +256,24 @@ def append_records(
         if not surface:
             continue
         ordinal = len(result) + 1
-        result.append(GroundTruthRecord(id=f"{source}:{ordinal:04d}", source=source, kind=kind, ordinal=ordinal, surface=surface))
+        result.append(
+            GroundTruthRecord(
+                id=f"{source}:{ordinal:04d}",
+                source=source,
+                kind=kind,
+                ordinal=ordinal,
+                surface=surface,
+            )
+        )
     return result
 
 
 def append_record(path: Path, record: GroundTruthRecord) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a", encoding="utf-8") as handle:
-        handle.write(json.dumps(record.to_dict(), ensure_ascii=False, sort_keys=True) + "\n")
+        handle.write(
+            json.dumps(record.to_dict(), ensure_ascii=False, sort_keys=True) + "\n"
+        )
 
 
 def replace_record_surface(
@@ -233,12 +288,18 @@ def replace_record_surface(
             continue
         updated[index] = replace(
             record,
-            normalized_target=normalized if record.normalized_target is not None else None,
-            surface=record.surface if record.normalized_target is not None else normalized,
+            normalized_target=(
+                normalized if record.normalized_target is not None else None
+            ),
+            surface=(
+                record.surface if record.normalized_target is not None else normalized
+            ),
         )
         return updated
     raise KeyError(f"No ground-truth record has ordinal {ordinal}.")
 
 
-def add_record_location(record: GroundTruthRecord, location: PhilologicalLocation) -> GroundTruthRecord:
+def add_record_location(
+    record: GroundTruthRecord, location: PhilologicalLocation
+) -> GroundTruthRecord:
     return replace(record, locations=(*record.locations, location))

@@ -641,6 +641,11 @@
   },
   {
     "value": "a",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_6:NOUN:POSSESSOR:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "a",
     "tag": "[CONSONANT_ENDING:DEEPEST_NODE_6:NOUN:SUBSTANTIVE_SUFFIX]",
     "translation": ""
   },

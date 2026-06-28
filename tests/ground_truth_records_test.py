@@ -16,9 +16,14 @@ from authoring.records import (
 
 class GroundTruthRecordTest(unittest.TestCase):
     def test_append_records_gets_stable_contiguous_ids(self) -> None:
-        records = append_records([], ["first line.", "", "second line!"], source="demo", kind="historic")
+        records = append_records(
+            [], ["first line.", "", "second line!"], source="demo", kind="historic"
+        )
         self.assertEqual([record.id for record in records], ["demo:0001", "demo:0002"])
-        self.assertEqual([record.expected_surface for record in records], ["first line", "second line"])
+        self.assertEqual(
+            [record.expected_surface for record in records],
+            ["first line", "second line"],
+        )
 
     def test_structured_record_round_trip_preserves_editorial_fields(self) -> None:
         record = GroundTruthRecord(
