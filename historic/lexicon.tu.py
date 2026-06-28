@@ -3,9 +3,6 @@ import os
 import sys
 
 
-from authoring.source_annotations import attest, loc
-
-
 def _prepend_dev_path(*parts: str) -> None:
     path = os.path.abspath(
         os.path.join(os.path.dirname(__file__), "..", "..", "nhe-enga", *parts)
