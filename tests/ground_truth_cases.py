@@ -10,6 +10,17 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from authoring.records import (
+    GroundTruthRecord,
+    append_records,
+    legacy_path,
+    load_preferred_records,
+    record_path,
+    records_from_legacy_text,
+    replace_record_surface,
+    write_records,
+)
+
 ExpressionSource = Iterable[object] | Callable[[], Iterable[object]]
 
 HISTORIC_GROUND_TRUTH_DIR = ROOT / "ground_truth" / "historic"
@@ -25,6 +36,7 @@ class GroundTruthCase:
     kind: str
     allow_extra_lines: bool = True
     load_error: Exception | None = None
+    record_path: Path | None = None
 
 
 @dataclass(frozen=True)
@@ -70,15 +82,24 @@ class GroundTruthSourceLoadError(Exception):
 
 
 def normalize_expected_lines(text: str) -> list[str]:
-    lines = []
-    for raw in text.splitlines():
-        stripped = raw.strip()
-        if not stripped:
-            continue
-        if stripped[-1] in ".;:!?":
-            stripped = stripped[:-1]
-        lines.append(stripped)
-    return lines
+    """Legacy compatibility helper for callers and old text fixtures."""
+    return [record.expected_surface for record in records_from_legacy_text(
+        text, source="legacy", kind="legacy"
+    )]
+
+
+def get_case_records(case: GroundTruthCase) -> list[GroundTruthRecord]:
+    """Load structured JSONL records when present, otherwise adapt legacy text."""
+    if case.record_path is not None and case.record_path.exists():
+        records, _ = load_preferred_records(ROOT, source=case.name, kind=case.kind)
+        return records
+    if case.ground_truth_path.exists():
+        return records_from_legacy_text(
+            case.ground_truth_path.read_text(encoding="utf-8"),
+            source=case.name,
+            kind=case.kind,
+        )
+    return []
 
 
 def render_lines(expressions: ExpressionSource) -> list[str]:
@@ -105,9 +126,7 @@ def render_lines(expressions: ExpressionSource) -> list[str]:
 def compare_case_lines(case: GroundTruthCase) -> GroundTruthComparison:
     if case.load_error is not None:
         raise GroundTruthSourceLoadError(case.load_error)
-    expected_lines = normalize_expected_lines(
-        case.ground_truth_path.read_text(encoding="utf-8")
-    )
+    expected_lines = [record.expected_surface for record in get_case_records(case)]
     actual_lines = render_lines(case.expressions)
     for index, expected in enumerate(expected_lines):
         line_no = index + 1
@@ -138,6 +157,7 @@ def compare_case_lines(case: GroundTruthCase) -> GroundTruthComparison:
 
 
 def append_ground_truth_lines(path: Path, lines: list[str]) -> None:
+    """Append legacy text for compatibility with existing corpus consumers."""
     if not lines:
         return
     existing = path.read_text(encoding="utf-8") if path.exists() else ""
@@ -147,6 +167,7 @@ def append_ground_truth_lines(path: Path, lines: list[str]) -> None:
     updated += "\n".join(lines)
     if not updated.endswith("\n"):
         updated += "\n"
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(updated, encoding="utf-8")
 
 
@@ -167,15 +188,51 @@ def replace_ground_truth_line(path: Path, line_no: int, line: str) -> None:
     path.write_text("\n".join(raw_lines) + "\n", encoding="utf-8")
 
 
+def append_case_ground_truth_lines(case: GroundTruthCase, lines: list[str]) -> None:
+    """Append approved targets to canonical JSONL and mirror legacy text when present."""
+    if not lines:
+        return
+    records = get_case_records(case)
+    updated = append_records(records, lines, source=case.name, kind=case.kind)
+    structured = case.record_path or record_path(ROOT, kind=case.kind, source=case.name)
+    write_records(structured, updated)
+    append_ground_truth_lines(case.ground_truth_path, lines)
+
+
+def replace_case_ground_truth_line(case: GroundTruthCase, line_no: int, line: str) -> None:
+    """Replace an approved target in canonical JSONL and the legacy text mirror."""
+    records = get_case_records(case)
+    updated = replace_record_surface(records, line_no, line)
+    structured = case.record_path or record_path(ROOT, kind=case.kind, source=case.name)
+    write_records(structured, updated)
+    replace_ground_truth_line(case.ground_truth_path, line_no, line)
+
+
+def migrate_case_to_records(case: GroundTruthCase, *, overwrite: bool = False) -> Path:
+    structured = case.record_path or record_path(ROOT, kind=case.kind, source=case.name)
+    if structured.exists() and not overwrite:
+        return structured
+    records = records_from_legacy_text(
+        case.ground_truth_path.read_text(encoding="utf-8"),
+        source=case.name,
+        kind=case.kind,
+    )
+    write_records(structured, records)
+    return structured
+
+
 def _load_cases_from_dir(
     *,
     ground_truth_dir: Path,
     kind: str,
     expression_loader: Callable[[str], ExpressionSource],
 ) -> list[GroundTruthCase]:
+    records_dir = ROOT / "ground_truth" / "records" / kind
+    names = {path.stem for path in ground_truth_dir.glob("*.txt")}
+    names.update(path.stem for path in records_dir.glob("*.jsonl"))
     cases: list[GroundTruthCase] = []
-    for path in sorted(ground_truth_dir.glob("*.txt")):
-        name = path.stem
+    for name in sorted(names):
+        path = ground_truth_dir / f"{name}.txt"
         expressions: ExpressionSource = ()
         load_error = None
         try:
@@ -189,6 +246,7 @@ def _load_cases_from_dir(
                 expressions=expressions,
                 kind=kind,
                 load_error=load_error,
+                record_path=records_dir / f"{name}.jsonl",
             )
         )
     return cases
