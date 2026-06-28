@@ -10,13 +10,13 @@ TOOLTIP_DB ?= var/tooltip_overrides.sqlite3
 FRONTEND_DIR ?= frontend
 FRONTEND_STAMP := $(FRONTEND_DIR)/node_modules/.installed
 
-.PHONY: help lint push test update-ground-truth review-ground-truth play dict frontend-install frontend-build serve-dict
+.PHONY: help lint push test update-ground-truth review-ground-truth verify-ground-truth migrate-ground-truth-records play dict frontend-install frontend-build serve-dict
 
-help: ## Show available make targets
+help: ## Show available targets
 	@printf "Available targets:\n"
-	@awk 'BEGIN {FS = ":.*## "}; /^[a-zA-Z0-9_.-]+:.*## / {printf "  %-20s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+	@awk 'BEGIN {FS = ":.*## "}; /^[a-zA-Z0-9_.-]+:.*## / {printf "  %-30s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 	@printf "\nVariables:\n"
-	@printf "  %-20s %s\n" 'ARGS="..."' "Extra arguments passed through to test commands"
+	@printf "  %-20s %s\n" 'ARGS="..."' "Extra arguments passed through to test or ground-truth commands"
 	@printf "  %-20s %s\n" 'HOST=0.0.0.0' "Host interface used by serve-dict"
 	@printf "  %-20s %s\n" 'PORT=8000' "Port used by serve-dict"
 	@printf "  %-20s %s\n" 'TOOLTIP_DB=...' "SQLite file used for editable tooltip notes"
@@ -35,12 +35,18 @@ push: ## Lint, test, commit, and push the current branch
 test: ## Run the test suite; pass extra args with ARGS="..."
 	python3 tests/run_tests.py $(ARGS)
 
-update-ground-truth: ## Run tests, then append new trailing ground-truth lines
+verify-ground-truth: ## Compare rendered historic sources to approved records without writing
+	python3 -m authoring.ground_truth_cli verify $(ARGS)
+
+migrate-ground-truth-records: ## Create structured JSONL records from legacy ground-truth text
+	python3 -m authoring.ground_truth_cli migrate $(ARGS)
+
+update-ground-truth: ## Legacy updater; prefer review-ground-truth for human-approved structured records
 	$(MAKE) test ARGS="$(ARGS)"
 	python3 tests/run_tests.py --accept-new-ground-truth $(ARGS)
 
-review-ground-truth: ## Interactively review and append new ground-truth lines
-	python3 tests/run_tests.py --update-ground-truth $(ARGS)
+review-ground-truth: ## Interactively approve new trailing targets into structured JSONL and legacy mirrors
+	python3 -m authoring.ground_truth_cli review $(ARGS)
 
 play: ## Open the interactive playground
 	python3 -i playground.py
