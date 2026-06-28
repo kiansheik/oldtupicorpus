@@ -9,24 +9,16 @@ from authoring.records import (
     PhilologicalLocation,
     append_records,
     load_records,
-    records_from_legacy_text,
     replace_record_surface,
     write_records,
 )
 
 
 class GroundTruthRecordTest(unittest.TestCase):
-    def test_legacy_text_gets_stable_contiguous_record_ids(self) -> None:
-        records = records_from_legacy_text(
-            "first line.\n\nsecond line!\n",
-            source="demo",
-            kind="historic",
-        )
+    def test_append_records_gets_stable_contiguous_ids(self) -> None:
+        records = append_records([], ["first line.", "", "second line!"], source="demo", kind="historic")
         self.assertEqual([record.id for record in records], ["demo:0001", "demo:0002"])
-        self.assertEqual(
-            [record.expected_surface for record in records],
-            ["first line", "second line"],
-        )
+        self.assertEqual([record.expected_surface for record in records], ["first line", "second line"])
 
     def test_structured_record_round_trip_preserves_editorial_fields(self) -> None:
         record = GroundTruthRecord(
@@ -60,8 +52,7 @@ class GroundTruthRecordTest(unittest.TestCase):
         self.assertEqual(loaded[0].locations[0].display, "2, 2.1, p. 25-26, l. 25-34")
 
     def test_append_and_replace_keep_record_identity(self) -> None:
-        records = records_from_legacy_text("one\n", source="demo", kind="historic")
-        records = append_records(records, ["two"], source="demo", kind="historic")
+        records = append_records([], ["one", "two"], source="demo", kind="historic")
         replaced = replace_record_surface(records, 2, "changed")
         self.assertEqual(replaced[1].id, "demo:0002")
         self.assertEqual(replaced[1].expected_surface, "changed")
