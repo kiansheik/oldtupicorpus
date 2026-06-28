@@ -1,28 +1,21 @@
 from __future__ import annotations
 
-import io
 import sys
 import tempfile
 import unittest
-from contextlib import redirect_stderr
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-TESTS_DIR = Path(__file__).resolve().parent
-if str(TESTS_DIR) not in sys.path:
-    sys.path.insert(0, str(TESTS_DIR))
-
+from authoring.records import GroundTruthRecord, write_records
 from ground_truth_cases import (
     GroundTruthCase,
     GroundTruthRenderError,
     GroundTruthSourceLoadError,
     compare_case_lines,
-    replace_ground_truth_line,
 )
-from run_tests import _append_case_updates, _review_case_by_name, _review_case_updates
 
 
 class FakeExpression:
@@ -33,160 +26,60 @@ class FakeExpression:
         return self.text
 
 
-class GroundTruthUpdateTest(unittest.TestCase):
-    def _make_case(
-        self, *, expected_text: str, actual_lines: list[str]
-    ) -> GroundTruthCase:
+class GroundTruthCaseTest(unittest.TestCase):
+    def _make_case(self, expected_lines: list[str], actual_lines: list[str]) -> GroundTruthCase:
         tmpdir = tempfile.TemporaryDirectory()
         self.addCleanup(tmpdir.cleanup)
-        path = Path(tmpdir.name) / "sample.txt"
-        path.write_text(expected_text, encoding="utf-8")
-        expressions = [FakeExpression(line) for line in actual_lines]
+        path = Path(tmpdir.name) / "sample.jsonl"
+        records = [
+            GroundTruthRecord(
+                id=f"sample:{ordinal:04d}",
+                source="sample",
+                kind="historic",
+                ordinal=ordinal,
+                surface=line,
+            )
+            for ordinal, line in enumerate(expected_lines, start=1)
+        ]
+        write_records(path, records)
         return GroundTruthCase(
             name="sample",
-            ground_truth_path=path,
-            expressions=expressions,
+            record_path=path,
+            expressions=[FakeExpression(line) for line in actual_lines],
             kind="historic",
         )
 
-    def test_compare_case_lines_collects_extra_lines_after_matching_prefix(
-        self,
-    ) -> None:
-        case = self._make_case(
-            expected_text="line one\n",
-            actual_lines=["line one", "line two", "line three"],
+    def test_compare_collects_extra_lines_after_matching_prefix(self) -> None:
+        comparison = compare_case_lines(self._make_case(["line one"], ["line one", "line two"]))
+        self.assertFalse(comparison.has_mismatch)
+        self.assertEqual(comparison.extra_lines, ["line two"])
+
+    def test_compare_reports_existing_mismatch(self) -> None:
+        comparison = compare_case_lines(self._make_case(["line one"], ["different line"]))
+        self.assertTrue(comparison.has_mismatch)
+        self.assertEqual(comparison.mismatch_line_no, 1)
+        self.assertEqual(comparison.mismatch_expected, "line one")
+        self.assertEqual(comparison.mismatch_actual, "different line")
+
+    def test_missing_jsonl_means_all_rendered_lines_are_unapproved(self) -> None:
+        tmpdir = tempfile.TemporaryDirectory()
+        self.addCleanup(tmpdir.cleanup)
+        case = GroundTruthCase(
+            name="sample",
+            record_path=Path(tmpdir.name) / "missing.jsonl",
+            expressions=[FakeExpression("line one")],
+            kind="historic",
         )
         comparison = compare_case_lines(case)
         self.assertFalse(comparison.has_mismatch)
-        self.assertEqual(comparison.extra_lines, ["line two", "line three"])
+        self.assertEqual(comparison.extra_lines, ["line one"])
 
-    def test_review_case_updates_only_appends_confirmed_prefix(self) -> None:
-        case = self._make_case(
-            expected_text="line one\n",
-            actual_lines=["line one", "line two", "line three"],
-        )
-        comparison = compare_case_lines(case)
-        responses = iter(["y", "n"])
-        with redirect_stderr(io.StringIO()):
-            status = _review_case_updates(
-                comparison,
-                input_fn=lambda _: next(responses),
-            )
-        self.assertEqual(status, "updated")
-        self.assertEqual(
-            case.ground_truth_path.read_text(encoding="utf-8"),
-            "line one\nline two\n",
-        )
-
-    def test_review_case_updates_prints_recent_context_before_new_line(self) -> None:
-        expected_lines = [f"line {index}" for index in range(1, 13)]
-        case = self._make_case(
-            expected_text="\n".join(expected_lines) + "\n",
-            actual_lines=expected_lines + ["line 13"],
-        )
-        comparison = compare_case_lines(case)
-        stderr = io.StringIO()
-        with redirect_stderr(stderr):
-            status = _review_case_updates(
-                comparison,
-                input_fn=lambda _: "n",
-            )
-        output = stderr.getvalue()
-        self.assertEqual(status, "stopped")
-        self.assertIn("[sample] context", output)
-        self.assertIn("   3 | line 3", output)
-        self.assertIn("  12 | line 12", output)
-        self.assertNotIn("   1 | line 1", output)
-        self.assertNotIn("   2 | line 2", output)
-        self.assertIn("[sample] line 13", output)
-        self.assertIn("line 13", output)
-
-    def test_review_case_updates_blocks_on_existing_mismatch(self) -> None:
-        case = self._make_case(
-            expected_text="line one\n",
-            actual_lines=["different line", "line two"],
-        )
-        comparison = compare_case_lines(case)
-        with redirect_stderr(io.StringIO()):
-            status = _review_case_updates(comparison, input_fn=lambda _: "e")
-        self.assertEqual(status, "stopped")
-        self.assertEqual(
-            case.ground_truth_path.read_text(encoding="utf-8"),
-            "line one\n",
-        )
-
-    def test_review_case_updates_can_accept_actual_for_mismatch(self) -> None:
-        case = self._make_case(
-            expected_text="line one\n",
-            actual_lines=["different line", "line two"],
-        )
-        comparison = compare_case_lines(case)
-        responses = iter(["a", "y"])
-        with redirect_stderr(io.StringIO()):
-            status = _review_case_updates(
-                comparison,
-                input_fn=lambda _: next(responses),
-            )
-
-        self.assertEqual(status, "updated")
-        self.assertEqual(
-            case.ground_truth_path.read_text(encoding="utf-8"),
-            "different line\nline two\n",
-        )
-
-    def test_replace_ground_truth_line_preserves_blank_lines(self) -> None:
-        case = self._make_case(
-            expected_text="line one\n\nline two\n",
-            actual_lines=["line one", "different line"],
-        )
-
-        replace_ground_truth_line(case.ground_truth_path, 2, "different line")
-
-        self.assertEqual(
-            case.ground_truth_path.read_text(encoding="utf-8"),
-            "line one\n\ndifferent line\n",
-        )
-
-    def test_append_case_updates_accepts_all_extra_lines(self) -> None:
-        case = self._make_case(
-            expected_text="line one\n",
-            actual_lines=["line one", "line two", "line three"],
-        )
-        comparison = compare_case_lines(case)
-        with redirect_stderr(io.StringIO()):
-            status = _append_case_updates(comparison)
-
-        self.assertEqual(status, "updated")
-        self.assertEqual(
-            case.ground_truth_path.read_text(encoding="utf-8"),
-            "line one\nline two\nline three\n",
-        )
-
-    def test_append_case_updates_blocks_on_existing_mismatch(self) -> None:
-        case = self._make_case(
-            expected_text="line one\n",
-            actual_lines=["different line", "line two"],
-        )
-        comparison = compare_case_lines(case)
-        with redirect_stderr(io.StringIO()):
-            status = _append_case_updates(comparison)
-
-        self.assertEqual(status, "blocked")
-        self.assertEqual(
-            case.ground_truth_path.read_text(encoding="utf-8"),
-            "line one\n",
-        )
-
-    def test_compare_case_lines_raises_render_error_for_non_expression_items(
-        self,
-    ) -> None:
+    def test_compare_raises_render_error_for_non_expression_items(self) -> None:
         tmpdir = tempfile.TemporaryDirectory()
         self.addCleanup(tmpdir.cleanup)
-        path = Path(tmpdir.name) / "sample.txt"
-        path.write_text("", encoding="utf-8")
         case = GroundTruthCase(
             name="sample",
-            ground_truth_path=path,
+            record_path=Path(tmpdir.name) / "sample.jsonl",
             expressions=[("bad", "tuple")],
             kind="historic",
         )
@@ -195,32 +88,12 @@ class GroundTruthUpdateTest(unittest.TestCase):
         self.assertEqual(ctx.exception.line_no, 1)
         self.assertEqual(type(ctx.exception.expr).__name__, "tuple")
 
-    def test_review_case_by_name_blocks_render_errors_without_prompting(self) -> None:
+    def test_compare_raises_source_load_error(self) -> None:
         tmpdir = tempfile.TemporaryDirectory()
         self.addCleanup(tmpdir.cleanup)
-        path = Path(tmpdir.name) / "sample.txt"
-        path.write_text("", encoding="utf-8")
         case = GroundTruthCase(
             name="sample",
-            ground_truth_path=path,
-            expressions=[("bad", "tuple")],
-            kind="historic",
-        )
-        with redirect_stderr(io.StringIO()):
-            status = _review_case_by_name(
-                case,
-                input_fn=lambda _: self.fail("input should not be called"),
-            )
-        self.assertEqual(status, "blocked")
-
-    def test_compare_case_lines_raises_source_load_error(self) -> None:
-        tmpdir = tempfile.TemporaryDirectory()
-        self.addCleanup(tmpdir.cleanup)
-        path = Path(tmpdir.name) / "sample.txt"
-        path.write_text("", encoding="utf-8")
-        case = GroundTruthCase(
-            name="sample",
-            ground_truth_path=path,
+            record_path=Path(tmpdir.name) / "sample.jsonl",
             expressions=(),
             kind="historic",
             load_error=NameError("missing_name"),
