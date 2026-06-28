@@ -10,7 +10,7 @@ TOOLTIP_DB ?= var/tooltip_overrides.sqlite3
 FRONTEND_DIR ?= frontend
 FRONTEND_STAMP := $(FRONTEND_DIR)/node_modules/.installed
 
-.PHONY: help lint push test update-ground-truth play dict frontend-install frontend-build serve-dict
+.PHONY: help lint push test update-ground-truth review-ground-truth play dict frontend-install frontend-build serve-dict
 
 help: ## Show available make targets
 	@printf "Available targets:\n"
@@ -35,7 +35,11 @@ push: ## Lint, test, commit, and push the current branch
 test: ## Run the test suite; pass extra args with ARGS="..."
 	python3 tests/run_tests.py $(ARGS)
 
-update-ground-truth: ## Review and append new ground-truth lines
+update-ground-truth: ## Run tests, then append new trailing ground-truth lines
+	$(MAKE) test ARGS="$(ARGS)"
+	python3 tests/run_tests.py --accept-new-ground-truth $(ARGS)
+
+review-ground-truth: ## Interactively review and append new ground-truth lines
 	python3 tests/run_tests.py --update-ground-truth $(ARGS)
 
 play: ## Open the interactive playground

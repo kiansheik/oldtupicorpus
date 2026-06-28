@@ -1,7 +1,91 @@
 # Agent Log
 
+## 2026-06-28
+
+- Reverted the broad shared `gen` inflection leak by keeping the shared generic
+  person prefix as `moro` for nominal/deverbal forms, while hardcoding `poro`
+  only in the conjugated generic-object verb branch. This restores Araujo line
+  52 as `arobîar moropysyrõanamo sekó`.
+- Updated `tests/moro_incorporation_test.py` to cover
+  `sara.var(1) * (moro * pysyro)` as `moropysyrõana` and the possessed
+  deverbal case as `nde moroapitîaba`.
+- Ran `python3 tests/run_tests.py --accept-new-ground-truth --ground-truth-source araujo_catecismo_1686`;
+  it appended the three new trailing commandment lines and a second run reported
+  no new lines.
+- Added session handoff:
+  `docs/agent/session-handoffs/2026-06-28T09-30-12-0300-moro-absolute-restore.md`.
+- Fixed generic `moro` object imperatives in sibling `../nhe-enga`: explicit
+  non-3p `gen` object conjugations now keep the subject/imperative prefix, so
+  `(+nde * apiti * moro).imp()` renders `eporoapiti`.
+- Marked the final Araujo commandment expression as a negative imperative, so it
+  renders `eporoapiti umẽ`.
+- Updated `tests/moro_incorporation_test.py` to cover both positive
+  `eporoapiti` and prohibitive `eporoapiti umẽ`.
+- Verified with `python3 -m unittest tests.moro_incorporation_test`, direct
+  expression probes, and `PYTHONPATH=. python3 historic/araujo_catecismo_1686.tu.py | tail -n 8`.
+- Added session handoff:
+  `docs/agent/session-handoffs/2026-06-28T09-24-48-0300-moro-imperative-prefix.md`.
+
+## 2026-06-13
+
+- Changed generic `moro` in the sibling `../nhe-enga` Tupi inflection table so
+  the absolute form stays `moro` while the dependent/prefix form is `poro`.
+  This makes incorporated-object verb forms render as `poro...`, e.g.
+  `(+nde * apiti * moro).imp()` -> `poroapiti`.
+- Added `tests/moro_incorporation_test.py` covering absolute `moro`,
+  conjugated incorporation, and possessed/deverbal `poro...` forms.
+- Verified with `python3 -m unittest tests.moro_incorporation_test` and
+  `python3 -m unittest tests.rendered_corpus_test`. A targeted
+  `python3 tests/run_tests.py --skip-tokenizer --ground-truth-source araujo_catecismo_1686`
+  shows the expected Araujo line 52 mismatch:
+  `poropysyrõanamo` vs old `moropysyrõanamo`.
+- Added session handoff:
+  `docs/agent/session-handoffs/2026-06-13T10-57-46-0300-moro-incorporation.md`.
+- Extended `make review-ground-truth` mismatch handling: when an existing line
+  differs, the prompt can keep `[e]xpected`, accept `[a]ctual` into the
+  ground-truth file, or `[q]uit`; accepting actual replaces only the selected
+  logical line and then re-runs comparison.
+- Added `replace_ground_truth_line()` and regression coverage for accepting an
+  actual mismatch and preserving blank lines during replacement.
+- Verified with `python3 -m unittest tests.ground_truth_cases_test`.
+- Added session handoff:
+  `docs/agent/session-handoffs/2026-06-13T10-40-22-0300-review-ground-truth-mismatches.md`.
+- Changed `make update-ground-truth` into the fast append workflow: it now runs
+  `make test ARGS="..."` first and then runs
+  `python3 tests/run_tests.py --accept-new-ground-truth $(ARGS)` to append all
+  trailing rendered lines only after tests pass.
+- Added `make review-ground-truth` for the previous interactive line-by-line
+  updater.
+- Added non-interactive append helpers and regression tests in
+  `tests/ground_truth_cases_test.py`.
+- Verified with `python3 -m unittest tests.ground_truth_cases_test` and dry-run
+  `make -n` checks for both updater targets. Broader
+  `python3 tests/run_tests.py --skip-tokenizer` is blocked by an existing line
+  18 `îeerobîasaba`/`îerobîasaba` mismatch in both historic cases.
+- Added session handoff:
+  `docs/agent/session-handoffs/2026-06-13T10-37-25-0300-fast-ground-truth-update.md`.
+- Fixed `saba` deverbal negation in the sibling `../nhe-enga` checkout:
+  `-(saba * v(marãtekó))` and `saba * -v(marãtekó)` now render with
+  `e'ym` as `marãtekoabe'yma`.
+- Added `tests/deverbal_negation_test.py` to pin both negation propagation
+  paths from this repo's `historic.lexicon` import path.
+- Verified with `python3 -m unittest tests.deverbal_negation_test` and
+  `python3 -m unittest tests.rendered_corpus_test`.
+- Added session handoff:
+  `docs/agent/session-handoffs/2026-06-13T10-34-02-0300-saba-negation.md`.
+
 ## 2026-05-22
 
+- Added PAGE XML faded-text markup: `%XX text%` now renders `text` with the
+  requested visible opacity percentage, keeps the underlying text searchable,
+  and excludes the `%XX`/closing `%` markers from line-width estimation. The
+  Portuguese stylization guide and focused XML page tests cover the new syntax.
+- Added Transkribus export directory mode to `scripts/xmlpage_to_html.py`.
+  Directory input now discovers `mets.xml` documents, validates all declared
+  `PAGEXML` page files before writing, and emits one continuous scrollable HTML
+  book. Added `--output` for explicit destination files.
+- Generated `scripts/export_job_26821620/output.html` from the 248-page
+  Transkribus export as a live check of the new directory mode.
 - Added PAGE XML ligature shorthands: `a=e`/`o=e` now render as `æ`/`œ`, with
   capitalized variants for `Æ`/`Œ`, so Latin ligatures can be typed from a US
   keyboard without broad automatic `ae`/`oe` replacement.

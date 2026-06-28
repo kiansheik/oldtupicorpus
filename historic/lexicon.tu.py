@@ -268,6 +268,25 @@ magreza = Noun("angaíba")
 sinner = saba * v(magreza)
 sinfullife = ikó / sinner
 
+credo = lambda x: ((arobiar * ((amo * (x)) + (ae * ikó))))
+pyreramo = lambda x: (amo * (pûera * (pyra * x)))
+n = lambda x: (x).base_nominal(True)
+payment = Verb("epyme'eng")
+dez = Number("dez")
+ekomonhangaba = saba * ekomonhang
+
+eimoeté = (+nde * moeté).imp()
+tenhen = Adverb("tenh˜e", definition="in vain")
+anheté = Interjection("anheté", definition="it's true!")
+domingo = Noun("domingo", definition="Sunday")
+marã = Noun("marã", definition="trabalho")
+tekó = Noun("tekó", definition="nature, law")
+marãtekó = Noun("marãtekó", definition="job, occupation")
+noworkday = ara @ -(saba * v(marãtekó))
+domingo_e_feriado = abé.var(1) * domingo * noworkday
+pais = abé * (nde * tuba) * (nde * sy)
+apiti = Verb("apiti", definition="murder")
+
 __all__ = [
     name for name in globals() if not name.startswith("_") and name not in {"os", "sys"}
 ]

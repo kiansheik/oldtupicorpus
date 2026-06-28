@@ -120,7 +120,6 @@ l += amen
 # artigos da fé
 l += catorse * (rama * (asé * (emi * erobîar)))
 l += ((sete * ((nduara * (tupan * esé))))) + ((nã) + (+ae * ei))
-credo = lambda x: ((arobiar * ((amo * (x)) + (ae * ikó))))
 l += arobiar * ((oîepé * (tupan)) @ (otmrme))
 l += credo(tuba)
 l += credo(tayra)
@@ -155,7 +154,6 @@ l += (
     )
 ) + memen
 
-pyreramo = lambda x: (amo * (pûera * (pyra * x)))
 l += arobiar * (
     (asé * esé)
     + (
@@ -193,10 +191,19 @@ l += arobiar * (
         )
     )
 )
-n = lambda x: (x).base_nominal(True)
 l += arobiar * ((abé.var(1) * risetoheaven) * rightsidegod)
-payment = Verb("epyme'eng")
 l += arobiar * ((abé.var(1) * bondadenomundo * (pûera * n(ae * sinfullife))) * payment)
+# Mandamentos da Ley de Deos
+l += dez * (saba * (asé * (tupan * ekomonhang)))
+l += (eimoeté * (oîepé * tupan)).imp()
+
+l += (anheté + (+nde * (-ei / tenhen)) << (nde * enõî * (tupan * era))).imp()
+marãtekó.definition = "state of work, job, working"
+l += eimoeté * (domingo_e_feriado)
+
+l += eimoeté * pais
+
+l += -(+nde * apiti * moro).imp()
 
 
 araujo_catecismo_1686 = l

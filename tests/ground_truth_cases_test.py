@@ -20,8 +20,9 @@ from ground_truth_cases import (
     GroundTruthRenderError,
     GroundTruthSourceLoadError,
     compare_case_lines,
+    replace_ground_truth_line,
 )
-from run_tests import _review_case_by_name, _review_case_updates
+from run_tests import _append_case_updates, _review_case_by_name, _review_case_updates
 
 
 class FakeExpression:
@@ -107,10 +108,69 @@ class GroundTruthUpdateTest(unittest.TestCase):
         )
         comparison = compare_case_lines(case)
         with redirect_stderr(io.StringIO()):
+            status = _review_case_updates(comparison, input_fn=lambda _: "e")
+        self.assertEqual(status, "stopped")
+        self.assertEqual(
+            case.ground_truth_path.read_text(encoding="utf-8"),
+            "line one\n",
+        )
+
+    def test_review_case_updates_can_accept_actual_for_mismatch(self) -> None:
+        case = self._make_case(
+            expected_text="line one\n",
+            actual_lines=["different line", "line two"],
+        )
+        comparison = compare_case_lines(case)
+        responses = iter(["a", "y"])
+        with redirect_stderr(io.StringIO()):
             status = _review_case_updates(
                 comparison,
-                input_fn=lambda _: self.fail("input should not be called"),
+                input_fn=lambda _: next(responses),
             )
+
+        self.assertEqual(status, "updated")
+        self.assertEqual(
+            case.ground_truth_path.read_text(encoding="utf-8"),
+            "different line\nline two\n",
+        )
+
+    def test_replace_ground_truth_line_preserves_blank_lines(self) -> None:
+        case = self._make_case(
+            expected_text="line one\n\nline two\n",
+            actual_lines=["line one", "different line"],
+        )
+
+        replace_ground_truth_line(case.ground_truth_path, 2, "different line")
+
+        self.assertEqual(
+            case.ground_truth_path.read_text(encoding="utf-8"),
+            "line one\n\ndifferent line\n",
+        )
+
+    def test_append_case_updates_accepts_all_extra_lines(self) -> None:
+        case = self._make_case(
+            expected_text="line one\n",
+            actual_lines=["line one", "line two", "line three"],
+        )
+        comparison = compare_case_lines(case)
+        with redirect_stderr(io.StringIO()):
+            status = _append_case_updates(comparison)
+
+        self.assertEqual(status, "updated")
+        self.assertEqual(
+            case.ground_truth_path.read_text(encoding="utf-8"),
+            "line one\nline two\nline three\n",
+        )
+
+    def test_append_case_updates_blocks_on_existing_mismatch(self) -> None:
+        case = self._make_case(
+            expected_text="line one\n",
+            actual_lines=["different line", "line two"],
+        )
+        comparison = compare_case_lines(case)
+        with redirect_stderr(io.StringIO()):
+            status = _append_case_updates(comparison)
+
         self.assertEqual(status, "blocked")
         self.assertEqual(
             case.ground_truth_path.read_text(encoding="utf-8"),

@@ -466,6 +466,11 @@
   },
   {
     "value": "a",
+    "tag": "[CLASS_1:CONSONANT:CONSONANT_ENDING:DEEPEST_NODE_6:GERUND_SUFFIX:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "a",
     "tag": "[CLASS_1:CONSONANT:CONSONANT_ENDING:DEEPEST_NODE_8:GERUND_SUFFIX:SUBSTANTIVE_SUFFIX]",
     "translation": ""
   },
@@ -632,6 +637,11 @@
   {
     "value": "a",
     "tag": "[CONSONANT_ENDING:DEEPEST_NODE_6:NOUN:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_7:SUBSTANTIVE_SUFFIX]",
     "translation": ""
   },
   {
@@ -830,12 +840,22 @@
     "translation": ""
   },
   {
+    "value": "dez",
+    "tag": "[DEEPEST_NODE_1:NUMBER]",
+    "translation": ""
+  },
+  {
     "value": "îe",
     "tag": "[DEEPEST_NODE_1:OBJECT:REFLEXIVE]",
     "translation": ""
   },
   {
     "value": "moro",
+    "tag": "[DEEPEST_NODE_1:OBJECT:gen]",
+    "translation": ""
+  },
+  {
+    "value": "poro",
     "tag": "[DEEPEST_NODE_1:OBJECT:gen]",
     "translation": ""
   },
@@ -940,6 +960,11 @@
     "translation": ""
   },
   {
+    "value": "ab",
+    "tag": "[DEEPEST_NODE_2:FACILITY_SUFFIX]",
+    "translation": ""
+  },
+  {
     "value": "am",
     "tag": "[DEEPEST_NODE_2:FUTURE_SUFFIX]",
     "translation": ""
@@ -980,8 +1005,18 @@
     "translation": ""
   },
   {
+    "value": "anheté",
+    "tag": "[DEEPEST_NODE_3:INTERJECTION]",
+    "translation": ""
+  },
+  {
     "value": "pe",
     "tag": "[DEEPEST_NODE_3:LOCATIVE:POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "oîepé",
+    "tag": "[DEEPEST_NODE_3:NUMBER:ONE]",
     "translation": ""
   },
   {
@@ -1247,6 +1282,11 @@
   {
     "value": "pe",
     "tag": "[DEEPEST_NODE_7:LOCATIVE:POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "e'ym",
+    "tag": "[DEEPEST_NODE_7:NEGATION_SUFFIX]",
     "translation": ""
   },
   {

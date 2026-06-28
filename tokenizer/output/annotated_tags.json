@@ -536,6 +536,10 @@
     "tag": "[CIRCUMSTANTIAL_SUFFIX:VOWEL_ENDING]"
   },
   {
+    "id": "T000383",
+    "tag": "[CLASS_1:CONSONANT:CONSONANT_ENDING:DEEPEST_NODE_6:GERUND_SUFFIX:SUBSTANTIVE_SUFFIX]"
+  },
+  {
     "id": "T000262",
     "tag": "[CLASS_1:CONSONANT:CONSONANT_ENDING:DEEPEST_NODE_8:GERUND_SUFFIX:SUBSTANTIVE_SUFFIX]"
   },
@@ -702,6 +706,10 @@
   {
     "id": "T000165",
     "tag": "[CONSONANT_ENDING:DEEPEST_NODE_6:NOUN:SUBSTANTIVE_SUFFIX]"
+  },
+  {
+    "id": "T000385",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_7:SUBSTANTIVE_SUFFIX]"
   },
   {
     "id": "T000294",
@@ -956,6 +964,10 @@
     "tag": "[DEEPEST_NODE_22:FUTURE_SUFFIX]"
   },
   {
+    "id": "T000380",
+    "tag": "[DEEPEST_NODE_2:FACILITY_SUFFIX]"
+  },
+  {
     "id": "T000273",
     "tag": "[DEEPEST_NODE_2:FUTURE_SUFFIX]"
   },
@@ -988,12 +1000,20 @@
     "tag": "[DEEPEST_NODE_3:FUTURE_SUFFIX]"
   },
   {
+    "id": "T000382",
+    "tag": "[DEEPEST_NODE_3:INTERJECTION]"
+  },
+  {
     "id": "T000245",
     "tag": "[DEEPEST_NODE_3:LOCATIVE:POSTPOSITION]"
   },
   {
     "id": "T000363",
     "tag": "[DEEPEST_NODE_3:MUTUAL:OBJECT:OBJECT_PREFIX:RECIPROCAL:mut]"
+  },
+  {
+    "id": "T000381",
+    "tag": "[DEEPEST_NODE_3:NUMBER:ONE]"
   },
   {
     "id": "T000250",
@@ -1170,6 +1190,10 @@
   {
     "id": "T000300",
     "tag": "[DEEPEST_NODE_7:LOCATIVE:POSTPOSITION]"
+  },
+  {
+    "id": "T000384",
+    "tag": "[DEEPEST_NODE_7:NEGATION_SUFFIX]"
   },
   {
     "id": "T000280",

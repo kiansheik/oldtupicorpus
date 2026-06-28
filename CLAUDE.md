@@ -13,7 +13,8 @@ make test                          # Run full test suite
 make play                          # Open interactive REPL (playground.py)
 make dict                          # Build dictionary artifacts
 make serve-dict                    # Serve dictionary at localhost:8000 (PORT= to override)
-make update-ground-truth           # Interactively update ground truth files
+make update-ground-truth           # Run tests, then append new trailing ground truth
+make review-ground-truth           # Interactively review new ground truth lines
 make lint                          # Format code with Black
 make push                          # lint + test + git push
 ```

@@ -1,9 +1,35 @@
 # Current State
 
-Last updated: 2026-05-22
+Last updated: 2026-06-28
 
 ## Repo State
 
+- `../nhe-enga/pydicate/pydicate/lang/tupilang/pos/deverbal.py` now applies
+  `e'ym` negation to `saba` deverbals when either the `saba` wrapper itself is
+  negated or the input verb is negated. This fixes expressions such as
+  `-(saba * v(marãtekó))` and `saba * -v(marãtekó)`, which now render
+  `marãtekoabe'yma` instead of the positive `marãtekoaba`.
+- `tests/deverbal_negation_test.py` covers the local `oldtupicorpus` expression
+  path against the sibling `../nhe-enga` dev checkout.
+- `make update-ground-truth` now runs `make test ARGS="..."` first and only
+  then appends all newly rendered trailing ground-truth lines via
+  `--accept-new-ground-truth`. The old interactive per-line workflow is
+  available as `make review-ground-truth`.
+- In `make review-ground-truth`, existing-line mismatches are now reviewable:
+  choose `[e]xpected` to keep the checked-in ground-truth line, `[a]ctual` to
+  replace that logical line with the rendered output and re-compare, or `[q]uit`.
+- `../nhe-enga/tupi/tupi/tupi.py` keeps generic `moro` as `moro` in the shared
+  personal inflection table so nominal/deverbal absolute forms such as
+  `sara.var(1) * (moro * pysyro)` render `moropysyrõana`. The conjugated
+  generic-object branch in `../nhe-enga/tupi/tupi/verb.py` handles its own
+  incorporated `poro` prefix and keeps the subject/imperative prefix for
+  explicit non-3p conjugations, so `(+nde * apiti * moro).imp()` renders
+  `eporoapiti` and the negated Araujo commandment line renders
+  `eporoapiti umẽ`. The local regression test is
+  `tests/moro_incorporation_test.py`.
+- A broad `python3 tests/run_tests.py --skip-tokenizer` check is currently
+  blocked by an existing historic mismatch at line 18 in both Araujo and
+  Bettendorff: actual `îeerobîasaba` vs expected `îerobîasaba`.
 - `docs/agent/` now exists as the repo-local agent wiki.
 - `docs/tokenizer-theory.md` now exists as a teaching document for the current
   tokenizer/canonicalizer and notebook ML pipeline.
@@ -33,12 +59,14 @@ Last updated: 2026-05-22
   `^y`, `ˆu`, `´a`, `` `e ``, `¨i`, and `¸c` into Unicode normalized letters.
   Inline `|text|` markers now render as a handwritten-style vertical strike
   through the marked text, while line-width estimation treats the marked text as
-  visible without the pipes. Escaped brackets `\[` and `\]` render as literal
-  brackets instead of starting or ending footnotes; escaped brackets also work
-  inside footnote text. `R.` response markers are no longer rewritten to `¶`;
-  the text remains `R.` and is wrapped in a stylized manuscript-like inline
-  span. `& ` is no longer treated as shorthand for `R. `; it remains literal
-  input text.
+  visible without the pipes. Inline `%XX text%` markers render `text` with
+  `XX` percent visible opacity for erased/faded-but-readable text; the marker is
+  stripped from line-width estimation and the underlying text remains searchable.
+  Escaped brackets `\[` and `\]` render as literal brackets instead of starting
+  or ending footnotes; escaped brackets also work inside footnote text. `R.`
+  response markers are no longer rewritten to `¶`; the text remains `R.` and is
+  wrapped in a stylized manuscript-like inline span. `& ` is no longer treated
+  as shorthand for `R. `; it remains literal input text.
 - `docs/xmlpage-stylization-guide.md` is the Portuguese human-facing source of
   truth for PAGE XML shorthand, inline syntax, and stylization sugar. It should
   keep user syntax plus rendered examples at the top, and usage/workflow notes
@@ -83,7 +111,11 @@ Last updated: 2026-05-22
 - `scripts/xmlpage_to_html.py` is a standalone PAGE XML to positioned HTML
   converter. It reads `pc:TextLine` baselines, writes `output.html` in the
   current working directory, supports lightweight inline formatting markers,
-  and numbers bracket-derived footnotes per page.
+  and numbers bracket-derived footnotes per page. It now also accepts a
+  Transkribus export directory as input: it discovers document directories with
+  `mets.xml` plus `page/`, reads the METS `PAGEXML` sequence, validates that
+  declared PAGE XML files exist before rendering, and emits one scrollable
+  continuous HTML book. Use `--output` to choose the destination file.
 
 ## Dictionary Workflow Notes
 

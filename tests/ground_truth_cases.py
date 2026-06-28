@@ -150,6 +150,23 @@ def append_ground_truth_lines(path: Path, lines: list[str]) -> None:
     path.write_text(updated, encoding="utf-8")
 
 
+def replace_ground_truth_line(path: Path, line_no: int, line: str) -> None:
+    raw_lines = path.read_text(encoding="utf-8").splitlines()
+    normalized_line_no = 0
+    target_index = None
+    for index, raw_line in enumerate(raw_lines):
+        if not raw_line.strip():
+            continue
+        normalized_line_no += 1
+        if normalized_line_no == line_no:
+            target_index = index
+            break
+    if target_index is None:
+        raise IndexError(f"Ground-truth line {line_no} not found in {path}")
+    raw_lines[target_index] = line
+    path.write_text("\n".join(raw_lines) + "\n", encoding="utf-8")
+
+
 def _load_cases_from_dir(
     *,
     ground_truth_dir: Path,

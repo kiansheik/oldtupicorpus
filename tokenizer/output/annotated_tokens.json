@@ -1240,6 +1240,10 @@
     "value": "anhangyar"
   },
   {
+    "id": "M005212",
+    "value": "anheté"
+  },
+  {
     "id": "M000618",
     "value": "anhu'ybuna"
   },
@@ -2460,6 +2464,14 @@
     "value": "catorse"
   },
   {
+    "id": "M005211",
+    "value": "dez"
+  },
+  {
+    "id": "M005214",
+    "value": "domingo"
+  },
+  {
     "id": "M000050",
     "value": "e"
   },
@@ -3282,6 +3294,10 @@
   {
     "id": "M001091",
     "value": "ereroín"
+  },
+  {
+    "id": "M005213",
+    "value": "eretenhẽ"
   },
   {
     "id": "M004440",
@@ -7654,6 +7670,10 @@
   {
     "id": "M001934",
     "value": "marãmõîang"
+  },
+  {
+    "id": "M005215",
+    "value": "marãtekoab"
   },
   {
     "id": "M001935",
@@ -14338,6 +14358,10 @@
   {
     "id": "M003706",
     "value": "porerokara"
+  },
+  {
+    "id": "M005216",
+    "value": "poro"
   },
   {
     "id": "M003707",

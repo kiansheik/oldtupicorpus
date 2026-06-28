@@ -60,6 +60,13 @@ Use estas marcas diretamente no texto reconhecido/exportado da página.
   - Como aparece no HTML: texto sobrescrito.
 - Sintaxe: `--texto--`
   - Como aparece no HTML: texto subscrito.
+- Sintaxe: `%40 texto%`
+  - Exemplo digitado: `Tertio %40 $raecepto% [leitura provável]`
+  - Como aparece no HTML: `Tertio` seguido de `ſraecepto` com 40% de opacidade
+    visível, mais a nota `leitura provável` abaixo da página.
+  - Uso: transcrever texto apagado ou muito claro quando a leitura é provável,
+    preservando a palavra pesquisável no HTML. O número deve ser de 0 a 100 e
+    representa a porcentagem de opacidade visível estimada pelo transcritor.
 
 As marcas de formatação não entram no cálculo visível de largura da linha, mas
 o texto marcado continua aparecendo.
@@ -99,8 +106,10 @@ o texto marcado continua aparecendo.
 ## Uso do conversor
 
 No Transkribus, abra a página do manuscrito e escolha `Export` no menu para
-obter a representação XML/PAGE XML da página. Esse XML é a entrada usada pelo
-conversor para gerar o HTML do livro.
+obter a representação XML/PAGE XML da página. Escolha `PageXML 2013` na
+exportação; o conversor espera o namespace PAGE XML 2013. Não escolha
+`PageXML 2019`. Esse XML é a entrada usada pelo conversor para gerar o HTML do
+livro.
 
 Depois de exportar o XML, rode:
 
@@ -108,7 +117,22 @@ Depois de exportar o XML, rode:
 python3 scripts/xmlpage_to_html.py input.xml
 ```
 
-O conversor escreve `output.html` no diretório atual.
+O conversor também aceita uma pasta de exportação do Transkribus. Nessa forma,
+ele procura os documentos com `mets.xml`, lê a ordem das páginas no grupo
+`PAGEXML`, confere se todos os arquivos declarados existem e gera um único HTML
+contínuo com todas as páginas:
+
+```bash
+python3 scripts/xmlpage_to_html.py export_job_26821620
+```
+
+Para escolher o arquivo de saída:
+
+```bash
+python3 scripts/xmlpage_to_html.py --output livro.html export_job_26821620
+```
+
+Sem `--output`, o conversor escreve `output.html` no diretório atual.
 
 Para imprimir este guia no terminal:
 

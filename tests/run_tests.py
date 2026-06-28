@@ -21,6 +21,7 @@ from ground_truth_cases import (
     append_ground_truth_lines,
     compare_case_lines,
     load_ground_truth_cases,
+    replace_ground_truth_line,
 )
 
 
@@ -199,6 +200,14 @@ def _parse_args(argv: list[str] | None) -> argparse.Namespace:
         ),
     )
     parser.add_argument(
+        "--accept-new-ground-truth",
+        action="store_true",
+        help=(
+            "Non-interactively append all newly rendered trailing lines to ground-truth "
+            "text files. Existing ground-truth lines must still match."
+        ),
+    )
+    parser.add_argument(
         "--ground-truth-source",
         nargs="*",
         default=[],
@@ -230,7 +239,7 @@ def _print_ground_truth_mismatch(comparison) -> None:
     else:
         print(f"  actual:   {actual}", file=sys.stderr)
     print(
-        "  Resolve the mismatch before appending new lines for this source.",
+        "  Resolve or review the mismatch before appending new lines for this source.",
         file=sys.stderr,
     )
 
@@ -276,6 +285,19 @@ def _prompt_ground_truth_choice(
         )
 
 
+def _prompt_ground_truth_mismatch_choice(
+    prompt: str, *, input_fn: Callable[[str], str] = input
+) -> str:
+    while True:
+        choice = input_fn(prompt).strip().lower()
+        if choice in {"e", "a", "q"}:
+            return choice
+        print(
+            "Enter e to keep expected, a to accept actual, or q to quit.",
+            file=sys.stderr,
+        )
+
+
 def _print_ground_truth_context(
     case_name: str,
     lines: list[str],
@@ -297,9 +319,34 @@ def _review_case_updates(
     input_fn: Callable[[str], str] = input,
     context_lines: int = 10,
 ) -> str:
-    if comparison.has_mismatch:
+    while comparison.has_mismatch:
         _print_ground_truth_mismatch(comparison)
-        return "blocked"
+        if comparison.mismatch_actual is None:
+            return "blocked"
+        choice = _prompt_ground_truth_mismatch_choice(
+            "Ground truth line mismatch. Use [e]xpected/[a]ctual/[q]uit: ",
+            input_fn=input_fn,
+        )
+        if choice == "q":
+            return "quit"
+        if choice == "e":
+            print(
+                f"[ground-truth] {comparison.case.name}: kept existing line "
+                f"{comparison.mismatch_line_no}",
+                file=sys.stderr,
+            )
+            return "stopped"
+        replace_ground_truth_line(
+            comparison.case.ground_truth_path,
+            comparison.mismatch_line_no,
+            comparison.mismatch_actual,
+        )
+        print(
+            f"[ground-truth] {comparison.case.name}: replaced line "
+            f"{comparison.mismatch_line_no}",
+            file=sys.stderr,
+        )
+        comparison = compare_case_lines(comparison.case)
     if not comparison.extra_lines:
         print(f"[ground-truth] {comparison.case.name}: no new lines", file=sys.stderr)
         return "unchanged"
@@ -367,13 +414,36 @@ def _review_case_by_name(
     return _review_case_updates(comparison, input_fn=input_fn)
 
 
-def _update_ground_truth(args: argparse.Namespace) -> int:
-    if not sys.stdin.isatty():
-        print(
-            "--update-ground-truth requires an interactive terminal.",
-            file=sys.stderr,
-        )
-        return 2
+def _append_case_updates(comparison) -> str:
+    if comparison.has_mismatch:
+        _print_ground_truth_mismatch(comparison)
+        return "blocked"
+    if not comparison.extra_lines:
+        print(f"[ground-truth] {comparison.case.name}: no new lines", file=sys.stderr)
+        return "unchanged"
+
+    append_ground_truth_lines(comparison.case.ground_truth_path, comparison.extra_lines)
+    print(
+        f"[ground-truth] {comparison.case.name}: appended "
+        f"{len(comparison.extra_lines)} line(s)",
+        file=sys.stderr,
+    )
+    return "updated"
+
+
+def _append_case_by_name(case) -> str:
+    try:
+        comparison = compare_case_lines(case)
+    except GroundTruthSourceLoadError as exc:
+        _print_ground_truth_source_load_error(case, exc)
+        return "blocked"
+    except GroundTruthRenderError as exc:
+        _print_ground_truth_render_error(case, exc)
+        return "blocked"
+    return _append_case_updates(comparison)
+
+
+def _load_selected_ground_truth_cases(args: argparse.Namespace):
     cases = load_ground_truth_cases(include_synthetic=args.include_synthetic)
     if args.ground_truth_source:
         wanted = set(args.ground_truth_source)
@@ -382,7 +452,22 @@ def _update_ground_truth(args: argparse.Namespace) -> int:
         for name in missing:
             print(f"[ground-truth] unknown source: {name}", file=sys.stderr)
         if not cases:
-            return 1
+            return [], 1
+        if missing:
+            return cases, 1
+    return cases, 0
+
+
+def _update_ground_truth(args: argparse.Namespace) -> int:
+    if not sys.stdin.isatty():
+        print(
+            "--update-ground-truth requires an interactive terminal.",
+            file=sys.stderr,
+        )
+        return 2
+    cases, selection_status = _load_selected_ground_truth_cases(args)
+    if selection_status:
+        return selection_status
     updated = 0
     blocked = 0
     for case in cases:
@@ -402,6 +487,25 @@ def _update_ground_truth(args: argparse.Namespace) -> int:
         file=sys.stderr,
     )
     return 0
+
+
+def _accept_new_ground_truth(args: argparse.Namespace) -> int:
+    cases, selection_status = _load_selected_ground_truth_cases(args)
+    if selection_status:
+        return selection_status
+    updated = 0
+    blocked = 0
+    for case in cases:
+        status = _append_case_by_name(case)
+        if status == "updated":
+            updated += 1
+        elif status == "blocked":
+            blocked += 1
+    print(
+        f"[ground-truth] finished: {updated} updated source(s), {blocked} blocked",
+        file=sys.stderr,
+    )
+    return 1 if blocked else 0
 
 
 def _regenerate_tokens(args: argparse.Namespace) -> None:
@@ -487,8 +591,16 @@ def _regenerate_tokens(args: argparse.Namespace) -> None:
 
 def main(argv: list[str] | None = None) -> int:
     args = _parse_args(argv)
+    if args.update_ground_truth and args.accept_new_ground_truth:
+        print(
+            "Use either --update-ground-truth or --accept-new-ground-truth, not both.",
+            file=sys.stderr,
+        )
+        return 2
     if args.update_ground_truth:
         return _update_ground_truth(args)
+    if args.accept_new_ground_truth:
+        return _accept_new_ground_truth(args)
     t0 = time.perf_counter()
     loader = unittest.TestLoader()
     if args.include_synthetic:

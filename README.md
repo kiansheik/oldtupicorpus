@@ -8,7 +8,8 @@ This repository contains Kian Arad Sheik's doctoral research in Computational Li
 - Encodes historic Old Tupi sources as compositional `pydicate` expressions backed by a shared lexicon.
 - Keeps synthetic data generation in the same ecosystem, currently centered on verb generation.
 - Compares rendered expressions against ground-truth text files.
-- Lets you review and append new ground-truth lines manually, line by line, with context.
+- Lets you append new trailing ground-truth lines after the test suite passes,
+  with an optional manual review mode for line-by-line confirmation.
 - Builds corpus JSONL, canonical token streams, token/tag registries, orthography variants, and DSL output for downstream experiments.
 - Provides an interactive REPL playground with `pydicate`, `tupi`, lexicon globals, and sample sources already loaded.
 
@@ -85,7 +86,7 @@ Useful variants:
 - `make serve-dict TOOLTIP_DB=var/my_tooltips.sqlite3`
 - `python3 -m dictionary.build_dict --include-navarro`: optionally include the Navarro-derived supplemental index exported from `../nhe-enga`.
 
-**3. Review and append ground truth manually**
+**3. Test and append new ground truth**
 ```bash
 make update-ground-truth
 ```
@@ -93,13 +94,16 @@ make update-ground-truth
 Useful variants:
 - `make update-ground-truth ARGS="--ground-truth-source bettendorff_compendio"`
 - `make update-ground-truth ARGS="--include-synthetic --ground-truth-source verb"`
+- `make review-ground-truth`: manually review each candidate line with context.
 
 How it behaves:
-- It is always user-triggered. Nothing in `make test` writes ground truth.
-- It checks that existing lines still match before offering any append.
-- It shows a 10-line context window before each new line so you can orient against the source text.
-- You confirm each candidate with `y`, stop the current source with `n`, or quit the session with `q`.
-- It only appends a contiguous prefix of accepted new lines.
+- It first runs `make test ARGS="..."`.
+- It appends only lines past the current end of each ground-truth file.
+- Existing ground-truth lines must still match; any mismatch blocks the append.
+- `make test` by itself never writes ground truth.
+- `make review-ground-truth` keeps the interactive flow: mismatches can keep
+  `[e]xpected`, accept `[a]ctual`, or `[q]uit`; new trailing lines show a
+  10-line context window and ask for `y`, `n`, or `q`.
 - If a source cannot load or render, it is reported and blocked instead of crashing the whole session.
 
 ### Adding or extending sources
@@ -208,7 +212,9 @@ Important flags for `tokenizer/compile_to_dsl.py`:
 - Prefer editing `historic/lexicon.tu.py`; `historic/lexicon.py` exists for compatibility.
 - The root-level `primary_sources.py` is a compatibility aggregator, not the canonical place to register historic sources.
 - Historic source loading prefers `.tu.py` over `.py` when both exist for the same source name.
-- The ground-truth updater is intentionally interactive and should remain user-triggered.
+- The ground-truth updater is intentionally user-triggered. `make update-ground-truth`
+  runs the test suite before appending trailing rendered lines; use
+  `make review-ground-truth` for line-by-line confirmation.
 
 ---
 
@@ -220,7 +226,8 @@ Este repositório reúne a pesquisa de doutorado de Kian Arad Sheik na USP (FFLC
 - Codifica fontes históricas em `pydicate`, com um léxico histórico compartilhado.
 - Gera dados sintéticos no mesmo ecossistema, hoje principalmente verbos.
 - Compara a saída renderizada com arquivos de ground truth.
-- Permite revisar e acrescentar novas linhas do ground truth manualmente, com contexto.
+- Permite acrescentar novas linhas finais ao ground truth depois que a suíte passa,
+  com um modo manual opcional para confirmar linha por linha.
 - Gera corpus JSONL, streams canônicos, registries de morfemas/tags, variantes ortográficas e uma DSL derivada do corpus.
 - Oferece um playground em REPL com `pydicate`, `tupi`, léxico e fontes já carregados.
 
@@ -280,7 +287,7 @@ Variações úteis:
 - `make test ARGS="--tokenizer-orth-expand POTIGUARA TUPINAMBA SEM_DIACRITICO"`: adiciona variantes ortográficas selecionadas.
 - `make test ARGS="--tokenizer-orth-expand-all"`: expande todas as ortografias conhecidas, exceto `NAVARRO`.
 
-**3. Revisar e acrescentar ground truth manualmente**
+**3. Testar e acrescentar novo ground truth**
 ```bash
 make update-ground-truth
 ```
@@ -288,13 +295,17 @@ make update-ground-truth
 Variações úteis:
 - `make update-ground-truth ARGS="--ground-truth-source bettendorff_compendio"`
 - `make update-ground-truth ARGS="--include-synthetic --ground-truth-source verb"`
+- `make review-ground-truth`: revisa manualmente cada linha candidata com contexto.
 
 Comportamento:
-- Sempre depende de ação explícita do usuário. `make test` nunca grava ground truth.
-- Verifica primeiro se as linhas antigas continuam batendo antes de oferecer append.
-- Mostra uma janela de contexto com 10 linhas anteriores antes de cada nova linha.
-- Cada linha é confirmada com `y`, a fonte atual para com `n`, e a sessão sai com `q`.
-- Só acrescenta um prefixo contíguo das novas linhas aceitas.
+- Primeiro roda `make test ARGS="..."`.
+- Só acrescenta linhas depois do fim atual de cada arquivo de ground truth.
+- As linhas antigas precisam continuar batendo; qualquer divergência bloqueia o append.
+- `make test` sozinho nunca grava ground truth.
+- `make review-ground-truth` mantém o fluxo interativo: divergências podem
+  manter `[e]xpected`, aceitar `[a]ctual` ou sair com `[q]uit`; novas linhas
+  finais mostram uma janela de 10 linhas de contexto e perguntam `y`, `n` ou
+  `q`.
 - Se uma fonte não carregar ou não renderizar, ela é reportada e bloqueada sem derrubar a sessão inteira.
 
 ### Como adicionar ou ampliar fontes

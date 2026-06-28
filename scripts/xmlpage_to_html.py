@@ -6,9 +6,14 @@ import unicodedata
 from pathlib import Path
 
 NS = {"pc": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2013-07-15"}
+METS_NS = {
+    "mets": "http://www.loc.gov/METS/",
+    "xlink": "http://www.w3.org/1999/xlink",
+}
+XLINK_HREF = "{http://www.w3.org/1999/xlink}href"
 ROOT_DIR = Path(__file__).resolve().parents[1]
 STYLIZATION_GUIDE_PATH = ROOT_DIR / "docs" / "xmlpage-stylization-guide.md"
-USAGE = "Usage: python scripts/xmlpage_to_html.py input.xml"
+USAGE = "Usage: python scripts/xmlpage_to_html.py [--output output.html] input.xml|export_dir"
 MANUSCRIPT_FONT_SIZE = 78
 CHAR_WIDTH_FACTOR = 0.48  # only a no-JS fallback; browser JS measures exactly.
 MANUSCRIPT_FONT_FAMILY = (
@@ -41,6 +46,11 @@ REPLACES = [
     ("O=e", "Œ"),
     ("o=e", "œ"),
 ]
+FADED_TEXT_PATTERN = re.compile(r"%([0-9]{1,3})\s+([^%\n]+)%")
+
+
+class ExportStructureError(ValueError):
+    pass
 
 
 def strip_inline_markdown(input_text):
@@ -120,10 +130,39 @@ def apply_replacements(input_text):
     return input_text
 
 
+def parse_visible_percent(percent_text):
+    visible_percent = int(percent_text)
+    if visible_percent < 0 or visible_percent > 100:
+        return None
+    return visible_percent
+
+
+def format_faded_text(match):
+    visible_percent = parse_visible_percent(match.group(1))
+    if visible_percent is None:
+        return match.group(0)
+
+    opacity = visible_percent / 100
+    return (
+        f'<span class="faded-text" data-visible-percent="{visible_percent}" '
+        f'style="--faded-opacity: {opacity:.2f};">{match.group(2)}</span>'
+    )
+
+
+def strip_faded_text_markers(input_text):
+    def replace_match(match):
+        visible_percent = parse_visible_percent(match.group(1))
+        if visible_percent is None:
+            return match.group(0)
+        return match.group(2)
+
+    return FADED_TEXT_PATTERN.sub(replace_match, input_text)
+
+
 def format_text(input_text):
     # Response marker: R.
     input_text = re.sub(
-        r"(^|(?<=\s))R\.(?=\s|$)",
+        r"(^|(?<=\s))R\.(?=\s|%|$)",
         (
             '<span class="response-mark" aria-label="R.">'
             '<span class="response-mark-letter">R</span>'
@@ -158,10 +197,14 @@ def format_text(input_text):
     # Subscript: --subscript--
     input_text = re.sub(r"--(.*?)--", r"<sub>\1</sub>", input_text)
 
+    # Faded text: %40 text%
+    input_text = FADED_TEXT_PATTERN.sub(format_faded_text, input_text)
+
     return input_text
 
 
 def strip_formatting_markers(input_text):
+    input_text = strip_faded_text_markers(input_text)
     input_text = re.sub(r"\*\*(.*?)\*\*", r"\1", input_text)
     input_text = re.sub(r"\*(.*?)\*", r"\1", input_text)
     input_text = re.sub(r"__(.*?)__", r"\1", input_text)
@@ -199,7 +242,7 @@ def find_closing_bracket(input_text, start_index):
     return None
 
 
-def format_line_text(raw_text, footnotes):
+def format_line_text(raw_text, footnotes, footnote_id_prefix=""):
     text = apply_replacements(raw_text)
     html_parts = []
     visible_parts = []
@@ -229,10 +272,12 @@ def format_line_text(raw_text, footnotes):
         note_text = unescape_literal_brackets(text[index + 1 : note_end]).strip()
         if note_text:
             footnote_number = len(footnotes) + 1
+            footnote_ref_id = f"{footnote_id_prefix}fnref-{footnote_number}"
+            footnote_id = f"{footnote_id_prefix}fn-{footnote_number}"
             footnotes.append(note_text)
             html_parts.append(
-                f'<sup class="footnote-ref" id="fnref-{footnote_number}">'
-                f'<a href="#fn-{footnote_number}" '
+                f'<sup class="footnote-ref" id="{footnote_ref_id}">'
+                f'<a href="#{footnote_id}" '
                 f'aria-label="Footnote {footnote_number}" '
                 f'data-footnote-number="{footnote_number}"></a>'
                 f"</sup>"
@@ -249,12 +294,12 @@ def format_line_text(raw_text, footnotes):
     )
 
 
-def render_footnotes(footnotes):
+def render_footnotes(footnotes, footnote_id_prefix=""):
     if not footnotes:
         return ""
 
     items = "\n".join(
-        f'        <li id="fn-{index}">{format_text(note)}</li>'
+        f'        <li id="{footnote_id_prefix}fn-{index}">{format_text(note)}</li>'
         for index, note in enumerate(footnotes, start=1)
     )
     return f"""      <section class="footnotes" aria-label="Footnotes">
@@ -286,7 +331,7 @@ def baseline_geometry(points):
     return x1, y1, angle, target_width
 
 
-def collect_text_lines(page):
+def collect_text_lines(page, footnote_id_prefix=""):
     lines = []
     footnotes = []
 
@@ -305,7 +350,11 @@ def collect_text_lines(page):
         ]
         x1, y1, angle, target_width = baseline_geometry(baseline_points)
 
-        html_text, visible_text = format_line_text(raw_text, footnotes)
+        html_text, visible_text = format_line_text(
+            raw_text,
+            footnotes,
+            footnote_id_prefix=footnote_id_prefix,
+        )
         estimated_text_width = (
             MANUSCRIPT_FONT_SIZE * CHAR_WIDTH_FACTOR * len(visible_text)
         )
@@ -326,6 +375,144 @@ def collect_text_lines(page):
         )
 
     return lines, footnotes
+
+
+def parse_page_xml(xml_path, footnote_id_prefix=""):
+    tree = etree.parse(str(xml_path))
+    page = tree.find(".//pc:Page", NS)
+    if page is None:
+        raise ExportStructureError(f"PAGE XML has no pc:Page element: {xml_path}")
+
+    try:
+        width = int(page.get("imageWidth"))
+        height = int(page.get("imageHeight"))
+    except (TypeError, ValueError) as error:
+        raise ExportStructureError(
+            f"PAGE XML is missing numeric imageWidth/imageHeight: {xml_path}"
+        ) from error
+
+    lines, footnotes = collect_text_lines(
+        page,
+        footnote_id_prefix=footnote_id_prefix,
+    )
+    return {
+        "width": width,
+        "height": height,
+        "lines": lines,
+        "footnotes": footnotes,
+        "footnote_id_prefix": footnote_id_prefix,
+        "source_path": Path(xml_path),
+        "label": Path(xml_path).name,
+    }
+
+
+def discover_transkribus_document_dirs(export_dir):
+    mets_paths = sorted(Path(export_dir).rglob("mets.xml"))
+    if not mets_paths:
+        raise ExportStructureError(
+            f"No Transkribus mets.xml found under directory: {export_dir}"
+        )
+
+    document_dirs = []
+    missing_page_dirs = []
+    for mets_path in mets_paths:
+        document_dir = mets_path.parent
+        if not (document_dir / "page").is_dir():
+            missing_page_dirs.append(document_dir)
+            continue
+        document_dirs.append(document_dir)
+
+    if missing_page_dirs:
+        missing = ", ".join(str(path) for path in missing_page_dirs)
+        raise ExportStructureError(
+            f"Transkribus document directories are missing a page/ folder: {missing}"
+        )
+
+    return document_dirs
+
+
+def read_mets_page_paths(document_dir):
+    mets_path = Path(document_dir) / "mets.xml"
+    tree = etree.parse(str(mets_path))
+    files = tree.findall(".//mets:fileGrp[@ID='PAGEXML']/mets:file", METS_NS)
+    if not files:
+        raise ExportStructureError(f"No PAGEXML file entries found in {mets_path}")
+
+    entries = []
+    missing_hrefs = []
+    for file_el in files:
+        loc_el = file_el.find("mets:FLocat", METS_NS)
+        href = None
+        if loc_el is not None:
+            href = loc_el.get(XLINK_HREF) or loc_el.get("href")
+        if not href:
+            missing_hrefs.append(file_el.get("ID") or "(unknown file ID)")
+            continue
+
+        seq_text = file_el.get("SEQ")
+        try:
+            sequence = int(seq_text) if seq_text is not None else None
+        except ValueError:
+            sequence = None
+        entries.append((sequence, href, Path(document_dir) / href))
+
+    if missing_hrefs:
+        missing = ", ".join(missing_hrefs)
+        raise ExportStructureError(
+            f"PAGEXML entries without href in {mets_path}: {missing}"
+        )
+
+    missing_files = [str(path) for _, _, path in entries if not path.is_file()]
+    if missing_files:
+        missing = ", ".join(missing_files[:5])
+        if len(missing_files) > 5:
+            missing += f", ... ({len(missing_files)} missing total)"
+        raise ExportStructureError(
+            f"Transkribus export is incomplete; missing PAGE XML files: {missing}"
+        )
+
+    entries.sort(key=lambda item: (item[0] is None, item[0] or 0, item[1]))
+    return [path for _, _, path in entries]
+
+
+def load_transkribus_export_pages(export_dir):
+    pages = []
+    page_paths = []
+    for document_dir in discover_transkribus_document_dirs(export_dir):
+        page_paths.extend(read_mets_page_paths(document_dir))
+
+    if not page_paths:
+        raise ExportStructureError(
+            f"No PAGE XML files found under directory: {export_dir}"
+        )
+
+    for index, page_path in enumerate(page_paths, start=1):
+        pages.append(
+            parse_page_xml(
+                page_path,
+                footnote_id_prefix=f"p{index}-",
+            )
+        )
+    return pages
+
+
+def render_line_html(line):
+    return f"""        <div class="line" style="
+          left: {line['x']}px;
+          top: {line['y']}px;
+          transform: rotate({line['angle']}rad);
+          font-size: {line['font_size']}px;" data-base-font-size="{line['font_size']}">
+<span class="text" data-target-width="{line['target_width']:.4f}" style="transform: scaleX({line['scale_x']:.6f});">{line['text']}</span>
+        </div>\n"""
+
+
+def render_page_box(width, height, lines):
+    html = f"""      <div class="box" style="aspect-ratio: {width} / {height}; width: {width}px; height: {height}px;">
+"""
+    for line in lines:
+        html += render_line_html(line)
+    html += "      </div>\n"
+    return html
 
 
 def render_html(width, height, lines, footnotes):
@@ -411,6 +598,10 @@ def render_html(width, height, lines, footnotes):
       transform-origin: center;
       opacity: 0.9;
       pointer-events: none;
+    }}
+
+    .faded-text {{
+      opacity: var(--faded-opacity, 0.5);
     }}
 
     .response-mark {{
@@ -657,6 +848,396 @@ def render_html(width, height, lines, footnotes):
     return html
 
 
+def render_continuous_html(pages):
+    page_sections = []
+    for index, page in enumerate(pages, start=1):
+        width = page["width"]
+        height = page["height"]
+        label = page.get("label") or f"page-{index}"
+        footnote_id_prefix = page.get("footnote_id_prefix", f"p{index}-")
+        page_html = f"""    <section class="page-section" id="page-{index}">
+      <div class="page-label">Page {index}: {label}</div>
+      <div class="page-frame">
+        <div class="page-scale" data-page-width="{width}" data-page-height="{height}" style="width: {width}px;">
+"""
+        page_html += render_page_box(width, height, page["lines"])
+        page_html += render_footnotes(
+            page["footnotes"], footnote_id_prefix=footnote_id_prefix
+        )
+        page_html += """        </div>
+      </div>
+    </section>
+"""
+        page_sections.append(page_html)
+
+    rendered_pages = "".join(page_sections)
+    return f"""<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Continuous PAGE XML Layout</title>
+  <style>
+    html, body {{
+      margin: 0;
+      padding: 0;
+      background: #d6d2ca;
+      min-height: 100%;
+      width: 100%;
+    }}
+
+    body {{
+      color: #3b2a19;
+      font-family: Georgia, "Times New Roman", serif;
+    }}
+
+    .book {{
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 56px;
+      min-height: 100vh;
+      padding: 48px 0 72px;
+    }}
+
+    .page-section {{
+      box-sizing: border-box;
+      width: min(94vw, 1400px);
+    }}
+
+    .page-label {{
+      color: rgba(47, 42, 34, 0.72);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      margin: 0 0 12px;
+      text-align: center;
+    }}
+
+    .page-frame {{
+      position: relative;
+      width: 100%;
+    }}
+
+    .page-scale {{
+      background: #eadbbd;
+      box-shadow: 0 18px 48px rgba(42, 31, 15, 0.28);
+      color: #3b2a19;
+      left: 50%;
+      position: absolute;
+      top: 0;
+      transform-origin: top center;
+    }}
+
+    .box {{
+      position: relative;
+      background: #eadbbd;
+      background-image:
+        linear-gradient(90deg, rgba(111, 79, 38, 0.08), transparent 16%, rgba(255, 246, 217, 0.22) 48%, transparent 58%),
+        linear-gradient(180deg, rgba(83, 55, 24, 0.08), transparent 18%, rgba(255, 247, 221, 0.18) 72%, rgba(94, 61, 25, 0.11));
+      border: 1px solid #aa9169;
+      transform-origin: top left;
+    }}
+
+    .line {{
+      position: absolute;
+      color: rgba(57, 41, 22, 0.78);
+      font-family: {MANUSCRIPT_FONT_FAMILY};
+      font-weight: 400;
+      height: 0;
+      letter-spacing: 0;
+      line-height: 1;
+      white-space: nowrap;
+      transform-origin: left bottom;
+    }}
+
+    .text {{
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      transform-origin: left bottom;
+      will-change: transform;
+    }}
+
+    .vertical-strike {{
+      display: inline-block;
+      position: relative;
+      padding: 0 0.02em;
+    }}
+
+    .vertical-strike::after {{
+      content: "";
+      position: absolute;
+      top: -0.08em;
+      bottom: -0.08em;
+      left: 50%;
+      border-left: 0.075em solid currentColor;
+      transform: translateX(-50%) rotate(-4deg);
+      transform-origin: center;
+      opacity: 0.9;
+      pointer-events: none;
+    }}
+
+    .faded-text {{
+      opacity: var(--faded-opacity, 0.5);
+    }}
+
+    .response-mark {{
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.1em;
+      margin-right: 0.08em;
+      color: rgba(42, 28, 15, 0.9);
+      font-family: {MANUSCRIPT_FONT_FAMILY};
+      font-size: 1.08em;
+      font-weight: 600;
+      line-height: 0.86;
+      transform: translateY(0.07em) rotate(-7deg);
+      transform-origin: 42% 70%;
+      text-shadow: 0.018em 0.018em 0 rgba(42, 28, 15, 0.35);
+      vertical-align: -0.08em;
+    }}
+
+    .response-mark-letter {{
+      display: inline-block;
+      transform: skewX(-8deg);
+    }}
+
+    .response-mark-dot {{
+      display: inline-block;
+      font-size: 0.8em;
+      font-weight: 700;
+      transform: translate(0.05em, 0.04em);
+    }}
+
+    .footnote-ref {{
+      color: #8a3419;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.72em;
+      font-weight: 700;
+      line-height: 0;
+      margin-left: 4px;
+      vertical-align: super;
+    }}
+
+    .footnote-ref a {{
+      border-bottom: 1px solid rgba(138, 52, 25, 0.45);
+      color: #8a3419;
+      display: inline-block;
+      min-width: 0.45em;
+      text-decoration: none;
+    }}
+
+    .footnote-ref a::before {{
+      content: attr(data-footnote-number);
+    }}
+
+    .footnotes {{
+      box-sizing: border-box;
+      width: 100%;
+      margin: 0;
+      padding: 34px 150px 48px;
+      border: 1px solid #b8aa91;
+      border-top: none;
+      background: transparent;
+      color: #2f2a22;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 48px;
+      line-height: 1.45;
+    }}
+
+    .footnotes ol {{
+      border-top: 3px solid #7d6c54;
+      margin: 0;
+      padding: 24px 0 0 1.6em;
+    }}
+
+    .footnotes li {{
+      margin: 0.3em 0;
+      padding-left: 0.25em;
+    }}
+
+    .footnotes li::marker {{
+      color: #8a3419;
+      font-weight: 700;
+    }}
+
+    @media print {{
+      html, body {{
+        background: white !important;
+      }}
+
+      .book {{
+        display: block;
+        padding: 0;
+      }}
+
+      .page-section {{
+        break-after: page;
+        page-break-after: always;
+        width: auto;
+      }}
+
+      .page-label {{
+        display: none;
+      }}
+
+      .page-frame {{
+        height: auto !important;
+      }}
+
+      .page-scale {{
+        box-shadow: none;
+        left: auto;
+        position: static;
+        transform: none !important;
+      }}
+
+      .box {{
+        border: none;
+        box-shadow: none;
+        margin: 0 auto;
+      }}
+
+      .line {{
+        color: black;
+      }}
+    }}
+  </style>
+</head>
+<body>
+  <main class="book" data-page-count="{len(pages)}">
+{rendered_pages}  </main>
+
+  <script>
+    const lineTexts = document.querySelectorAll(".text[data-target-width]");
+    const MIN_HORIZONTAL_SCALE = 0.94;
+    const MAX_HORIZONTAL_SCALE = 1.08;
+    const MIN_FONT_SCALE = 0.82;
+    const MAX_WORD_SPACING = 36;
+    const MAX_LETTER_SPACING = 3.5;
+
+    function clamp(value, min, max) {{
+      return Math.min(max, Math.max(min, value));
+    }}
+
+    function resetLineFit(line, text, baseFontSize) {{
+      line.style.fontSize = `${{baseFontSize}}px`;
+      text.style.wordSpacing = "0px";
+      text.style.letterSpacing = "0px";
+      text.style.transform = "scaleX(1)";
+    }}
+
+    function spreadWithSpacing(text, targetWidth) {{
+      let actualWidth = text.offsetWidth;
+      let remaining = targetWidth - actualWidth;
+      const plainText = text.textContent || "";
+      const wordSlots = (plainText.match(/\\s+/g) || []).length;
+
+      if (remaining > 0 && wordSlots > 0) {{
+        const wordSpacing = Math.min(MAX_WORD_SPACING, remaining / wordSlots);
+        text.style.wordSpacing = `${{wordSpacing}}px`;
+        actualWidth = text.offsetWidth;
+        remaining = targetWidth - actualWidth;
+      }}
+
+      const letterSlots = Math.max(plainText.trim().length - 1, 1);
+      if (remaining > 0 && letterSlots > 0) {{
+        const letterSpacing = Math.min(MAX_LETTER_SPACING, remaining / letterSlots);
+        text.style.letterSpacing = `${{letterSpacing}}px`;
+        actualWidth = text.offsetWidth;
+      }}
+
+      return actualWidth;
+    }}
+
+    function fitLines() {{
+      lineTexts.forEach((text) => {{
+        const line = text.closest(".line");
+        const baseFontSize = Number(line.dataset.baseFontSize);
+        const targetWidth = Number(text.dataset.targetWidth);
+        if (!line || !baseFontSize || !targetWidth) {{
+          return;
+        }}
+
+        resetLineFit(line, text, baseFontSize);
+        let actualWidth = text.offsetWidth;
+        if (actualWidth <= 0) {{
+          return;
+        }}
+
+        let ratio = targetWidth / actualWidth;
+        if (ratio < MIN_HORIZONTAL_SCALE) {{
+          const fontScale = clamp(ratio / MIN_HORIZONTAL_SCALE, MIN_FONT_SCALE, 1);
+          line.style.fontSize = `${{baseFontSize * fontScale}}px`;
+          actualWidth = text.offsetWidth;
+          ratio = actualWidth > 0 ? targetWidth / actualWidth : 1;
+        }}
+
+        if (ratio > MAX_HORIZONTAL_SCALE) {{
+          actualWidth = spreadWithSpacing(text, targetWidth);
+          ratio = actualWidth > 0 ? targetWidth / actualWidth : 1;
+        }}
+
+        text.style.transform = `scaleX(${{clamp(ratio, MIN_HORIZONTAL_SCALE, MAX_HORIZONTAL_SCALE)}})`;
+      }});
+    }}
+
+    function resizeContinuousPages() {{
+      document.querySelectorAll(".page-frame").forEach((frame) => {{
+        const pageScale = frame.querySelector(".page-scale");
+        if (!pageScale) {{
+          return;
+        }}
+        const pageWidth = Number(pageScale.dataset.pageWidth);
+        if (!pageWidth) {{
+          return;
+        }}
+        const scale = Math.min(1, frame.clientWidth / pageWidth);
+        pageScale.style.transform = `translateX(-50%) scale(${{scale}})`;
+        frame.style.height = `${{pageScale.scrollHeight * scale}}px`;
+      }});
+    }}
+
+    function layout() {{
+      fitLines();
+      resizeContinuousPages();
+    }}
+
+    layout();
+    window.addEventListener("load", layout);
+    window.addEventListener("resize", layout);
+    if (document.fonts) {{
+      document.fonts.ready.then(layout);
+    }}
+  </script>
+</body>
+</html>
+"""
+
+
+def parse_cli_args(argv):
+    output_path = Path("output.html")
+    positional = []
+    index = 0
+    while index < len(argv):
+        arg = argv[index]
+        if arg in ("-o", "--output"):
+            if index + 1 >= len(argv):
+                raise ValueError("--output requires a path")
+            output_path = Path(argv[index + 1])
+            index += 2
+            continue
+        positional.append(arg)
+        index += 1
+
+    if len(positional) != 1:
+        raise ValueError(
+            "Expected exactly one input XML file or Transkribus export directory"
+        )
+    return Path(positional[0]), output_path
+
+
 def main(argv=None):
     argv = sys.argv[1:] if argv is None else argv
 
@@ -664,29 +1245,46 @@ def main(argv=None):
         print(build_help_text())
         return 0
 
-    if len(argv) < 1:
+    if not argv:
         print(build_help_text())
         return 1
 
-    xml_file = argv[0]
+    try:
+        input_path, output_path = parse_cli_args(argv)
+    except ValueError as error:
+        print(f"Error: {error}\n")
+        print(build_help_text())
+        return 1
 
-    # Parse XML
-    tree = etree.parse(xml_file)
-
-    page = tree.find(".//pc:Page", NS)
-    width = int(page.get("imageWidth"))
-    height = int(page.get("imageHeight"))
-
-    lines, footnotes = collect_text_lines(page)
-    html = render_html(width, height, lines, footnotes)
+    try:
+        if input_path.is_dir():
+            pages = load_transkribus_export_pages(input_path)
+            html = render_continuous_html(pages)
+            output_message = (
+                f"✅ Continuous layout with {len(pages)} PAGE XML pages written "
+                f"to {output_path}"
+            )
+        else:
+            page = parse_page_xml(input_path)
+            html = render_html(
+                page["width"],
+                page["height"],
+                page["lines"],
+                page["footnotes"],
+            )
+            output_message = (
+                "✅ Responsive layout with baseline-aligned, scaled text written "
+                f"to {output_path}"
+            )
+    except ExportStructureError as error:
+        print(f"Error: {error}")
+        return 1
 
     # Save output
-    with open("output.html", "w", encoding="utf-8") as f:
+    with output_path.open("w", encoding="utf-8") as f:
         f.write(html)
 
-    print(
-        "✅ Responsive layout with baseline-aligned, scaled text written to output.html"
-    )
+    print(output_message)
     return 0
 
 

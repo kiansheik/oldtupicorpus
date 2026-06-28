@@ -1,5 +1,6 @@
 import importlib.util
 import io
+import tempfile
 from contextlib import redirect_stdout
 import unittest
 from pathlib import Path
@@ -11,6 +12,50 @@ SCRIPT_PATH = ROOT / "scripts" / "xmlpage_to_html.py"
 spec = importlib.util.spec_from_file_location("xmlpage_to_html", SCRIPT_PATH)
 xmlpage_to_html = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(xmlpage_to_html)
+
+
+def sample_page_xml(text, width=100, height=200):
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
+<PcGts xmlns="http://schema.primaresearch.org/PAGE/gts/pagecontent/2013-07-15">
+  <Page imageWidth="{width}" imageHeight="{height}">
+    <TextRegion>
+      <TextLine>
+        <Baseline points="10,20 90,20"/>
+        <TextEquiv><Unicode>{text}</Unicode></TextEquiv>
+      </TextLine>
+    </TextRegion>
+  </Page>
+</PcGts>
+"""
+
+
+def sample_mets(entries):
+    file_entries = "\n".join(
+        f"""        <ns3:file ID="PAGEXML_{sequence}" SEQ="{sequence}">
+          <ns3:FLocat ns2:href="{href}"/>
+        </ns3:file>"""
+        for sequence, href in entries
+    )
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
+<ns3:mets xmlns:ns2="http://www.w3.org/1999/xlink" xmlns:ns3="http://www.loc.gov/METS/">
+  <ns3:fileSec>
+    <ns3:fileGrp ID="MASTER">
+      <ns3:fileGrp ID="PAGEXML">
+{file_entries}
+      </ns3:fileGrp>
+    </ns3:fileGrp>
+  </ns3:fileSec>
+</ns3:mets>
+"""
+
+
+def write_sample_export(root, pages):
+    document_dir = Path(root) / "123" / "sample_doc"
+    page_dir = document_dir / "page"
+    page_dir.mkdir(parents=True)
+    for filename, text in pages:
+        (page_dir / filename).write_text(sample_page_xml(text), encoding="utf-8")
+    return document_dir
 
 
 class XmlPageToHtmlFootnoteTest(unittest.TestCase):
@@ -120,7 +165,10 @@ class XmlPageToHtmlFootnoteTest(unittest.TestCase):
 
         help_text = stdout.getvalue()
         self.assertEqual(exit_code, 0)
-        self.assertIn("Usage: python scripts/xmlpage_to_html.py input.xml", help_text)
+        self.assertIn(
+            "Usage: python scripts/xmlpage_to_html.py [--output output.html] input.xml|export_dir",
+            help_text,
+        )
         self.assertIn("GUIA DE ESTILIZAÇÃO DO PAGE XML", help_text)
         self.assertIn("SINTAXE DO USUÁRIO", help_text)
         self.assertIn("Sintaxe: -p-", help_text)
@@ -129,10 +177,13 @@ class XmlPageToHtmlFootnoteTest(unittest.TestCase):
         self.assertIn("Como aparece no HTML: aꝑaba ꝑ", help_text)
         self.assertIn("Sintaxe: **texto**", help_text)
         self.assertIn("Sintaxe: |texto|", help_text)
+        self.assertIn("Sintaxe: %40 texto%", help_text)
         self.assertIn(r"Sintaxe: \[texto literal\]", help_text)
         self.assertIn("Sintaxe: &", help_text)
         self.assertIn("Transkribus", help_text)
         self.assertIn("escolha Export no menu", help_text)
+        self.assertIn("Escolha PageXML 2013", help_text)
+        self.assertIn("Não escolha\nPageXML 2019", help_text)
         self.assertLess(
             help_text.index("SINTAXE DO USUÁRIO"), help_text.index("USO DO CONVERSOR")
         )
@@ -202,6 +253,35 @@ class XmlPageToHtmlFootnoteTest(unittest.TestCase):
             html_text,
         )
         self.assertEqual(visible_text, "ocäumbaeráma? oporomonhangmbae-")
+
+    def test_faded_text_marker_renders_with_opacity_and_counts_visible_text(self):
+        footnotes = []
+
+        html_text, visible_text = xmlpage_to_html.format_line_text(
+            "Tertio %40 $raecepto% [leitura provável]",
+            footnotes,
+        )
+
+        self.assertEqual(footnotes, ["leitura provável"])
+        self.assertIn(
+            '<span class="faded-text" data-visible-percent="40" '
+            'style="--faded-opacity: 0.40;">ſraecepto</span>',
+            html_text,
+        )
+        self.assertNotIn("%40", html_text)
+        self.assertEqual(visible_text, "Tertio ſraecepto ")
+
+    def test_invalid_faded_text_percent_stays_literal(self):
+        footnotes = []
+
+        html_text, visible_text = xmlpage_to_html.format_line_text(
+            "Tertio %140 praecepto%",
+            footnotes,
+        )
+
+        self.assertEqual(footnotes, [])
+        self.assertEqual(html_text, "Tertio %140 praecepto%")
+        self.assertEqual(visible_text, "Tertio %140 praecepto%")
 
     def test_nested_brackets_are_one_footnote(self):
         footnotes = []
@@ -281,6 +361,8 @@ class XmlPageToHtmlFootnoteTest(unittest.TestCase):
         self.assertIn(".response-mark-letter", html)
         self.assertIn(".response-mark-dot", html)
         self.assertIn("rotate(-7deg)", html)
+        self.assertIn(".faded-text", html)
+        self.assertIn("opacity: var(--faded-opacity, 0.5);", html)
 
     def test_collect_text_lines_numbers_footnotes_per_page(self):
         xml = b"""<?xml version="1.0" encoding="UTF-8"?>
@@ -311,6 +393,81 @@ class XmlPageToHtmlFootnoteTest(unittest.TestCase):
         self.assertIn('id="fnref-2"', lines[1]["text"])
         self.assertEqual(lines[0]["font_size"], xmlpage_to_html.MANUSCRIPT_FONT_SIZE)
         self.assertAlmostEqual(lines[0]["target_width"], 80)
+
+    def test_load_transkribus_export_pages_uses_mets_sequence(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            document_dir = write_sample_export(
+                tmpdir,
+                [
+                    ("0002.xml", "Second [second note]"),
+                    ("0001.xml", "First [first note]"),
+                ],
+            )
+            (document_dir / "mets.xml").write_text(
+                sample_mets(
+                    [
+                        (2, "page/0002.xml"),
+                        (1, "page/0001.xml"),
+                    ]
+                ),
+                encoding="utf-8",
+            )
+
+            pages = xmlpage_to_html.load_transkribus_export_pages(tmpdir)
+
+        self.assertEqual([page["label"] for page in pages], ["0001.xml", "0002.xml"])
+        self.assertIn("First", pages[0]["lines"][0]["text"])
+        self.assertIn("Second", pages[1]["lines"][0]["text"])
+
+        html = xmlpage_to_html.render_continuous_html(pages)
+        self.assertIn('class="book" data-page-count="2"', html)
+        self.assertLess(html.index("Page 1: 0001.xml"), html.index("Page 2: 0002.xml"))
+        self.assertIn('id="p1-fnref-1"', html)
+        self.assertIn('href="#p1-fn-1"', html)
+        self.assertIn('<li id="p1-fn-1">first note</li>', html)
+        self.assertIn('id="p2-fnref-1"', html)
+        self.assertIn('<li id="p2-fn-1">second note</li>', html)
+        self.assertIn("resizeContinuousPages", html)
+        self.assertIn("translateX(-50%) scale(", html)
+        self.assertIn(".faded-text", html)
+
+    def test_transkribus_export_missing_declared_page_fails_before_rendering(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            document_dir = write_sample_export(tmpdir, [])
+            (document_dir / "mets.xml").write_text(
+                sample_mets([(1, "page/missing.xml")]),
+                encoding="utf-8",
+            )
+
+            with self.assertRaisesRegex(
+                xmlpage_to_html.ExportStructureError,
+                "missing PAGE XML files",
+            ):
+                xmlpage_to_html.load_transkribus_export_pages(tmpdir)
+
+    def test_directory_input_writes_continuous_html_to_output_path(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            document_dir = write_sample_export(tmpdir, [("0001.xml", "Aba")])
+            (document_dir / "mets.xml").write_text(
+                sample_mets([(1, "page/0001.xml")]),
+                encoding="utf-8",
+            )
+            output_path = Path(tmpdir) / "combined.html"
+            stdout = io.StringIO()
+
+            with redirect_stdout(stdout):
+                exit_code = xmlpage_to_html.main(
+                    ["--output", str(output_path), str(tmpdir)]
+                )
+
+            html = output_path.read_text(encoding="utf-8")
+
+        self.assertEqual(exit_code, 0)
+        self.assertIn(
+            "Continuous layout with 1 PAGE XML pages written", stdout.getvalue()
+        )
+        self.assertIn('data-page-count="1"', html)
+        self.assertIn("Page 1: 0001.xml", html)
 
     def test_reversed_and_polyline_baselines_are_normalized(self):
         x, y, angle, target_width = xmlpage_to_html.baseline_geometry(
