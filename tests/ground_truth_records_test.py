@@ -6,6 +6,7 @@ from pathlib import Path
 
 from authoring.records import (
     GroundTruthRecord,
+    PhilologicalLocation,
     append_records,
     load_records,
     records_from_legacy_text,
@@ -35,6 +36,9 @@ class GroundTruthRecordTest(unittest.TestCase):
             translation="translation",
             analysis="analysis",
             status="human_review",
+            locations=(
+                PhilologicalLocation(page_start="25", page_end="26", line_start="25", line_end="34"),
+            ),
             notes=("note",),
         )
         with tempfile.TemporaryDirectory() as tmp:
@@ -43,6 +47,7 @@ class GroundTruthRecordTest(unittest.TestCase):
             loaded = load_records(path, source="demo", kind="historic")
         self.assertEqual(loaded, [record])
         self.assertEqual(loaded[0].expected_surface, "modern spelling")
+        self.assertEqual(loaded[0].locations[0].display, "p. 25-26, l. 25-34")
 
     def test_append_and_replace_keep_record_identity(self) -> None:
         records = records_from_legacy_text("one\n", source="demo", kind="historic")
