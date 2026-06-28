@@ -4,7 +4,7 @@ This file provides guidance to Claude Code when working with code in this reposi
 
 ## Project overview
 
-Computational linguistics research project implementing Old Tupi language encoding and analysis (doctoral research, University of São Paulo / FFLCH). It encodes historic Old Tupi texts as compositional Pydicate expressions, validates them against human-approved targets, and generates corpus data for NLP/tokenizer experiments.
+Computational linguistics research project implementing Old Tupi language encoding and analysis (doctoral research, University of São Paulo / FFLCH). It encodes historic Old Tupi texts as compositional Pydicate expressions, validates them against human-approved JSONL records, and generates corpus data for NLP/tokenizer experiments.
 
 ## Required authoring behavior
 
@@ -20,9 +20,9 @@ Computational linguistics research project implementing Old Tupi language encodi
 ```bash
 make test                                      # Run full test suite
 make test ARGS="--skip-tokenizer"              # Run focused test suite without tokenizer regeneration
-make verify-ground-truth                       # Compare renderings to approved targets, no writes
-make review-ground-truth                       # Human-approve new trailing targets into JSONL and text mirror
-make migrate-ground-truth-records              # Create structured JSONL records from legacy text
+make regenerate-ground-truth                   # Rebuild structured JSONL from source comments and expressions
+make verify-ground-truth                       # Compare renderings to approved JSONL targets, no writes
+make review-ground-truth                       # Report whether source-derived JSONL is current
 make play                                      # Open interactive REPL
 make dict                                      # Build dictionary artifacts
 make serve-dict                                # Serve dictionary at localhost:8000
@@ -44,8 +44,7 @@ Both must be present at those paths for corpus execution.
 historic/*.tu.py sources
   -> auto-discovered by historic/primary_sources.py
   -> expressions rendered to strings
-  -> validated against ground_truth/records/<kind>/*.jsonl when present
-  -> legacy ground_truth/<kind>/*.txt remains a compatibility mirror
+  -> validated against ground_truth/records/<kind>/*.jsonl
   -> tokenizer/build_corpus_json.py extracts corpus rows
   -> tokenizer/rawgrammarpair.py builds canonical registries and training pairs
   -> tokenizer/compile_to_dsl.py generates Pydicate DSL for reconstruction
@@ -56,8 +55,8 @@ historic/*.tu.py sources
 
 - `historic/` contains historic `.tu.py` source texts and `lexicon.tu.py`.
 - `authoring/` owns structured records, safe candidate rendering, source verification, the authoring CLI, and the local MCP server.
-- `ground_truth/records/` is the canonical structured target location when a source has been migrated.
-- `tests/ground_truth_cases.py` supports both structured JSONL and legacy text targets.
+- `ground_truth/records/` is the canonical generated target location.
+- `tests/ground_truth_cases.py` compares executable source expressions against structured JSONL records.
 - `tokenizer/` and `dictionary/` consume executable source expressions, not agent-produced prose.
 
 ## Source file conventions
