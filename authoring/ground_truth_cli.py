@@ -4,7 +4,14 @@ import argparse
 import json
 import sys
 from collections.abc import Callable
+from pathlib import Path
 
+from authoring.records import (
+    PhilologicalLocation,
+    add_record_location,
+    record_path,
+    write_records,
+)
 from tests.ground_truth_cases import (
     GroundTruthRenderError,
     GroundTruthSourceLoadError,
@@ -16,9 +23,12 @@ from tests.ground_truth_cases import (
 )
 
 
+ROOT = Path(__file__).resolve().parents[1]
+
+
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Inspect, migrate, and human-approve Old Tupi ground truth."
+        description="Inspect, migrate, annotate, and human-approve Old Tupi ground truth."
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
@@ -35,6 +45,24 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Interactively approve only new trailing rendered lines. Existing targets are immutable here.",
     )
     review.add_argument("--source", action="append", default=[], help="Historic source name; repeatable.")
+
+    locate = subparsers.add_parser(
+        "locate",
+        help="Append one witness, edition, page or folio, and line locator to a source record.",
+    )
+    locate.add_argument("--source", required=True, help="Historic source name.")
+    locate.add_argument("--record", required=True, help="Ground-truth record id or ordinal.")
+    locate.add_argument("--witness", help="Witness, manuscript, or source siglum.")
+    locate.add_argument("--edition", help="Edition or bibliographic reference.")
+    locate.add_argument("--page-start", help="First printed page, including Roman or bracketed forms.")
+    locate.add_argument("--page-end", help="Last printed page when the attestation crosses pages.")
+    locate.add_argument("--folio-start", help="First folio, for example 10r or 23v.")
+    locate.add_argument("--folio-end", help="Last folio when the attestation crosses folios.")
+    locate.add_argument("--line-start", help="First source line number or label.")
+    locate.add_argument("--line-end", help="Last source line number or label.")
+    locate.add_argument("--section", help="Section, chapter, prayer, or other internal locator.")
+    locate.add_argument("--url", help="Stable catalogue, facsimile, or edition URL.")
+    locate.add_argument("--note", help="Short transcription or locator note.")
     return parser.parse_args(argv)
 
 
@@ -130,8 +158,47 @@ def review(cases, *, input_fn: Callable[[str], str] = input) -> int:
     return exit_code
 
 
+def add_location(args: argparse.Namespace) -> int:
+    try:
+        case = selected_cases([args.source])[0]
+        location = PhilologicalLocation.from_dict(
+            {
+                key: value
+                for key, value in {
+                    "witness": args.witness,
+                    "edition": args.edition,
+                    "page_start": args.page_start,
+                    "page_end": args.page_end,
+                    "folio_start": args.folio_start,
+                    "folio_end": args.folio_end,
+                    "line_start": args.line_start,
+                    "line_end": args.line_end,
+                    "section": args.section,
+                    "url": args.url,
+                    "note": args.note,
+                }.items()
+                if value is not None
+            }
+        )
+        records = get_case_records(case)
+        updated = add_record_location(records, args.record, location)
+    except (KeyError, ValueError) as exc:
+        print(f"[ground-truth] {args.source}: {exc}", file=sys.stderr)
+        return 2
+
+    path = case.record_path or record_path(ROOT, kind=case.kind, source=case.name)
+    write_records(path, updated)
+    print(
+        f"[ground-truth] {case.name}: added locator to {args.record}: {location.display or location.to_dict()}"
+    )
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
+    if args.command == "locate":
+        return add_location(args)
+
     try:
         cases = selected_cases(args.source)
     except KeyError as exc:
