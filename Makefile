@@ -10,7 +10,7 @@ TOOLTIP_DB ?= var/tooltip_overrides.sqlite3
 FRONTEND_DIR ?= frontend
 FRONTEND_STAMP := $(FRONTEND_DIR)/node_modules/.installed
 
-.PHONY: help lint push test update-ground-truth review-ground-truth verify-ground-truth migrate-ground-truth-records regenerate-ground-truth play dict frontend-install frontend-build serve-dict
+.PHONY: help lint push test review-ground-truth verify-ground-truth regenerate-ground-truth play dict frontend-install frontend-build serve-dict
 
 help: ## Show available targets
 	@printf "Available targets:\n"
@@ -35,19 +35,13 @@ push: ## Lint, test, commit, and push the current branch
 test: ## Run the test suite; pass extra args with ARGS="..."
 	python3 tests/run_tests.py $(ARGS)
 
-verify-ground-truth: ## Verify source renderings and source-derived ground-truth artifacts
+verify-ground-truth: ## Verify source renderings and source-derived JSONL ground truth
 	python3 -m authoring.ground_truth_cli verify $(ARGS)
 
-regenerate-ground-truth: ## Rebuild JSONL records and legacy text from `.tu.py` source annotations
+regenerate-ground-truth: ## Rebuild JSONL ground truth from `.tu.py` source annotations
 	python3 -m authoring.ground_truth_cli regenerate $(ARGS)
 
-migrate-ground-truth-records: ## Compatibility alias for source-driven regeneration
-	$(MAKE) regenerate-ground-truth ARGS="$(ARGS)"
-
-update-ground-truth: ## Compatibility alias for source-driven regeneration
-	$(MAKE) regenerate-ground-truth ARGS="$(ARGS)"
-
-review-ground-truth: ## Check whether generated artifacts are current with their source annotations
+review-ground-truth: ## Check whether generated JSONL is current with its source annotations
 	python3 -m authoring.ground_truth_cli review $(ARGS)
 
 play: ## Open the interactive playground
