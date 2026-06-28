@@ -54,13 +54,13 @@ def source_records_from_file(
     The directive comments do not alter the Pydicate expression, its rendering,
     or the ordinary Python source syntax.
     """
-    entries = source_entries(source_path)
+    entries = source_entries(source_path, source_name=source)
     rendered_expressions = list(expressions)
     if len(entries) != len(rendered_expressions):
         raise ValueError(
             f"{source_path}: found {len(entries)} source expressions but loaded "
-            f"{len(rendered_expressions)} runtime expressions. Keep `l = [...]` and `l +=` "
-            "source entries in positional correspondence."
+            f"{len(rendered_expressions)} runtime expressions. Keep the declared source "
+            "list and its additions in positional correspondence."
         )
     annotations = annotations_by_source_line(source_path, entries)
     return [
@@ -77,24 +77,21 @@ def source_records_from_file(
     ]
 
 
-def source_entries(source_path: Path) -> list[SourceEntry]:
-    """Find expressions added to the conventional historic-source list `l`."""
+def source_entries(source_path: Path, *, source_name: str | None = None) -> list[SourceEntry]:
+    """Find source expressions in either `l = [...]` or `<source> = [...]` style.
+
+    Older files use a convenience list named `l` and add entries with `l +=`.
+    Others declare their canonical source list directly, for example
+    `bettendorff_compendio = [...]`. Both styles are deliberate and supported.
+    """
     tree = ast.parse(source_path.read_text(encoding="utf-8"), filename=str(source_path))
-    entries: list[SourceEntry] = []
-    found_initial_list = False
+    collection_name, initial = _initial_collection(tree, source_path, source_name)
+    entries = [SourceEntry(element.lineno) for element in initial.elts]
 
     for statement in tree.body:
-        if _is_l_assignment(statement):
-            if not isinstance(statement.value, (ast.List, ast.Tuple)):
-                raise ValueError(f"{source_path}:{statement.lineno}: `l` must start as a list or tuple.")
-            entries.extend(SourceEntry(element.lineno) for element in statement.value.elts)
-            found_initial_list = True
-            continue
-        if _is_l_append(statement):
-            entries.extend(SourceEntry(value.lineno) for value in _append_values(statement.value))
+        if _is_append_to(statement, collection_name):
+            entries.extend(SourceEntry(statement.lineno) for _ in _append_values(statement.value))
 
-    if not found_initial_list:
-        raise ValueError(f"{source_path}: no initial `l = [...]` source list was found.")
     return entries
 
 
@@ -138,6 +135,34 @@ def record_from_expression(
     )
 
 
+def _initial_collection(
+    tree: ast.Module, source_path: Path, source_name: str | None
+) -> tuple[str, ast.List | ast.Tuple]:
+    candidates: list[tuple[str, ast.List | ast.Tuple]] = []
+    for statement in tree.body:
+        if not isinstance(statement, ast.Assign) or len(statement.targets) != 1:
+            continue
+        target = statement.targets[0]
+        if not isinstance(target, ast.Name) or not isinstance(statement.value, (ast.List, ast.Tuple)):
+            continue
+        candidates.append((target.id, statement.value))
+
+    if source_name:
+        for name, values in candidates:
+            if name == source_name:
+                return name, values
+    for name, values in candidates:
+        if name == "l":
+            return name, values
+    if len(candidates) == 1:
+        return candidates[0]
+
+    wanted = f"`{source_name} = [...]` or " if source_name else ""
+    raise ValueError(
+        f"{source_path}: no initial {wanted}`l = [...]` source list was found."
+    )
+
+
 def _annotation_before(lines: list[str], expression_line: int) -> SourceAnnotation | None:
     directives: list[tuple[str, str]] = []
     line_index = expression_line - 2
@@ -150,7 +175,7 @@ def _annotation_before(lines: list[str], expression_line: int) -> SourceAnnotati
             return None
         match = DIRECTIVE_RE.match(raw)
         if match is None:
-            return None
+            break
         directives.append((match.group("key").lower(), match.group("value").strip()))
         line_index -= 1
 
@@ -238,20 +263,11 @@ def _span(value: str | None) -> tuple[str | None, str | None]:
     return normalized, None
 
 
-def _is_l_assignment(statement: ast.stmt) -> bool:
-    return (
-        isinstance(statement, ast.Assign)
-        and len(statement.targets) == 1
-        and isinstance(statement.targets[0], ast.Name)
-        and statement.targets[0].id == "l"
-    )
-
-
-def _is_l_append(statement: ast.stmt) -> bool:
+def _is_append_to(statement: ast.stmt, collection_name: str) -> bool:
     return (
         isinstance(statement, ast.AugAssign)
         and isinstance(statement.target, ast.Name)
-        and statement.target.id == "l"
+        and statement.target.id == collection_name
         and isinstance(statement.op, ast.Add)
     )
 
