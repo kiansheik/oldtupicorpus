@@ -1,6 +1,6 @@
 # Source authoring workflow
 
-Each executable Pydicate expression is the editable scholarly source of truth. Ground-truth JSONL and legacy text are generated artifacts, rebuilt from the expressions and their directly attached source comments.
+Each executable Pydicate expression is the editable scholarly source of truth. Ground-truth JSONL is the only generated artifact, rebuilt from the expressions and their directly attached source comments.
 
 ## Add a philological locator where the expression is written
 
@@ -23,11 +23,11 @@ For manuscripts, use a folio instead of a page:
 l += (...)
 ```
 
-Available locator directives are `@witness`, `@edition`, `@page`, `@folio`, `@line`, `@section`, `@subsection`, `@url`, and `@note`. Singular and plural spellings are accepted, so `@page` and `@pages` behave the same way. Ranges may use `-`, `–`, or `—`.
+Available locator directives are `@witness`, `@edition`, `@page`, `@folio`, `@line`, `@section`, `@subsection`, `@url`, and `@note`. Singular and plural spellings are accepted. Ranges may use `-`, `–`, or `—`.
 
 ### Sequential locator inheritance
 
-The authoring file is read in source order. `@page`, `@section`, and `@subsection` waterfall forward, so repeated locators do not need to be written on every expression.
+The authoring file is read in source order. `@page`, `@section`, and `@subsection` waterfall forward. Line numbers, folios, witnesses, editions, URLs, notes, and editorial fields remain local to their expression.
 
 ```python
 # @page 25-26
@@ -45,17 +45,13 @@ l += third_expression
 l += fourth_expression
 ```
 
-Here, the second and third expressions receive page `26`, section `2`, and subsection `2.1`. The second receives only its own `35-39` line range; the third has no line span. The fourth receives page `26` and section `3`, but its inherited subsection is deliberately cleared. Add `# @subsection ...` beside a new section when one applies.
-
-Only pages, sections, and subsections inherit. Line numbers, folios, witnesses, editions, URLs, notes, and editorial fields remain local to the expression where they are written.
+The second and third expressions receive page `26`, section `2`, and subsection `2.1`. The second alone receives its `35-39` line range. The fourth receives page `26` and section `3`; a new section clears the inherited subsection unless it also declares `@subsection`.
 
 Optional editorial directives are `@diplomatic`, `@target`, `@translation`, `@analysis`, and `@status`. They attach to the same next expression. A directive block must be immediately adjacent to its expression, apart from blank lines.
 
 ## Generated record format
 
-`ground_truth/records/<kind>/<source>.jsonl` is regenerated from the source code. Each object has stable `id`, `source`, `kind`, `ordinal`, and `surface` fields, plus optional editorial fields and a repeatable `locations` array. Legacy `.txt` files remain generated mirrors for current consumers.
-
-Example generated location:
+`ground_truth/records/<kind>/<source>.jsonl` is regenerated from the source code. Each object has stable `id`, `source`, `kind`, `ordinal`, and `surface` fields, plus optional editorial fields and a repeatable `locations` array. This JSONL is the only generated ground-truth format.
 
 ```json
 {
@@ -80,16 +76,16 @@ make regenerate-ground-truth ARGS="--source araujo_catecismo_1686"
 make verify-ground-truth
 ```
 
-`regenerate-ground-truth` deliberately rebuilds JSONL and text from the current `.tu.py` source. `verify-ground-truth` never writes. It fails when either rendering differs or the generated artifacts are stale relative to the source comments.
+`regenerate-ground-truth` rebuilds JSONL from the current `.tu.py` source. `verify-ground-truth` never writes. It fails when rendering differs or the generated JSONL is stale relative to the source comments.
 
 ## Agent-assisted line loop
 
-1. Start from the source expression and its adjacent `# @...` directives.
+1. Start from the source expression and adjacent `# @...` directives.
 2. Retrieve nearby context and comparable existing expressions.
 3. Ask for a candidate plus alternatives, not a silent edit.
 4. Render the candidate in the relevant source namespace.
-5. The human editor approves, rejects, or supplies a corrected target or analysis.
-6. Put the desired expression and any page, folio, line, section, or subsection locator directly in the `.tu.py` file.
+5. The human editor approves, rejects, or corrects the target or analysis.
+6. Put the desired expression and any locator directly in the `.tu.py` file.
 7. Run `make regenerate-ground-truth` and then `make verify-ground-truth`.
 8. When reusable grammar behavior changed, add a focused regression and an evidence note.
 
@@ -101,4 +97,4 @@ All MCP tools are read-only or evaluation-only. They cannot edit source files, g
 
 ## Completion condition
 
-A line is complete when its source expression and optional citation comments are present, generated records are current, rendering matches the target, relevant contrasts are tested, and its analysis is human-approved.
+A line is complete when its source expression and optional citation comments are present, generated JSONL is current, rendering matches the target, relevant contrasts are tested, and its analysis is human-approved.
