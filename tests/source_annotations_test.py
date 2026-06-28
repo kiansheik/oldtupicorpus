@@ -85,7 +85,9 @@ l = [
                 entries, annotations_by_source_line(path, entries)
             )
 
-        self.assertEqual([entry.source_line for entry in entries], [6, 8, 9, 11, 13, 14])
+        self.assertEqual(
+            [entry.source_line for entry in entries], [6, 8, 9, 11, 13, 14]
+        )
 
         first = annotations[6].locations[0]
         self.assertEqual((first.page_start, first.page_end), ("25", "26"))

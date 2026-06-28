@@ -200,7 +200,7 @@ l += arobiar * (
 l += arobiar * ((esé * third_day) + (saguera(((+jesus * (ikobé / îebyr))))))
 l += arobiar * ((abé.var(1) * risetoheaven) * rightsidegod)
 l += arobiar * ((abé.var(1) * bondadenomundo * (pûera * n(ae * sinfullife))) * payment)
-# Mandamentos da Ley de Deos
+# @subsection Mandamentos da Ley de Deos
 l += dez * (saba * (asé * (tupan * ekomonhang)))
 l += (eimoeté * (oîepé * tupan)).imp()
 
