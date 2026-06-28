@@ -35,6 +35,7 @@ class PhilologicalLocation:
     line_start: str | None = None
     line_end: str | None = None
     section: str | None = None
+    subsection: str | None = None
     url: str | None = None
     note: str | None = None
 
@@ -51,6 +52,7 @@ class PhilologicalLocation:
                 "line_start": self.line_start,
                 "line_end": self.line_end,
                 "section": self.section,
+                "subsection": self.subsection,
                 "url": self.url,
                 "note": self.note,
             }.items()
@@ -71,6 +73,7 @@ class PhilologicalLocation:
             "line_start",
             "line_end",
             "section",
+            "subsection",
             "url",
             "note",
         }
@@ -87,7 +90,11 @@ class PhilologicalLocation:
     @property
     def display(self) -> str:
         """Compact human-readable locator for editor and MCP clients."""
-        parts = [part for part in (self.witness, self.edition, self.section) if part]
+        parts = [
+            part
+            for part in (self.witness, self.edition, self.section, self.subsection)
+            if part
+        ]
         if self.folio_start:
             folio = f"f. {self.folio_start}"
             if self.folio_end and self.folio_end != self.folio_start:
@@ -114,7 +121,7 @@ class GroundTruthRecord:
     source transcription, while ``normalized_target`` records an explicitly
     editorial modern-orthography form when it differs from the diplomatic text.
     ``locations`` provides a repeatable, structured philological path back to
-    pages, folios, line spans, editions, witnesses, or sections.
+    pages, folios, line spans, editions, witnesses, sections, or subsections.
     """
 
     id: str
@@ -320,56 +327,18 @@ def write_records(path: Path, records: Iterable[GroundTruthRecord]) -> None:
     path.write_text("\n".join(serialized) + ("\n" if serialized else ""), encoding="utf-8")
 
 
-def append_records(
-    records: Iterable[GroundTruthRecord],
-    surfaces: Iterable[str],
-    *,
-    source: str,
-    kind: str,
-) -> list[GroundTruthRecord]:
-    updated = list(records)
-    for surface in surfaces:
-        normalized = normalize_surface(surface)
-        if not normalized:
-            continue
-        ordinal = len(updated) + 1
-        updated.append(
-            GroundTruthRecord(
-                id=f"{source}:{ordinal:04d}",
-                source=source,
-                kind=kind,
-                ordinal=ordinal,
-                surface=normalized,
-                status="approved",
-            )
-        )
-    return updated
+def append_record(path: Path, record: GroundTruthRecord) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(record.to_dict(), ensure_ascii=False, sort_keys=True) + "\n")
+
+
+def replace_record_surface(record: GroundTruthRecord, surface: str) -> GroundTruthRecord:
+    return replace(record, surface=normalize_surface(surface))
 
 
 def add_record_location(
-    records: Iterable[GroundTruthRecord],
-    record_id: str | int,
+    record: GroundTruthRecord,
     location: PhilologicalLocation,
-) -> list[GroundTruthRecord]:
-    """Attach a new witness/page/line locator without changing a target or analysis."""
-    updated = list(records)
-    for index, record in enumerate(updated):
-        if record.id == str(record_id) or str(record.ordinal) == str(record_id):
-            updated[index] = replace(record, locations=record.locations + (location,))
-            return updated
-    raise KeyError(f"Ground-truth record {record_id!r} not found.")
-
-
-def replace_record_surface(
-    records: Iterable[GroundTruthRecord], line_no: int, surface: str
-) -> list[GroundTruthRecord]:
-    updated = list(records)
-    if line_no < 1 or line_no > len(updated):
-        raise IndexError(f"Ground-truth record {line_no} not found.")
-    record = updated[line_no - 1]
-    normalized = normalize_surface(surface)
-    if record.normalized_target is not None:
-        updated[line_no - 1] = replace(record, normalized_target=normalized)
-    else:
-        updated[line_no - 1] = replace(record, surface=normalized)
-    return updated
+) -> GroundTruthRecord:
+    return replace(record, locations=(*record.locations, location))
