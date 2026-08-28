@@ -170,6 +170,26 @@
     "translation": ""
   },
   {
+    "value": "tetiruã",
+    "tag": "[3p:ADVERB:ANY:DEEPEST_NODE_1]",
+    "translation": ""
+  },
+  {
+    "value": "aîpo",
+    "tag": "[3p:AUDIBLE:DEEPEST_NODE_2:DEMONSTRATIVE:NOT_VISIBLE]",
+    "translation": ""
+  },
+  {
+    "value": "o",
+    "tag": "[3p:CORRELATIONAL:DEEPEST_NODE_1:SUBJECT_PREFIX]",
+    "translation": ""
+  },
+  {
+    "value": "o",
+    "tag": "[3p:CORRELATIONAL:DEEPEST_NODE_6:SUBJECT_PREFIX]",
+    "translation": ""
+  },
+  {
     "value": "i",
     "tag": "[3p:DEEPEST_NODE_10:SUBJECT_PREFIX]",
     "translation": ""
@@ -190,13 +210,18 @@
     "translation": ""
   },
   {
+    "value": "o",
+    "tag": "[3p:DEEPEST_NODE_1:MAIN_CLAUSE_SUBJECT:PRONOUN:SUBJECT_PREFIX]",
+    "translation": ""
+  },
+  {
     "value": "i",
     "tag": "[3p:DEEPEST_NODE_1:NON_MAIN_CLAUSE_SUBJECT:OBJECT]",
     "translation": ""
   },
   {
     "value": "i",
-    "tag": "[3p:DEEPEST_NODE_1:SUBJECT]",
+    "tag": "[3p:DEEPEST_NODE_1:OBJECT]",
     "translation": ""
   },
   {
@@ -335,6 +360,11 @@
     "translation": ""
   },
   {
+    "value": "pabẽ",
+    "tag": "[ADVERB:ALL:DEEPEST_NODE_3]",
+    "translation": ""
+  },
+  {
     "value": "a'e",
     "tag": "[ADVERB:DEEPEST_NODE_10]",
     "translation": ""
@@ -420,6 +450,16 @@
     "translation": ""
   },
   {
+    "value": "a",
+    "tag": "[AND:CONJUNCTION:CONSONANT_ENDING:DEEPEST_NODE_11:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[AND:CONJUNCTION:CONSONANT_ENDING:DEEPEST_NODE_1:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
     "value": "abé",
     "tag": "[AND:CONJUNCTION:DEEPEST_NODE_2]",
     "translation": ""
@@ -437,6 +477,11 @@
   {
     "value": "iré",
     "tag": "[BEYOND:DEEPEST_NODE_1:POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "mosapyra",
+    "tag": "[CARDINAL:DEEPEST_NODE_4:NOUN:NUMBER:POSSESSOR:THREE]",
     "translation": ""
   },
   {
@@ -636,6 +681,11 @@
   },
   {
     "value": "a",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_6:NOUN:POSSESSOR:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "a",
     "tag": "[CONSONANT_ENDING:DEEPEST_NODE_6:NOUN:SUBSTANTIVE_SUFFIX]",
     "translation": ""
   },
@@ -732,6 +782,11 @@
   {
     "value": "agûer",
     "tag": "[DEEPEST_NODE_11:PRETERITE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "Tupã",
+    "tag": "[DEEPEST_NODE_12:NOUN:POSSESSOR:PROPER_NOUN]",
     "translation": ""
   },
   {
@@ -845,6 +900,11 @@
     "translation": ""
   },
   {
+    "value": "sinco",
+    "tag": "[DEEPEST_NODE_1:NUMBER]",
+    "translation": ""
+  },
+  {
     "value": "îe",
     "tag": "[DEEPEST_NODE_1:OBJECT:REFLEXIVE]",
     "translation": ""
@@ -857,6 +917,11 @@
   {
     "value": "poro",
     "tag": "[DEEPEST_NODE_1:OBJECT:gen]",
+    "translation": ""
+  },
+  {
+    "value": "nã",
+    "tag": "[DEEPEST_NODE_1:PARTICLE]",
     "translation": ""
   },
   {
@@ -890,6 +955,11 @@
     "translation": ""
   },
   {
+    "value": "esebé",
+    "tag": "[DEEPEST_NODE_1:POSTPOSITION]",
+    "translation": ""
+  },
+  {
     "value": "esé",
     "tag": "[DEEPEST_NODE_1:POSTPOSITION]",
     "translation": ""
@@ -901,6 +971,11 @@
   },
   {
     "value": "pupé",
+    "tag": "[DEEPEST_NODE_1:POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "sosé",
     "tag": "[DEEPEST_NODE_1:POSTPOSITION]",
     "translation": ""
   },
@@ -997,6 +1072,11 @@
   {
     "value": "ba'e",
     "tag": "[DEEPEST_NODE_2:RELATIVE_AGENT_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "îabi'õ",
+    "tag": "[DEEPEST_NODE_3:EVERY:POSTPOSITION]",
     "translation": ""
   },
   {
@@ -1120,6 +1200,11 @@
     "translation": ""
   },
   {
+    "value": "s",
+    "tag": "[DEEPEST_NODE_4:PLURIFORM_PREFIX:S]",
+    "translation": ""
+  },
+  {
     "value": "t",
     "tag": "[DEEPEST_NODE_4:PLURIFORM_PREFIX:T]",
     "translation": ""
@@ -1212,6 +1297,11 @@
   {
     "value": "amo",
     "tag": "[DEEPEST_NODE_5:POSTPOSITION:SIMULATIVE_SUFFIX:TRANSLATIONAL]",
+    "translation": ""
+  },
+  {
+    "value": "îabé",
+    "tag": "[DEEPEST_NODE_5:POSTPOSITION]",
     "translation": ""
   },
   {
