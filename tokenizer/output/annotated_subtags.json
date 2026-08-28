@@ -72,6 +72,10 @@
     "subtag": "ASPECT"
   },
   {
+    "id": "S000128",
+    "subtag": "AUDIBLE"
+  },
+  {
     "id": "S000075",
     "subtag": "BEYOND"
   },
@@ -122,6 +126,10 @@
   {
     "id": "S000064",
     "subtag": "CONTINUOUS"
+  },
+  {
+    "id": "S000127",
+    "subtag": "CORRELATIONAL"
   },
   {
     "id": "S000046",
@@ -296,6 +304,10 @@
     "subtag": "M"
   },
   {
+    "id": "S000130",
+    "subtag": "MAIN_CLAUSE_SUBJECT"
+  },
+  {
     "id": "S000049",
     "subtag": "MO"
   },
@@ -326,6 +338,10 @@
   {
     "id": "S000028",
     "subtag": "NON_MAIN_CLAUSE_SUBJECT"
+  },
+  {
+    "id": "S000129",
+    "subtag": "NOT_VISIBLE"
   },
   {
     "id": "S000007",

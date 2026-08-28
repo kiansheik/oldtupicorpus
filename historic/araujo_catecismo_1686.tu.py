@@ -219,7 +219,27 @@ momotar = Verb("momotar")
 apixara = Noun("apixara", "(t)")
 emirekó = Noun("emirekó", "(t)")
 l += -(+nde * momotar * îe).imp() + esé * ((nde * apixara) * emirekó)
-
+l += nã + ((bae * ei) * pupé) + (paben + (aîpo * îub))
+opkmbt = opakatu + (mbae + tetiruã)
+l += (
+    opkmbt
+    + (((asé * aûsub * +opkmbt).base_nominal()) * sosé)
+    + (asé * (tupan * aûsub.base_nominal()))
+)
+l += (îabé * (+asé * aûsub * îe)) + (asé * aûsub * (og * apixara))
+# @page 6
+# @subsection Mandamentos da Santa Madre Igreja
+sinco = Number("sinco", "five")
+smi = Noun("Santa Madre Igreja")
+l += sinco * (saba * (asé * (smi * ekomonhang)))
+esebé = Postposition(
+    "esebé", definition="(t) (posp.) - com, juntamente com, assim como"
+)
+missa = ProperNoun("missa", definition="mass")
+endub = Verb("endub")
+l += (esé * domingo) + ((esebé * noworkday)) + (missa * endub).base_nominal()
+seîxu = Noun("seîxu", "ano")
+l += (iabiõ * seîxu) + (îe * mombeu).var(1).base_nominal()
 
 araujo_catecismo_1686 = l
 if __name__ == "__main__":

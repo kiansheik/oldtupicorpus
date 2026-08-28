@@ -1,6 +1,12 @@
-export const ENTRY_PATH = "/data/dictionary_entries.json.gz";
-export const CORPUS_PATH = "/data/rendered_corpus.json.gz";
-export const NAVARRO_PATH = "/data/navarro_dict.json.gz";
+function staticAssetPath(path) {
+  const base = import.meta.env.BASE_URL || "./";
+  const normalizedBase = base.endsWith("/") ? base : `${base}/`;
+  return `${normalizedBase}${path.replace(/^\/+/, "")}`;
+}
+
+export const ENTRY_PATH = staticAssetPath("data/dictionary_entries.json.gz");
+export const CORPUS_PATH = staticAssetPath("data/rendered_corpus.json.gz");
+export const NAVARRO_PATH = staticAssetPath("data/navarro_dict.json.gz");
 export const TOOLTIP_OVERRIDES_API_PATH = "/api/tooltip-overrides";
 export const TOOLTIP_VIEWPORT_MARGIN = 12;
 // Keep the legacy storage prefix so existing form-specific ROOT notes continue to match.

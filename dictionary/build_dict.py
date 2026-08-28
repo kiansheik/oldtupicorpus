@@ -40,6 +40,11 @@ def main(argv: list[str] | None = None) -> int:
     entries_json, entries_gz = write_json_artifact(
         out_dir / "dictionary_entries.json", entries
     )
+    for stale_artifact in (
+        out_dir / "navarro_dict.json",
+        out_dir / "navarro_dict.json.gz",
+    ):
+        stale_artifact.unlink(missing_ok=True)
 
     print(
         "Built dictionary site data: "

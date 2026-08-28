@@ -9,8 +9,13 @@ PORT ?= 8000
 TOOLTIP_DB ?= var/tooltip_overrides.sqlite3
 FRONTEND_DIR ?= frontend
 FRONTEND_STAMP := $(FRONTEND_DIR)/node_modules/.installed
+SITE_DIR ?= site
+GH_PAGES_REMOTE ?= origin
+GH_PAGES_BRANCH ?= gh-pages
+GH_PAGES_WORKTREE ?= .gh-pages-worktree
+GH_PAGES_COMMIT_MESSAGE ?=
 
-.PHONY: help lint push test review-ground-truth verify-ground-truth regenerate-ground-truth play dict frontend-install frontend-build serve-dict
+.PHONY: help lint push test review-ground-truth verify-ground-truth regenerate-ground-truth play dict frontend-install frontend-build serve-dict deploy-gh-pages
 
 help: ## Show available targets
 	@printf "Available targets:\n"
@@ -21,6 +26,11 @@ help: ## Show available targets
 	@printf "  %-20s %s\n" 'PORT=8000' "Port used by serve-dict"
 	@printf "  %-20s %s\n" 'TOOLTIP_DB=...' "SQLite file used for editable tooltip notes"
 	@printf "  %-20s %s\n" 'FRONTEND_DIR=frontend' "Directory containing the React/Vite frontend"
+	@printf "  %-20s %s\n" 'SITE_DIR=site' "Built static site directory"
+	@printf "  %-20s %s\n" 'GH_PAGES_REMOTE=origin' "Git remote used by deploy-gh-pages"
+	@printf "  %-20s %s\n" 'GH_PAGES_BRANCH=gh-pages' "GitHub Pages branch"
+	@printf "  %-20s %s\n" 'GH_PAGES_WORKTREE=.gh-pages-worktree' "Temporary worktree for gh-pages"
+	@printf "  %-20s %s\n" 'GH_PAGES_COMMIT_MESSAGE=...' "Commit message for deploy-gh-pages"
 
 lint: ## Format Python code with black
 	black .
@@ -47,8 +57,8 @@ review-ground-truth: ## Check whether generated JSONL is current with its source
 play: ## Open the interactive playground
 	python3 -i playground.py
 
-dict: ## Build the dictionary site data artifacts
-	python3 -m dictionary.build_dict
+dict: ## Build the dictionary data artifacts into SITE_DIR/data
+	python3 -m dictionary.build_dict --out-dir "$(SITE_DIR)/data"
 
 $(FRONTEND_STAMP): $(FRONTEND_DIR)/package.json
 	npm install --prefix $(FRONTEND_DIR)
@@ -57,8 +67,12 @@ $(FRONTEND_STAMP): $(FRONTEND_DIR)/package.json
 
 frontend-install: $(FRONTEND_STAMP) ## Install React/Vite frontend dependencies
 
-frontend-build: $(FRONTEND_STAMP) ## Build the React/Vite frontend into site/
-	npm run build --prefix $(FRONTEND_DIR)
+frontend-build: $(FRONTEND_STAMP) ## Build the React/Vite frontend into SITE_DIR
+	rm -rf "$(SITE_DIR)/assets"
+	SITE_DIR="$(SITE_DIR)" npm run build --prefix $(FRONTEND_DIR)
 
 serve-dict: dict frontend-build ## Build data, build the frontend, and serve with SQLite-backed tooltip editing
-	python3 -m dictionary.serve_dict --host $(HOST) --port $(PORT) --db-path $(TOOLTIP_DB)
+	python3 -m dictionary.serve_dict --host $(HOST) --port $(PORT) --site-dir "$(SITE_DIR)" --db-path $(TOOLTIP_DB)
+
+deploy-gh-pages: dict frontend-build ## Build and publish site/ to the gh-pages branch
+	SITE_DIR="$(SITE_DIR)" GH_PAGES_REMOTE="$(GH_PAGES_REMOTE)" GH_PAGES_BRANCH="$(GH_PAGES_BRANCH)" GH_PAGES_WORKTREE="$(GH_PAGES_WORKTREE)" GH_PAGES_COMMIT_MESSAGE="$(GH_PAGES_COMMIT_MESSAGE)" scripts/deploy_gh_pages.sh

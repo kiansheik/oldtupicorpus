@@ -484,6 +484,10 @@
     "value": "Eva"
   },
   {
+    "id": "M005226",
+    "value": "Igrej"
+  },
+  {
     "id": "M000171",
     "value": "Igreja"
   },
@@ -498,6 +502,10 @@
   {
     "id": "M000143",
     "value": "JesusChristoabé"
+  },
+  {
+    "id": "M005225",
+    "value": "Madre"
   },
   {
     "id": "M000067",
@@ -2248,6 +2256,10 @@
     "value": "aîpiã"
   },
   {
+    "id": "M005221",
+    "value": "aîpo"
+  },
+  {
     "id": "M000854",
     "value": "aîub"
   },
@@ -3830,6 +3842,10 @@
   {
     "id": "M000223",
     "value": "ese"
+  },
+  {
+    "id": "M005227",
+    "value": "esebé"
   },
   {
     "id": "M001299",
@@ -8062,6 +8078,10 @@
   {
     "id": "M002020",
     "value": "mirakubora"
+  },
+  {
+    "id": "M005228",
+    "value": "missarendub"
   },
   {
     "id": "M002021",
@@ -15984,6 +16004,10 @@
     "value": "saybi"
   },
   {
+    "id": "M005222",
+    "value": "saûsub"
+  },
+  {
     "id": "M003981",
     "value": "saûí"
   },
@@ -16092,6 +16116,14 @@
     "value": "seî"
   },
   {
+    "id": "M005229",
+    "value": "seîxu"
+  },
+  {
+    "id": "M005224",
+    "value": "sinco"
+  },
+  {
     "id": "M004007",
     "value": "sinimbu"
   },
@@ -16154,6 +16186,10 @@
   {
     "id": "M004022",
     "value": "sosok"
+  },
+  {
+    "id": "M005223",
+    "value": "sosé"
   },
   {
     "id": "M004015",

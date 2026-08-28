@@ -33,6 +33,7 @@ era = Noun("er", definition="(t); name")
 pindo = ProperNoun("Pindoba Mirĩ")
 pedro = ProperNoun("Pedro")
 love = Verb("aûsub", definition="to love")
+aûsub = love
 kunhatai = Noun("kunhataĩ", definition="young girl")
 abét = Adverb("abé", definition="also, as well")
 ara = Noun("'ara", definition="day, light, sunlight, time, period, era")
@@ -50,6 +51,11 @@ potar = Verb("potar", definition="to want, to desire, to wish for")
 kaa = Noun("ka'a", definition="(t); forest, jungle, woods, bush, thicket")
 opá = Adverb(
     "opá", definition="everything, all, whole, entire, complete", tag="[ADVERB:ALL]"
+)
+paben = Adverb(
+    "pabẽ",
+    definition="todo (os, a, as); totalmente, completamente",
+    tag="[ADVERB:ALL]",
 )
 basem = Verb("basem", definition="to find, to discover, to encounter")
 mboryb = Verb("mboryb", definition="to please, to delight, to satisfy")
@@ -76,6 +82,7 @@ ei = Verb(
     definition="to say, to tell, to speak, to indicate, to mean, to conclude, to judge",
 )
 er = Verb("er", verb_class="(s) (adj.)", definition="to have a name")
+aîpo = Demonstrative("aîpo", tag="[DEMONSTRATIVE:3p:NOT_VISIBLE:AUDIBLE]")
 pdb = +(pindo * abé * pedro)
 
 santa_cruz = ProperNoun("Santa Cruz")

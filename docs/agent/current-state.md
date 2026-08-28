@@ -1,9 +1,81 @@
 # Current State
 
-Last updated: 2026-06-28
+Last updated: 2026-08-28
 
 ## Repo State
 
+- GitHub Pages deployment for the dictionary/corpus viewer is now wired through
+  `make deploy-gh-pages`. The target rebuilds dictionary artifacts and the
+  Vite frontend into `SITE_DIR`, then `scripts/deploy_gh_pages.sh` syncs that
+  static bundle into a local `.gh-pages-worktree`, commits on `gh-pages`,
+  writes `.nojekyll`, and pushes to the configured remote. `SITE_DIR`,
+  `GH_PAGES_REMOTE`, `GH_PAGES_BRANCH`, `GH_PAGES_WORKTREE`, and
+  `GH_PAGES_COMMIT_MESSAGE` are configurable from `make`.
+- `frontend/src/lib.js` now builds static data URLs from
+  `import.meta.env.BASE_URL`, so the default Vite `base: "./"` produces paths
+  that work under a GitHub Pages project subpath. The tooltip override endpoint
+  remains `/api/tooltip-overrides`; it is only available from
+  `make serve-dict` and is treated as optional by the static app.
+- `make dict`, `make frontend-build`, `make serve-dict`, and
+  `make deploy-gh-pages` all honor `SITE_DIR`. `frontend/vite.config.js` reads
+  that environment variable for its `outDir`, and `make frontend-build` removes
+  stale generated `SITE_DIR/assets/` files before invoking Vite. This preserves
+  `SITE_DIR/data/` while preventing old hashed bundles from being copied into
+  the GitHub Pages branch.
+- `dictionary/build_dict.py` removes stale `navarro_dict.json(.gz)` sidecar
+  files from its output directory, because the current builder does not
+  regenerate that sidecar and the frontend treats it as optional if present.
+- `../nhe-enga/tupi/tupi/tupi.py`, `../nhe-enga/tupi/tupi/verb.py`, and
+  `../nhe-enga/pydicate/pydicate/lang/tupilang/pos/verb.py` now preserve
+  `[PROPER_NOUN]` spans through final verb phonetic cleanup. This keeps the
+  broad `is -> ix` rule active for regular lexical material while preventing
+  proper-noun objects such as `missa` and `Luis Felipe` from becoming
+  `mixsa`/`Luix`. The current Araujo source expression
+  `(esé * domingo) + (esebé * noworkday) + (missa * endub)` renders
+  `domingo resé 'ara marãtekoabe'yma resebé missarendubi`, and the nominalized
+  variant with `(missa * endub).base_nominal()` renders
+  `domingo resé 'ara marãtekoabe'yma resebé missarenduba`.
+  `tests/proper_noun_phonetics_test.py` covers finite and nominal direct
+  objects, the regular noun contrasts, and both Araujo phrase shapes.
+- `../nhe-enga/tupi/tupi/verb.py` now accepts an opt-in nominal variation for
+  intransitive reflexive/reciprocal subjects. `Verb.base_nominal()` passes
+  `variation_id` through from the Pydicate predicate, so
+  `(îe * mombeu).var(1).base_nominal()` renders `îemombe'u` while the default
+  `(îe * mombeu).base_nominal()` remains `oîo mombe'u`. Araujo record 77 uses
+  this in `l += (iabiõ * seîxu) + (îe * mombeu).var(1).base_nominal()`,
+  rendering `seîxu îabi'õ îemombe'u`. The regression is
+  `tests/reflexive_nominal_variation_test.py`.
+- `historic/lexicon.tu.py` now shadows imported `paben` with an
+  `Adverb("pabẽ", tag="[ADVERB:ALL]")`, matching the attested particle/adverb
+  use of `pabẽ` as "all/completely". Because preposed adverbs already trigger
+  circumstantial mood in the verb wrapper, `paben + (aîpo * îub)` renders
+  `pabẽ aîpoba'e ruî` without an explicit `.circ()`. The same file also defines
+  `aîpo` as the unaccented Araujo demonstrative variant, while existing
+  postposed `... + paben` surfaces such as `oîkobeba'e omanõba'epûera pabẽ`
+  remain unchanged. `tests/paben_adverb_test.py` covers both paths.
+- `historic/araujo_catecismo_1686.tu.py` now includes record
+  `araujo_catecismo_1686:0072`, rendered from
+  `nã + ((bae * ei) * pupé) + (paben + (aîpo * îub))` as
+  `nã e'iba'e pupé pabẽ aîpoba'e ruî`.
+- `historic/lexicon.tu.py` also aliases `aûsub = love` for source expressions
+  that should use the Tupi verb name directly. `historic/araujo_catecismo_1686.tu.py`
+  now includes record `araujo_catecismo_1686:0073`, rendered from
+  `opkmbt + (((asé * aûsub * +opkmbt).base_nominal()) * sosé) + (asé * (tupan * aûsub.base_nominal()))`
+  as `opakatu mba'e tetiruã asé saûsuba sosé asé Tupã raûsuba`.
+- `../nhe-enga/pydicate/pydicate/lang/tupilang/pos/verb.py` now makes
+  `Verb.base_nominal()` respect non-pronoun object pro-drop. This lets Araujo
+  record 73 keep `opkmbt` both as the overt fronted object and as the dropped
+  object of `asé * aûsub` without repeating it in the rendered nominal:
+  `(asé * aûsub * +opkmbt).base_nominal()` renders `asé saûsuba`, while the
+  dropped object remains present in the nominal arguments for syntax metadata.
+  `tests/base_nominal_object_pro_drop_test.py` covers this behavior plus the
+  unchanged `+ae` pronoun contrast.
+- `../nhe-enga/tupi/tupi/verb.py` now renders 3p nominal reflexive/reciprocal
+  objects with the correlational `o-` prefix when there is no overt subject
+  string. This makes `(+asé * aûsub * îe).base_nominal()` render `oîeaûsuba`
+  and the reciprocal contrast render `oîoaûsuba`, instead of the older
+  `i îe...` split. Regenerated historic JSONL now carries the same correction
+  into earlier Araujo and Bettendorff reflexive nominal records.
 - `../nhe-enga/pydicate/pydicate/lang/tupilang/pos/deverbal.py` now applies
   `e'ym` negation to `saba` deverbals when either the `saba` wrapper itself is
   negated or the input verb is negated. This fixes expressions such as
@@ -119,6 +191,10 @@ Last updated: 2026-06-28
 - The static dictionary frontend is in `frontend/src/` and builds into `site/`.
 - `dictionary/serve_dict.py` serves `site/` and exposes
   `/api/tooltip-overrides` for SQLite-backed tooltip notes.
+- `scripts/deploy_gh_pages.sh` publishes the static `site/` bundle to the
+  configured Pages branch using a local worktree. It refuses to use the repo
+  root as the worktree, refuses a wrong-branch or dirty existing Pages
+  worktree, and requires `site/index.html` before syncing.
 - `scripts/xmlpage_to_html.py` is a standalone PAGE XML to positioned HTML
   converter. It reads `pc:TextLine` baselines, writes `output.html` in the
   current working directory, supports lightweight inline formatting markers,
@@ -142,6 +218,9 @@ Last updated: 2026-06-28
   `syntax_spans` display, and tooltip note editing.
 - Tooltip notes are persistent scoped annotations, not temporary hover text.
   Preserve generic-vs-form-specific note behavior.
+- Static GitHub Pages deploys do not include the local SQLite tooltip editing
+  API. The viewer still loads dictionary/corpus data and hides editing when the
+  API is unavailable.
 
 ## Verification Ladder
 
@@ -155,6 +234,10 @@ Use the smallest relevant check first:
   `python3 -m dictionary.build_dict`
 - Frontend work:
   `npm run build --prefix frontend`
+- GitHub Pages deploy plumbing:
+  `bash -n scripts/deploy_gh_pages.sh`, `make dict`, `make frontend-build`,
+  and a built-bundle check that no current `site/assets` JS uses absolute
+  `/data/...` paths.
 - Full repo gate:
   `python3 tests/run_tests.py`
 - PAGE XML HTML script work:
