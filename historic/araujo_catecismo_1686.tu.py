@@ -1,7 +1,6 @@
 from historic.lexicon import load_lexicon
 
 globals().update(load_lexicon())
-third_day = ara * mosapyr.card()
 # call it l for writting convenience
 l = [
     # @page 1
@@ -211,35 +210,33 @@ l += eimoeté * (domingo_e_feriado)
 l += eimoeté * pais
 l += -(+nde * apiti * moro).imp()
 l += -(+nde * potar * moro).imp()
-mondarõ = Verb("mondarõ")
 l += -(+nde * mondarõ).imp()
-moem = Noun("emo'em", "(t)")
 l += -(+nde * v(moem)).imp() + (esé * abá)
-momotar = Verb("momotar")
-apixara = Noun("apixara", "(t)")
-emirekó = Noun("emirekó", "(t)")
 l += -(+nde * momotar * îe).imp() + esé * ((nde * apixara) * emirekó)
 l += nã + ((bae * ei) * pupé) + (paben + (aîpo * îub))
-opkmbt = opakatu + (mbae + tetiruã)
 l += (
     opkmbt
     + (((asé * aûsub * +opkmbt).base_nominal()) * sosé)
     + (asé * (tupan * aûsub.base_nominal()))
 )
-l += (îabé * (+asé * aûsub * îe)) + (asé * aûsub * (og * apixara))
+no = Adverb("no", definition="também")
+l += (îabé * (+asé * aûsub * îe)) + n((asé * aûsub) * (og * apixara)) + no
 # @page 6
 # @subsection Mandamentos da Santa Madre Igreja
-sinco = Number("sinco", "five")
-smi = Noun("Santa Madre Igreja")
 l += sinco * (saba * (asé * (smi * ekomonhang)))
-esebé = Postposition(
-    "esebé", definition="(t) (posp.) - com, juntamente com, assim como"
-)
-missa = ProperNoun("missa", definition="mass")
-endub = Verb("endub")
 l += (esé * domingo) + ((esebé * noworkday)) + (missa * endub).base_nominal()
-seîxu = Noun("seîxu", "ano")
 l += (iabiõ * seîxu) + (îe * mombeu).var(1).base_nominal()
+Pascoa = ProperNoun("Pascoa", definition="Easter")
+l += (iabiõ * Pascoa) + (tupan * îar).var(1).base_nominal()
+igreja = ProperNoun("igreja", definition="igreja")
+puai = Verb(
+    "pûaî",
+    definition="dar ordens a, mandar, ordenar, mandar fazer [aquilo que se manda ou se ordena pode vir com esé (r, s)]:",
+)
+kuakub = Verb("kuakub", definition="recusar")
+îekuakub = îe * kuakub
+îekuakub.definition = "jejuar"
+l += (iabiõ * n(îe * ((smi) * (kuakub / puai)))) + (îekuakub).var(1).base_nominal()
 
 araujo_catecismo_1686 = l
 if __name__ == "__main__":

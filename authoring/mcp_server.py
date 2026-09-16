@@ -75,6 +75,20 @@ def tool_definitions() -> list[dict[str, Any]]:
                 "properties": {"source": {"type": "string"}},
             },
         },
+        {
+            "name": "line_status",
+            "description": "Per-source-line ground-truth status for one historic source: verified, mismatch, or unaccounted for every source-list entry. Unlike verify_ground_truth, this does not stop at the first mismatch. This tool never edits files.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {"source": {"type": "string"}},
+                "required": ["source"],
+            },
+        },
+        {
+            "name": "reload_engine",
+            "description": "Evict cached pydicate/tupi engine modules from this long-lived server process. Call this immediately after editing ../nhe-enga (pydicate or tupi) files and before the next render_candidate, verify_ground_truth, or line_status call — otherwise those calls silently keep testing the engine code that was loaded when this server started, not your edit. This tool never edits files.",
+            "inputSchema": {"type": "object", "properties": {}},
+        },
     ]
 
 
@@ -86,6 +100,8 @@ def call_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         "search_rendered_expressions": service.search_rendered_expressions,
         "search_lexicon": service.search_lexicon,
         "verify_ground_truth": service.verify_ground_truth,
+        "line_status": service.line_status,
+        "reload_engine": service.reload_engine,
     }
     handler = handlers.get(name)
     if handler is None:

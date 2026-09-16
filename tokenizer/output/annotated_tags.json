@@ -296,6 +296,10 @@
     "tag": "[3p:DEEPEST_NODE_1:MAIN_CLAUSE_SUBJECT:PRONOUN:SUBJECT_PREFIX]"
   },
   {
+    "id": "T000402",
+    "tag": "[3p:DEEPEST_NODE_1:MAIN_CLAUSE_SUBJECT:PRONOUN]"
+  },
+  {
     "id": "T000379",
     "tag": "[3p:DEEPEST_NODE_1:MONOSYLLABIC:OBJECT_MARKER:PLURIFORM_PREFIX]"
   },
@@ -466,6 +470,10 @@
   {
     "id": "T000255",
     "tag": "[ADVERB:DEEPEST_NODE_3:FROM_THERE]"
+  },
+  {
+    "id": "T000403",
+    "tag": "[ADVERB:DEEPEST_NODE_9]"
   },
   {
     "id": "T000078",

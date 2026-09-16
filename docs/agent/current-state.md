@@ -1,6 +1,60 @@
 # Current State
 
-Last updated: 2026-08-28
+Last updated: 2026-09-16
+
+## 2026-09-16 Per-line ground-truth commit and MCP engine reload
+
+- Added `authoring.service.commit_ground_truth(source, ordinal)`: approves
+  exactly one source line's current rendering as its JSONL ground-truth
+  record. It only ever writes that one ordinal, never a full `regenerate`,
+  so it cannot silently bless neighboring unreviewed lines. It refuses an
+  ordinal more than one past the last persisted record (records must stay
+  contiguous) and refuses to overwrite a record whose `normalized_target`
+  the current rendering does not match, so it can never perform an
+  automatic target replacement. This backs a new "Commit ground truth"
+  action in the `vscodetupy` editor, invoked only by explicit human click —
+  it is deliberately not exposed as an MCP tool, so an agent can never call
+  it on its own.
+- Added `authoring.service.reload_engine()` and a matching `reload_engine`
+  MCP tool: evicts cached `pydicate`/`tupi` modules from this long-lived
+  server process so the next render actually reflects an on-disk engine
+  edit. The `2026-09-16-og-pluriform-prefix` session hit exactly this gap:
+  the running MCP server kept the old grammar module after a `../nhe-enga`
+  edit, and only a fresh server process picked up the fix. `reload_engine`
+  removes the need to restart the whole server for that.
+- `line_status`/`line_status_for_text` now also report `declared_target`
+  (the raw `normalized_target`, or null) alongside the existing `target`
+  (which falls back to the rendered surface when no target is declared) —
+  a caller needs this distinction to know whether committing the current
+  rendering is safe or would clobber a declared target.
+- Added `tests/commit_ground_truth_test.py` and extended
+  `tests/mcp_server_test.py` for `reload_engine`.
+- Verified with `python3 -m unittest tests.commit_ground_truth_test
+  tests.mcp_server_test` and `python3 tests/run_tests.py --skip-tokenizer`
+  (82 tests, all passing).
+
+## 2026-09-16 Referential `og` prefix
+
+- `../nhe-enga/pydicate/pydicate/lang/tupilang/pos/noun.py` now treats
+  `og * apixara` as `oapixara`, with `og` immediately before the stem and
+  no absolute pluriform `t-`. The unchanged Araujo record 74 expression
+  renders `oîeaûsuba îabé asé oapixararaûsuba no`.
+- `tests/og_pluriform_prefix_test.py` checks that expression, the annotated
+  prefix, `nde rapixara`, standalone `tapixara`, and the existing pluriform
+  verb nominal `ogaûsuba`.
+- The MCP all-source check reports 73 verified Araujo records and 40
+  verified Bettendorff records; Araujo records 74–77 remain unaccounted.
+  `make verify-ground-truth` fails at record 74 because the generated Araujo
+  JSONL ends at record 73. The other three lines have no human-approved
+  targets, so the generated artifact was not extended to include them.
+
+## 2026-09-16 Ground-truth inspection
+
+- `make last-ground-truth` shows the last three saved historic records with
+  their `.tu.py` source expressions and line numbers. `SOURCE=<name-or-file>`
+  selects a source; the default is the most recently modified historic
+  `.tu.py` file. `N=<positive integer>` changes the count. The command reads
+  saved JSONL and reports source expressions beyond its last record.
 
 ## Repo State
 
@@ -8,23 +62,29 @@ Last updated: 2026-08-28
   `make deploy-gh-pages`. The target rebuilds dictionary artifacts and the
   Vite frontend into `SITE_DIR`, then `scripts/deploy_gh_pages.sh` syncs that
   static bundle into a local `.gh-pages-worktree`, commits on `gh-pages`,
-  writes `.nojekyll`, and pushes to the configured remote. `SITE_DIR`,
-  `GH_PAGES_REMOTE`, `GH_PAGES_BRANCH`, `GH_PAGES_WORKTREE`, and
-  `GH_PAGES_COMMIT_MESSAGE` are configurable from `make`.
+  writes `.nojekyll`, and pushes to the configured remote. The deploy script
+  strips source-only `data/.gitignore` from the Pages worktree before
+  `git add`, so generated `data/*.json` and `data/*.json.gz` files are tracked
+  on the Pages branch. It currently requires dictionary, rendered-corpus, and
+  Navarro JSON plus gzip artifacts. `SITE_DIR`, `GH_PAGES_REMOTE`,
+  `GH_PAGES_BRANCH`, `GH_PAGES_WORKTREE`, and `GH_PAGES_COMMIT_MESSAGE` are
+  configurable from `make`.
 - `frontend/src/lib.js` now builds static data URLs from
   `import.meta.env.BASE_URL`, so the default Vite `base: "./"` produces paths
   that work under a GitHub Pages project subpath. The tooltip override endpoint
-  remains `/api/tooltip-overrides`; it is only available from
-  `make serve-dict` and is treated as optional by the static app.
+  remains `/api/tooltip-overrides`; the static frontend only fetches it on
+  local/private HTTP hosts where `make serve-dict` can provide the API, so the
+  GitHub Pages deployment does not emit a 404 for that local-only feature.
 - `make dict`, `make frontend-build`, `make serve-dict`, and
   `make deploy-gh-pages` all honor `SITE_DIR`. `frontend/vite.config.js` reads
   that environment variable for its `outDir`, and `make frontend-build` removes
   stale generated `SITE_DIR/assets/` files before invoking Vite. This preserves
   `SITE_DIR/data/` while preventing old hashed bundles from being copied into
   the GitHub Pages branch.
-- `dictionary/build_dict.py` removes stale `navarro_dict.json(.gz)` sidecar
-  files from its output directory, because the current builder does not
-  regenerate that sidecar and the frontend treats it as optional if present.
+- `dictionary/build_dict.py` writes `navarro_dict.json(.gz)` from the raw
+  Navarro export at `../nhe-enga/docs/tupi_dict_navarro.json`, using an empty
+  list if the sibling export is unavailable. These raw sidecar files are
+  published with the static site because the frontend requests them directly.
 - `../nhe-enga/tupi/tupi/tupi.py`, `../nhe-enga/tupi/tupi/verb.py`, and
   `../nhe-enga/pydicate/pydicate/lang/tupilang/pos/verb.py` now preserve
   `[PROPER_NOUN]` spans through final verb phonetic cleanup. This keeps the
@@ -194,7 +254,8 @@ Last updated: 2026-08-28
 - `scripts/deploy_gh_pages.sh` publishes the static `site/` bundle to the
   configured Pages branch using a local worktree. It refuses to use the repo
   root as the worktree, refuses a wrong-branch or dirty existing Pages
-  worktree, and requires `site/index.html` before syncing.
+  worktree, and requires `site/index.html` plus dictionary, rendered-corpus,
+  and Navarro JSON and gzip data artifacts before syncing.
 - `scripts/xmlpage_to_html.py` is a standalone PAGE XML to positioned HTML
   converter. It reads `pc:TextLine` baselines, writes `output.html` in the
   current working directory, supports lightweight inline formatting markers,
@@ -219,8 +280,8 @@ Last updated: 2026-08-28
 - Tooltip notes are persistent scoped annotations, not temporary hover text.
   Preserve generic-vs-form-specific note behavior.
 - Static GitHub Pages deploys do not include the local SQLite tooltip editing
-  API. The viewer still loads dictionary/corpus data and hides editing when the
-  API is unavailable.
+  API. The frontend skips tooltip-override fetches on HTTPS/static hosts, while
+  local/private HTTP serving keeps the edit API available.
 
 ## Verification Ladder
 

@@ -28,11 +28,19 @@ def _parse_navarro_definition(raw_definition: str | None) -> dict[str, object]:
     }
 
 
-def load_navarro_entries(path: Path | None = None) -> list[dict[str, object]]:
+def load_raw_navarro_entries(path: Path | None = None) -> list[dict[str, object]]:
     source_path = path or DEFAULT_NAVARRO_PATH
     if not source_path.exists():
         return []
     raw_entries = json.loads(source_path.read_text(encoding="utf-8"))
+    if not isinstance(raw_entries, list):
+        return []
+    return [entry for entry in raw_entries if isinstance(entry, dict)]
+
+
+def load_navarro_entries(path: Path | None = None) -> list[dict[str, object]]:
+    source_path = path or DEFAULT_NAVARRO_PATH
+    raw_entries = load_raw_navarro_entries(source_path)
     entries: list[dict[str, object]] = []
     for index, raw_entry in enumerate(raw_entries):
         headword = compact_whitespace(raw_entry.get("first_word"))

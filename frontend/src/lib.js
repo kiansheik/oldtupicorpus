@@ -230,6 +230,9 @@ export async function fetchMaybeGzipJson(path) {
 }
 
 export async function fetchTooltipOverrides() {
+  if (!shouldFetchTooltipOverrides()) {
+    return null;
+  }
   const response = await fetch(TOOLTIP_OVERRIDES_API_PATH, {
     cache: "no-store",
   });
@@ -237,6 +240,27 @@ export async function fetchTooltipOverrides() {
     throw new Error(`Failed to load tooltip overrides: ${response.status}`);
   }
   return response.json();
+}
+
+function shouldFetchTooltipOverrides() {
+  if (typeof window === "undefined") {
+    return false;
+  }
+  const { hostname, protocol } = window.location;
+  return protocol === "http:" && isLocalTooltipHost(hostname);
+}
+
+function isLocalTooltipHost(hostname) {
+  return (
+    hostname === "localhost" ||
+    hostname === "::1" ||
+    hostname === "0.0.0.0" ||
+    hostname.endsWith(".local") ||
+    /^127\./.test(hostname) ||
+    /^10\./.test(hostname) ||
+    /^192\.168\./.test(hostname) ||
+    /^172\.(1[6-9]|2\d|3[01])\./.test(hostname)
+  );
 }
 
 export async function saveTooltipOverrideRequest(tags, text) {

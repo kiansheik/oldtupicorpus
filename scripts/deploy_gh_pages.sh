@@ -32,6 +32,20 @@ if [ ! -f "$SITE_PATH/index.html" ]; then
   exit 1
 fi
 
+for required_artifact in \
+  data/dictionary_entries.json \
+  data/dictionary_entries.json.gz \
+  data/navarro_dict.json \
+  data/navarro_dict.json.gz \
+  data/rendered_corpus.json \
+  data/rendered_corpus.json.gz
+do
+  if [ ! -f "$SITE_PATH/$required_artifact" ]; then
+    echo "Static site directory is missing $required_artifact: $SITE_PATH" >&2
+    exit 1
+  fi
+done
+
 if ! command -v rsync >/dev/null 2>&1; then
   echo "rsync is required to deploy the static site." >&2
   exit 1
@@ -63,6 +77,7 @@ fi
 
 find "$WORKTREE_PATH" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 rsync -a --exclude ".DS_Store" "$SITE_PATH"/ "$WORKTREE_PATH"/
+rm -f "$WORKTREE_PATH/data/.gitignore"
 printf "" > "$WORKTREE_PATH/.nojekyll"
 
 SOURCE_REV="$(git -C "$ROOT_DIR" rev-parse --short HEAD)"

@@ -211,7 +211,7 @@
   },
   {
     "value": "o",
-    "tag": "[3p:DEEPEST_NODE_1:MAIN_CLAUSE_SUBJECT:PRONOUN:SUBJECT_PREFIX]",
+    "tag": "[3p:DEEPEST_NODE_1:MAIN_CLAUSE_SUBJECT:PRONOUN]",
     "translation": ""
   },
   {
@@ -402,6 +402,11 @@
   {
     "value": "suí",
     "tag": "[ADVERB:DEEPEST_NODE_3:FROM_THERE]",
+    "translation": ""
+  },
+  {
+    "value": "no",
+    "tag": "[ADVERB:DEEPEST_NODE_9]",
     "translation": ""
   },
   {
@@ -1246,6 +1251,11 @@
   },
   {
     "value": "Maria",
+    "tag": "[DEEPEST_NODE_4:PROPER_NOUN]",
+    "translation": ""
+  },
+  {
+    "value": "Pascoa",
     "tag": "[DEEPEST_NODE_4:PROPER_NOUN]",
     "translation": ""
   },

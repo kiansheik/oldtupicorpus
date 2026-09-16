@@ -74,9 +74,13 @@ Optional editorial directives are `@diplomatic`, `@target`, `@translation`, `@an
 make regenerate-ground-truth
 make regenerate-ground-truth ARGS="--source araujo_catecismo_1686"
 make verify-ground-truth
+make last-ground-truth
+make last-ground-truth SOURCE=historic/araujo_catecismo_1686.tu.py N=5
 ```
 
 `regenerate-ground-truth` rebuilds JSONL from the current `.tu.py` source. `verify-ground-truth` never writes. It fails when rendering differs or the generated JSONL is stale relative to the source comments.
+
+`last-ground-truth` prints the last three saved records with their source expressions and line numbers. `SOURCE` defaults to the most recently modified historic `.tu.py` file; `N` changes the count. It reads the saved JSONL without regenerating it and reports any source expressions beyond the last saved record.
 
 ## Agent-assisted line loop
 
@@ -91,9 +95,17 @@ make verify-ground-truth
 
 ## MCP
 
-The local `oldtupi-authoring` MCP server offers `list_sources`, `get_source_context`, `render_candidate`, `search_rendered_expressions`, `search_lexicon`, and `verify_ground_truth`.
+The local `oldtupi-authoring` MCP server offers `list_sources`, `get_source_context`, `render_candidate`, `search_rendered_expressions`, `search_lexicon`, `verify_ground_truth`, `line_status`, and `reload_engine`.
 
 All MCP tools are read-only or evaluation-only. They cannot edit source files, generated records, or Git state.
+
+### Known gotcha: stale engine modules in a long-running server
+
+The MCP server is one long-lived process. Python caches every imported module in `sys.modules` for that process's lifetime, and `historic/lexicon.tu.py`'s `from pydicate...import *` is a no-op against an already-cached package — so editing `../nhe-enga/{pydicate,tupi}` on disk does nothing to calls in an already-running server. Call `reload_engine` immediately after any engine edit, before the next `render_candidate`, `verify_ground_truth`, or `line_status` call, or you will silently keep testing the old engine code and conclude a correct fix "didn't work." (This is exactly what happened before `reload_engine` existed: see `docs/agent/session-handoffs/2026-09-16-og-pluriform-prefix.md`.)
+
+## Committing one line without touching its neighbors
+
+`authoring.service.commit_ground_truth(source, ordinal)` approves exactly one line's current rendering as its JSONL record — unlike `regenerate`, it never re-derives any other line, so it is safe to call on a source that still has unreviewed lines after it. It refuses to run ahead of the last persisted record (ordinals must stay contiguous) and refuses to overwrite a record whose declared `normalized_target` the current rendering does not match. This is not an MCP tool — it backs the `vscodetupy` editor's explicit "Commit ground truth" action and is invoked only by a human click, never by an agent.
 
 ## Completion condition
 

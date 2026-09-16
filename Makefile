@@ -15,13 +15,15 @@ GH_PAGES_BRANCH ?= gh-pages
 GH_PAGES_WORKTREE ?= .gh-pages-worktree
 GH_PAGES_COMMIT_MESSAGE ?=
 
-.PHONY: help lint push test review-ground-truth verify-ground-truth regenerate-ground-truth play dict frontend-install frontend-build serve-dict deploy-gh-pages
+.PHONY: help lint push test review-ground-truth verify-ground-truth regenerate-ground-truth last-ground-truth play dict frontend-install frontend-build serve-dict deploy-gh-pages
 
 help: ## Show available targets
 	@printf "Available targets:\n"
 	@awk 'BEGIN {FS = ":.*## "}; /^[a-zA-Z0-9_.-]+:.*## / {printf "  %-30s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 	@printf "\nVariables:\n"
 	@printf "  %-20s %s\n" 'ARGS="..."' "Extra arguments passed through to test or ground-truth commands"
+	@printf "  %-20s %s\n" 'SOURCE=...' "Historic .tu.py file for last-ground-truth (default: most recently edited)"
+	@printf "  %-20s %s\n" 'N=3' "Number of trailing records for last-ground-truth"
 	@printf "  %-20s %s\n" 'HOST=0.0.0.0' "Host interface used by serve-dict"
 	@printf "  %-20s %s\n" 'PORT=8000' "Port used by serve-dict"
 	@printf "  %-20s %s\n" 'TOOLTIP_DB=...' "SQLite file used for editable tooltip notes"
@@ -53,6 +55,9 @@ regenerate-ground-truth: ## Rebuild JSONL ground truth from `.tu.py` source anno
 
 review-ground-truth: ## Check whether generated JSONL is current with its source annotations
 	python3 -m authoring.ground_truth_cli review $(ARGS)
+
+last-ground-truth: ## Show the last N source commands and saved ground-truth records
+	@python3 -m authoring.last_ground_truth --source "$(SOURCE)" --count "$(or $(N),3)"
 
 play: ## Open the interactive playground
 	python3 -i playground.py

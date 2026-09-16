@@ -1,0 +1,8 @@
+{
+  "surface": "xe îekyîeme",
+  "annotated": "xe[SUBJECT:1ps] îekyî[ROOT][SUBSTANTIVE_SUFFIX:CONSONANT_ENDING][ROOT]eme[CONJUNCTIVE_SUFFIX][POSTPOSITION:TEMPORAL]",
+  "semantic": "[during, when, at the time of, on]([to die, to expire, to pass away, grow, increase, rise, develop]([I, me, mine, my]))",
+  "translation_prompt": "The following passage is in Tupi, annotated grammatically.\nBelow, you see the same sentence structure represented hierarchically as a syntax tree, recursively showing each part with English glosses as node values, including both arguments and adjuncts.\nThere are multiple sentences in the same narrative.\nInterpret each into a Portuguese story, choosing the best words to represent the meaning and structure.\nDo not be creative; pay close attention to context and provide the most accurate Portuguese interpretation possible.\n\n\n\n\n\nxe îekyîeme.\n\n\n\nxe[SUBJECT:1ps] îekyî[ROOT][SUBSTANTIVE_SUFFIX:CONSONANT_ENDING][ROOT]eme[CONJUNCTIVE_SUFFIX][POSTPOSITION:TEMPORAL].\n\n\n\n[during, when, at the time of, on]([to die, to expire, to pass away, grow, increase, rise, develop]([I, me, mine, my]))",
+  "forest_tree": "[\\textit{xe îekyîeme}, result, name=n0_4411722960  [\\shortstack{\\textit{eme} \\\\ \\texttt{\\textit{Postposition, Temporal}} \\\\ \\texttt{\\shortstack{during}}}, core, name=n0_core_4411722960 [\\textit{aîekyî ixé}, arg, name=n1_4411723280  [\\shortstack{\\textit{îekyî} \\\\ \\texttt{\\textit{Verb}} \\\\ \\texttt{\\shortstack{to die,\\\\to expire,\\\\to pass away}}}, core, name=n1_core_4411723280 [\\shortstack{\\textit{ixé} \\\\ \\texttt{\\textit{Pronoun, 1ps}} \\\\ \\texttt{\\shortstack{I,\\\\me,\\\\mine}}}, arg, name=n2_4411723920]]\n ]]\n ]",
+  "forest_links": []
+}

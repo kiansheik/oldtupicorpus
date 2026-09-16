@@ -294,6 +294,22 @@ domingo_e_feriado = abé.var(1) * domingo * noworkday
 pais = abé * (nde * tuba) * (nde * sy)
 apiti = Verb("apiti", definition="murder")
 
+third_day = ara * mosapyr.card()
+mondarõ = Verb("mondarõ")
+moem = Noun("emo'em", "(t)")
+momotar = Verb("momotar")
+apixara = Noun("apixara", "(t)")
+emirekó = Noun("emirekó", "(t)")
+opkmbt = opakatu + (mbae + tetiruã)
+sinco = Number("sinco", "five")
+smi = Noun("Santa Madre Igreja")
+esebé = Postposition(
+    "esebé", definition="(t) (posp.) - com, juntamente com, assim como"
+)
+missa = ProperNoun("missa", definition="mass")
+endub = Verb("endub")
+seîxu = Noun("seîxu", "ano")
+
 __all__ = [
     name for name in globals() if not name.startswith("_") and name not in {"os", "sys"}
 ]

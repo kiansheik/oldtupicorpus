@@ -44,9 +44,10 @@ class SourceAnnotation:
 
 @dataclass(frozen=True)
 class SourceEntry:
-    """One expression position in source order, including its physical source line."""
+    """One expression position in source order, including its physical source line span."""
 
     source_line: int
+    end_line: int
 
 
 def source_records_from_file(
@@ -109,12 +110,16 @@ def source_entries(
     """
     tree = ast.parse(source_path.read_text(encoding="utf-8"), filename=str(source_path))
     collection_name, initial = _initial_collection(tree, source_path, source_name)
-    entries = [SourceEntry(element.lineno) for element in initial.elts]
+    entries = [
+        SourceEntry(element.lineno, element.end_lineno or element.lineno)
+        for element in initial.elts
+    ]
 
     for statement in tree.body:
         if _is_append_to(statement, collection_name):
             entries.extend(
-                SourceEntry(statement.lineno) for _ in _append_values(statement.value)
+                SourceEntry(statement.lineno, statement.end_lineno or statement.lineno)
+                for _ in _append_values(statement.value)
             )
 
     return entries

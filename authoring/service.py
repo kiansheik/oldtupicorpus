@@ -4,10 +4,12 @@ import ast
 import importlib.util
 import re
 import sys
+import tempfile
 from pathlib import Path
 from typing import Any, Iterable
 
-from authoring.records import GroundTruthRecord
+from authoring.records import GroundTruthRecord, normalize_surface, write_records
+from authoring.source_annotations import source_entries
 from tests.ground_truth_cases import (
     GroundTruthCase,
     compare_case_lines,
@@ -54,6 +56,27 @@ def list_sources(*, include_synthetic: bool = False) -> list[dict[str, Any]]:
         }
         for case in load_ground_truth_cases(include_synthetic=include_synthetic)
     ]
+
+
+def reload_engine() -> dict[str, Any]:
+    """Evict cached `pydicate`/`tupi` engine modules so the next render re-imports them.
+
+    This authoring MCP server is a long-lived process, and Python caches every
+    imported module in `sys.modules` for that process's lifetime. Editing
+    `../nhe-enga/{pydicate,tupi}` source on disk does nothing to an already
+    running server until those cached modules are evicted — `historic/lexicon.tu.py`
+    is reloaded fresh on every call, but its `from pydicate...import *` statement
+    is a no-op against an already-cached package. Call this immediately after any
+    engine edit, before the next render_candidate, verify_ground_truth, or
+    line_status call, or you will silently re-test the OLD engine code.
+    """
+    prefixes = ("pydicate", "tupi")
+    removed = sorted(
+        name for name in list(sys.modules) if name.split(".", 1)[0] in prefixes
+    )
+    for name in removed:
+        del sys.modules[name]
+    return {"reloaded_modules": removed}
 
 
 def get_source_context(
@@ -239,6 +262,193 @@ def verify_ground_truth(source: str | None = None) -> dict[str, Any]:
     return {"ok": blocked == 0, "blocked": blocked, "sources": outcomes}
 
 
+def line_status(source: str) -> dict[str, Any]:
+    """Per-source-line ground-truth status for one historic source.
+
+    Every source-list entry gets its own status, independent of whether an
+    earlier entry mismatches, so one bad line never hides the status of the
+    rest of the file:
+
+    - "verified": an approved record exists at this ordinal and the current
+      rendering matches it.
+    - "mismatch": an approved record exists at this ordinal but the current
+      rendering does not match it (or fails to render at all).
+    - "unaccounted": no ground-truth record exists yet at this ordinal.
+    """
+    case = get_case(source)
+    records_by_ordinal = {record.ordinal: record for record in get_case_records(case)}
+    entries = source_entries(source_file_path(source), source_name=source)
+    expressions = list(
+        case.expressions() if callable(case.expressions) else case.expressions
+    )
+    return {
+        "source": source,
+        "lines": lines_from_entries(entries, expressions, records_by_ordinal),
+    }
+
+
+def line_status_for_text(source: str, text: str) -> dict[str, Any]:
+    """Like `line_status`, but rendered from an in-memory buffer, not disk.
+
+    Lets an editor show status for unsaved edits without writing them to the
+    real source file. The buffer is written to a throwaway temp file only so
+    it can be parsed and imported as `historic.<name>`; that temp file is
+    always removed before returning.
+    """
+    case = get_case(source)
+    records_by_ordinal = {record.ordinal: record for record in get_case_records(case)}
+
+    with tempfile.NamedTemporaryFile(
+        suffix=".tu.py", mode="w", delete=False, encoding="utf-8"
+    ) as handle:
+        handle.write(text)
+        temp_path = Path(handle.name)
+
+    try:
+        entries = source_entries(temp_path, source_name=source)
+        module = _load_module_from_path(f"historic._authoring_live_{source}", temp_path)
+    except Exception as exc:
+        return {
+            "source": source,
+            "lines": [],
+            "error": f"{exc.__class__.__name__}: {exc}",
+        }
+    finally:
+        temp_path.unlink(missing_ok=True)
+
+    expressions = getattr(module, source, None)
+    if expressions is None:
+        return {
+            "source": source,
+            "lines": [],
+            "error": f"Missing '{source}' list in the edited buffer.",
+        }
+
+    return {
+        "source": source,
+        "lines": lines_from_entries(entries, list(expressions), records_by_ordinal),
+    }
+
+
+def commit_ground_truth(source: str, ordinal: int) -> dict[str, Any]:
+    """Approve exactly one source line's current rendering as ground truth.
+
+    This only ever writes the JSONL record at `ordinal` — it never re-renders
+    or re-approves any other line, even ones whose live rendering has since
+    drifted from what is persisted for them. That is what makes this safe to
+    call on a partially-reviewed source without silently blessing neighboring
+    lines nobody has looked at yet (unlike a full `regenerate`, which rebuilds
+    every record in the source from its current rendering).
+
+    Ordinals must be approved in order: this refuses an ordinal more than one
+    past the last persisted record, since JSONL ground-truth records must be
+    contiguous starting at 1.
+
+    Refuses when the existing record at `ordinal` already declares a
+    `normalized_target` (a human-specified correct surface — from `@target`
+    or a prior "Correct ground truth" pass) that the current rendering does
+    not match: silently overwriting that declared target with whatever
+    currently renders would be exactly the automatic target replacement this
+    tool must never do.
+    """
+    case = get_case(source)
+    expressions = list(
+        case.expressions() if callable(case.expressions) else case.expressions
+    )
+    if ordinal < 1 or ordinal > len(expressions):
+        raise KeyError(f"{source} has no source entry at ordinal {ordinal}.")
+
+    existing = list(get_case_records(case))
+    if ordinal > len(existing) + 1:
+        raise ValueError(
+            f"{source} record {ordinal} cannot be approved yet — records must "
+            f"be approved in order. Approve record {len(existing) + 1} first."
+        )
+
+    prior = existing[ordinal - 1] if ordinal <= len(existing) else None
+    rendered = render_one(expressions[ordinal - 1])
+    if rendered is None:
+        raise ValueError(f"{source} record {ordinal} failed to render a string.")
+
+    if (
+        prior is not None
+        and prior.normalized_target is not None
+        and rendered != prior.expected_surface
+    ):
+        raise ValueError(
+            f"{source} record {ordinal} already declares a target "
+            f"({prior.normalized_target!r}) that the current rendering does not "
+            "match. Fix the engine, or use 'Correct ground truth' instead of "
+            "committing over a declared target."
+        )
+
+    new_record = GroundTruthRecord(
+        id=f"{source}:{ordinal:04d}",
+        source=source,
+        kind=case.kind,
+        ordinal=ordinal,
+        surface=rendered,
+        status="approved",
+        diplomatic=prior.diplomatic if prior else None,
+        normalized_target=prior.normalized_target if prior else None,
+        translation=prior.translation if prior else None,
+        analysis=prior.analysis if prior else None,
+        locations=prior.locations if prior else (),
+        notes=prior.notes if prior else (),
+    )
+    records = list(existing)
+    if prior is None:
+        records.append(new_record)
+    else:
+        records[ordinal - 1] = new_record
+    write_records(case.record_path, records)
+
+    return {"source": source, "ordinal": ordinal, "committed_surface": rendered}
+
+
+def lines_from_entries(
+    entries: list[Any],
+    expressions: list[Any],
+    records_by_ordinal: dict[int, GroundTruthRecord],
+) -> list[dict[str, Any]]:
+    lines: list[dict[str, Any]] = []
+    for ordinal, entry in enumerate(entries, start=1):
+        record = records_by_ordinal.get(ordinal)
+        expression = expressions[ordinal - 1] if ordinal <= len(expressions) else None
+        rendered = render_one(expression) if expression is not None else None
+        if record is None:
+            status = "unaccounted"
+        elif rendered is not None and rendered == record.expected_surface:
+            status = "verified"
+        else:
+            status = "mismatch"
+        lines.append(
+            {
+                "ordinal": ordinal,
+                "source_line": entry.source_line,
+                "end_line": entry.end_line,
+                "status": status,
+                "rendered": rendered,
+                "target": record.expected_surface if record else None,
+                "declared_target": record.normalized_target if record else None,
+            }
+        )
+    return lines
+
+
+def render_one(expression: object) -> str | None:
+    evaluator = getattr(expression, "eval", None)
+    if not callable(evaluator):
+        return None
+    try:
+        rendered = evaluator()
+    except Exception:
+        return None
+    if not isinstance(rendered, str):
+        return None
+    return normalize_surface(rendered)
+
+
 def get_case(source: str) -> GroundTruthCase:
     for case in load_ground_truth_cases(include_synthetic=False):
         if case.name == source:
@@ -309,18 +519,21 @@ def callable_name(node: ast.AST) -> str | None:
 
 
 def load_source_namespace(source: str) -> dict[str, Any]:
-    source_path = source_file_path(source)
     module_name = f"historic._authoring_{source}"
-    spec = importlib.util.spec_from_file_location(module_name, source_path)
+    return dict(vars(_load_module_from_path(module_name, source_file_path(source))))
+
+
+def _load_module_from_path(module_name: str, path: Path):
+    spec = importlib.util.spec_from_file_location(module_name, path)
     if spec is None or spec.loader is None:
-        raise ImportError(f"Unable to load source module {source_path}")
+        raise ImportError(f"Unable to load module from {path}")
     module = importlib.util.module_from_spec(spec)
     sys.modules[module_name] = module
     try:
         spec.loader.exec_module(module)
     finally:
         sys.modules.pop(module_name, None)
-    return dict(vars(module))
+    return module
 
 
 def load_lexicon_namespace() -> dict[str, Any]:

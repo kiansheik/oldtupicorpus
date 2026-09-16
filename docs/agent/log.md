@@ -1,7 +1,71 @@
 # Agent Log
 
+## 2026-09-16
+
+- Added `authoring.service.commit_ground_truth` (approve exactly one line's
+  current rendering as ground truth, never a full source regenerate, and
+  refuses to overwrite a declared-but-unmatched `normalized_target`) and
+  `authoring.service.reload_engine` plus its MCP tool (evict cached
+  `pydicate`/`tupi` modules so a long-running server picks up on-disk engine
+  edits without a full restart — the exact gap the `og`-prefix session below
+  hit).
+- Added `declared_target` to `line_status`/`line_status_for_text` output so
+  callers can tell a declared-but-unmatched target apart from a merely
+  stale baked-in surface.
+- Added `tests/commit_ground_truth_test.py`; extended `tests/mcp_server_test.py`.
+- Verified with `python3 -m unittest tests.commit_ground_truth_test
+  tests.mcp_server_test` and `python3 tests/run_tests.py --skip-tokenizer`.
+- Fixed the referential `og` prefix path in the sibling grammar engine so
+  pluriform `apixara` no longer receives an intervening absolute `t-`.
+- Added `tests/og_pluriform_prefix_test.py`, a grammar-navigation entry,
+  and a root-cause note in `../nhe-enga/AGENT_NOTES.md`.
+- The unchanged Araujo record 74 expression now renders the editor-approved
+  `oîeaûsuba îabé asé oapixararaûsuba no`. Fresh MCP checks found no
+  other historic rendering changes and no mismatches among saved targets.
+- `make test ARGS="--skip-tokenizer"` passes. `make verify-ground-truth`
+  fails because the generated Araujo JSONL stops at record 73 while the
+  source has four additional lines; these remain unaccounted.
+- Added `make last-ground-truth` for trailing saved historic ground truth,
+  source expressions, and line numbers. It defaults to the newest `.tu.py`
+  file and three records, with `SOURCE` and `N` overrides.
+- Verified default and explicit-source output, invalid-count handling,
+  `python3 -m unittest tests.last_ground_truth_test`, and `git diff --check`.
+- The current Araujo source has four expressions after its last saved JSONL
+  record; the command reports that divergence without writing ground truth.
+
 ## 2026-08-28
 
+- Fixed the GitHub Pages deploy after the static app loaded but
+  `/oldtupicorpus/data/*.json(.gz)` returned 404. The copied
+  `site/data/.gitignore` ignored generated JSON files inside the Pages
+  worktree, so `git add -A` had only tracked `data/.gitignore`.
+- Updated `scripts/deploy_gh_pages.sh` to require the four dictionary/corpus
+  data artifacts before deploy and remove `data/.gitignore` from the Pages
+  worktree before staging.
+- Ran `make deploy-gh-pages`; it pushed `gh-pages` commit `0feadb2`, deleting
+  `data/.gitignore` and adding `data/dictionary_entries.json(.gz)` plus
+  `data/rendered_corpus.json(.gz)`.
+- Verified live custom-domain URLs:
+  `https://kiansheik.io/oldtupicorpus/data/dictionary_entries.json`,
+  `https://kiansheik.io/oldtupicorpus/data/dictionary_entries.json.gz`,
+  `https://kiansheik.io/oldtupicorpus/data/rendered_corpus.json`, and
+  `https://kiansheik.io/oldtupicorpus/data/rendered_corpus.json.gz` all return
+  HTTP 200.
+- Fixed the remaining static Pages console 404s from the second browser log:
+  `dictionary/build_dict.py` now writes `navarro_dict.json(.gz)` from the raw
+  sibling Navarro export, and `scripts/deploy_gh_pages.sh` requires those
+  sidecars before publishing.
+- Updated `frontend/src/lib.js` so `/api/tooltip-overrides` is only fetched on
+  local/private HTTP hosts where `make serve-dict` can answer it. The HTTPS
+  GitHub Pages app no longer requests that local-only endpoint.
+- Ran `make dict`, `make frontend-build`, and approved `make deploy-gh-pages`;
+  it pushed `gh-pages` commit `1dff408`, adding
+  `data/navarro_dict.json(.gz)` and the updated frontend bundle.
+- After Pages propagation, verified
+  `https://kiansheik.io/oldtupicorpus/data/navarro_dict.json`,
+  `https://kiansheik.io/oldtupicorpus/data/navarro_dict.json.gz`,
+  `https://kiansheik.io/oldtupicorpus/assets/index-fXoTmJbf.js`, and
+  `https://kiansheik.io/oldtupicorpus/` all return HTTP 200.
 - Added `make deploy-gh-pages` with configurable `SITE_DIR`,
   `GH_PAGES_REMOTE`, `GH_PAGES_BRANCH`, `GH_PAGES_WORKTREE`, and
   `GH_PAGES_COMMIT_MESSAGE` variables.
@@ -17,8 +81,8 @@
   and deployment. `make frontend-build` removes stale generated
   `SITE_DIR/assets/` files before Vite builds, preserving `SITE_DIR/data/`
   while avoiding old hashed bundles in Pages deploys.
-- Updated `dictionary/build_dict.py` to remove stale optional
-  `navarro_dict.json(.gz)` sidecar files from its output directory.
+- Updated `dictionary/build_dict.py` to publish the raw Navarro
+  `navarro_dict.json(.gz)` sidecar files for the frontend.
 - Documented GitHub Pages setup in `README.md`.
 - Verified with `bash -n scripts/deploy_gh_pages.sh`, `make help`,
   `make dict`, `make frontend-build`, and focused checks that current built

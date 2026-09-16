@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <rect width="1080" height="1080" rx="44" fill="#f7f1e5"/>
+  <rect x="48" y="48" width="984" height="984" rx="34" fill="#fffdf8" stroke="#183b3a" stroke-width="3"/>
+  <text x="540" y="120" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="30" letter-spacing="4" fill="#b25d3b">2 · VERBO POSICIONAL</text>
+  <text x="540" y="205" text-anchor="middle" font-family="Georgia, serif" font-size="68" font-weight="700" fill="#183b3a">oroîub</text>
+  <text x="540" y="254" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="30" fill="#536461">“jazemos / estamos deitados”</text>
+  <rect x="350" y="300" width="380" height="70" rx="18" fill="#183b3a"/>
+  <text x="540" y="345" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="28" fill="#fff">oração independente</text>
+  <line x1="540" y1="370" x2="540" y2="420" stroke="#69827c" stroke-width="4"/>
+  <line x1="285" y1="420" x2="795" y2="420" stroke="#69827c" stroke-width="4"/>
+  <line x1="285" y1="420" x2="285" y2="480" stroke="#69827c" stroke-width="4"/>
+  <line x1="795" y1="420" x2="795" y2="480" stroke="#69827c" stroke-width="4"/>
+  <rect x="120" y="480" width="330" height="145" rx="22" fill="#dce9e3" stroke="#183b3a" stroke-width="3"/>
+  <text x="285" y="530" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#183b3a">SUJEITO</text>
+  <text x="285" y="578" text-anchor="middle" font-family="Georgia, serif" font-size="38" fill="#183b3a">oré</text>
+  <text x="285" y="610" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="21" fill="#536461">1ª plural exclusiva · elíptico</text>
+  <rect x="630" y="480" width="330" height="145" rx="22" fill="#f4dfcf" stroke="#b25d3b" stroke-width="3"/>
+  <text x="795" y="530" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#7d3e28">PREDICADO</text>
+  <text x="795" y="578" text-anchor="middle" font-family="Georgia, serif" font-size="38" fill="#7d3e28">oro- + îub</text>
+  <text x="795" y="610" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="21" fill="#7d3e28">indicativo ativo + raiz</text>
+  <rect x="118" y="704" width="844" height="180" rx="24" fill="#eaf1ef" stroke="#69827c" stroke-width="3"/>
+  <text x="540" y="755" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#183b3a">VALOR LEXICAL</text>
+  <text x="540" y="807" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="26" fill="#374a46">îub é irregular e pluriforme:</text>
+  <text x="540" y="850" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="25" fill="#374a46">“estar deitado, jazer, permanecer”.</text>
+  <text x="540" y="974" text-anchor="middle" font-family="Menlo, monospace" font-size="24" fill="#536461">îub * +oré</text>
+</svg>
+

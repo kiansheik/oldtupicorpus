@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <rect width="1080" height="1080" rx="44" fill="#f7f1e5"/>
+  <rect x="48" y="48" width="984" height="984" rx="34" fill="#fffdf8" stroke="#183b3a" stroke-width="3"/>
+  <text x="540" y="112" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="28" letter-spacing="3" fill="#b25d3b">3 · COMBINAÇÃO EM GERÚNDIO</text>
+  <text x="540" y="194" text-anchor="middle" font-family="Georgia, serif" font-size="60" font-weight="700" fill="#183b3a">oroîekyî oroîupa</text>
+  <text x="540" y="245" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="29" fill="#536461">“morremos / expiramos jazendo”</text>
+  <rect x="365" y="292" width="350" height="68" rx="18" fill="#183b3a"/>
+  <text x="540" y="337" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="27" fill="#fff">predicação complexa</text>
+  <line x1="540" y1="360" x2="540" y2="413" stroke="#69827c" stroke-width="4"/>
+  <line x1="290" y1="413" x2="790" y2="413" stroke="#69827c" stroke-width="4"/>
+  <line x1="290" y1="413" x2="290" y2="470" stroke="#69827c" stroke-width="4"/>
+  <line x1="790" y1="413" x2="790" y2="470" stroke="#69827c" stroke-width="4"/>
+  <rect x="105" y="470" width="370" height="190" rx="24" fill="#dce9e3" stroke="#183b3a" stroke-width="3"/>
+  <text x="290" y="518" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#183b3a">PREDICADO LEXICAL</text>
+  <text x="290" y="566" text-anchor="middle" font-family="Georgia, serif" font-size="36" fill="#183b3a">oro-îekyî</text>
+  <text x="290" y="608" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="22" fill="#536461">evento: morrer / expirar</text>
+  <text x="290" y="639" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="20" fill="#536461">análise ativa atual</text>
+  <rect x="605" y="470" width="370" height="190" rx="24" fill="#f4dfcf" stroke="#b25d3b" stroke-width="3"/>
+  <text x="790" y="518" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#7d3e28">AUXILIAR POSICIONAL</text>
+  <text x="790" y="566" text-anchor="middle" font-family="Georgia, serif" font-size="36" fill="#7d3e28">oro-îu-pa</text>
+  <text x="790" y="608" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="22" fill="#7d3e28">gerúndio: “jazendo”</text>
+  <text x="790" y="639" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="20" fill="#7d3e28">oro- + alomorfe îu + -pa</text>
+  <rect x="118" y="728" width="844" height="150" rx="24" fill="#fff4d9" stroke="#d4a43c" stroke-width="3"/>
+  <text x="540" y="777" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#6f5317">EFEITO DE SENTIDO</text>
+  <text x="540" y="827" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="25" fill="#4b4639">A postura acompanha o evento e pode fornecer</text>
+  <text x="540" y="862" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="25" fill="#4b4639">um enquadramento durativo / contínuo.</text>
+  <text x="540" y="966" text-anchor="middle" font-family="Menlo, monospace" font-size="21" fill="#536461">(îekyî * +oré) &lt;&lt; (îub * +oré)</text>
+</svg>
+

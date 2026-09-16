@@ -32,6 +32,8 @@ class McpServerTest(unittest.TestCase):
                 "search_rendered_expressions",
                 "search_lexicon",
                 "verify_ground_truth",
+                "line_status",
+                "reload_engine",
             },
         )
 
