@@ -1,15 +1,15 @@
 {
   "meta": {
-    "generated_at": "2026-08-28T11:00:19+00:00",
+    "generated_at": "2026-09-16T22:32:54+00:00",
     "source_count": 2,
-    "line_count": 117,
+    "line_count": 122,
     "skipped_line_count": 0
   },
   "sources": {
     "araujo_catecismo_1686": {
       "title": "araujo_catecismo_1686",
       "corpus": "historic",
-      "line_count": 77,
+      "line_count": 82,
       "lines": [
         {
           "line_id": "araujo_catecismo_1686:0",
@@ -11844,8 +11844,8 @@
           "source": "araujo_catecismo_1686",
           "corpus": "historic",
           "expression_index": 73,
-          "surface": "oîeaûsuba îabé asé o tapixararaûsubi",
-          "annotated": "o[3p:CORRELATIONAL:DEEPEST_NODE_6:SUBJECT_PREFIX]îe[DEEPEST_NODE_8:OBJECT:OBJECT_PREFIX:REFLEXIVE:refl]aûsub[DEEPEST_NODE_6:ROOT]a[CONSONANT_ENDING:DEEPEST_NODE_5:DIRECT:NOUN:OBJECT:SUBSTANTIVE_SUFFIX] îabé[DEEPEST_NODE_5:POSTPOSITION] asé[3p:DEEPEST_NODE_2:DIRECT:PRONOUN:ROOT:SUBJECT:SUBSTANTIVE_SUFFIX:UNIVERSAL_WE:VOWEL_ENDING]  o[3p:DEEPEST_NODE_1:MAIN_CLAUSE_SUBJECT:PRONOUN:SUBJECT_PREFIX] t[ABSOLUTE:DEEPEST_NODE_3:PLURIFORM_PREFIX:T]apixar[DEEPEST_NODE_3:ROOT]a[CONSONANT_ENDING:DEEPEST_NODE_3:DIRECT:NOUN:OBJECT:SUBSTANTIVE_SUFFIX]r[DEEPEST_NODE_1:PLURIFORM_PREFIX:R]aûsub[DEEPEST_NODE_1:ROOT]i[CIRCUMSTANTIAL_SUFFIX:CONSONANT_ENDING:DEEPEST_NODE_1]",
+          "surface": "oîeaûsuba îabé asé oapixararaûsuba no",
+          "annotated": "o[3p:CORRELATIONAL:DEEPEST_NODE_6:SUBJECT_PREFIX]îe[DEEPEST_NODE_8:OBJECT:OBJECT_PREFIX:REFLEXIVE:refl]aûsub[DEEPEST_NODE_6:ROOT]a[CONSONANT_ENDING:DEEPEST_NODE_5:NOUN:SUBSTANTIVE_SUFFIX] îabé[DEEPEST_NODE_5:POSTPOSITION] asé[3p:DEEPEST_NODE_2:DIRECT:PRONOUN:ROOT:SUBJECT:SUBSTANTIVE_SUFFIX:UNIVERSAL_WE:VOWEL_ENDING] o[3p:DEEPEST_NODE_1:MAIN_CLAUSE_SUBJECT:PRONOUN]apixar[DEEPEST_NODE_3:ROOT]a[CONSONANT_ENDING:DEEPEST_NODE_3:NOUN:SUBSTANTIVE_SUFFIX]r[DEEPEST_NODE_1:PLURIFORM_PREFIX:R]aûsub[DEEPEST_NODE_1:ROOT]a[CONSONANT_ENDING:DEEPEST_NODE_1:SUBSTANTIVE_SUFFIX] no[ADVERB:DEEPEST_NODE_9]",
           "morphemes": [
             {
               "deepest_node_id": 6,
@@ -11924,7 +11924,7 @@
             },
             {
               "deepest_node_id": 1,
-              "headword": "aûsub",
+              "headword": "asé[ROOT][SUBSTANTIVE_SUFFIX:VOWEL_ENDING][PRONOUN:UNIVERSAL_WE][SUBJECT:3p:DIRECT] o[PRONOUN:MAIN_CLAUSE_SUBJECT:3p]apixar[ROOT]a[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING][NOUN][OBJECT:DIRECT]r[PLURIFORM_PREFIX:R]aûsub[ROOT]",
               "definition": {
                 "raw": "to love",
                 "qualifiers": [],
@@ -11960,21 +11960,8 @@
               }
             },
             {
-              "deepest_node_id": 3,
-              "headword": "apixara",
-              "definition": {
-                "raw": "(t)",
-                "qualifiers": [
-                  "(t)"
-                ],
-                "glosses": [
-                  "(t)"
-                ]
-              }
-            },
-            {
               "deepest_node_id": 1,
-              "headword": "aûsub",
+              "headword": "asé[ROOT][SUBSTANTIVE_SUFFIX:VOWEL_ENDING][PRONOUN:UNIVERSAL_WE][SUBJECT:3p:DIRECT] o[PRONOUN:MAIN_CLAUSE_SUBJECT:3p]apixar[ROOT]a[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING][NOUN][OBJECT:DIRECT]r[PLURIFORM_PREFIX:R]aûsub[ROOT]",
               "definition": {
                 "raw": "to love",
                 "qualifiers": [],
@@ -11985,7 +11972,7 @@
             },
             {
               "deepest_node_id": 1,
-              "headword": "aûsub",
+              "headword": "asé[ROOT][SUBSTANTIVE_SUFFIX:VOWEL_ENDING][PRONOUN:UNIVERSAL_WE][SUBJECT:3p:DIRECT] o[PRONOUN:MAIN_CLAUSE_SUBJECT:3p]apixar[ROOT]a[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING][NOUN][OBJECT:DIRECT]r[PLURIFORM_PREFIX:R]aûsub[ROOT]",
               "definition": {
                 "raw": "to love",
                 "qualifiers": [],
@@ -11996,12 +11983,23 @@
             },
             {
               "deepest_node_id": 1,
-              "headword": "aûsub",
+              "headword": "asé[ROOT][SUBSTANTIVE_SUFFIX:VOWEL_ENDING][PRONOUN:UNIVERSAL_WE][SUBJECT:3p:DIRECT] o[PRONOUN:MAIN_CLAUSE_SUBJECT:3p]apixar[ROOT]a[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING][NOUN][OBJECT:DIRECT]r[PLURIFORM_PREFIX:R]aûsub[ROOT]",
               "definition": {
                 "raw": "to love",
                 "qualifiers": [],
                 "glosses": [
                   "to love"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 9,
+              "headword": "no",
+              "definition": {
+                "raw": "também",
+                "qualifiers": [],
+                "glosses": [
+                  "também"
                 ]
               }
             }
@@ -12019,6 +12017,17 @@
               "end": 4
             },
             {
+              "node_id": 3,
+              "parent_id": 1,
+              "depth": 1,
+              "relation": "*",
+              "kind": "argument",
+              "span_kind": "node",
+              "label": "apixara",
+              "start": 7,
+              "end": 8
+            },
+            {
               "node_id": 6,
               "parent_id": 5,
               "depth": 2,
@@ -12028,17 +12037,6 @@
               "label": "aûsub",
               "start": 0,
               "end": 2
-            },
-            {
-              "node_id": 3,
-              "parent_id": 1,
-              "depth": 1,
-              "relation": "*",
-              "kind": "argument",
-              "span_kind": "node",
-              "label": "apixara",
-              "start": 7,
-              "end": 9
             },
             {
               "node_id": 5,
@@ -12052,7 +12050,7 @@
               "end": 4
             }
           ],
-          "normalized": "oieausuba iabe ase o tapixararausubi"
+          "normalized": "oieausuba iabe ase oapixararausuba no"
         },
         {
           "line_id": "araujo_catecismo_1686:74",
@@ -12353,6 +12351,655 @@
             }
           ],
           "normalized": "seixu iabi'o iemombe'u"
+        },
+        {
+          "line_id": "araujo_catecismo_1686:77",
+          "source": "araujo_catecismo_1686",
+          "corpus": "historic",
+          "expression_index": 77,
+          "surface": "Pascoa îabi'õ Tupãrara",
+          "annotated": "Pascoa[DEEPEST_NODE_4:PROPER_NOUN] îabi'õ[DEEPEST_NODE_3:EVERY:POSTPOSITION] Tupãrar[DEEPEST_NODE_1:ROOT]a[CONSONANT_ENDING:DEEPEST_NODE_1:NOUN:SUBSTANTIVE_SUFFIX]",
+          "morphemes": [
+            {
+              "deepest_node_id": 4,
+              "headword": "Pascoa",
+              "definition": {
+                "raw": "Pascoa",
+                "qualifiers": [],
+                "glosses": [
+                  "Pascoa"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 3,
+              "headword": "îabi'õ",
+              "definition": {
+                "raw": "each, every",
+                "qualifiers": [],
+                "glosses": [
+                  "each",
+                  "every"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 1,
+              "headword": "Tupãrar[ROOT]",
+              "definition": null
+            },
+            {
+              "deepest_node_id": 1,
+              "headword": "Tupãrar[ROOT]",
+              "definition": null
+            }
+          ],
+          "syntax_spans": [
+            {
+              "node_id": 3,
+              "parent_id": 1,
+              "depth": 1,
+              "relation": "+",
+              "kind": "pre_adjunct",
+              "span_kind": "subtree",
+              "label": "îabi'õ",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "node_id": 1,
+              "parent_id": null,
+              "depth": 0,
+              "relation": "-",
+              "kind": "root",
+              "span_kind": "node",
+              "label": "Tupãrar[ROOT]",
+              "start": 2,
+              "end": 3
+            }
+          ],
+          "normalized": "pascoa iabi'o tuparara"
+        },
+        {
+          "line_id": "araujo_catecismo_1686:78",
+          "source": "araujo_catecismo_1686",
+          "corpus": "historic",
+          "expression_index": 78,
+          "surface": "Santa Madre Igreja îekuakupûaîa îabi'õ îekuakuba",
+          "annotated": "Santa Madre Igrej[DEEPEST_NODE_5:ROOT]a[CONSONANT_ENDING:DEEPEST_NODE_5:NOUN:SUBSTANTIVE_SUFFIX] îe[DEEPEST_NODE_6:OBJECT:OBJECT_PREFIX:REFLEXIVE:refl]kuakupûaî[DEEPEST_NODE_4:ROOT]a[CONSONANT_ENDING:DEEPEST_NODE_4:NOUN:SUBSTANTIVE_SUFFIX] îabi'õ[DEEPEST_NODE_3:EVERY:POSTPOSITION] îekuakub[DEEPEST_NODE_1:ROOT]a[CONSONANT_ENDING:DEEPEST_NODE_1:NOUN:SUBSTANTIVE_SUFFIX]",
+          "morphemes": [
+            {
+              "deepest_node_id": 5,
+              "headword": "Santa Madre Igreja",
+              "definition": null
+            },
+            {
+              "deepest_node_id": 5,
+              "headword": "Santa Madre Igreja",
+              "definition": null
+            },
+            {
+              "deepest_node_id": 6,
+              "headword": "îe",
+              "definition": {
+                "raw": "to oneself, one's own",
+                "qualifiers": [],
+                "glosses": [
+                  "to oneself",
+                  "one's own"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 4,
+              "headword": "Santa Madre Igrej[ROOT]a[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING][NOUN][SUBJECT:3p:DIRECT] îe[OBJECT:REFLEXIVE]kuakupûaî[ROOT]",
+              "definition": {
+                "raw": "recusar",
+                "qualifiers": [],
+                "glosses": [
+                  "recusar"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 4,
+              "headword": "Santa Madre Igrej[ROOT]a[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING][NOUN][SUBJECT:3p:DIRECT] îe[OBJECT:REFLEXIVE]kuakupûaî[ROOT]",
+              "definition": {
+                "raw": "recusar",
+                "qualifiers": [],
+                "glosses": [
+                  "recusar"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 3,
+              "headword": "îabi'õ",
+              "definition": {
+                "raw": "each, every",
+                "qualifiers": [],
+                "glosses": [
+                  "each",
+                  "every"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 1,
+              "headword": "îekuakub[ROOT]",
+              "definition": {
+                "raw": "jejuar",
+                "qualifiers": [],
+                "glosses": [
+                  "jejuar"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 1,
+              "headword": "îekuakub[ROOT]",
+              "definition": {
+                "raw": "jejuar",
+                "qualifiers": [],
+                "glosses": [
+                  "jejuar"
+                ]
+              }
+            }
+          ],
+          "syntax_spans": [
+            {
+              "node_id": 5,
+              "parent_id": 4,
+              "depth": 3,
+              "relation": "*",
+              "kind": "argument",
+              "span_kind": "node",
+              "label": "Santa Madre Igreja",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "node_id": 4,
+              "parent_id": 3,
+              "depth": 2,
+              "relation": "*",
+              "kind": "argument",
+              "span_kind": "node",
+              "label": "Santa Madre Igrej[ROOT]a[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING][NOUN][SUBJECT:3p:DIRECT] îe[OBJECT:REFLEXIVE]kuakupûaî[ROOT]",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "node_id": 1,
+              "parent_id": null,
+              "depth": 0,
+              "relation": "-",
+              "kind": "root",
+              "span_kind": "node",
+              "label": "îekuakub[ROOT]",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "node_id": 4,
+              "parent_id": 3,
+              "depth": 2,
+              "relation": "*",
+              "kind": "argument",
+              "span_kind": "subtree",
+              "label": "Santa Madre Igrej[ROOT]a[SUBSTANTIVE_SUFFIX:CONSONANT_ENDING][NOUN][SUBJECT:3p:DIRECT] îe[OBJECT:REFLEXIVE]kuakupûaî[ROOT]",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "node_id": 3,
+              "parent_id": 1,
+              "depth": 1,
+              "relation": "+",
+              "kind": "pre_adjunct",
+              "span_kind": "subtree",
+              "label": "îabi'õ",
+              "start": 0,
+              "end": 5
+            }
+          ],
+          "normalized": "santa madre igreja iekuakupuaia iabi'o iekuakuba"
+        },
+        {
+          "line_id": "araujo_catecismo_1686:79",
+          "source": "araujo_catecismo_1686",
+          "corpus": "historic",
+          "expression_index": 79,
+          "surface": "opakombó îabi'õ Tupã supé oîepé asé mba'emoîa'oka",
+          "annotated": "opakombó[DEEPEST_NODE_8:NOUN:NUMBER:ROOT:SUBSTANTIVE_SUFFIX:TEN:VOWEL_ENDING] îabi'õ[DEEPEST_NODE_7:EVERY:POSTPOSITION] Tupã[DEEPEST_NODE_6:PROPER_NOUN:SUBSTANTIVE_SUFFIX:VOWEL_ENDING] supé[DATIVE:DEEPEST_NODE_5:POSTPOSITION] oîepé[DEEPEST_NODE_1:NUMBER:ONE] asé mba'emoîa'ok[DEEPEST_NODE_2:ROOT]a[CONSONANT_ENDING:DEEPEST_NODE_2:NOUN:SUBSTANTIVE_SUFFIX]",
+          "morphemes": [
+            {
+              "deepest_node_id": 8,
+              "headword": "opakombó",
+              "definition": {
+                "raw": "ten (literally, both these hands)",
+                "qualifiers": [],
+                "glosses": [
+                  "ten (literally",
+                  "both these hands)"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 7,
+              "headword": "îabi'õ",
+              "definition": {
+                "raw": "each, every",
+                "qualifiers": [],
+                "glosses": [
+                  "each",
+                  "every"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 6,
+              "headword": "Tupã",
+              "definition": {
+                "raw": "Tupã",
+                "qualifiers": [],
+                "glosses": [
+                  "Tupã"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 5,
+              "headword": "supé",
+              "definition": {
+                "raw": "to, for, in favor of",
+                "qualifiers": [],
+                "glosses": [
+                  "to",
+                  "for",
+                  "in favor of"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 1,
+              "headword": "oîepé",
+              "definition": {
+                "raw": "one, a single one",
+                "qualifiers": [],
+                "glosses": [
+                  "one",
+                  "a single one"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 2,
+              "headword": "asé mba'emoîa'ok[ROOT]",
+              "definition": null
+            },
+            {
+              "deepest_node_id": 2,
+              "headword": "asé mba'emoîa'ok[ROOT]",
+              "definition": null
+            }
+          ],
+          "syntax_spans": [
+            {
+              "node_id": 7,
+              "parent_id": 1,
+              "depth": 1,
+              "relation": "+",
+              "kind": "pre_adjunct",
+              "span_kind": "subtree",
+              "label": "îabi'õ",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "node_id": 5,
+              "parent_id": 1,
+              "depth": 1,
+              "relation": "+",
+              "kind": "pre_adjunct",
+              "span_kind": "subtree",
+              "label": "supé",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "node_id": 2,
+              "parent_id": 1,
+              "depth": 1,
+              "relation": "*",
+              "kind": "argument",
+              "span_kind": "node",
+              "label": "asé mba'emoîa'ok[ROOT]",
+              "start": 5,
+              "end": 6
+            }
+          ],
+          "normalized": "opakombo iabi'o tupa supe oiepe ase mba'emoia'oka"
+        },
+        {
+          "line_id": "araujo_catecismo_1686:80",
+          "source": "araujo_catecismo_1686",
+          "corpus": "historic",
+          "expression_index": 80,
+          "surface": "oemitymbûerypy pupé Tupã potabame'engi no",
+          "annotated": "o[3p:DEEPEST_NODE_5:MAIN_CLAUSE_SUBJECT:PRONOUN]emi[DEEPEST_NODE_5:PATIENT_PREFIX]tym[DEEPEST_NODE_5:ROOT]bûer[DEEPEST_NODE_5:PRETERITE_SUFFIX]ypy[CLASSIFIER:DEEPEST_NODE_5:PAST] pupé[DEEPEST_NODE_4:POSTPOSITION] Tupã[DEEPEST_NODE_3:NOUN:POSSESSOR:PROPER_NOUN] p[DEEPEST_NODE_2:P:PLURIFORM_PREFIX]otab[DEEPEST_NODE_2:ROOT]a[CONSONANT_ENDING:DEEPEST_NODE_2:DIRECT:OBJECT:SUBSTANTIVE_SUFFIX]me'eng[DEEPEST_NODE_1:ROOT]i[CIRCUMSTANTIAL_SUFFIX:CONSONANT_ENDING:DEEPEST_NODE_1] no[ADVERB:DEEPEST_NODE_6]",
+          "morphemes": [
+            {
+              "deepest_node_id": 5,
+              "headword": "o[PRONOUN:MAIN_CLAUSE_SUBJECT:3p]emi[PATIENT_PREFIX]tym[ROOT]bûer[PRETERITE_SUFFIX]ypy",
+              "definition": {
+                "raw": "Nominal past, what was, ex",
+                "qualifiers": [],
+                "glosses": [
+                  "Nominal past",
+                  "what was",
+                  "ex"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 5,
+              "headword": "o[PRONOUN:MAIN_CLAUSE_SUBJECT:3p]emi[PATIENT_PREFIX]tym[ROOT]bûer[PRETERITE_SUFFIX]ypy",
+              "definition": {
+                "raw": "Nominal past, what was, ex",
+                "qualifiers": [],
+                "glosses": [
+                  "Nominal past",
+                  "what was",
+                  "ex"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 5,
+              "headword": "o[PRONOUN:MAIN_CLAUSE_SUBJECT:3p]emi[PATIENT_PREFIX]tym[ROOT]bûer[PRETERITE_SUFFIX]ypy",
+              "definition": {
+                "raw": "Nominal past, what was, ex",
+                "qualifiers": [],
+                "glosses": [
+                  "Nominal past",
+                  "what was",
+                  "ex"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 5,
+              "headword": "o[PRONOUN:MAIN_CLAUSE_SUBJECT:3p]emi[PATIENT_PREFIX]tym[ROOT]bûer[PRETERITE_SUFFIX]ypy",
+              "definition": {
+                "raw": "Nominal past, what was, ex",
+                "qualifiers": [],
+                "glosses": [
+                  "Nominal past",
+                  "what was",
+                  "ex"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 5,
+              "headword": "o[PRONOUN:MAIN_CLAUSE_SUBJECT:3p]emi[PATIENT_PREFIX]tym[ROOT]bûer[PRETERITE_SUFFIX]ypy",
+              "definition": {
+                "raw": "Nominal past, what was, ex",
+                "qualifiers": [],
+                "glosses": [
+                  "Nominal past",
+                  "what was",
+                  "ex"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 4,
+              "headword": "pupé",
+              "definition": {
+                "raw": "inside, within, in, into, inside of, using, with, during",
+                "qualifiers": [],
+                "glosses": [
+                  "inside",
+                  "within",
+                  "in",
+                  "into",
+                  "inside of",
+                  "using",
+                  "with",
+                  "during"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 3,
+              "headword": "Tupã",
+              "definition": {
+                "raw": "Tupã",
+                "qualifiers": [],
+                "glosses": [
+                  "Tupã"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 2,
+              "headword": "potaba",
+              "definition": {
+                "raw": "quinhão de Deus dízimo",
+                "qualifiers": [],
+                "glosses": [
+                  "quinhão de Deus dízimo"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 2,
+              "headword": "potaba",
+              "definition": {
+                "raw": "quinhão de Deus dízimo",
+                "qualifiers": [],
+                "glosses": [
+                  "quinhão de Deus dízimo"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 2,
+              "headword": "potaba",
+              "definition": {
+                "raw": "quinhão de Deus dízimo",
+                "qualifiers": [],
+                "glosses": [
+                  "quinhão de Deus dízimo"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 1,
+              "headword": "me'eng",
+              "definition": null
+            },
+            {
+              "deepest_node_id": 1,
+              "headword": "me'eng",
+              "definition": null
+            },
+            {
+              "deepest_node_id": 6,
+              "headword": "no",
+              "definition": {
+                "raw": "também",
+                "qualifiers": [],
+                "glosses": [
+                  "também"
+                ]
+              }
+            }
+          ],
+          "syntax_spans": [
+            {
+              "node_id": 1,
+              "parent_id": null,
+              "depth": 0,
+              "relation": "-",
+              "kind": "root",
+              "span_kind": "node",
+              "label": "me'eng",
+              "start": 10,
+              "end": 11
+            },
+            {
+              "node_id": 2,
+              "parent_id": 1,
+              "depth": 1,
+              "relation": "*",
+              "kind": "argument",
+              "span_kind": "node",
+              "label": "potaba",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "node_id": 2,
+              "parent_id": 1,
+              "depth": 1,
+              "relation": "*",
+              "kind": "argument",
+              "span_kind": "subtree",
+              "label": "potaba",
+              "start": 6,
+              "end": 9
+            },
+            {
+              "node_id": 5,
+              "parent_id": 4,
+              "depth": 2,
+              "relation": "*",
+              "kind": "argument",
+              "span_kind": "node",
+              "label": "o[PRONOUN:MAIN_CLAUSE_SUBJECT:3p]emi[PATIENT_PREFIX]tym[ROOT]bûer[PRETERITE_SUFFIX]ypy",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "node_id": 4,
+              "parent_id": 1,
+              "depth": 1,
+              "relation": "+",
+              "kind": "pre_adjunct",
+              "span_kind": "subtree",
+              "label": "pupé",
+              "start": 0,
+              "end": 5
+            }
+          ],
+          "normalized": "oemitymbuerypy pupe tupa potabame'engi no"
+        },
+        {
+          "line_id": "araujo_catecismo_1686:81",
+          "source": "araujo_catecismo_1686",
+          "corpus": "historic",
+          "expression_index": 81,
+          "surface": "i karaíba pupé îemoîasuka",
+          "annotated": "i[3p:DEEPEST_NODE_4:POSSESSIVE_PRONOUN] karaíb[DEEPEST_NODE_4:ROOT]a[CONSONANT_ENDING:DEEPEST_NODE_4:NOUN:SUBSTANTIVE_SUFFIX] pupé[DEEPEST_NODE_3:POSTPOSITION] îemoîasuk[DEEPEST_NODE_1:ROOT]a[CONSONANT_ENDING:DEEPEST_NODE_1:NOUN:SUBSTANTIVE_SUFFIX]",
+          "morphemes": [
+            {
+              "deepest_node_id": 4,
+              "headword": "karaíba",
+              "definition": null
+            },
+            {
+              "deepest_node_id": 4,
+              "headword": "karaíba",
+              "definition": null
+            },
+            {
+              "deepest_node_id": 4,
+              "headword": "karaíba",
+              "definition": null
+            },
+            {
+              "deepest_node_id": 3,
+              "headword": "pupé",
+              "definition": {
+                "raw": "inside, within, in, into, inside of, using, with, during",
+                "qualifiers": [],
+                "glosses": [
+                  "inside",
+                  "within",
+                  "in",
+                  "into",
+                  "inside of",
+                  "using",
+                  "with",
+                  "during"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 1,
+              "headword": "îemoîasuk[ROOT]",
+              "definition": {
+                "raw": "batizar-se, lavar-se",
+                "qualifiers": [],
+                "glosses": [
+                  "batizar-se",
+                  "lavar-se"
+                ]
+              }
+            },
+            {
+              "deepest_node_id": 1,
+              "headword": "îemoîasuk[ROOT]",
+              "definition": {
+                "raw": "batizar-se, lavar-se",
+                "qualifiers": [],
+                "glosses": [
+                  "batizar-se",
+                  "lavar-se"
+                ]
+              }
+            }
+          ],
+          "syntax_spans": [
+            {
+              "node_id": 1,
+              "parent_id": null,
+              "depth": 0,
+              "relation": "-",
+              "kind": "root",
+              "span_kind": "node",
+              "label": "îemoîasuk[ROOT]",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "node_id": 4,
+              "parent_id": 3,
+              "depth": 2,
+              "relation": "*",
+              "kind": "argument",
+              "span_kind": "node",
+              "label": "karaíba",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "node_id": 3,
+              "parent_id": 1,
+              "depth": 1,
+              "relation": "+",
+              "kind": "pre_adjunct",
+              "span_kind": "subtree",
+              "label": "pupé",
+              "start": 0,
+              "end": 3
+            }
+          ],
+          "normalized": "i karaiba pupe iemoiasuka"
         }
       ]
     },

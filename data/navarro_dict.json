@@ -1502,7 +1502,7 @@
   {
     "first_word": "avermelhar-se",
     "optional_number": "",
-    "definition": "(= tingir-se de vermelho) - îemopyrang"
+    "definition": "(= tingir-se de vermelho) - îemopyrangpiran"
   },
   {
     "first_word": "avesso",
@@ -8867,12 +8867,12 @@
   {
     "first_word": "pintar",
     "optional_number": "",
-    "definition": "- kûatîar; (pintar de branco): moting; (pintar de vermelho): mopyrang; (pintar de preto): moún; (pintar de amarelo): moîub"
+    "definition": "- kûatîar; (pintar de branco): moting; (pintar de vermelho): mopirang; (pintar de preto): moún; (pintar de amarelo): moîub"
   },
   {
     "first_word": "pintar-se",
     "optional_number": "",
-    "definition": "- îegûak; (pintar-se de vermelho): îemopyrang; (pintar-se de preto): îemoún"
+    "definition": "- îegûak; (pintar-se de vermelho): îemopirang; (pintar-se de preto): îemoún"
   },
   {
     "first_word": "pio",
@@ -10777,7 +10777,7 @@
   {
     "first_word": "tingir",
     "optional_number": "",
-    "definition": "- (com urucu): gûang (-îo-); (de preto): moún; (de amarelo): moîub; (de vermelho): mopyrang; (de branco): moting"
+    "definition": "- (com urucu): gûang (-îo-); (de preto): moún; (de amarelo): moîub; (de vermelho): mopirang; (de branco): moting"
   },
   {
     "first_word": "tio",
@@ -11307,7 +11307,7 @@
   {
     "first_word": "vermelho",
     "optional_number": "",
-    "definition": "- pyrang/a"
+    "definition": "- pirang/a"
   },
   {
     "first_word": "verruga",
@@ -11697,7 +11697,7 @@
   {
     "first_word": "NOTA",
     "optional_number": "",
-    "definition": "- Daí, no P.B., pela língua geral amazônica, TAPIRAUA (\"pelo de anta\"), nome de um povo indígena extinto do Pará. Daí, também, EMBOABA (mbó + ab + -a - \"patas peludas\"), alcunha que os paulistas davam aos portugueses que disputavam consigo a posse das minas de ouro e pedras preciosas das Minas Gerais, no início do século XVIII, o que provocaria a famosa Guerra dos Emboabas; TAPIRANGA (taba + pyrang + -a - \"penas vermelhas\"), nome de um pássaro traupídeo."
+    "definition": "- Daí, no P.B., pela língua geral amazônica, TAPIRAUA (\"pelo de anta\"), nome de um povo indígena extinto do Pará. Daí, também, EMBOABA (mbó + ab + -a - \"patas peludas\"), alcunha que os paulistas davam aos portugueses que disputavam consigo a posse das minas de ouro e pedras preciosas das Minas Gerais, no início do século XVIII, o que provocaria a famosa Guerra dos Emboabas; TAPIRANGA (taba + pirang + -a - \"penas vermelhas\"), nome de um pássaro traupídeo."
   },
   {
     "first_word": "'aba",
@@ -12557,7 +12557,7 @@
   {
     "first_word": "aíba",
     "optional_number": "1",
-    "definition": "(s.) - 1) maldade, ruindade; AÍVA, coisa vil (VLB, I, 136; II, 145); ...Îandé aíba t'oîpe'a. - Que afaste nossa maldade. (Anch., Poemas, 182); 2) feiúra: Anotĩ xe aíba. - Envergonho-me de minha feiúra. (VLB, I, 83); 3) grosseria (VLB, I, 151); 4) aspereza (do mato, do caminho) (VLB, I, 44); 5) incompleteza, superficialidade; (adj.: aíb) - 1) mau, ruim, AÍVA, podre (em geral), desprezível, vil (VLB, I, 100; II, 80): Aûîé kunumĩgûasu o ekó-aíbeté oîomim... - Enfim, os moços escondem seus muito maus procedimentos. (Anch., Teatro, 38); I îasear apŷabaíba... - Uniram-se os homens maus. (Anch., Teatro, 54); anhangaíba... - diabo mau (Anch., Poemas, 90); 2) grosseiro, rústico, tosco, bruto: Xe aíbusu. - Eu sou grosseirão. (VLB, I, 151); 3) áspero, impraticável (fal. de mato, de caminho): pé-aíba - caminho impraticável (VLB, I, 45); 4) debilitado, enfraquecido, de saúde corrompida, estragado com o uso: Xe aíb. - Eu estou debilitado. (VLB, I, 83; 130); 5) envelhecido (com o uso; fal. de coisas) (VLB, I, 119); velho: Gûyrá-aibusu - pássaro muito velho (antropônimo) (D'Abbeville, Histoire, 187); 6) incompleto, superficial: mba'easy-aíba - doença superficial, indisposição, doença fraca (VLB, II, 28); (adv.) - 1) mal: Aîkó-aíb. - Vivo mal. (Fig., Arte, 138); Arekó-aíb. - Trato-o mal. (Fig., Arte, 138); 2) falsamente, não completamente, superficialmente: Amanõ-aíb. - Morro falsamente, isto é, desmaio, desfaleço. (VLB, I, 125); Asendub-aíb nde nhe'enga. - Entreouvi tuas palavras (isto é, ouvi-as superficialmente). (VLB, I, 119); 3) com afronta: Aîmondó-aíb. - Mando-o com afronta. (Fig., Arte, 138); 4) tirante a, que tende a: pyrangaíb - tirante a vermelho (VLB, II, 128)"
+    "definition": "(s.) - 1) maldade, ruindade; AÍVA, coisa vil (VLB, I, 136; II, 145); ...Îandé aíba t'oîpe'a. - Que afaste nossa maldade. (Anch., Poemas, 182); 2) feiúra: Anotĩ xe aíba. - Envergonho-me de minha feiúra. (VLB, I, 83); 3) grosseria (VLB, I, 151); 4) aspereza (do mato, do caminho) (VLB, I, 44); 5) incompleteza, superficialidade; (adj.: aíb) - 1) mau, ruim, AÍVA, podre (em geral), desprezível, vil (VLB, I, 100; II, 80): Aûîé kunumĩgûasu o ekó-aíbeté oîomim... - Enfim, os moços escondem seus muito maus procedimentos. (Anch., Teatro, 38); I îasear apŷabaíba... - Uniram-se os homens maus. (Anch., Teatro, 54); anhangaíba... - diabo mau (Anch., Poemas, 90); 2) grosseiro, rústico, tosco, bruto: Xe aíbusu. - Eu sou grosseirão. (VLB, I, 151); 3) áspero, impraticável (fal. de mato, de caminho): pé-aíba - caminho impraticável (VLB, I, 45); 4) debilitado, enfraquecido, de saúde corrompida, estragado com o uso: Xe aíb. - Eu estou debilitado. (VLB, I, 83; 130); 5) envelhecido (com o uso; fal. de coisas) (VLB, I, 119); velho: Gûyrá-aibusu - pássaro muito velho (antropônimo) (D'Abbeville, Histoire, 187); 6) incompleto, superficial: mba'easy-aíba - doença superficial, indisposição, doença fraca (VLB, II, 28); (adv.) - 1) mal: Aîkó-aíb. - Vivo mal. (Fig., Arte, 138); Arekó-aíb. - Trato-o mal. (Fig., Arte, 138); 2) falsamente, não completamente, superficialmente: Amanõ-aíb. - Morro falsamente, isto é, desmaio, desfaleço. (VLB, I, 125); Asendub-aíb nde nhe'enga. - Entreouvi tuas palavras (isto é, ouvi-as superficialmente). (VLB, I, 119); 3) com afronta: Aîmondó-aíb. - Mando-o com afronta. (Fig., Arte, 138); 4) tirante a, que tende a: pirangaíb - tirante a vermelho (VLB, II, 128)"
   },
   {
     "first_word": "NOTA",
@@ -12905,7 +12905,7 @@
     "definition": "- Daí, o nome geográfico AJURUOCA (MG) (v. p. 386)."
   },
   {
-    "first_word": "aîuruakãpyranga",
+    "first_word": "aîuruakãpiranga",
     "optional_number": "",
     "definition": "(etim. - papagaio da cabeça vermelha) (s.) - nome de uma ave (Theat. Rer. Nat. Bras., I, 165)"
   },
@@ -13180,7 +13180,7 @@
     "definition": "(etim. - caju catinguento) (s.) - ACAJU-CATINGA, var. de cedro, árvore alta da família das meliáceas (Cedrela fissilis Vell.), de casca grossa e de propriedades medicinais (VLB, I, 70)"
   },
   {
-    "first_word": "akaîupyranga",
+    "first_word": "akaîupiranga",
     "optional_number": "",
     "definition": "(etim. - caju vermelho) (s.) - uma das espécies de caju; fruto de pele vermelha e suco fortemente ácido (D'Abbeville, Histoire, 217)"
   },
@@ -13232,7 +13232,7 @@
   {
     "first_word": "akanetá",
     "optional_number": "",
-    "definition": "(s.) - CANITAR, 1) cocar indígena; 2) coroa:.....Akanetá-pyrã-beraba reroínano. - Tendo também coroas vermelhas e brilhantes... (Ar., Cat., 168v)"
+    "definition": "(s.) - CANITAR, 1) cocar indígena; 2) coroa:.....Akanetá-pirã-beraba reroínano. - Tendo também coroas vermelhas e brilhantes... (Ar., Cat., 168v)"
   },
   {
     "first_word": "akanga",
@@ -15250,9 +15250,9 @@
     "definition": "(etim. - instrumento de tecer roupas) (s.) - lançadeira (peça de tear) (VLB, II, 18)"
   },
   {
-    "first_word": "aopyranga",
+    "first_word": "aopiranga",
     "optional_number": "",
-    "definition": "(etim. - roupa vermelha) (s.) - púrpura: Amõ aopyranga mondepa sesé. - Uma púrpura colocando nele. (Ar., Cat., 60)"
+    "definition": "(etim. - roupa vermelha) (s.) - púrpura: Amõ aopiranga mondepa sesé. - Uma púrpura colocando nele. (Ar., Cat., 60)"
   },
   {
     "first_word": "aosyryryka",
@@ -18905,9 +18905,9 @@
     "definition": "(t) (s.) - diarréia (branda, com evacuação de água somente); [adj.: ebykasy (r, s)] - diarréico; (xe) ter diarréia: Xe rebykasy. - Eu tenho diarréia. (VLB, I, 64)"
   },
   {
-    "first_word": "ebykasy-pyranga",
+    "first_word": "ebykasy-piranga",
     "optional_number": "",
-    "definition": "(t) (etim. - diarréia vermelha) (s.) - diarréia com eliminação de sangue; [adj.: ebykasy-pyrang (r, s)] (xe) - ter diarréia com sangue: Xe rebykasy-pyrang. - Eu tenho diarréia com sangue. (VLB, I, 64)"
+    "definition": "(t) (etim. - diarréia vermelha) (s.) - diarréia com eliminação de sangue; [adj.: ebykasy-pirang (r, s)] (xe) - ter diarréia com sangue: Xe rebykasy-pirang. - Eu tenho diarréia com sangue. (VLB, I, 64)"
   },
   {
     "first_word": "ebykatã",
@@ -20957,7 +20957,7 @@
   {
     "first_word": "NOTA",
     "optional_number": "",
-    "definition": "- Daí, no P.B., SAPIRANGA (tesá + pyrang + -a, \"olhos vermelhos\"), blefarite, inflamação de pálpebras. Em José de Alencar lemos: \"...as pestanas, as comera a SAPIRANGA que lhe arroxeava as pálpebras.\" (in Alfarrábios, apud Novo Dicion. Aurélio); SAPIROCA [(te)sá + pir + ok +-a, \"arranca pele dos olhos\"], inflamação das pálpebras com queda das pestanas, blefarite ciliar; SAPIROQUENTO, o que tem sapiroca. Daí, também, o nome próprio TIBIRIÇÁ (tebir + esá, \"olho das nádegas\"), nome de importante chefe indígena de Piratininga, no século XVI."
+    "definition": "- Daí, no P.B., SAPIRANGA (tesá + pirang + -a, \"olhos vermelhos\"), blefarite, inflamação de pálpebras. Em José de Alencar lemos: \"...as pestanas, as comera a SAPIRANGA que lhe arroxeava as pálpebras.\" (in Alfarrábios, apud Novo Dicion. Aurélio); SAPIROCA [(te)sá + pir + ok +-a, \"arranca pele dos olhos\"], inflamação das pálpebras com queda das pestanas, blefarite ciliar; SAPIROQUENTO, o que tem sapiroca. Daí, também, o nome próprio TIBIRIÇÁ (tebir + esá, \"olho das nádegas\"), nome de importante chefe indígena de Piratininga, no século XVI."
   },
   {
     "first_word": "esaapytãpytang",
@@ -21670,7 +21670,7 @@
     "definition": "(s.) - nome de um jogo de crianças (Marcgrave, Hist. Nat Bras., 278)"
   },
   {
-    "first_word": "gûaîbĩkûapyranga",
+    "first_word": "gûaîbĩkûapiranga",
     "optional_number": "",
     "definition": "(etim. - vagina vermelha de velha) (s.) - nome de um peixe (Libri Princ., vol. II, 73)"
   },
@@ -22805,7 +22805,7 @@
     "definition": "(etim. - guiraponga verde) (s.) - nome de uma ave (Theat. Rer. Nat. Bras., I, 150)"
   },
   {
-    "first_word": "gûyrapoti'apyrangaîuparaba",
+    "first_word": "gûyrapoti'apirangaîuparaba",
     "optional_number": "",
     "definition": "(etim. - ave do peito manchado de vermelho e amarelo) (s.) - nome de uma ave (Brasil Holandês, vol. III, 50)"
   },
@@ -24657,7 +24657,7 @@
   {
     "first_word": "îegûak",
     "optional_number": "",
-    "definition": "(v. intr.) - enfeitar-se, ornar-se, adornar-se, pintar-se: Moraseîa é i katu, îegûaka, îemopyranga... - A dança é que é boa, enfeitar-se, pintar-se de vermelho. (Anch., Teatro, 6); Aûîeté pakó, aîegûak ûinhemoúna... - Na verdade hei de me enfeitar, pretejando-me... (Anch., Teatro, 60); Erenhemoatyrõpe eîegûaka nde poropotaramo? - Enfeitaste-te, pintando-te, tendo desejos carnais? (Ar., Cat., 234) ● îegûakaba - tempo, lugar, modo, etc. de enfeitar-se, enfeite, adorno, atavio: I porang kó tupãoka, îegûakabetá rerupa! - É bonita esta igreja, tendo muitos adornos! (Anch., Poemas, 112)"
+    "definition": "(v. intr.) - enfeitar-se, ornar-se, adornar-se, pintar-se: Moraseîa é i katu, îegûaka, îemopiranga... - A dança é que é boa, enfeitar-se, pintar-se de vermelho. (Anch., Teatro, 6); Aûîeté pakó, aîegûak ûinhemoúna... - Na verdade hei de me enfeitar, pretejando-me... (Anch., Teatro, 60); Erenhemoatyrõpe eîegûaka nde poropotaramo? - Enfeitaste-te, pintando-te, tendo desejos carnais? (Ar., Cat., 234) ● îegûakaba - tempo, lugar, modo, etc. de enfeitar-se, enfeite, adorno, atavio: I porang kó tupãoka, îegûakabetá rerupa! - É bonita esta igreja, tendo muitos adornos! (Anch., Poemas, 112)"
   },
   {
     "first_word": "îegûaru",
@@ -25140,9 +25140,9 @@
     "definition": "(v. intr.) - retorcer-se, enrolar-se (o fio, o cordão, etc.) (VLB, II, 104)"
   },
   {
-    "first_word": "îemopyrang",
+    "first_word": "îemopirang",
     "optional_number": "",
-    "definition": "(v. intr.) - pintar-se de vermelho, avermelhar-se: Moraseîa é i katu, îegûaka, îemopyranga... - A dança é que é boa, enfeitar-se, pintar-se de vermelho. (Anch., Teatro, 6)"
+    "definition": "(v. intr.) - pintar-se de vermelho, avermelhar-se: Moraseîa é i katu, îegûaka, îemopiranga... - A dança é que é boa, enfeitar-se, pintar-se de vermelho. (Anch., Teatro, 6)"
   },
   {
     "first_word": "îemoryryî",
@@ -27282,7 +27282,7 @@
   {
     "first_word": "îu",
     "optional_number": "2",
-    "definition": "(s.) - 1) espinho: Oîké îugûasu i akanga kutuka... - Entram grandes espinhos, espetando sua cabeça. (Anch., Poemas, 122); Aopyranga îu abé ogûerur... - Vinha com púrpura e espinhos... (Ar., Cat., 60v); 2) espinheiro (VLB, I, 126)"
+    "definition": "(s.) - 1) espinho: Oîké îugûasu i akanga kutuka... - Entram grandes espinhos, espetando sua cabeça. (Anch., Poemas, 122); Aopyrapirannga îu abé ogûerur... - Vinha com púrpura e espinhos... (Ar., Cat., 60v); 2) espinheiro (VLB, I, 126)"
   },
   {
     "first_word": "NOTA",
@@ -27342,7 +27342,7 @@
   {
     "first_word": "îuba",
     "optional_number": "",
-    "definition": "(s.) - o amarelo, a cor amarela; a cor loura; a cor ruiva: tupi'a-îuba - o amarelo do ovo, isto é, a gema (VLB, I, 147); (adj.: îub) - amarelo; louro; ruivo: Xe robá-îub. - Eu estou de rosto amarelo, eu estou pálido. (VLB, I, 34); I îub. - Ele é amarelo. Xe îub. - Eu sou amarelo. (Anch., Arte, 50); Eu sou louro. (VLB, II, 24); -Mba'epe ereru nde karamemûã pupé? -Aoba. -Marãba'e? -Soby-eté, (i) pyrang, i îub. -Que trouxeste dentro de tua caixa? -Roupas. -De que tipo? -Elas são azuis, vermelhas, elas são amarelas. (Léry, Histoire, 342-343)"
+    "definition": "(s.) - o amarelo, a cor amarela; a cor loura; a cor ruiva: tupi'a-îuba - o amarelo do ovo, isto é, a gema (VLB, I, 147); (adj.: îub) - amarelo; louro; ruivo: Xe robá-îub. - Eu estou de rosto amarelo, eu estou pálido. (VLB, I, 34); I îub. - Ele é amarelo. Xe îub. - Eu sou amarelo. (Anch., Arte, 50); Eu sou louro. (VLB, II, 24); -Mba'epe ereru nde karamemûã pupé? -Aoba. -Marãba'e? -Soby-eté, (i) pirang, i îub. -Que trouxeste dentro de tua caixa? -Roupas. -De que tipo? -Elas são azuis, vermelhas, elas são amarelas. (Léry, Histoire, 342-343)"
   },
   {
     "first_word": "NOTA",
@@ -27752,7 +27752,7 @@
   {
     "first_word": "NOTA",
     "optional_number": "",
-    "definition": "- Daí, no P.B., JURUPIRANGA (îuru + pyrang + -a - \"boca vermelha\"), nome de um peixe taquissurídeo; JURUPIXUNA (îuru + pyxun + -a - \"boca escura\"), nome de um macaco cebídeo; JURUNA (îuru + un + -a - \"bocas pretas\"), nome de povo indígena do MT e PA; JURUPENSÉM (îuru + pesẽ - \"boca-de-colher\"), peixe pimelodídeo de boca com prognatismo acentuado, também chamado jurupoca e boca-de-colher. Daí, também, o nome próprio JURACI, os nomes geográficos CAJURU, BOTUJURU, etc. (v. p. 386)."
+    "definition": "- Daí, no P.B., JURUPIRANGA (îuru + pirang + -a - \"boca vermelha\"), nome de um peixe taquissurídeo; JURUPIXUNA (îuru + pyxun + -a - \"boca escura\"), nome de um macaco cebídeo; JURUNA (îuru + un + -a - \"bocas pretas\"), nome de povo indígena do MT e PA; JURUPENSÉM (îuru + pesẽ - \"boca-de-colher\"), peixe pimelodídeo de boca com prognatismo acentuado, também chamado jurupoca e boca-de-colher. Daí, também, o nome próprio JURACI, os nomes geográficos CAJURU, BOTUJURU, etc. (v. p. 386)."
   },
   {
     "first_word": "îuru",
@@ -29457,7 +29457,7 @@
   {
     "first_word": "karaimonhang",
     "optional_number": "",
-    "definition": "(v. intr.) - fazer feitiços: Moraseîa é i katu, îegûaka, îemopyranga, ...karaimonhã-monhanga... - A dança é que é boa, enfeitar-se, avermelhar-se, ficar fazendo feitiços. (Anch., Teatro, 6)"
+    "definition": "(v. intr.) - fazer feitiços: Moraseîa é i katu, îegûaka, îemopiranga, ...karaimonhã-monhanga... - A dança é que é boa, enfeitar-se, avermelhar-se, ficar fazendo feitiços. (Anch., Teatro, 6)"
   },
   {
     "first_word": "karaimonhanga",
@@ -29785,7 +29785,7 @@
     "definition": "(s.) - CARAGUATÁ (v. karagûatá) (Brandão, Diálogos, 203)"
   },
   {
-    "first_word": "karûatapyranga",
+    "first_word": "karûatapiranga",
     "optional_number": "",
     "definition": "(etim. - caraguatá vermelho) (s.) - cardo vermelho, variedade de karagûatá (v.) (D'Evreux, Viagem, 276)"
   },
@@ -37350,7 +37350,7 @@
     "definition": "(v.tr.) - deixar duro, deixar ereto, enrijecer (p.ex., o rabo, a orelha, o pênis, o laço, etc.) (VLB, I, 153)"
   },
   {
-    "first_word": "mopyrang",
+    "first_word": "mopirang",
     "optional_number": "",
     "definition": "(v.tr.) - 1) pintar de vermelho, tingir de vermelho; tornar vermelho (VLB, I, 32); 2) ensanguentar (VLB, I, 117)"
   },
@@ -37755,7 +37755,7 @@
     "definition": "(ou mosykyîee'yma) (etim. - sem afabilidade) (s.) - severidade (VLB, II, 117); crueza, crueldade (VLB, I, 86)"
   },
   {
-    "first_word": "mosykypyranga",
+    "first_word": "mosykypiranga",
     "optional_number": "",
     "definition": "(etim. - medusa vermelha) (s.) - var. de fitozoário; medusa (VLB, I, 67)"
   },
@@ -38410,7 +38410,7 @@
     "definition": "(s.) - nome de um peixe (Marcgrave, Hist. Nat. Bras., 169)"
   },
   {
-    "first_word": "mutũtĩpyranga",
+    "first_word": "mutũtĩpiranga",
     "optional_number": "",
     "definition": "(etim. - mutum da crista vermelha) (s.) - var. de MUTUM, ave galiforme da família dos cracídeos, de bico grosso e comprido, possuidor de um topete e de plumagem branca e vermelha (D'Abbeville, Histoire, 236)"
   },
@@ -44027,7 +44027,7 @@
   {
     "first_word": "pitub",
     "optional_number": "",
-    "definition": "(v.tr.) - pintar, tingir, untar (com azeite e urucu misturados) o corpo de forma geral (VLB, I, 32): Aîpitu-pyrang. - Tinjo-o de vermelho (com urucu). (VLB, II, 128; 139) ● i pitubypyra - o que é (ou deve ser) pintado, untado: Mba'e-mba'epe asé suí i pitubypyra? - Que deve ser ungido de nós (isto é, de nosso corpo)? (Ar., Cat., 92)"
+    "definition": "(v.tr.) - pintar, tingir, untar (com azeite e urucu misturados) o corpo de forma geral (VLB, I, 32): Aîpitu-pirang. - Tinjo-o de vermelho (com urucu). (VLB, II, 128; 139) ● i pitubypyra - o que é (ou deve ser) pintado, untado: Mba'e-mba'epe asé suí i pitubypyra? - Que deve ser ungido de nós (isto é, de nosso corpo)? (Ar., Cat., 92)"
   },
   {
     "first_word": "pitubara",
@@ -44040,7 +44040,7 @@
     "definition": "(v.tr.) - pintar, tingir, untar as pernas: Aîpitupuku. - Tinjo as pernas. (VLB, I, 32)"
   },
   {
-    "first_word": "pitupyrang",
+    "first_word": "pitupirang",
     "optional_number": "",
     "definition": "- v. pitub (VLB, I, 32; II, 139)"
   },
@@ -45472,7 +45472,7 @@
   {
     "first_word": "po'yra",
     "optional_number": "",
-    "definition": "(m) (s.) - contas; colar, jóia (VLB, II, 14): Aîpo'y-rung. - Coloquei colar nele. Aîepo'y-rung. - Coloquei-me colar. (VLB, I, 116); itaîu-po'yra - colar de ouro (VLB, I, 76); mo'yrobyeté - colares azuis (Léry, Histoire, 346); mbo'ykaraíba - conta benta, conta de rosário ou de terço; mbo'ypyranga - contas vermelhas, contas de coral (VLB, I, 81)"
+    "definition": "(m) (s.) - contas; colar, jóia (VLB, II, 14): Aîpo'y-rung. - Coloquei colar nele. Aîepo'y-rung. - Coloquei-me colar. (VLB, I, 116); itaîu-po'yra - colar de ouro (VLB, I, 76); mo'yrobyeté - colares azuis (Léry, Histoire, 346); mbo'ykaraíba - conta benta, conta de rosário ou de terço; mbo'ypiranga - contas vermelhas, contas de coral (VLB, I, 81)"
   },
   {
     "first_word": "pu",
@@ -46470,14 +46470,14 @@
     "definition": "(s.) - crueza; (adj.: pyr) - cru (p.ex., carne, etc.): I pyr. - Ela está crua. (VLB, I, 86, adapt.)"
   },
   {
-    "first_word": "pyranga",
+    "first_word": "piranga",
     "optional_number": "",
-    "definition": "(m) (s.) - vermelhidão; (adj.: pyrang) - vermelho, PIRANGA: ...Amõ aó-pyranga mondepa sesé. - Uma roupa vermelha colocando nele. (Ar., Cat., 60); Xe robá-pyrã-pyrang. - Eu tenho rosto muito vermelho, eu enrubesço. (VLB, II, 109)"
+    "definition": "(m) (s.) - vermelhidão; (adj.: pirang) - vermelho, PIRANGA: ...Amõ aó-piranga mondepa sesé. - Uma roupa vermelha colocando nele. (Ar., Cat., 60); Xe robá-pirã-pirang. - Eu tenho rosto muito vermelho, eu enrubesço. (VLB, II, 109)"
   },
   {
     "first_word": "OBSERVAÇÃO",
     "optional_number": "",
-    "definition": "- Pyrang não é sinônimo de pytang, como vemos, erradamente, em muitos dicionários que apresentam etimologias."
+    "definition": "- pirang não é sinônimo de pytang, como vemos, erradamente, em muitos dicionários que apresentam etimologias."
   },
   {
     "first_word": "NOTA",
@@ -46527,7 +46527,7 @@
   {
     "first_word": "pyryb",
     "optional_number": "2",
-    "definition": "(forma nasal: mbyryb) (adv.) - tirante a, com um ar de, como que: Gûyrá pepóbo pyryb. - Como que em asas de pássaro. (VLB, II, 17); pyrã-mbyryb - tirante a vermelho (VLB, II, 128)"
+    "definition": "(forma nasal: mbyryb) (adv.) - tirante a, com um ar de, como que: Gûyrá pepóbo pyryb. - Como que em asas de pássaro. (VLB, II, 17); pirã-mbyryb - tirante a vermelho (VLB, II, 128)"
   },
   {
     "first_word": "pyryba",
@@ -49170,7 +49170,7 @@
     "definition": "(s. antrop.) - 1) nome de uma entidade da mitologia dos antigos índios tupis da costa do Brasil: Eresykyîpe Anhanga, Tagûaíba, Kurupira, Îurupari koîpó te'õ abá supé? - Invocaste o Anhanga, o Taguaíba, o Curupira, o Jurupari ou a morte para alguém? (Ar., Cat., 102v); 2) fantasma (Fig., Arte, 76)"
   },
   {
-    "first_word": "tagûapyranga",
+    "first_word": "tagûapiranga",
     "optional_number": "",
     "definition": "(etim. - tauá vermelho) (s.) - barro vermelho com que se pintava (VLB, I, 52)"
   },
@@ -51775,9 +51775,9 @@
     "definition": "(etim. - tiê verde e grande) (s.) - variedade de TIÊ, pássaro da família dos traupídeos (Soares, Coisas Not. Brasil [ms .c], 1337-1347)"
   },
   {
-    "first_word": "tiepyranga",
+    "first_word": "tiepiranga",
     "optional_number": "",
-    "definition": "(etim. - tiê vermelho) (s.) - variedade de TIÊ, pássaro da família dos traupídeos (Soares, Coisas Not. Brasil [ms .c], 1337-1347) (o mesmo que tiîepyranga - v.)"
+    "definition": "(etim. - tiê vermelho) (s.) - variedade de TIÊ, pássaro da família dos traupídeos (Soares, Coisas Not. Brasil [ms .c], 1337-1347) (o mesmo que tiîepiranga - v.)"
   },
   {
     "first_word": "tieté",
@@ -51795,7 +51795,7 @@
     "definition": "(etim. - sem vergonha) (s.) - falta de vergonha, sem-vergonhice (VLB, I, 96)"
   },
   {
-    "first_word": "tiîeakãpyranga",
+    "first_word": "tiîeakãpiranga",
     "optional_number": "",
     "definition": "(etim. - tiê da cabeça vermelha) (s.) - nome de um pássaro (Theat. Rer. Nat. Bras., I, 136)"
   },
@@ -51815,7 +51815,7 @@
     "definition": "(etim. - tié amarelo) (s.) - espécie de TIÉ, pássaro da família dos traupídeos. \"...São passarinhos pequenos que têm o corpo amarelo, as asas verdes, o bico preto.\" (Sousa, Trat. Descr., 236; VLB, I, 65)"
   },
   {
-    "first_word": "tiîepyranga",
+    "first_word": "tiîepiranga",
     "optional_number": "",
     "definition": "(etim. - tiê vermelho) (s.) - TIÊ-PIRANGA, pássaro da família dos traupídeos. É também chamado TAPIRANGA, TIÉ-FOGO, TIÉ-VERMELHO, etc. (Marcgrave, Hist. Nat. Bras., 192; Sousa, Trat. Descr., 236)"
   },
@@ -52350,7 +52350,7 @@
     "definition": "- Daí provém o nome do município maranhense de TUTOIA (v. p. 386)."
   },
   {
-    "first_word": "tu'ĩakãpyranga",
+    "first_word": "tu'ĩakãpiranga",
     "optional_number": "",
     "definition": "(etim. - tuim da cabeça vermelha) (s.) - nome de um pássaro (Theat. Rer. Nat. Bras., I, 167)"
   },
@@ -53485,7 +53485,7 @@
     "definition": "- o mesmo que gûarakapá (v.) (D'Abbeville, Histoire, 289)"
   },
   {
-    "first_word": "ûarapyranga",
+    "first_word": "ûarapiranga",
     "optional_number": "",
     "definition": "(etim. - guará vermelho) (s.) - GUARAPIRANGA, talvez o mesmo que gûará1 (v.) (Staden, Viagem, 175)"
   },
@@ -55295,7 +55295,7 @@
     "definition": "- Daí, o nome do antigo quilombo de IVAPORUNDUVA, no Vale do Ribeira do Iguape (SP) (v. p. 386)."
   },
   {
-    "first_word": "'ybapyranga",
+    "first_word": "'ybapiranga",
     "optional_number": "",
     "definition": "(etim. - fruta vermelha) (s.) - nome de uma fruta (Piso, De Med. Bras., I, 11)"
   },
@@ -57522,7 +57522,7 @@
   {
     "first_word": "Acangapiranga",
     "optional_number": "",
-    "definition": "(rib. de RO). De akanga + pyrang/a + -a: cabeças vermelhas."
+    "definition": "(rib. de RO). De akanga + pirang/a + -a: cabeças vermelhas."
   },
   {
     "first_word": "Acapu",
@@ -58052,7 +58052,7 @@
   {
     "first_word": "Arapiranga",
     "optional_number": "",
-    "definition": "(BA). De ará + pyrang + -a: arás vermelhos."
+    "definition": "(BA). De ará + pirang + -a: arás vermelhos."
   },
   {
     "first_word": "Araponga",
@@ -58912,7 +58912,7 @@
   {
     "first_word": "Caapiranga",
     "optional_number": "",
-    "definition": "(AM). De ka'a + pyrang + -a: folhas vermelhas."
+    "definition": "(AM). De ka'a + pirang + -a: folhas vermelhas."
   },
   {
     "first_word": "Caaporã",
@@ -59262,7 +59262,7 @@
   {
     "first_word": "Cajupiranga",
     "optional_number": "",
-    "definition": "(RN). De akaîu + pyrang + -a: cajus vermelhos."
+    "definition": "(RN). De akaîu + pirang + -a: cajus vermelhos."
   },
   {
     "first_word": "Cajuri",
@@ -59447,7 +59447,7 @@
   {
     "first_word": "Camiranga",
     "optional_number": "",
-    "definition": "(PA). De akanga + pyrang + -a, pela língua geral setentrional: cabeça vermelha, o urubu-de-cabeça-vermelha, ave falconiforme."
+    "definition": "(PA). De akanga + pirang + -a, pela língua geral setentrional: cabeça vermelha, o urubu-de-cabeça-vermelha, ave falconiforme."
   },
   {
     "first_word": "Camirim",
@@ -59642,7 +59642,7 @@
   {
     "first_word": "Capiranga",
     "optional_number": "",
-    "definition": "(lago do AM). De ka'a + pyrang + -a: mata vermelha."
+    "definition": "(lago do AM). De ka'a + pirang + -a: mata vermelha."
   },
   {
     "first_word": "Capitari,",
@@ -59857,7 +59857,7 @@
   {
     "first_word": "Carapiranga.",
     "optional_number": "",
-    "definition": "De akará + pyrang + -a: carás vermelhos."
+    "definition": "De akará + pirang + -a: carás vermelhos."
   },
   {
     "first_word": "Carapó",
@@ -60322,7 +60322,7 @@
   {
     "first_word": "Cuipiranga",
     "optional_number": "",
-    "definition": "(CE). De kuîa + pyrang + -a: cuias vermelhas."
+    "definition": "(CE). De kuîa + pirang + -a: cuias vermelhas."
   },
   {
     "first_word": "Cuité",
@@ -60952,7 +60952,7 @@
   {
     "first_word": "Guamiranga",
     "optional_number": "",
-    "definition": "(PR). De 'ybá + pyrang + -a, talvez pela língua geral meridional: frutos vermelhos; nome de uma planta."
+    "definition": "(PR). De 'ybá + pirang + -a, talvez pela língua geral meridional: frutos vermelhos; nome de uma planta."
   },
   {
     "first_word": "Guamirim",
@@ -61057,7 +61057,7 @@
   {
     "first_word": "Guaramiranga",
     "optional_number": "",
-    "definition": "(CE). De guará + pyrang + -a: guarás vermelhos."
+    "definition": "(CE). De guará + pirang + -a: guarás vermelhos."
   },
   {
     "first_word": "Guarandi",
@@ -61087,7 +61087,7 @@
   {
     "first_word": "Guarapiranga",
     "optional_number": "",
-    "definition": "(represa de SP). De guará, ave tresquiornitídea + pyrang - vermelho + suf. -a: guarás vermelhos: \"E como naquele tempo havia muito pássaro vermelho no rio, e pequenos, intitularam ao rio Guarapiranga [...]\". (Caetano da Costa Matoso / Luís José Ferreira de Gouveia [1749], Informação das Antiguidades da Freguesia de Guarapiranga, p. 257). Dizer que um guará é vermelho pode parecer redundância, mas a questão é que a cor dessas aves varia ao longo de suas vidas: \"[...] Guará - Nasce preto, e depois vae manxando athé q' fica todo encarnado [...]\". (in Anônimo, muito provavelmente Barbosa de Sáa) [1765], p. 171)"
+    "definition": "(represa de SP). De guará, ave tresquiornitídea + pirang - vermelho + suf. -a: guarás vermelhos: \"E como naquele tempo havia muito pássaro vermelho no rio, e pequenos, intitularam ao rio Guarapiranga [...]\". (Caetano da Costa Matoso / Luís José Ferreira de Gouveia [1749], Informação das Antiguidades da Freguesia de Guarapiranga, p. 257). Dizer que um guará é vermelho pode parecer redundância, mas a questão é que a cor dessas aves varia ao longo de suas vidas: \"[...] Guará - Nasce preto, e depois vae manxando athé q' fica todo encarnado [...]\". (in Anônimo, muito provavelmente Barbosa de Sáa) [1765], p. 171)"
   },
   {
     "first_word": "Guarapó",
@@ -61187,7 +61187,7 @@
   {
     "first_word": "Guaripiranga",
     "optional_number": "",
-    "definition": "(SP). De gûari* (de língua geral colonial) + pyrang + -a: guariúva vermelha, árvore morácea."
+    "definition": "(SP). De gûari* (de língua geral colonial) + pirang + -a: guariúva vermelha, árvore morácea."
   },
   {
     "first_word": "Guaripu",
@@ -62217,7 +62217,7 @@
   {
     "first_word": "Ipiranga",
     "optional_number": "",
-    "definition": "(rib. de SP). De 'y + pyrang + -a: rio vermelho, água vermelha. \"No seguinte dia passei as celebres cachoeiras Caracol e Funil, e os Sete Peccados, que são sete pequenas cachoeiras, até entrar pelo ribeirão de Ipiranga á direita.\" (Martim Francisco Ribeiro de Andrada [1805], Diario de uma Viagem Mineralógica, p. 541)."
+    "definition": "(rib. de SP). De 'y + pirang + -a: rio vermelho, água vermelha. \"No seguinte dia passei as celebres cachoeiras Caracol e Funil, e os Sete Peccados, que são sete pequenas cachoeiras, até entrar pelo ribeirão de Ipiranga á direita.\" (Martim Francisco Ribeiro de Andrada [1805], Diario de uma Viagem Mineralógica, p. 541)."
   },
   {
     "first_word": "Ipitanga",
@@ -63102,12 +63102,12 @@
   {
     "first_word": "Itapiranga",
     "optional_number": "",
-    "definition": "(AM). De itá + pyrang/a + -a: pedras vermelhas."
+    "definition": "(AM). De itá + pirang/a + -a: pedras vermelhas."
   },
   {
     "first_word": "Itapiranguara",
     "optional_number": "",
-    "definition": "(CE). De itá + pyrang/a + kûara: buraco da pedra vermelha."
+    "definition": "(CE). De itá + pirang/a + kûara: buraco da pedra vermelha."
   },
   {
     "first_word": "Itapirapuã",
@@ -63522,7 +63522,7 @@
   {
     "first_word": "Itupiranga",
     "optional_number": "",
-    "definition": "(PA). De ytu + pyrang + -a: cachoeira vermelha."
+    "definition": "(PA). De ytu + pirang + -a: cachoeira vermelha."
   },
   {
     "first_word": "Ituporanga",
@@ -63667,7 +63667,7 @@
   {
     "first_word": "Jacarandapiranga",
     "optional_number": "",
-    "definition": "(RJ). De îakarandá + pyrang + -a: jacarandás vermelhos, árvores leguminosas."
+    "definition": "(RJ). De îakarandá + pirang + -a: jacarandás vermelhos, árvores leguminosas."
   },
   {
     "first_word": "Jacarandaúna",
@@ -63882,7 +63882,7 @@
   {
     "first_word": "Jacupiranga",
     "optional_number": "",
-    "definition": "(SP). De îaku - aves cracídeas + pyrang + -a: jacus vermelhos."
+    "definition": "(SP). De îaku - aves cracídeas + pirang + -a: jacus vermelhos."
   },
   {
     "first_word": "Jacuri,",
@@ -65327,7 +65327,7 @@
   {
     "first_word": "Miranga",
     "optional_number": "",
-    "definition": "(BA). De myranga [v. pyranga], barro vermelho."
+    "definition": "(BA). De myranga [v. piranga], barro vermelho."
   },
   {
     "first_word": "Mirapinima",
@@ -65337,7 +65337,7 @@
   {
     "first_word": "Mirapiranga",
     "optional_number": "",
-    "definition": "(ig. do AM). De pirá + pyrang + -a: peixes vermelhos, pirapirangas."
+    "definition": "(ig. do AM). De pirá + pirang + -a: peixes vermelhos, pirapirangas."
   },
   {
     "first_word": "Mirapirera",
@@ -66422,7 +66422,7 @@
   {
     "first_word": "Piranga1,",
     "optional_number": "",
-    "definition": "Rio (MG). De pyrang/a: vermelho. Durante a fase de emprego das línguas gerais coloniais, foi comum o uso de adjetivos tupis com substantivos portugueses: Monte Piranga, Rio Una, etc."
+    "definition": "Rio (MG). De pirang/a: vermelho. Durante a fase de emprego das línguas gerais coloniais, foi comum o uso de adjetivos tupis com substantivos portugueses: Monte Piranga, Rio Una, etc."
   },
   {
     "first_word": "Piranga2,",
@@ -66432,7 +66432,7 @@
   {
     "first_word": "Pirangaí",
     "optional_number": "",
-    "definition": "(RJ). De pyranga + 'y: rio das pirangas (v. Piranga2)."
+    "definition": "(RJ). De piranga + 'y: rio das pirangas (v. Piranga2)."
   },
   {
     "first_word": "Pirangi",
@@ -67527,7 +67527,7 @@
   {
     "first_word": "Tapiranga",
     "optional_number": "",
-    "definition": "(BA). De taba + pyrang + -a: penas vermelhas, nome de pássaro traupídeo."
+    "definition": "(BA). De taba + pirang + -a: penas vermelhas, nome de pássaro traupídeo."
   },
   {
     "first_word": "Tapirapé",
@@ -67792,7 +67792,7 @@
   {
     "first_word": "Tauapiranga",
     "optional_number": "",
-    "definition": "(PE). De taûá + pyrang + -a: tauá, barro vermelho."
+    "definition": "(PE). De taûá + pirang + -a: tauá, barro vermelho."
   },
   {
     "first_word": "Taubaté",

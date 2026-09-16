@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generated_at": "2026-08-28T11:00:19+00:00",
-    "entry_count": 233,
+    "generated_at": "2026-09-16T22:32:54+00:00",
+    "entry_count": 254,
     "dataset_counts": {
-      "lexicon": 233
+      "lexicon": 254
     },
     "includes_navarro": false
   },
@@ -745,7 +745,7 @@
         "qualifiers": [],
         "glosses": []
       },
-      "attestation_count": 26,
+      "attestation_count": 27,
       "attestations": [
         {
           "line_id": "araujo_catecismo_1686:5",
@@ -848,6 +848,11 @@
           "expression_index": 60
         },
         {
+          "line_id": "araujo_catecismo_1686:81",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 81
+        },
+        {
           "line_id": "bettendorff_compendio:5",
           "source": "bettendorff_compendio",
           "expression_index": 5
@@ -881,7 +886,7 @@
       "source_counts": [
         {
           "source": "araujo_catecismo_1686",
-          "count": 20
+          "count": 21
         },
         {
           "source": "bettendorff_compendio",
@@ -921,7 +926,7 @@
         "qualifiers": [],
         "glosses": []
       },
-      "attestation_count": 24,
+      "attestation_count": 25,
       "attestations": [
         {
           "line_id": "araujo_catecismo_1686:5",
@@ -1019,6 +1024,11 @@
           "expression_index": 60
         },
         {
+          "line_id": "araujo_catecismo_1686:81",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 81
+        },
+        {
           "line_id": "bettendorff_compendio:5",
           "source": "bettendorff_compendio",
           "expression_index": 5
@@ -1047,7 +1057,7 @@
       "source_counts": [
         {
           "source": "araujo_catecismo_1686",
-          "count": 19
+          "count": 20
         },
         {
           "source": "bettendorff_compendio",
@@ -1089,7 +1099,7 @@
           "he/she/it/they"
         ]
       },
-      "attestation_count": 24,
+      "attestation_count": 25,
       "attestations": [
         {
           "line_id": "araujo_catecismo_1686:5",
@@ -1187,6 +1197,11 @@
           "expression_index": 60
         },
         {
+          "line_id": "araujo_catecismo_1686:81",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 81
+        },
+        {
           "line_id": "bettendorff_compendio:5",
           "source": "bettendorff_compendio",
           "expression_index": 5
@@ -1215,7 +1230,7 @@
       "source_counts": [
         {
           "source": "araujo_catecismo_1686",
-          "count": 19
+          "count": 20
         },
         {
           "source": "bettendorff_compendio",
@@ -2638,6 +2653,60 @@
       }
     },
     {
+      "entry_id": "lexicon:noun:apixara:0c83eeea8a",
+      "dataset": "lexicon",
+      "headword": "apixara",
+      "normalized_headword": "apixara",
+      "aliases": [],
+      "part_of_speech": {
+        "kind": "Noun",
+        "category": "noun",
+        "tag": "[NOUN]"
+      },
+      "definition": {
+        "raw": "(t)",
+        "qualifiers": [
+          "(t)"
+        ],
+        "glosses": [
+          "(t)"
+        ]
+      },
+      "attestation_count": 2,
+      "attestations": [
+        {
+          "line_id": "araujo_catecismo_1686:70",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 70
+        },
+        {
+          "line_id": "araujo_catecismo_1686:73",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 73
+        }
+      ],
+      "source_counts": [
+        {
+          "source": "araujo_catecismo_1686",
+          "count": 2
+        }
+      ],
+      "search": {
+        "headword": "apixara",
+        "aliases": [],
+        "glosses": [
+          "t"
+        ],
+        "fulltext": "apixara t eiemomotar ume nde rapixara remireko rese oieausuba iabe ase oapixararausuba no"
+      },
+      "metadata": {
+        "symbols": [
+          "apixara"
+        ],
+        "definition_missing": false
+      }
+    },
+    {
       "entry_id": "lexicon:noun:apytera:28f27ba2d8",
       "dataset": "lexicon",
       "headword": "apytera",
@@ -2812,7 +2881,7 @@
           "all of us"
         ]
       },
-      "attestation_count": 11,
+      "attestation_count": 12,
       "attestations": [
         {
           "line_id": "araujo_catecismo_1686:27",
@@ -2865,6 +2934,11 @@
           "expression_index": 74
         },
         {
+          "line_id": "araujo_catecismo_1686:79",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 79
+        },
+        {
           "line_id": "bettendorff_compendio:27",
           "source": "bettendorff_compendio",
           "expression_index": 27
@@ -2873,7 +2947,7 @@
       "source_counts": [
         {
           "source": "araujo_catecismo_1686",
-          "count": 10
+          "count": 11
         },
         {
           "source": "bettendorff_compendio",
@@ -2989,7 +3063,7 @@
         "glosses": [
           "to love"
         ],
-        "fulltext": "ausub love to love oieausuba iabe ase o tapixararausubi"
+        "fulltext": "ausub love to love oieausuba iabe ase oapixararausuba no"
       },
       "metadata": {
         "symbols": [
@@ -3943,6 +4017,97 @@
       "metadata": {
         "symbols": [
           "emi"
+        ],
+        "definition_missing": false
+      }
+    },
+    {
+      "entry_id": "lexicon:noun:emireko:375521cf3d",
+      "dataset": "lexicon",
+      "headword": "emirekó",
+      "normalized_headword": "emireko",
+      "aliases": [],
+      "part_of_speech": {
+        "kind": "Noun",
+        "category": "noun",
+        "tag": "[NOUN]"
+      },
+      "definition": {
+        "raw": "(t)",
+        "qualifiers": [
+          "(t)"
+        ],
+        "glosses": [
+          "(t)"
+        ]
+      },
+      "attestation_count": 1,
+      "attestations": [
+        {
+          "line_id": "araujo_catecismo_1686:70",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 70
+        }
+      ],
+      "source_counts": [
+        {
+          "source": "araujo_catecismo_1686",
+          "count": 1
+        }
+      ],
+      "search": {
+        "headword": "emireko",
+        "aliases": [],
+        "glosses": [
+          "t"
+        ],
+        "fulltext": "emireko t eiemomotar ume nde rapixara remireko rese"
+      },
+      "metadata": {
+        "symbols": [
+          "emirekó"
+        ],
+        "definition_missing": false
+      }
+    },
+    {
+      "entry_id": "lexicon:noun:emo'em:cff97f1c76",
+      "dataset": "lexicon",
+      "headword": "emo'em",
+      "normalized_headword": "emo'em",
+      "aliases": [
+        "moem"
+      ],
+      "part_of_speech": {
+        "kind": "Noun",
+        "category": "noun",
+        "tag": "[NOUN]"
+      },
+      "definition": {
+        "raw": "(t)",
+        "qualifiers": [
+          "(t)"
+        ],
+        "glosses": [
+          "(t)"
+        ]
+      },
+      "attestation_count": 0,
+      "attestations": [],
+      "source_counts": [],
+      "search": {
+        "headword": "emo'em",
+        "aliases": [
+          "moem"
+        ],
+        "glosses": [
+          "t"
+        ],
+        "fulltext": "emo'em moem t"
+      },
+      "metadata": {
+        "symbols": [
+          "moem"
         ],
         "definition_missing": false
       }
@@ -5154,6 +5319,60 @@
       }
     },
     {
+      "entry_id": "lexicon:postposition:esebe:24f87aa320",
+      "dataset": "lexicon",
+      "headword": "esebé",
+      "normalized_headword": "esebe",
+      "aliases": [],
+      "part_of_speech": {
+        "kind": "Postposition",
+        "category": "postposition",
+        "tag": "[POSTPOSITION]"
+      },
+      "definition": {
+        "raw": "(t) (posp.) - com, juntamente com, assim como",
+        "qualifiers": [
+          "(t)",
+          "(posp.)"
+        ],
+        "glosses": [
+          "com",
+          "juntamente com",
+          "assim como"
+        ]
+      },
+      "attestation_count": 1,
+      "attestations": [
+        {
+          "line_id": "araujo_catecismo_1686:75",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 75
+        }
+      ],
+      "source_counts": [
+        {
+          "source": "araujo_catecismo_1686",
+          "count": 1
+        }
+      ],
+      "search": {
+        "headword": "esebe",
+        "aliases": [],
+        "glosses": [
+          "com",
+          "juntamente com",
+          "assim como"
+        ],
+        "fulltext": "esebe t posp - com juntamente com assim como domingo rese 'ara maratekoabe'yma resebe missarenduba"
+      },
+      "metadata": {
+        "symbols": [
+          "esebé"
+        ],
+        "definition_missing": false
+      }
+    },
+    {
       "entry_id": "lexicon:proper_noun:espirito santo:1980ad3ceb",
       "dataset": "lexicon",
       "headword": "Espírito Santo",
@@ -5661,7 +5880,7 @@
           "similar to",
           "in the same way as"
         ],
-        "fulltext": "iabe like as similar to in the same way as toiemonhang nde remimotara ybype ybakype oiemonhanga iabe ndenhyro ore angaipaba rese orebe orererekomemuasara supe orenhyro iabe oieausuba iabe ase o tapixararausubi toiemonhang nde remimotara ybype ybakype oiemonhanga iabe ndenhyro ore angaipaba rese orebo orererekomemuasara supe orenhyro iabe"
+        "fulltext": "iabe like as similar to in the same way as toiemonhang nde remimotara ybype ybakype oiemonhanga iabe ndenhyro ore angaipaba rese orebe orererekomemuasara supe orenhyro iabe oieausuba iabe ase oapixararausuba no toiemonhang nde remimotara ybype ybakype oiemonhanga iabe ndenhyro ore angaipaba rese orebo orererekomemuasara supe orenhyro iabe"
       },
       "metadata": {
         "symbols": [
@@ -5691,7 +5910,7 @@
           "every"
         ]
       },
-      "attestation_count": 3,
+      "attestation_count": 6,
       "attestations": [
         {
           "line_id": "araujo_catecismo_1686:6",
@@ -5704,6 +5923,21 @@
           "expression_index": 76
         },
         {
+          "line_id": "araujo_catecismo_1686:77",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 77
+        },
+        {
+          "line_id": "araujo_catecismo_1686:78",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 78
+        },
+        {
+          "line_id": "araujo_catecismo_1686:79",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 79
+        },
+        {
           "line_id": "bettendorff_compendio:6",
           "source": "bettendorff_compendio",
           "expression_index": 6
@@ -5712,7 +5946,7 @@
       "source_counts": [
         {
           "source": "araujo_catecismo_1686",
-          "count": 2
+          "count": 5
         },
         {
           "source": "bettendorff_compendio",
@@ -5728,7 +5962,7 @@
           "each",
           "every"
         ],
-        "fulltext": "iabi'o iabio each every ore rembi'u 'ara iabi'onduara eime'eng kori orebe seixu iabi'o iemombe'u ore rembi'u 'ara iabi'onduara eime'eng kori orebo"
+        "fulltext": "iabi'o iabio each every ore rembi'u 'ara iabi'onduara eime'eng kori orebe seixu iabi'o iemombe'u pascoa iabi'o tuparara santa madre igreja iekuakupuaia iabi'o iekuakuba opakombo iabi'o tupa supe oiepe ase mba'emoia'oka"
       },
       "metadata": {
         "symbols": [
@@ -6011,6 +6245,44 @@
       }
     },
     {
+      "entry_id": "lexicon:verb:iasuk:412df1e510",
+      "dataset": "lexicon",
+      "headword": "îasuk",
+      "normalized_headword": "iasuk",
+      "aliases": [],
+      "part_of_speech": {
+        "kind": "Verb",
+        "category": "verb",
+        "tag": "[VERB]"
+      },
+      "definition": {
+        "raw": "batizar-se, lavar-se",
+        "qualifiers": [],
+        "glosses": [
+          "batizar-se",
+          "lavar-se"
+        ]
+      },
+      "attestation_count": 0,
+      "attestations": [],
+      "source_counts": [],
+      "search": {
+        "headword": "iasuk",
+        "aliases": [],
+        "glosses": [
+          "batizar-se",
+          "lavar-se"
+        ],
+        "fulltext": "iasuk batizar-se lavar-se"
+      },
+      "metadata": {
+        "symbols": [
+          "îasuk"
+        ],
+        "definition_missing": false
+      }
+    },
+    {
       "entry_id": "lexicon:pronoun:ie:ca61525445",
       "dataset": "lexicon",
       "headword": "îe",
@@ -6029,7 +6301,7 @@
           "one's own"
         ]
       },
-      "attestation_count": 17,
+      "attestation_count": 19,
       "attestations": [
         {
           "line_id": "araujo_catecismo_1686:5",
@@ -6087,6 +6359,16 @@
           "expression_index": 76
         },
         {
+          "line_id": "araujo_catecismo_1686:78",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 78
+        },
+        {
+          "line_id": "araujo_catecismo_1686:81",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 81
+        },
+        {
           "line_id": "bettendorff_compendio:5",
           "source": "bettendorff_compendio",
           "expression_index": 5
@@ -6120,7 +6402,7 @@
       "source_counts": [
         {
           "source": "araujo_catecismo_1686",
-          "count": 11
+          "count": 13
         },
         {
           "source": "bettendorff_compendio",
@@ -6405,6 +6687,42 @@
           "îeruré"
         ],
         "definition_missing": true
+      }
+    },
+    {
+      "entry_id": "lexicon:proper_noun:igreja:1b5041b0e5",
+      "dataset": "lexicon",
+      "headword": "igreja",
+      "normalized_headword": "igreja",
+      "aliases": [],
+      "part_of_speech": {
+        "kind": "ProperNoun",
+        "category": "proper_noun",
+        "tag": "[PROPER_NOUN]"
+      },
+      "definition": {
+        "raw": "igreja",
+        "qualifiers": [],
+        "glosses": [
+          "igreja"
+        ]
+      },
+      "attestation_count": 0,
+      "attestations": [],
+      "source_counts": [],
+      "search": {
+        "headword": "igreja",
+        "aliases": [],
+        "glosses": [
+          "igreja"
+        ],
+        "fulltext": "igreja igreja"
+      },
+      "metadata": {
+        "symbols": [
+          "igreja"
+        ],
+        "definition_missing": false
       }
     },
     {
@@ -7777,6 +8095,53 @@
       }
     },
     {
+      "entry_id": "lexicon:noun:karaiba:5c5edace78",
+      "dataset": "lexicon",
+      "headword": "karaíba",
+      "normalized_headword": "karaiba",
+      "aliases": [
+        "karaiba"
+      ],
+      "part_of_speech": {
+        "kind": "Noun",
+        "category": "noun",
+        "tag": "[NOUN]"
+      },
+      "definition": {
+        "raw": "",
+        "qualifiers": [],
+        "glosses": []
+      },
+      "attestation_count": 1,
+      "attestations": [
+        {
+          "line_id": "araujo_catecismo_1686:81",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 81
+        }
+      ],
+      "source_counts": [
+        {
+          "source": "araujo_catecismo_1686",
+          "count": 1
+        }
+      ],
+      "search": {
+        "headword": "karaiba",
+        "aliases": [
+          "karaiba"
+        ],
+        "glosses": [],
+        "fulltext": "karaiba karaiba i karaiba pupe iemoiasuka"
+      },
+      "metadata": {
+        "symbols": [
+          "karaiba"
+        ],
+        "definition_missing": true
+      }
+    },
+    {
       "entry_id": "lexicon:noun:katu:23aaf98319",
       "dataset": "lexicon",
       "headword": "katu",
@@ -8070,6 +8435,47 @@
       "metadata": {
         "symbols": [
           "koyré"
+        ],
+        "definition_missing": false
+      }
+    },
+    {
+      "entry_id": "lexicon:verb:kuakub:62675afd05",
+      "dataset": "lexicon",
+      "headword": "kuakub",
+      "normalized_headword": "kuakub",
+      "aliases": [
+        "îekuakub"
+      ],
+      "part_of_speech": {
+        "kind": "Verb",
+        "category": "verb",
+        "tag": "[VERB]"
+      },
+      "definition": {
+        "raw": "recusar",
+        "qualifiers": [],
+        "glosses": [
+          "recusar"
+        ]
+      },
+      "attestation_count": 0,
+      "attestations": [],
+      "source_counts": [],
+      "search": {
+        "headword": "kuakub",
+        "aliases": [
+          "iekuakub"
+        ],
+        "glosses": [
+          "recusar"
+        ],
+        "fulltext": "kuakub iekuakub recusar"
+      },
+      "metadata": {
+        "symbols": [
+          "kuakub",
+          "îekuakub"
         ],
         "definition_missing": false
       }
@@ -8460,7 +8866,8 @@
       "headword": "mba'e",
       "normalized_headword": "mba'e",
       "aliases": [
-        "mbae"
+        "mbae",
+        "opkmbt"
       ],
       "part_of_speech": {
         "kind": "Noun",
@@ -8472,7 +8879,7 @@
         "qualifiers": [],
         "glosses": []
       },
-      "attestation_count": 7,
+      "attestation_count": 8,
       "attestations": [
         {
           "line_id": "araujo_catecismo_1686:26",
@@ -8500,6 +8907,11 @@
           "expression_index": 72
         },
         {
+          "line_id": "araujo_catecismo_1686:79",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 79
+        },
+        {
           "line_id": "bettendorff_compendio:26",
           "source": "bettendorff_compendio",
           "expression_index": 26
@@ -8513,7 +8925,7 @@
       "source_counts": [
         {
           "source": "araujo_catecismo_1686",
-          "count": 5
+          "count": 6
         },
         {
           "source": "bettendorff_compendio",
@@ -8523,14 +8935,16 @@
       "search": {
         "headword": "mba'e",
         "aliases": [
-          "mbae"
+          "mbae",
+          "opkmbt"
         ],
         "glosses": [],
-        "fulltext": "mba'e mbae arobiar tupa tuba opakatu mba'e tetirua monhanga e'ikatuba'e ybaka yby abemonhangara tupa tuba opakatu mba'e tetirua monhanga e'ikatuba'e 'ekatuaba koty seni arobiar oiepe tupa opakatu mba'e tetirua monhanga e'ikatuba'e arobiar opakatu mba'e tetiruamonhangaramo seko opakatu mba'e tetirua ase sausuba sose ase tupa rausuba"
+        "fulltext": "mba'e mbae opkmbt arobiar tupa tuba opakatu mba'e tetirua monhanga e'ikatuba'e ybaka yby abemonhangara tupa tuba opakatu mba'e tetirua monhanga e'ikatuba'e 'ekatuaba koty seni arobiar oiepe tupa opakatu mba'e tetirua monhanga e'ikatuba'e arobiar opakatu mba'e tetiruamonhangaramo seko opakatu mba'e tetirua ase sausuba sose ase tupa rausuba"
       },
       "metadata": {
         "symbols": [
-          "mbae"
+          "mbae",
+          "opkmbt"
         ],
         "definition_missing": true
       }
@@ -8629,7 +9043,7 @@
         "qualifiers": [],
         "glosses": []
       },
-      "attestation_count": 3,
+      "attestation_count": 4,
       "attestations": [
         {
           "line_id": "araujo_catecismo_1686:6",
@@ -8642,6 +9056,11 @@
           "expression_index": 52
         },
         {
+          "line_id": "araujo_catecismo_1686:80",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 80
+        },
+        {
           "line_id": "bettendorff_compendio:6",
           "source": "bettendorff_compendio",
           "expression_index": 6
@@ -8650,7 +9069,7 @@
       "source_counts": [
         {
           "source": "araujo_catecismo_1686",
-          "count": 2
+          "count": 3
         },
         {
           "source": "bettendorff_compendio",
@@ -8663,7 +9082,7 @@
           "meeng"
         ],
         "glosses": [],
-        "fulltext": "me'eng meeng ore rembi'u 'ara iabi'onduara eime'eng kori orebe arobiar tekobe opaba'erame'ymame'engaramo seko ore rembi'u 'ara iabi'onduara eime'eng kori orebo"
+        "fulltext": "me'eng meeng ore rembi'u 'ara iabi'onduara eime'eng kori orebe arobiar tekobe opaba'erame'ymame'engaramo seko oemitymbuerypy pupe tupa potabame'engi no ore rembi'u 'ara iabi'onduara eime'eng kori orebo"
       },
       "metadata": {
         "symbols": [
@@ -8844,6 +9263,53 @@
       }
     },
     {
+      "entry_id": "lexicon:proper_noun:missa:d56f913dff",
+      "dataset": "lexicon",
+      "headword": "missa",
+      "normalized_headword": "missa",
+      "aliases": [],
+      "part_of_speech": {
+        "kind": "ProperNoun",
+        "category": "proper_noun",
+        "tag": "[PROPER_NOUN]"
+      },
+      "definition": {
+        "raw": "missa",
+        "qualifiers": [],
+        "glosses": [
+          "missa"
+        ]
+      },
+      "attestation_count": 1,
+      "attestations": [
+        {
+          "line_id": "araujo_catecismo_1686:75",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 75
+        }
+      ],
+      "source_counts": [
+        {
+          "source": "araujo_catecismo_1686",
+          "count": 1
+        }
+      ],
+      "search": {
+        "headword": "missa",
+        "aliases": [],
+        "glosses": [
+          "missa"
+        ],
+        "fulltext": "missa missa domingo rese 'ara maratekoabe'yma resebe missarenduba"
+      },
+      "metadata": {
+        "symbols": [
+          "missa"
+        ],
+        "definition_missing": false
+      }
+    },
+    {
       "entry_id": "lexicon:verb_transitivizer:mo:91391418c8",
       "dataset": "lexicon",
       "headword": "mo",
@@ -8875,6 +9341,48 @@
       "metadata": {
         "symbols": [
           "mo"
+        ],
+        "definition_missing": false
+      }
+    },
+    {
+      "entry_id": "lexicon:verb:mo causative prefix mo iasuk:435e36621b",
+      "dataset": "lexicon",
+      "headword": "mo[CAUSATIVE_PREFIX:MO]îasuk",
+      "normalized_headword": "mo causative prefix mo iasuk",
+      "aliases": [
+        "moîasuk"
+      ],
+      "part_of_speech": {
+        "kind": "VerbAugmentor",
+        "category": "verb",
+        "tag": "[VERB]"
+      },
+      "definition": {
+        "raw": "batizar-se, lavar-se",
+        "qualifiers": [],
+        "glosses": [
+          "batizar-se",
+          "lavar-se"
+        ]
+      },
+      "attestation_count": 0,
+      "attestations": [],
+      "source_counts": [],
+      "search": {
+        "headword": "mo causative prefix mo iasuk",
+        "aliases": [
+          "moiasuk"
+        ],
+        "glosses": [
+          "batizar-se",
+          "lavar-se"
+        ],
+        "fulltext": "mo causative prefix mo iasuk moiasuk batizar-se lavar-se"
+      },
+      "metadata": {
+        "symbols": [
+          "moîasuk"
         ],
         "definition_missing": false
       }
@@ -9158,6 +9666,92 @@
           "mokõmokõîsyk"
         ],
         "definition_missing": false
+      }
+    },
+    {
+      "entry_id": "lexicon:verb:momotar:a96f1b166b",
+      "dataset": "lexicon",
+      "headword": "momotar",
+      "normalized_headword": "momotar",
+      "aliases": [],
+      "part_of_speech": {
+        "kind": "Verb",
+        "category": "verb",
+        "tag": "[VERB]"
+      },
+      "definition": {
+        "raw": "",
+        "qualifiers": [],
+        "glosses": []
+      },
+      "attestation_count": 1,
+      "attestations": [
+        {
+          "line_id": "araujo_catecismo_1686:70",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 70
+        }
+      ],
+      "source_counts": [
+        {
+          "source": "araujo_catecismo_1686",
+          "count": 1
+        }
+      ],
+      "search": {
+        "headword": "momotar",
+        "aliases": [],
+        "glosses": [],
+        "fulltext": "momotar eiemomotar ume nde rapixara remireko rese"
+      },
+      "metadata": {
+        "symbols": [
+          "momotar"
+        ],
+        "definition_missing": true
+      }
+    },
+    {
+      "entry_id": "lexicon:verb:mondaro:724292afd0",
+      "dataset": "lexicon",
+      "headword": "mondarõ",
+      "normalized_headword": "mondaro",
+      "aliases": [],
+      "part_of_speech": {
+        "kind": "Verb",
+        "category": "verb",
+        "tag": "[VERB]"
+      },
+      "definition": {
+        "raw": "",
+        "qualifiers": [],
+        "glosses": []
+      },
+      "attestation_count": 1,
+      "attestations": [
+        {
+          "line_id": "araujo_catecismo_1686:68",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 68
+        }
+      ],
+      "source_counts": [
+        {
+          "source": "araujo_catecismo_1686",
+          "count": 1
+        }
+      ],
+      "search": {
+        "headword": "mondaro",
+        "aliases": [],
+        "glosses": [],
+        "fulltext": "mondaro emondaro ume"
+      },
+      "metadata": {
+        "symbols": [
+          "mondarõ"
+        ],
+        "definition_missing": true
       }
     },
     {
@@ -9466,6 +10060,69 @@
       "metadata": {
         "symbols": [
           "mosapyr"
+        ],
+        "definition_missing": false
+      }
+    },
+    {
+      "entry_id": "lexicon:number:mosapyra:be5955fe77",
+      "dataset": "lexicon",
+      "headword": "mosapyra",
+      "normalized_headword": "mosapyra",
+      "aliases": [],
+      "part_of_speech": {
+        "kind": "Number",
+        "category": "number",
+        "tag": "[NUMBER:THREE][CARDINAL]"
+      },
+      "definition": {
+        "raw": "three, a trio",
+        "qualifiers": [],
+        "glosses": [
+          "three",
+          "a trio"
+        ]
+      },
+      "attestation_count": 3,
+      "attestations": [
+        {
+          "line_id": "araujo_catecismo_1686:33",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 33
+        },
+        {
+          "line_id": "araujo_catecismo_1686:58",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 58
+        },
+        {
+          "line_id": "bettendorff_compendio:33",
+          "source": "bettendorff_compendio",
+          "expression_index": 33
+        }
+      ],
+      "source_counts": [
+        {
+          "source": "araujo_catecismo_1686",
+          "count": 2
+        },
+        {
+          "source": "bettendorff_compendio",
+          "count": 1
+        }
+      ],
+      "search": {
+        "headword": "mosapyra",
+        "aliases": [],
+        "glosses": [
+          "three",
+          "a trio"
+        ],
+        "fulltext": "mosapyra three a trio 'ara mosapyra pupe omanoba'epuera sui sekobeiebyri arobiar 'ara mosapyra rese sekobeiebyraguera 'ara mosapyra pupe omanoba'epuera sui sekobeiebyri"
+      },
+      "metadata": {
+        "symbols": [
+          "third_day"
         ],
         "definition_missing": false
       }
@@ -9916,6 +10573,58 @@
       }
     },
     {
+      "entry_id": "lexicon:adverb:no:db28b2055a",
+      "dataset": "lexicon",
+      "headword": "no",
+      "normalized_headword": "no",
+      "aliases": [],
+      "part_of_speech": {
+        "kind": "Adverb",
+        "category": "adverb",
+        "tag": "[ADVERB]"
+      },
+      "definition": {
+        "raw": "também",
+        "qualifiers": [],
+        "glosses": [
+          "também"
+        ]
+      },
+      "attestation_count": 2,
+      "attestations": [
+        {
+          "line_id": "araujo_catecismo_1686:73",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 73
+        },
+        {
+          "line_id": "araujo_catecismo_1686:80",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 80
+        }
+      ],
+      "source_counts": [
+        {
+          "source": "araujo_catecismo_1686",
+          "count": 2
+        }
+      ],
+      "search": {
+        "headword": "no",
+        "aliases": [],
+        "glosses": [
+          "tambem"
+        ],
+        "fulltext": "no tambem oieausuba iabe ase oapixararausuba no oemitymbuerypy pupe tupa potabame'engi no"
+      },
+      "metadata": {
+        "symbols": [
+          "no"
+        ],
+        "definition_missing": false
+      }
+    },
+    {
       "entry_id": "lexicon:pronoun:o:c48d134102",
       "dataset": "lexicon",
       "headword": "o",
@@ -9953,7 +10662,7 @@
         "glosses": [
           "3p subject prefix"
         ],
-        "fulltext": "o 3p subject prefix oieausuba iabe ase o tapixararausubi"
+        "fulltext": "o 3p subject prefix oieausuba iabe ase oapixararausuba no"
       },
       "metadata": {
         "symbols": [
@@ -10004,7 +10713,7 @@
         "glosses": [
           "refers to the subject of the main clause"
         ],
-        "fulltext": "o og refers to the subject of the main clause oieausuba iabe ase o tapixararausubi"
+        "fulltext": "o og refers to the subject of the main clause oieausuba iabe ase oapixararausuba no"
       },
       "metadata": {
         "symbols": [
@@ -10161,7 +10870,7 @@
           "a single one"
         ]
       },
-      "attestation_count": 2,
+      "attestation_count": 3,
       "attestations": [
         {
           "line_id": "araujo_catecismo_1686:46",
@@ -10172,12 +10881,17 @@
           "line_id": "araujo_catecismo_1686:62",
           "source": "araujo_catecismo_1686",
           "expression_index": 62
+        },
+        {
+          "line_id": "araujo_catecismo_1686:79",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 79
         }
       ],
       "source_counts": [
         {
           "source": "araujo_catecismo_1686",
-          "count": 2
+          "count": 3
         }
       ],
       "search": {
@@ -10187,7 +10901,7 @@
           "one",
           "a single one"
         ],
-        "fulltext": "oiepe one a single one arobiar oiepe tupa opakatu mba'e tetirua monhanga e'ikatuba'e eimoete oiepe tupa"
+        "fulltext": "oiepe one a single one arobiar oiepe tupa opakatu mba'e tetirua monhanga e'ikatuba'e eimoete oiepe tupa opakombo iabi'o tupa supe oiepe ase mba'emoia'oka"
       },
       "metadata": {
         "symbols": [
@@ -10488,9 +11202,20 @@
           "both these hands)"
         ]
       },
-      "attestation_count": 0,
-      "attestations": [],
-      "source_counts": [],
+      "attestation_count": 1,
+      "attestations": [
+        {
+          "line_id": "araujo_catecismo_1686:79",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 79
+        }
+      ],
+      "source_counts": [
+        {
+          "source": "araujo_catecismo_1686",
+          "count": 1
+        }
+      ],
       "search": {
         "headword": "opakombo",
         "aliases": [],
@@ -10498,7 +11223,7 @@
           "ten literally",
           "both these hands"
         ],
-        "fulltext": "opakombo ten literally both these hands"
+        "fulltext": "opakombo ten literally both these hands opakombo iabi'o tupa supe oiepe ase mba'emoia'oka"
       },
       "metadata": {
         "symbols": [
@@ -10893,6 +11618,53 @@
       "metadata": {
         "symbols": [
           "paben"
+        ],
+        "definition_missing": false
+      }
+    },
+    {
+      "entry_id": "lexicon:proper_noun:pascoa:dc140980ca",
+      "dataset": "lexicon",
+      "headword": "Pascoa",
+      "normalized_headword": "pascoa",
+      "aliases": [],
+      "part_of_speech": {
+        "kind": "ProperNoun",
+        "category": "proper_noun",
+        "tag": "[PROPER_NOUN]"
+      },
+      "definition": {
+        "raw": "Pascoa",
+        "qualifiers": [],
+        "glosses": [
+          "Pascoa"
+        ]
+      },
+      "attestation_count": 1,
+      "attestations": [
+        {
+          "line_id": "araujo_catecismo_1686:77",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 77
+        }
+      ],
+      "source_counts": [
+        {
+          "source": "araujo_catecismo_1686",
+          "count": 1
+        }
+      ],
+      "search": {
+        "headword": "pascoa",
+        "aliases": [],
+        "glosses": [
+          "pascoa"
+        ],
+        "fulltext": "pascoa pascoa pascoa iabi'o tuparara"
+      },
+      "metadata": {
+        "symbols": [
+          "Pascoa"
         ],
         "definition_missing": false
       }
@@ -11646,6 +12418,62 @@
       }
     },
     {
+      "entry_id": "lexicon:noun:potaba:26f8d28d82",
+      "dataset": "lexicon",
+      "headword": "potaba",
+      "normalized_headword": "potaba",
+      "aliases": [
+        "tupapotaba"
+      ],
+      "part_of_speech": {
+        "kind": "Noun",
+        "category": "noun",
+        "tag": "[NOUN]"
+      },
+      "definition": {
+        "raw": "(m) porção, parte",
+        "qualifiers": [
+          "(m)"
+        ],
+        "glosses": [
+          "porção",
+          "parte"
+        ]
+      },
+      "attestation_count": 1,
+      "attestations": [
+        {
+          "line_id": "araujo_catecismo_1686:80",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 80
+        }
+      ],
+      "source_counts": [
+        {
+          "source": "araujo_catecismo_1686",
+          "count": 1
+        }
+      ],
+      "search": {
+        "headword": "potaba",
+        "aliases": [
+          "tupapotaba"
+        ],
+        "glosses": [
+          "porcao",
+          "parte"
+        ],
+        "fulltext": "potaba tupapotaba m porcao parte oemitymbuerypy pupe tupa potabame'engi no"
+      },
+      "metadata": {
+        "symbols": [
+          "potaba",
+          "tupapotaba"
+        ],
+        "definition_missing": false
+      }
+    },
+    {
       "entry_id": "lexicon:verb:potar:6246f316b2",
       "dataset": "lexicon",
       "headword": "potar",
@@ -11706,6 +12534,54 @@
       "metadata": {
         "symbols": [
           "potar"
+        ],
+        "definition_missing": false
+      }
+    },
+    {
+      "entry_id": "lexicon:verb:puai:e79e490706",
+      "dataset": "lexicon",
+      "headword": "pûaî",
+      "normalized_headword": "puai",
+      "aliases": [
+        "puai"
+      ],
+      "part_of_speech": {
+        "kind": "Verb",
+        "category": "verb",
+        "tag": "[VERB]"
+      },
+      "definition": {
+        "raw": "dar ordens a, mandar, ordenar, mandar fazer [aquilo que se manda ou se ordena pode vir com esé (r, s)]:",
+        "qualifiers": [],
+        "glosses": [
+          "dar ordens a",
+          "mandar",
+          "ordenar",
+          "mandar fazer [aquilo que se manda ou se ordena pode vir com esé (r",
+          "s)]:"
+        ]
+      },
+      "attestation_count": 0,
+      "attestations": [],
+      "source_counts": [],
+      "search": {
+        "headword": "puai",
+        "aliases": [
+          "puai"
+        ],
+        "glosses": [
+          "dar ordens a",
+          "mandar",
+          "ordenar",
+          "mandar fazer aquilo que se manda ou se ordena pode vir com ese r",
+          "s"
+        ],
+        "fulltext": "puai puai dar ordens a mandar ordenar mandar fazer aquilo que se manda ou se ordena pode vir com ese r s"
+      },
+      "metadata": {
+        "symbols": [
+          "puai"
         ],
         "definition_missing": false
       }
@@ -11882,7 +12758,7 @@
           "during"
         ]
       },
-      "attestation_count": 10,
+      "attestation_count": 12,
       "attestations": [
         {
           "line_id": "araujo_catecismo_1686:1",
@@ -11915,6 +12791,16 @@
           "expression_index": 71
         },
         {
+          "line_id": "araujo_catecismo_1686:80",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 80
+        },
+        {
+          "line_id": "araujo_catecismo_1686:81",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 81
+        },
+        {
           "line_id": "bettendorff_compendio:1",
           "source": "bettendorff_compendio",
           "expression_index": 1
@@ -11938,7 +12824,7 @@
       "source_counts": [
         {
           "source": "araujo_catecismo_1686",
-          "count": 6
+          "count": 8
         },
         {
           "source": "bettendorff_compendio",
@@ -12967,6 +13853,58 @@
       }
     },
     {
+      "entry_id": "lexicon:noun:santa madre igreja:c9dc13df14",
+      "dataset": "lexicon",
+      "headword": "Santa Madre Igreja",
+      "normalized_headword": "santa madre igreja",
+      "aliases": [
+        "smi"
+      ],
+      "part_of_speech": {
+        "kind": "Noun",
+        "category": "noun",
+        "tag": "[NOUN]"
+      },
+      "definition": {
+        "raw": "",
+        "qualifiers": [],
+        "glosses": []
+      },
+      "attestation_count": 2,
+      "attestations": [
+        {
+          "line_id": "araujo_catecismo_1686:74",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 74
+        },
+        {
+          "line_id": "araujo_catecismo_1686:78",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 78
+        }
+      ],
+      "source_counts": [
+        {
+          "source": "araujo_catecismo_1686",
+          "count": 2
+        }
+      ],
+      "search": {
+        "headword": "santa madre igreja",
+        "aliases": [
+          "smi"
+        ],
+        "glosses": [],
+        "fulltext": "santa madre igreja smi sinco santa madre igreja aserekomonhangaba santa madre igreja iekuakupuaia iabi'o iekuakuba"
+      },
+      "metadata": {
+        "symbols": [
+          "smi"
+        ],
+        "definition_missing": true
+      }
+    },
+    {
       "entry_id": "lexicon:proper_noun:santa maria:345b105c5e",
       "dataset": "lexicon",
       "headword": "Santa Maria",
@@ -13278,6 +14216,53 @@
       }
     },
     {
+      "entry_id": "lexicon:noun:seixu:4e31e56423",
+      "dataset": "lexicon",
+      "headword": "seîxu",
+      "normalized_headword": "seixu",
+      "aliases": [],
+      "part_of_speech": {
+        "kind": "Noun",
+        "category": "noun",
+        "tag": "[NOUN]"
+      },
+      "definition": {
+        "raw": "ano",
+        "qualifiers": [],
+        "glosses": [
+          "ano"
+        ]
+      },
+      "attestation_count": 1,
+      "attestations": [
+        {
+          "line_id": "araujo_catecismo_1686:76",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 76
+        }
+      ],
+      "source_counts": [
+        {
+          "source": "araujo_catecismo_1686",
+          "count": 1
+        }
+      ],
+      "search": {
+        "headword": "seixu",
+        "aliases": [],
+        "glosses": [
+          "ano"
+        ],
+        "fulltext": "seixu ano seixu iabi'o iemombe'u"
+      },
+      "metadata": {
+        "symbols": [
+          "seîxu"
+        ],
+        "definition_missing": false
+      }
+    },
+    {
       "entry_id": "lexicon:noun:sen root:e182416014",
       "dataset": "lexicon",
       "headword": "sen[ROOT]",
@@ -13370,6 +14355,53 @@
           "sete"
         ],
         "definition_missing": true
+      }
+    },
+    {
+      "entry_id": "lexicon:number:sinco:befe693001",
+      "dataset": "lexicon",
+      "headword": "sinco",
+      "normalized_headword": "sinco",
+      "aliases": [],
+      "part_of_speech": {
+        "kind": "Number",
+        "category": "number",
+        "tag": "[NUMBER]"
+      },
+      "definition": {
+        "raw": "five",
+        "qualifiers": [],
+        "glosses": [
+          "five"
+        ]
+      },
+      "attestation_count": 1,
+      "attestations": [
+        {
+          "line_id": "araujo_catecismo_1686:74",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 74
+        }
+      ],
+      "source_counts": [
+        {
+          "source": "araujo_catecismo_1686",
+          "count": 1
+        }
+      ],
+      "search": {
+        "headword": "sinco",
+        "aliases": [],
+        "glosses": [
+          "five"
+        ],
+        "fulltext": "sinco five sinco santa madre igreja aserekomonhangaba"
+      },
+      "metadata": {
+        "symbols": [
+          "sinco"
+        ],
+        "definition_missing": false
       }
     },
     {
@@ -13599,7 +14631,7 @@
           "in favor of"
         ]
       },
-      "attestation_count": 11,
+      "attestation_count": 12,
       "attestations": [
         {
           "line_id": "araujo_catecismo_1686:6",
@@ -13632,6 +14664,11 @@
           "expression_index": 40
         },
         {
+          "line_id": "araujo_catecismo_1686:79",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 79
+        },
+        {
           "line_id": "bettendorff_compendio:6",
           "source": "bettendorff_compendio",
           "expression_index": 6
@@ -13660,7 +14697,7 @@
       "source_counts": [
         {
           "source": "araujo_catecismo_1686",
-          "count": 6
+          "count": 7
         },
         {
           "source": "bettendorff_compendio",
@@ -14162,7 +15199,7 @@
           "Tupã"
         ]
       },
-      "attestation_count": 21,
+      "attestation_count": 24,
       "attestations": [
         {
           "line_id": "araujo_catecismo_1686:0",
@@ -14245,6 +15282,21 @@
           "expression_index": 72
         },
         {
+          "line_id": "araujo_catecismo_1686:77",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 77
+        },
+        {
+          "line_id": "araujo_catecismo_1686:79",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 79
+        },
+        {
+          "line_id": "araujo_catecismo_1686:80",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 80
+        },
+        {
           "line_id": "bettendorff_compendio:0",
           "source": "bettendorff_compendio",
           "expression_index": 0
@@ -14273,7 +15325,7 @@
       "source_counts": [
         {
           "source": "araujo_catecismo_1686",
-          "count": 16
+          "count": 19
         },
         {
           "source": "bettendorff_compendio",
@@ -15088,18 +16140,23 @@
         "qualifiers": [],
         "glosses": []
       },
-      "attestation_count": 1,
+      "attestation_count": 2,
       "attestations": [
         {
           "line_id": "araujo_catecismo_1686:57",
           "source": "araujo_catecismo_1686",
           "expression_index": 57
+        },
+        {
+          "line_id": "araujo_catecismo_1686:80",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 80
         }
       ],
       "source_counts": [
         {
           "source": "araujo_catecismo_1686",
-          "count": 1
+          "count": 2
         }
       ],
       "search": {
@@ -15108,13 +16165,71 @@
           "ypyorigin"
         ],
         "glosses": [],
-        "fulltext": "ypy ypyorigin arobiar yby apyterype i gueiybaguera ase rubypy karaibeta 'anguera i a'epe turama osaroba'erenosemaguera be"
+        "fulltext": "ypy ypyorigin arobiar yby apyterype i gueiybaguera ase rubypy karaibeta 'anguera i a'epe turama osaroba'erenosemaguera be oemitymbuerypy pupe tupa potabame'engi no"
       },
       "metadata": {
         "symbols": [
           "ypyOrigin"
         ],
         "definition_missing": true
+      }
+    },
+    {
+      "entry_id": "lexicon:noun:ypy:5f2963c5b0",
+      "dataset": "lexicon",
+      "headword": "ypy",
+      "normalized_headword": "ypy",
+      "aliases": [],
+      "part_of_speech": {
+        "kind": "Noun",
+        "category": "noun",
+        "tag": "[NOUN]"
+      },
+      "definition": {
+        "raw": "início, primeiro, começar, começo",
+        "qualifiers": [],
+        "glosses": [
+          "início",
+          "primeiro",
+          "começar",
+          "começo"
+        ]
+      },
+      "attestation_count": 2,
+      "attestations": [
+        {
+          "line_id": "araujo_catecismo_1686:57",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 57
+        },
+        {
+          "line_id": "araujo_catecismo_1686:80",
+          "source": "araujo_catecismo_1686",
+          "expression_index": 80
+        }
+      ],
+      "source_counts": [
+        {
+          "source": "araujo_catecismo_1686",
+          "count": 2
+        }
+      ],
+      "search": {
+        "headword": "ypy",
+        "aliases": [],
+        "glosses": [
+          "inicio",
+          "primeiro",
+          "comecar",
+          "comeco"
+        ],
+        "fulltext": "ypy inicio primeiro comecar comeco arobiar yby apyterype i gueiybaguera ase rubypy karaibeta 'anguera i a'epe turama osaroba'erenosemaguera be oemitymbuerypy pupe tupa potabame'engi no"
+      },
+      "metadata": {
+        "symbols": [
+          "ypy"
+        ],
+        "definition_missing": false
       }
     }
   ]
