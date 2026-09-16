@@ -170,6 +170,26 @@
     "translation": ""
   },
   {
+    "value": "tetiruã",
+    "tag": "[3p:ADVERB:ANY:DEEPEST_NODE_1]",
+    "translation": ""
+  },
+  {
+    "value": "aîpo",
+    "tag": "[3p:AUDIBLE:DEEPEST_NODE_2:DEMONSTRATIVE:NOT_VISIBLE]",
+    "translation": ""
+  },
+  {
+    "value": "o",
+    "tag": "[3p:CORRELATIONAL:DEEPEST_NODE_1:SUBJECT_PREFIX]",
+    "translation": ""
+  },
+  {
+    "value": "o",
+    "tag": "[3p:CORRELATIONAL:DEEPEST_NODE_6:SUBJECT_PREFIX]",
+    "translation": ""
+  },
+  {
     "value": "i",
     "tag": "[3p:DEEPEST_NODE_10:SUBJECT_PREFIX]",
     "translation": ""
@@ -190,13 +210,18 @@
     "translation": ""
   },
   {
+    "value": "o",
+    "tag": "[3p:DEEPEST_NODE_1:MAIN_CLAUSE_SUBJECT:PRONOUN]",
+    "translation": ""
+  },
+  {
     "value": "i",
     "tag": "[3p:DEEPEST_NODE_1:NON_MAIN_CLAUSE_SUBJECT:OBJECT]",
     "translation": ""
   },
   {
     "value": "i",
-    "tag": "[3p:DEEPEST_NODE_1:SUBJECT]",
+    "tag": "[3p:DEEPEST_NODE_1:OBJECT]",
     "translation": ""
   },
   {
@@ -236,7 +261,17 @@
   },
   {
     "value": "i",
+    "tag": "[3p:DEEPEST_NODE_4:POSSESSIVE_PRONOUN]",
+    "translation": ""
+  },
+  {
+    "value": "i",
     "tag": "[3p:DEEPEST_NODE_4:SUBJECT]",
+    "translation": ""
+  },
+  {
+    "value": "o",
+    "tag": "[3p:DEEPEST_NODE_5:MAIN_CLAUSE_SUBJECT:PRONOUN]",
     "translation": ""
   },
   {
@@ -335,6 +370,11 @@
     "translation": ""
   },
   {
+    "value": "pabẽ",
+    "tag": "[ADVERB:ALL:DEEPEST_NODE_3]",
+    "translation": ""
+  },
+  {
     "value": "a'e",
     "tag": "[ADVERB:DEEPEST_NODE_10]",
     "translation": ""
@@ -372,6 +412,16 @@
   {
     "value": "suí",
     "tag": "[ADVERB:DEEPEST_NODE_3:FROM_THERE]",
+    "translation": ""
+  },
+  {
+    "value": "no",
+    "tag": "[ADVERB:DEEPEST_NODE_6]",
+    "translation": ""
+  },
+  {
+    "value": "no",
+    "tag": "[ADVERB:DEEPEST_NODE_9]",
     "translation": ""
   },
   {
@@ -420,6 +470,16 @@
     "translation": ""
   },
   {
+    "value": "a",
+    "tag": "[AND:CONJUNCTION:CONSONANT_ENDING:DEEPEST_NODE_11:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[AND:CONJUNCTION:CONSONANT_ENDING:DEEPEST_NODE_1:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
     "value": "abé",
     "tag": "[AND:CONJUNCTION:DEEPEST_NODE_2]",
     "translation": ""
@@ -437,6 +497,11 @@
   {
     "value": "iré",
     "tag": "[BEYOND:DEEPEST_NODE_1:POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "mosapyra",
+    "tag": "[CARDINAL:DEEPEST_NODE_4:NOUN:NUMBER:POSSESSOR:THREE]",
     "translation": ""
   },
   {
@@ -462,6 +527,11 @@
   {
     "value": "û",
     "tag": "[CIRCUMSTANTIAL_SUFFIX:DEEPEST_NODE_1:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
+    "value": "ypy",
+    "tag": "[CLASSIFIER:DEEPEST_NODE_5:PAST]",
     "translation": ""
   },
   {
@@ -636,6 +706,11 @@
   },
   {
     "value": "a",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_6:NOUN:POSSESSOR:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "a",
     "tag": "[CONSONANT_ENDING:DEEPEST_NODE_6:NOUN:SUBSTANTIVE_SUFFIX]",
     "translation": ""
   },
@@ -700,6 +775,11 @@
     "translation": ""
   },
   {
+    "value": "supé",
+    "tag": "[DATIVE:DEEPEST_NODE_5:POSTPOSITION]",
+    "translation": ""
+  },
+  {
     "value": "ndûar",
     "tag": "[DEADVERBAL:DEEPEST_NODE_5]",
     "translation": ""
@@ -732,6 +812,11 @@
   {
     "value": "agûer",
     "tag": "[DEEPEST_NODE_11:PRETERITE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "Tupã",
+    "tag": "[DEEPEST_NODE_12:NOUN:POSSESSOR:PROPER_NOUN]",
     "translation": ""
   },
   {
@@ -835,12 +920,22 @@
     "translation": ""
   },
   {
+    "value": "oîepé",
+    "tag": "[DEEPEST_NODE_1:NUMBER:ONE]",
+    "translation": ""
+  },
+  {
     "value": "catorse",
     "tag": "[DEEPEST_NODE_1:NUMBER]",
     "translation": ""
   },
   {
     "value": "dez",
+    "tag": "[DEEPEST_NODE_1:NUMBER]",
+    "translation": ""
+  },
+  {
+    "value": "sinco",
     "tag": "[DEEPEST_NODE_1:NUMBER]",
     "translation": ""
   },
@@ -857,6 +952,11 @@
   {
     "value": "poro",
     "tag": "[DEEPEST_NODE_1:OBJECT:gen]",
+    "translation": ""
+  },
+  {
+    "value": "nã",
+    "tag": "[DEEPEST_NODE_1:PARTICLE]",
     "translation": ""
   },
   {
@@ -890,6 +990,11 @@
     "translation": ""
   },
   {
+    "value": "esebé",
+    "tag": "[DEEPEST_NODE_1:POSTPOSITION]",
+    "translation": ""
+  },
+  {
     "value": "esé",
     "tag": "[DEEPEST_NODE_1:POSTPOSITION]",
     "translation": ""
@@ -901,6 +1006,11 @@
   },
   {
     "value": "pupé",
+    "tag": "[DEEPEST_NODE_1:POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "sosé",
     "tag": "[DEEPEST_NODE_1:POSTPOSITION]",
     "translation": ""
   },
@@ -975,6 +1085,11 @@
     "translation": ""
   },
   {
+    "value": "p",
+    "tag": "[DEEPEST_NODE_2:P:PLURIFORM_PREFIX]",
+    "translation": ""
+  },
+  {
     "value": "emi",
     "tag": "[DEEPEST_NODE_2:PATIENT_PREFIX]",
     "translation": ""
@@ -1000,6 +1115,11 @@
     "translation": ""
   },
   {
+    "value": "îabi'õ",
+    "tag": "[DEEPEST_NODE_3:EVERY:POSTPOSITION]",
+    "translation": ""
+  },
+  {
     "value": "agûam",
     "tag": "[DEEPEST_NODE_3:FUTURE_SUFFIX]",
     "translation": ""
@@ -1012,6 +1132,11 @@
   {
     "value": "pe",
     "tag": "[DEEPEST_NODE_3:LOCATIVE:POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "Tupã",
+    "tag": "[DEEPEST_NODE_3:NOUN:POSSESSOR:PROPER_NOUN]",
     "translation": ""
   },
   {
@@ -1061,6 +1186,11 @@
   },
   {
     "value": "koty",
+    "tag": "[DEEPEST_NODE_3:POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "pupé",
     "tag": "[DEEPEST_NODE_3:POSTPOSITION]",
     "translation": ""
   },
@@ -1120,6 +1250,11 @@
     "translation": ""
   },
   {
+    "value": "s",
+    "tag": "[DEEPEST_NODE_4:PLURIFORM_PREFIX:S]",
+    "translation": ""
+  },
+  {
     "value": "t",
     "tag": "[DEEPEST_NODE_4:PLURIFORM_PREFIX:T]",
     "translation": ""
@@ -1165,6 +1300,11 @@
     "translation": ""
   },
   {
+    "value": "Pascoa",
+    "tag": "[DEEPEST_NODE_4:PROPER_NOUN]",
+    "translation": ""
+  },
+  {
     "value": "Tupã",
     "tag": "[DEEPEST_NODE_4:PROPER_NOUN]",
     "translation": ""
@@ -1200,6 +1340,11 @@
     "translation": ""
   },
   {
+    "value": "emi",
+    "tag": "[DEEPEST_NODE_5:PATIENT_PREFIX]",
+    "translation": ""
+  },
+  {
     "value": "r",
     "tag": "[DEEPEST_NODE_5:PLURIFORM_PREFIX:R]",
     "translation": ""
@@ -1212,6 +1357,16 @@
   {
     "value": "amo",
     "tag": "[DEEPEST_NODE_5:POSTPOSITION:SIMULATIVE_SUFFIX:TRANSLATIONAL]",
+    "translation": ""
+  },
+  {
+    "value": "îabé",
+    "tag": "[DEEPEST_NODE_5:POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "bûer",
+    "tag": "[DEEPEST_NODE_5:PRETERITE_SUFFIX]",
     "translation": ""
   },
   {
@@ -1275,8 +1430,18 @@
     "translation": ""
   },
   {
+    "value": "Tupã",
+    "tag": "[DEEPEST_NODE_6:PROPER_NOUN:SUBSTANTIVE_SUFFIX:VOWEL_ENDING]",
+    "translation": ""
+  },
+  {
     "value": "ba'e",
     "tag": "[DEEPEST_NODE_6:RELATIVE_AGENT_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "îabi'õ",
+    "tag": "[DEEPEST_NODE_7:EVERY:POSTPOSITION]",
     "translation": ""
   },
   {

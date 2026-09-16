@@ -1,74 +1,67 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code when working with code in this repository. `AGENTS.md` contains the binding human-approval and write-boundary rules. Read it before editing source, target, or morphology behavior.
 
-## Project Overview
+## Project overview
 
-Computational linguistics research project implementing Old Tupi language encoding and analysis (doctoral research, University of Sao Paulo / FFLCH). It encodes historic Old Tupi texts as compositional Pydicate expressions, validates them against ground truth, and generates corpus data for NLP/tokenizer experiments.
+Computational linguistics research project implementing Old Tupi language encoding and analysis (doctoral research, University of São Paulo / FFLCH). It encodes historic Old Tupi texts as compositional Pydicate expressions, validates them against human-approved JSONL records, and generates corpus data for NLP/tokenizer experiments.
 
-## Common Commands
+## Required authoring behavior
+
+- Start source work from a record id and use the `oldtupi-authoring` MCP tools before proposing an expression.
+- Use `get_source_context`, `search_lexicon`, `search_rendered_expressions`, and `render_candidate` before editing.
+- A rendered match is not proof of a historical analysis.
+- Do not replace an approved target with current renderer output merely to pass a check.
+- Do not modify `nhe-enga` until the human has approved the analysis and an expression-level solution is impossible.
+- Read `historic/AGENTS.md` and `docs/agent/source-authoring.md` for line-authoring details.
+
+## Common commands
 
 ```bash
-make test                          # Run full test suite
-make play                          # Open interactive REPL (playground.py)
-make dict                          # Build dictionary artifacts
-make serve-dict                    # Serve dictionary at localhost:8000 (PORT= to override)
-make update-ground-truth           # Run tests, then append new trailing ground truth
-make review-ground-truth           # Interactively review new ground truth lines
-make lint                          # Format code with Black
-make push                          # lint + test + git push
-```
-
-Run a subset of tests directly:
-```bash
-python3 tests/run_tests.py --skip-tokenizer        # skip slow tokenizer tests
-python3 tests/run_tests.py --include-synthetic      # include synthetic sources
-python3 tests/run_tests.py --tokenizer-verbose      # verbose tokenizer output
-python3 tests/run_tests.py --timings                # show timing info
+make test                                      # Run full test suite
+make test ARGS="--skip-tokenizer"              # Run focused test suite without tokenizer regeneration
+make regenerate-ground-truth                   # Rebuild structured JSONL from source comments and expressions
+make verify-ground-truth                       # Compare renderings to approved JSONL targets, no writes
+make review-ground-truth                       # Report whether source-derived JSONL is current
+make play                                      # Open interactive REPL
+make dict                                      # Build dictionary artifacts
+make serve-dict                                # Serve dictionary at localhost:8000
+make lint                                      # Format code with Black
 ```
 
 ## Dependencies
 
-There is no `requirements.txt`. The project depends on two **local sibling checkouts** that are injected into `sys.path` at runtime:
-- `../nhe-enga/pydicate` — composable expression language (Pydicate DSL)
-- `../nhe-enga/tupi` — Old Tupi language support library
+There is no `requirements.txt`. The project depends on two local sibling checkouts injected into `sys.path` at runtime:
 
-Both must be present at those paths for anything to run.
+- `../nhe-enga/pydicate` for the composable expression language
+- `../nhe-enga/tupi` for Old Tupi language support
+
+Both must be present at those paths for corpus execution.
 
 ## Architecture
 
-### Data Flow
-
-```
+```text
 historic/*.tu.py sources
-  → auto-discovered by historic/primary_sources.py
-  → expressions rendered to strings
-  → validated against ground_truth/historic/*.txt
-  → tokenizer/build_corpus_json.py extracts corpus rows (tokenizer/output/corpus.jsonl)
-  → tokenizer/rawgrammarpair.py builds stable morpheme/tag registries + training pairs
-  → tokenizer/compile_to_dsl.py generates Pydicate DSL for reconstruction
-  → dictionary/build_dict.py builds interactive static site (site/data/)
+  -> auto-discovered by historic/primary_sources.py
+  -> expressions rendered to strings
+  -> validated against ground_truth/records/<kind>/*.jsonl
+  -> tokenizer/build_corpus_json.py extracts corpus rows
+  -> tokenizer/rawgrammarpair.py builds canonical registries and training pairs
+  -> tokenizer/compile_to_dsl.py generates Pydicate DSL for reconstruction
+  -> dictionary/build_dict.py builds the static dictionary site
 ```
 
-### Key Modules
+## Key modules
 
-- **`historic/`** — Historic source texts as `.tu.py` files. Each file exports a list named after its stem (e.g. `bettendorff_compendio.tu.py` exports `bettendorff_compendio`). `lexicon.tu.py` holds all POS-tagged lexicon entries. `primary_sources.py` auto-discovers and loads all `.tu.py` modules.
+- `historic/` contains historic `.tu.py` source texts and `lexicon.tu.py`.
+- `authoring/` owns structured records, safe candidate rendering, source verification, the authoring CLI, and the local MCP server.
+- `ground_truth/records/` is the canonical generated target location.
+- `tests/ground_truth_cases.py` compares executable source expressions against structured JSONL records.
+- `tokenizer/` and `dictionary/` consume executable source expressions, not agent-produced prose.
 
-- **`synthetic/`** — Synthetic verb conjugation generators for training data. `verb_generator.py` generates indicativo/permissivo/imperativo forms; `primary_sources.py` exports the `verb()` generator.
+## Source file conventions
 
-- **`tests/`** — `run_tests.py` is the main runner. `ground_truth_cases.py` loads ground truth files and compares against rendered expressions. Ground truth text files live in `ground_truth/historic/` and `ground_truth/synthetic/`.
-
-- **`tokenizer/`** — Corpus building pipeline. `build_corpus_json.py` → `rawgrammarpair.py` (stable M#/T#/S# registries) → `compile_to_dsl.py` (annotated string → morpheme AST → DSL). `viterbi.py` is an experimental Viterbi-based canonicalization baseline. Artifacts written to `tokenizer/output/`.
-
-- **`dictionary/`** — Static dictionary site builder. `build_dict.py` is the entry point; `build_entries.py` generates lexicon entries with corpus attestations.
-
-- **`site/`** — Single-page static dictionary app. `site/data/` holds generated JSON artifacts; gzipped versions are served in production.
-
-- **`playground.py`** — Interactive REPL bootstrap; loads pydicate, tupi, lexicon, all sources, and helper functions.
-
-### Source File Conventions
-
-- Historic source files are `.tu.py` (preferred over `.py` for the same stem name).
-- Each source file exports a list of expressions; `.tu.py` files that use the Pydicate DSL are auto-evaluated.
-- All expressions must have an `.eval()` method returning a rendered string.
-- Ground truth files are plain text, one rendered expression per line, named `<source_stem>.txt`.
+- Historic sources export a list named after the file stem.
+- Every expression must expose `.eval()` and render to a string.
+- Preserve positional correspondence between the expression list and source records.
+- Keep source edits narrow, testable, and traceable to an approved record id.

@@ -1,7 +1,262 @@
 # Agent Log
 
+## 2026-09-16
+
+- Fixed `(m)` pluriform prefix selection for possessed nouns in the
+  sibling `Noun.pluriform_prefix` and `Noun.possessive` methods. The
+  unchanged Araujo record 81 now renders `Tupã potabame'engi` in its
+  full phrase. Added a focused test and sibling grammar notes. After
+  MCP reload, all 80 saved Araujo and 40 Bettendorff targets verified;
+  record 81 remains unaccounted. The 92-test corpus suite passed.
+- Fixed `emi` on nasal `tym` and referential `og` before that derived
+  pluriform noun. `og * (emi * tym)` now renders `oemityma`.
+- Added `tests/emi_referential_test.py`, grammar navigation and
+  root-cause notes in `../nhe-enga`, and a session handoff. Focused
+  tests and `make test ARGS="--skip-tokenizer"` pass; MCP all-source
+  checks found no saved-target changes. The editor added Araujo record
+  81 with this construction during verification; records 80 and 81 are
+  unaccounted.
+- Fixed raw-number nominalization and attached-adjunct rendering in the
+  sibling `Number` class. The unchanged Araujo record 80 expression now
+  renders the editor's target modulo whitespace.
+- Added `tests/number_nominalization_test.py`, sibling grammar navigation
+  and root-cause notes, and a session handoff. After MCP reload, all 79
+  saved Araujo and 40 Bettendorff targets remained verified; record 80
+  is unaccounted for the human editor to commit.
+- Used the human editor's revised record-79 expression, already saved
+  in `historic/araujo_catecismo_1686.tu.py`, without rewriting it.
+- Updated sibling `Verb.base_nominal()` so a transitive verb with only
+  `îe` or `îo` uses the short nominal prefix for variation 1. Added
+  contrasts to `tests/reflexive_nominal_variation_test.py` and updated
+  sibling grammar navigation and root-cause notes.
+- Reloaded the MCP engine after the code edit. The exact record-79
+  expression now renders `Santa Madre Igreja îekuakupûaîa îabi'õ
+  îekuakuba`; all saved Araujo and Bettendorff targets still match.
+- Added `authoring.service.commit_ground_truth` (approve exactly one line's
+  current rendering as ground truth, never a full source regenerate, and
+  refuses to overwrite a declared-but-unmatched `normalized_target`) and
+  `authoring.service.reload_engine` plus its MCP tool (evict cached
+  `pydicate`/`tupi` modules so a long-running server picks up on-disk engine
+  edits without a full restart — the exact gap the `og`-prefix session below
+  hit).
+- Added `declared_target` to `line_status`/`line_status_for_text` output so
+  callers can tell a declared-but-unmatched target apart from a merely
+  stale baked-in surface.
+- Added `tests/commit_ground_truth_test.py`; extended `tests/mcp_server_test.py`.
+- Verified with `python3 -m unittest tests.commit_ground_truth_test
+  tests.mcp_server_test` and `python3 tests/run_tests.py --skip-tokenizer`.
+- Fixed the referential `og` prefix path in the sibling grammar engine so
+  pluriform `apixara` no longer receives an intervening absolute `t-`.
+- Added `tests/og_pluriform_prefix_test.py`, a grammar-navigation entry,
+  and a root-cause note in `../nhe-enga/AGENT_NOTES.md`.
+- The unchanged Araujo record 74 expression now renders the editor-approved
+  `oîeaûsuba îabé asé oapixararaûsuba no`. Fresh MCP checks found no
+  other historic rendering changes and no mismatches among saved targets.
+- `make test ARGS="--skip-tokenizer"` passes. `make verify-ground-truth`
+  fails because the generated Araujo JSONL stops at record 73 while the
+  source has four additional lines; these remain unaccounted.
+- Added `make last-ground-truth` for trailing saved historic ground truth,
+  source expressions, and line numbers. It defaults to the newest `.tu.py`
+  file and three records, with `SOURCE` and `N` overrides.
+- Verified default and explicit-source output, invalid-count handling,
+  `python3 -m unittest tests.last_ground_truth_test`, and `git diff --check`.
+- The current Araujo source has four expressions after its last saved JSONL
+  record; the command reports that divergence without writing ground truth.
+
+## 2026-08-28
+
+- Fixed the GitHub Pages deploy after the static app loaded but
+  `/oldtupicorpus/data/*.json(.gz)` returned 404. The copied
+  `site/data/.gitignore` ignored generated JSON files inside the Pages
+  worktree, so `git add -A` had only tracked `data/.gitignore`.
+- Updated `scripts/deploy_gh_pages.sh` to require the four dictionary/corpus
+  data artifacts before deploy and remove `data/.gitignore` from the Pages
+  worktree before staging.
+- Ran `make deploy-gh-pages`; it pushed `gh-pages` commit `0feadb2`, deleting
+  `data/.gitignore` and adding `data/dictionary_entries.json(.gz)` plus
+  `data/rendered_corpus.json(.gz)`.
+- Verified live custom-domain URLs:
+  `https://kiansheik.io/oldtupicorpus/data/dictionary_entries.json`,
+  `https://kiansheik.io/oldtupicorpus/data/dictionary_entries.json.gz`,
+  `https://kiansheik.io/oldtupicorpus/data/rendered_corpus.json`, and
+  `https://kiansheik.io/oldtupicorpus/data/rendered_corpus.json.gz` all return
+  HTTP 200.
+- Fixed the remaining static Pages console 404s from the second browser log:
+  `dictionary/build_dict.py` now writes `navarro_dict.json(.gz)` from the raw
+  sibling Navarro export, and `scripts/deploy_gh_pages.sh` requires those
+  sidecars before publishing.
+- Updated `frontend/src/lib.js` so `/api/tooltip-overrides` is only fetched on
+  local/private HTTP hosts where `make serve-dict` can answer it. The HTTPS
+  GitHub Pages app no longer requests that local-only endpoint.
+- Ran `make dict`, `make frontend-build`, and approved `make deploy-gh-pages`;
+  it pushed `gh-pages` commit `1dff408`, adding
+  `data/navarro_dict.json(.gz)` and the updated frontend bundle.
+- After Pages propagation, verified
+  `https://kiansheik.io/oldtupicorpus/data/navarro_dict.json`,
+  `https://kiansheik.io/oldtupicorpus/data/navarro_dict.json.gz`,
+  `https://kiansheik.io/oldtupicorpus/assets/index-fXoTmJbf.js`, and
+  `https://kiansheik.io/oldtupicorpus/` all return HTTP 200.
+- Added `make deploy-gh-pages` with configurable `SITE_DIR`,
+  `GH_PAGES_REMOTE`, `GH_PAGES_BRANCH`, `GH_PAGES_WORKTREE`, and
+  `GH_PAGES_COMMIT_MESSAGE` variables.
+- Added `scripts/deploy_gh_pages.sh` to publish the generated `site/` bundle
+  through a local Pages worktree, write `.nojekyll`, commit, and push. The
+  script refuses the repo root as a worktree and stops on an existing
+  wrong-branch or dirty Pages worktree.
+- Changed `frontend/src/lib.js` so dictionary, corpus, and Navarro data
+  artifacts use `import.meta.env.BASE_URL` instead of absolute `/data/...`
+  paths, making the static app work under GitHub Pages project URLs.
+- Updated `make dict`, `make frontend-build`, and `make serve-dict` so
+  `SITE_DIR` is honored through data generation, Vite output, local serving,
+  and deployment. `make frontend-build` removes stale generated
+  `SITE_DIR/assets/` files before Vite builds, preserving `SITE_DIR/data/`
+  while avoiding old hashed bundles in Pages deploys.
+- Updated `dictionary/build_dict.py` to publish the raw Navarro
+  `navarro_dict.json(.gz)` sidecar files for the frontend.
+- Documented GitHub Pages setup in `README.md`.
+- Verified with `bash -n scripts/deploy_gh_pages.sh`, `make help`,
+  `make dict`, `make frontend-build`, and focused checks that current built
+  assets contain no absolute `/data/...` fetch paths. `make deploy-gh-pages`
+  was not run because it commits and pushes the Pages branch.
+
+## 2026-06-30
+
+- Fixed sibling `../nhe-enga/tupi/tupi/tupi.py` so final phonetic cleanup can
+  preserve annotated lexical spans, and used it from
+  `../nhe-enga/tupi/tupi/verb.py` for `[PROPER_NOUN]` material.
+- Fixed sibling `../nhe-enga/pydicate/pydicate/lang/tupilang/pos/verb.py` so
+  proper-noun subject/object strings keep their annotation when handed to the
+  Tupi verb engine, even for unannotated final renders.
+- Added `tests/proper_noun_phonetics_test.py`: `ProperNoun("missa") * endub`
+  now renders `missa osendub`, regular `Noun("missa") * endub` still renders
+  `mixsa osendub`, and the Araujo phrase renders
+  `domingo resé 'ara marãtekoabe'yma resebé missarendubi`.
+- Verified with `python3 -m unittest tests.proper_noun_phonetics_test` and
+  `python3 -m unittest tests.proper_noun_phonetics_test tests.base_nominal_object_pro_drop_test tests.paben_adverb_test tests.nominal_pro_drop_test tests.moro_incorporation_test`.
+- `make verify-ground-truth` is currently blocked by the active Araujo source
+  drift at record 74 (`source annotations differ from generated JSONL at record
+  74`), so no ground-truth regeneration was done for this phonetics fix.
+- Added session handoff:
+  `docs/agent/session-handoffs/2026-06-30T01-55-13-0300-proper-noun-phonetics.md`.
+- Extended the same proper-noun preservation into
+  `Verb.base_nominal()` in sibling
+  `../nhe-enga/pydicate/pydicate/lang/tupilang/pos/verb.py`, so
+  `(missa * endub).base_nominal()` renders `missarenduba` while regular
+  `Noun("missa")` still renders `mixsarenduba`.
+- Added nominal proper-noun tests and verified with
+  `python3 -m unittest tests.proper_noun_phonetics_test` and
+  `python3 -m unittest tests.proper_noun_phonetics_test tests.base_nominal_object_pro_drop_test tests.paben_adverb_test tests.nominal_pro_drop_test tests.moro_incorporation_test`.
+- `make verify-ground-truth` remains blocked by the same active Araujo record
+  74 source/JSONL drift, so no ground-truth regeneration was done for the
+  nominal extension.
+- Added session handoff:
+  `docs/agent/session-handoffs/2026-06-30T10-56-16-0300-proper-noun-base-nominal.md`.
+- Added a nominal reflexive/reciprocal variation in sibling
+  `../nhe-enga/tupi/tupi/verb.py`, passed through from
+  `../nhe-enga/pydicate/pydicate/lang/tupilang/pos/verb.py`, so
+  `(îe * mombeu).var(1).base_nominal()` renders `îemombe'u` while the default
+  remains `oîo mombe'u`.
+- Updated Araujo page 6 source line to
+  `(iabiõ * seîxu) + (îe * mombeu).var(1).base_nominal()`, rendering
+  `seîxu îabi'õ îemombe'u`.
+- Added `tests/reflexive_nominal_variation_test.py` covering the default, the
+  reflexive variant, a reciprocal variant, and the Araujo phrase.
+- Verified with
+  `python3 -m unittest tests.reflexive_nominal_variation_test tests.proper_noun_phonetics_test tests.base_nominal_object_pro_drop_test tests.paben_adverb_test tests.nominal_pro_drop_test tests.moro_incorporation_test`.
+- `make verify-ground-truth` still fails at the existing active Araujo record 74
+  source/JSONL drift, so ground truth was not regenerated.
+- Added session handoff:
+  `docs/agent/session-handoffs/2026-06-30T11-27-01-0300-reflexive-nominal-variation.md`.
+
 ## 2026-06-28
 
+- Recast historic `paben` as an adverbial all-quantifier in
+  `historic/lexicon.tu.py`, preserving existing postposed `pabẽ` surfaces while
+  letting preposed `paben` trigger circumstantial verb mood.
+- Added the unaccented Araujo demonstrative variant `aîpo` and encoded
+  Araujo record 72 as `nã + ((bae * ei) * pupé) + (paben + (aîpo * îub))`,
+  rendering `nã e'iba'e pupé pabẽ aîpoba'e ruî`.
+- Added `tests/paben_adverb_test.py` for the preposed circumstantial case and
+  the existing postposed `oîkobeba'e omanõba'epûera pabẽ` contrast.
+- Regenerated `ground_truth/records/historic/araujo_catecismo_1686.jsonl`,
+  appending `araujo_catecismo_1686:0072`.
+- Verified with `python3 -m unittest tests.paben_adverb_test`,
+  `make verify-ground-truth`, and `make test ARGS="--skip-tokenizer"`.
+- Added session handoff:
+  `docs/agent/session-handoffs/2026-06-28T17-23-47-0300-paben-adverb-circumstantial.md`.
+- Added `aûsub = love` in `historic/lexicon.tu.py` so Araujo source
+  expressions can use the Tupi verb name directly.
+- Added Araujo record 73 as
+  `(opakatu + (mbae + tetiruã)) + (((asé * aûsub * +ae).base_nominal()) * sosé) + (asé * (tupan * aûsub.base_nominal()))`,
+  rendering `opakatu mba'e tetiruã asé saûsuba sosé asé Tupã raûsuba`.
+- Regenerated `ground_truth/records/historic/araujo_catecismo_1686.jsonl` to
+  73 records.
+- Verified with `make verify-ground-truth`,
+  `python3 -m unittest tests.paben_adverb_test`, and
+  `make test ARGS="--skip-tokenizer"`.
+- Added session handoff:
+  `docs/agent/session-handoffs/2026-06-28T17-31-18-0300-ase-ausub-commandment.md`.
+- Updated Araujo record 73 to bind the fronted `opkmbt` phrase back into
+  `asé * aûsub * +opkmbt`, preserving the same rendered surface while keeping
+  the object available in the syntax tree.
+- Fixed sibling `../nhe-enga/pydicate/pydicate/lang/tupilang/pos/verb.py` so
+  `Verb.base_nominal()` respects non-pronoun object pro-drop instead of passing
+  the dropped object's rendered string as `dir_obj_raw`.
+- Added `tests/base_nominal_object_pro_drop_test.py`, covering
+  `(asé * aûsub * +opkmbt).base_nominal()` as `asé saûsuba`, preserving the
+  dropped object in `nominal.arguments`, and the existing `+ae` contrast.
+- Regenerated Araujo ground truth and verified with
+  `python3 -m unittest tests.base_nominal_object_pro_drop_test tests.paben_adverb_test tests.nominal_pro_drop_test`,
+  `make verify-ground-truth`, and `make test ARGS="--skip-tokenizer"`.
+- Added session handoff:
+  `docs/agent/session-handoffs/2026-06-28T18-01-43-0300-base-nominal-object-pro-drop.md`.
+- Fixed sibling `../nhe-enga/tupi/tupi/verb.py` so 3p nominal
+  reflexive/reciprocal objects with no overt subject string use correlational
+  `o-`: `(+asé * aûsub * îe).base_nominal()` now renders `oîeaûsuba`, and
+  the reciprocal contrast renders `oîoaûsuba`.
+- Extended `tests/base_nominal_object_pro_drop_test.py` with reflexive and
+  reciprocal 3p correlational nominal regressions.
+- Added Araujo record 74 as `(+asé * aûsub * îe).base_nominal()`, rendering
+  `oîeaûsuba`, and regenerated both Araujo and Bettendorff historic JSONL so
+  earlier affected `i îe...` surfaces update to `oîe...`.
+- Verified with
+  `python3 -m unittest tests.base_nominal_object_pro_drop_test`,
+  `python3 -m unittest tests.base_nominal_object_pro_drop_test tests.paben_adverb_test tests.nominal_pro_drop_test tests.moro_incorporation_test`,
+  `make verify-ground-truth`, and `make test ARGS="--skip-tokenizer"`.
+- Added session handoff:
+  `docs/agent/session-handoffs/2026-06-28T23-14-16-0300-correlational-reflexive-nominal.md`.
+- Rebasing local commit `a06a53a` onto remote
+  `origin/agent-authoring-mcp-framework` resolved conflicts in
+  `authoring/records.py`, `authoring/source_annotations.py`, and
+  `tests/ground_truth_records_test.py`.
+- The resolution keeps remote page/section/subsection source-annotation
+  waterfall behavior and preserves local structured ground-truth helper APIs
+  such as `append_records()` and `replace_record_surface()`.
+- Regenerated Araujo structured ground truth from source annotations so JSONL
+  records include source-derived locations while preserving the 67 rendered
+  surfaces.
+- Verified with `python3 -m unittest tests.ground_truth_records_test tests.source_annotations_test tests.mcp_server_test tests.nominal_pro_drop_test tests.moro_incorporation_test`,
+  `python3 tests/run_tests.py --skip-tokenizer`, `make verify-ground-truth`,
+  and `python3 tests/run_tests.py --accept-new-ground-truth --ground-truth-source araujo_catecismo_1686`.
+- Added session handoff:
+  `docs/agent/session-handoffs/2026-06-28T12-56-19-0300-rebase-authoring-framework.md`.
+- Fixed nominal pro-drop for displaced explicit 3p subjects in sibling
+  `../nhe-enga/pydicate/pydicate/lang/tupilang/pos/verb.py`: `+jesus` is
+  suppressed in nominal contexts, but the 3p nominal prefix slot is still
+  realized, so `saguera(+jesus * ikobé)` renders `sekobesagûera`.
+- Added `tests/nominal_pro_drop_test.py` covering explicit
+  `Jesus rekobesagûera`, displaced `sekobesagûera`, and the existing pronoun
+  precedent for `+ae`.
+- Inserted the missed Araujo page-5 line
+  `arobîar 'ara mosapyra resé sekobesagûera` into both legacy text and
+  structured JSONL ground truth, and updated the preceding approved line to
+  `i a'epe` for the same displaced-3p nominal behavior.
+- Verified with `python3 -m unittest tests.nominal_pro_drop_test tests.moro_incorporation_test`,
+  `python3 tests/run_tests.py --skip-tokenizer --ground-truth-source araujo_catecismo_1686`,
+  `python3 tests/run_tests.py --skip-tokenizer`, and
+  `python3 tests/run_tests.py --accept-new-ground-truth --ground-truth-source araujo_catecismo_1686`.
+- Added session handoff:
+  `docs/agent/session-handoffs/2026-06-28T12-40-56-0300-nominal-pro-drop.md`.
 - Reverted the broad shared `gen` inflection leak by keeping the shared generic
   person prefix as `moro` for nominal/deverbal forms, while hardcoding `poro`
   only in the conjugated generic-object verb branch. This restores Araujo line

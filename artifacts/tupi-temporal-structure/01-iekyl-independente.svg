@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <rect width="1080" height="1080" rx="44" fill="#f7f1e5"/>
+  <rect x="48" y="48" width="984" height="984" rx="34" fill="#fffdf8" stroke="#183b3a" stroke-width="3"/>
+  <text x="540" y="120" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="30" letter-spacing="4" fill="#b25d3b">1 · VERBO LEXICAL ISOLADO</text>
+  <text x="540" y="205" text-anchor="middle" font-family="Georgia, serif" font-size="68" font-weight="700" fill="#183b3a">oroîekyî</text>
+  <text x="540" y="254" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="30" fill="#536461">“morremos / expiramos”</text>
+  <line x1="540" y1="340" x2="540" y2="405" stroke="#69827c" stroke-width="4"/>
+  <line x1="285" y1="405" x2="795" y2="405" stroke="#69827c" stroke-width="4"/>
+  <line x1="285" y1="405" x2="285" y2="470" stroke="#69827c" stroke-width="4"/>
+  <line x1="795" y1="405" x2="795" y2="470" stroke="#69827c" stroke-width="4"/>
+  <rect x="350" y="292" width="380" height="70" rx="18" fill="#183b3a"/>
+  <text x="540" y="337" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="28" fill="#fff">oração independente</text>
+  <rect x="120" y="470" width="330" height="145" rx="22" fill="#dce9e3" stroke="#183b3a" stroke-width="3"/>
+  <text x="285" y="520" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#183b3a">SUJEITO</text>
+  <text x="285" y="568" text-anchor="middle" font-family="Georgia, serif" font-size="38" fill="#183b3a">oré</text>
+  <text x="285" y="600" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="21" fill="#536461">1ª plural exclusiva · elíptico</text>
+  <rect x="630" y="470" width="330" height="145" rx="22" fill="#f4dfcf" stroke="#b25d3b" stroke-width="3"/>
+  <text x="795" y="520" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#7d3e28">PREDICADO</text>
+  <text x="795" y="568" text-anchor="middle" font-family="Georgia, serif" font-size="38" fill="#7d3e28">oro- + îekyî</text>
+  <text x="795" y="600" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="21" fill="#7d3e28">prefixo ativo + raiz</text>
+  <rect x="118" y="700" width="844" height="194" rx="24" fill="#fff4d9" stroke="#d4a43c" stroke-width="3"/>
+  <text x="540" y="750" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#6f5317">CAUTELA FILOLÓGICA</text>
+  <text x="540" y="799" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="25" fill="#4b4639">Esta é a análise ativa do Pydicate atual.</text>
+  <text x="540" y="840" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="25" fill="#4b4639">A forma independente ainda precisa de mais atestações;</text>
+  <text x="540" y="879" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="25" fill="#4b4639">a perífrase histórica apresenta oré îekyî.</text>
+  <text x="540" y="974" text-anchor="middle" font-family="Menlo, monospace" font-size="24" fill="#536461">îekyî * +oré</text>
+</svg>
+

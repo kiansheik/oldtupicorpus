@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <rect width="1080" height="1080" rx="44" fill="#f7f1e5"/>
+  <rect x="48" y="48" width="984" height="984" rx="34" fill="#fffdf8" stroke="#183b3a" stroke-width="3"/>
+  <text x="540" y="106" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="28" letter-spacing="3" fill="#b25d3b">5 · TEMPORAL COMPLEXA</text>
+  <text x="540" y="181" text-anchor="middle" font-family="Georgia, serif" font-size="52" font-weight="700" fill="#183b3a">oré îekyî oré rúme béno</text>
+  <text x="540" y="230" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="27" fill="#536461">“também quando estivermos morrendo”</text>
+  <text x="540" y="266" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="24" fill="#536461">idiomático na oração: “e na hora de nossa morte”</text>
+  <rect x="325" y="306" width="430" height="66" rx="18" fill="#183b3a"/>
+  <text x="540" y="350" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="26" fill="#fff">adjunto temporal complexo</text>
+  <line x1="540" y1="372" x2="540" y2="417" stroke="#69827c" stroke-width="4"/>
+  <line x1="205" y1="417" x2="875" y2="417" stroke="#69827c" stroke-width="4"/>
+  <line x1="205" y1="417" x2="205" y2="465" stroke="#69827c" stroke-width="4"/>
+  <line x1="540" y1="417" x2="540" y2="465" stroke="#69827c" stroke-width="4"/>
+  <line x1="875" y1="417" x2="875" y2="465" stroke="#69827c" stroke-width="4"/>
+  <rect x="72" y="465" width="266" height="205" rx="22" fill="#dce9e3" stroke="#183b3a" stroke-width="3"/>
+  <text x="205" y="508" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#183b3a">PREDICADO LEXICAL</text>
+  <text x="205" y="553" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#183b3a">oré îekyî</text>
+  <text x="205" y="593" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="21" fill="#536461">“nós expiramos”</text>
+  <text x="205" y="632" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="19" fill="#536461">forma atestada aqui</text>
+  <rect x="377" y="465" width="326" height="205" rx="22" fill="#f4dfcf" stroke="#b25d3b" stroke-width="3"/>
+  <text x="540" y="508" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#7d3e28">AUXILIAR CONJUNTIVO</text>
+  <text x="540" y="553" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#7d3e28">oré r-ú-me</text>
+  <text x="540" y="593" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="21" fill="#7d3e28">sujeito + R + îub + CONJ</text>
+  <text x="540" y="632" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="19" fill="#7d3e28">postura + duração</text>
+  <rect x="742" y="465" width="266" height="205" rx="22" fill="#e8e0f2" stroke="#6f5688" stroke-width="3"/>
+  <text x="875" y="508" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#513d66">PARTÍCULA</text>
+  <text x="875" y="553" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#513d66">béno</text>
+  <text x="875" y="593" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="21" fill="#513d66">“também / ainda”</text>
+  <text x="875" y="632" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="19" fill="#513d66">escopo sobre o adjunto</text>
+  <rect x="98" y="728" width="884" height="150" rx="24" fill="#fff4d9" stroke="#d4a43c" stroke-width="3"/>
+  <text x="540" y="776" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#6f5317">CONTRASTE ASPECTUAL</text>
+  <text x="540" y="824" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="24" fill="#4b4639">Não descreve simplesmente um cadáver “jazendo”.</text>
+  <text x="540" y="860" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="24" fill="#4b4639">Apresenta o morrer em curso, sob enquadramento posicional.</text>
+  <text x="540" y="962" text-anchor="middle" font-family="Menlo, monospace" font-size="18" fill="#536461">... &lt;&lt; (irã + ((îub * oré) &gt;&gt; (îekyî * oré)) &lt;&lt; béno)</text>
+</svg>
+

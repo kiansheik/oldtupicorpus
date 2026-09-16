@@ -86,7 +86,30 @@ Useful variants:
 - `make serve-dict TOOLTIP_DB=var/my_tooltips.sqlite3`
 - `python3 -m dictionary.build_dict --include-navarro`: optionally include the Navarro-derived supplemental index exported from `../nhe-enga`.
 
-**3. Test and append new ground truth**
+**4. Deploy the static dictionary to GitHub Pages**
+```bash
+make deploy-gh-pages
+```
+
+What it does:
+- Rebuilds `site/data/rendered_corpus.json(.gz)` and `site/data/dictionary_entries.json(.gz)`.
+- Builds the React/Vite frontend into `site/`.
+- Copies the static `site/` bundle into a local `.gh-pages-worktree`.
+- Commits that static bundle on the `gh-pages` branch and pushes it to `origin`.
+- Writes `.nojekyll` so GitHub Pages serves underscored Vite assets normally.
+- Removes stale generated `site/assets/` files and optional Navarro sidecar data before publishing.
+
+One-time GitHub setup:
+- In the repository settings, configure Pages to deploy from the `gh-pages` branch at `/`.
+
+Useful variants:
+- `make deploy-gh-pages SITE_DIR=/tmp/oldtupicorpus-site`
+- `make deploy-gh-pages GH_PAGES_REMOTE=upstream`
+- `make deploy-gh-pages GH_PAGES_BRANCH=pages`
+- `make deploy-gh-pages GH_PAGES_WORKTREE=/tmp/oldtupicorpus-pages`
+- `make deploy-gh-pages GH_PAGES_COMMIT_MESSAGE="Deploy corpus viewer"`
+
+**5. Test and append new ground truth**
 ```bash
 make update-ground-truth
 ```

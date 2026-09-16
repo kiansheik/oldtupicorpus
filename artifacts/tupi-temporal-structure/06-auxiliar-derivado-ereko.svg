@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <rect width="1080" height="1080" rx="44" fill="#f7f1e5"/>
+  <rect x="48" y="48" width="984" height="984" rx="34" fill="#fffdf8" stroke="#183b3a" stroke-width="3"/>
+  <text x="540" y="106" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="27" letter-spacing="3" fill="#b25d3b">6 · AUXILIAR DERIVADO</text>
+  <text x="540" y="180" text-anchor="middle" font-family="Georgia, serif" font-size="52" font-weight="700" fill="#183b3a">xepóy xerérecóreme</text>
+  <text x="540" y="229" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="27" fill="#536461">“quando me estavam dando de comer”</text>
+  <text x="540" y="264" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="22" fill="#536461">exemplo de Anchieta, Arte, 26</text>
+  <rect x="340" y="310" width="400" height="66" rx="18" fill="#183b3a"/>
+  <text x="540" y="354" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="26" fill="#fff">perífrase aspectual</text>
+  <line x1="540" y1="376" x2="540" y2="427" stroke="#69827c" stroke-width="4"/>
+  <line x1="200" y1="427" x2="880" y2="427" stroke="#69827c" stroke-width="4"/>
+  <line x1="200" y1="427" x2="200" y2="480" stroke="#69827c" stroke-width="4"/>
+  <line x1="540" y1="427" x2="540" y2="480" stroke="#69827c" stroke-width="4"/>
+  <line x1="880" y1="427" x2="880" y2="480" stroke="#69827c" stroke-width="4"/>
+  <rect x="72" y="480" width="256" height="190" rx="24" fill="#dce9e3" stroke="#183b3a" stroke-width="3"/>
+  <text x="200" y="528" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#183b3a">SUJEITO</text>
+  <text x="200" y="577" text-anchor="middle" font-family="Georgia, serif" font-size="37" fill="#183b3a">Ø (3ª)</text>
+  <text x="200" y="618" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="21" fill="#536461">não expresso</text>
+  <text x="200" y="650" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="19" fill="#536461">compartilhado</text>
+  <rect x="368" y="480" width="344" height="190" rx="24" fill="#f4dfcf" stroke="#b25d3b" stroke-width="3"/>
+  <text x="540" y="528" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#7d3e28">OBJETO + PREDICADO</text>
+  <text x="540" y="577" text-anchor="middle" font-family="Georgia, serif" font-size="37" fill="#7d3e28">xe-póy</text>
+  <text x="540" y="618" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="21" fill="#7d3e28">xe = 1SG.OBJ</text>
+  <text x="540" y="650" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="19" fill="#7d3e28">alimentar</text>
+  <rect x="752" y="480" width="256" height="190" rx="24" fill="#e8e0f2" stroke="#6f5688" stroke-width="3"/>
+  <text x="880" y="528" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#513d66">AUXILIAR</text>
+  <text x="880" y="577" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#513d66">xe-r-erekó-reme</text>
+  <text x="880" y="618" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="21" fill="#513d66">xe = 1SG.OBJ</text>
+  <text x="880" y="650" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="19" fill="#513d66">conjuntivo</text>
+  <rect x="104" y="730" width="872" height="155" rx="24" fill="#eaf1ef" stroke="#69827c" stroke-width="3"/>
+  <text x="540" y="778" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#183b3a">ESTRUTURA CORRETA</text>
+  <text x="540" y="828" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="24" fill="#374a46">As duas ocorrências de xe são objetos, não sujeitos.</text>
+  <text x="540" y="863" text-anchor="middle" font-family="Avenir Next, Helvetica, sans-serif" font-size="24" fill="#374a46">O derivado -erekó fornece o enquadramento durativo.</text>
+  <text x="540" y="971" text-anchor="middle" font-family="Menlo, monospace" font-size="17" fill="#536461">(poî * ixé) &lt;&lt; (erekó * ixé) → xepoî xererekóreme</text>
+</svg>

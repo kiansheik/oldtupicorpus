@@ -159,6 +159,7 @@ venv.bak/
 /site/data/*.json.gz
 frontend/node_modules/
 frontend/.vite/
+.gh-pages-worktree/
 
 # mypy
 .mypy_cache/

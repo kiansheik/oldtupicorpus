@@ -5,6 +5,7 @@ from pathlib import Path
 
 from .build_entries import build_entries
 from .build_rendered_corpus import build_rendered_corpus
+from .navarro_import import load_raw_navarro_entries
 from .utils import DATA_DIR, write_json_artifact
 
 
@@ -40,6 +41,9 @@ def main(argv: list[str] | None = None) -> int:
     entries_json, entries_gz = write_json_artifact(
         out_dir / "dictionary_entries.json", entries
     )
+    navarro_json, navarro_gz = write_json_artifact(
+        out_dir / "navarro_dict.json", load_raw_navarro_entries()
+    )
 
     print(
         "Built dictionary site data: "
@@ -50,6 +54,8 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Wrote {rendered_gz}")
     print(f"Wrote {entries_json}")
     print(f"Wrote {entries_gz}")
+    print(f"Wrote {navarro_json}")
+    print(f"Wrote {navarro_gz}")
     return 0
 
 

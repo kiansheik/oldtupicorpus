@@ -1,26 +1,28 @@
 from historic.lexicon import load_lexicon
 
 globals().update(load_lexicon())
-
 # call it l for writting convenience
 l = [
-    # Santa Cruz
+    # @page 1
+    # @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+    # @subsection Oração do sinal do Cruz
     ((saba * (santa_cruz * aang)) * esé)
     + (endé * (pysyro.imp()) * oré)
     + ((tupan == (oré * îara.voc())))
     + ((sara * (-(oré * amotar))) * suí),
     (((tuba + tayra + espirito_santo) * era) * pupé),
     (amen),
-    # Pai nosso
+    # @subsection Padre Noßo
     (oré * tuba).voc() @ (((pe * ybaka)) + (sara * ikó).voc())
     + (amo * (pyra * moeté))
     + ((nde * era) * ikó).perm(),
     (ur * (nde * reino)).perm(),
+    # @pages 1-2
     (monhang * (emi * (potar * nde)) * îe).perm()
     + (pe * yby)
     + (pe * ybaka)
     + (îabé * (monhang * ae * îe)),
-    #####
+    # @line 1-2
     (((emi * (u * oré)) @ (nduara * (ara * iabiõ))) * (meeng * +endé).imp())
     + kori
     + orébe,
@@ -30,7 +32,7 @@ l = [
     (endé * -(mo * (ar / ukar)).imp() * oré) + (tentação * pupé),
     ((oré * ((pysyro * endé))).imp() << te) + ((mbae / aiba) * suí),
     (amen),
-    # Ave Maria
+    # @subsection Ave Maria
     cop() * avemaria * (bae * ((esé * graça) + v(ynysema))),
     (amo * (nde * irun)) + (ikó * (îandé * îara)),
     (amo * (pyra * (mombeu / katu))) + (ikó * +endé) + (kunhã * suí),
@@ -41,7 +43,7 @@ l = [
     + koyr
     << (irã + ((îub * oré) >> (îekyî * oré)) << béno),
     (amen),
-    # salva rainha
+    # @subsection Salve Rainha
     (cop() * (salve_rainha == (poraûsubara * sy)) + ikobé.base_nominal(True))
     + (bae * v(een))
     + (saba * (oré * erobîar * îe))
@@ -59,6 +61,7 @@ l = [
         (iré * (syk * (ikód * (pûera * (saba * (pea * îe))))))
         >> ((jatf * (+endé * (epîak / ukar))).imp() + orébe)
     ),
+    # @pages 2-3
     cop()
     * (nheraneym.voc())
     * ((sara * v(poreaûsuberekó)).voc())
@@ -70,7 +73,7 @@ l = [
         ri * (rama * (saba * (oré * îekosub)))
     ),  # îekosubagûama here is îekosuBagûama in bettendorf, displaying already some early divergences of loss of phonetic composition which we see in nheengatu
     (amen),
-    # Creio em Deus Padre
+    # @subsection Credo
     erobîar * +ixé * ((ttomtmetkbae) * (sara * (monhang * (abé + ybaka + yby)))),
     (
         +ixé
@@ -95,7 +98,7 @@ l = [
     + (amo * (pyra * îuká))
     + (amo * (pyra * tym) + (ikó * +aebae)),
     (+jesus * gûeîyb + (pe * (yby * apytera))),
-    (pupé * (ara * mosapyr.card()))
+    (pupé * third_day)
     + ((suí * (pûera * (bae * (manõ)))) + (+jesus * (ikobé / îebyr))),
     (upir * +jesus * îe) + (pe * ybaka),
     (koty * (ttomtmetkbae * ekatûaba)) + (+jesus * inv),
@@ -117,7 +120,8 @@ l = [
 l += arobiar * (rama * (saba * (asé * (ikobé / îebyr))))
 l += ((+(ixé)) * (erobîar)) * (((ikobé) @ (opbrmym)))
 l += amen
-# artigos da fé
+# @subsection Artigos da Fé
+# @page 4
 l += catorse * (rama * (asé * (emi * erobîar)))
 l += ((sete * ((nduara * (tupan * esé))))) + ((nã) + (+ae * ei))
 l += arobiar * ((oîepé * (tupan)) @ (otmrme))
@@ -191,9 +195,11 @@ l += arobiar * (
         )
     )
 )
+# @page 5
+l += arobiar * ((esé * third_day) + (saguera(((+jesus * (ikobé / îebyr))))))
 l += arobiar * ((abé.var(1) * risetoheaven) * rightsidegod)
 l += arobiar * ((abé.var(1) * bondadenomundo * (pûera * n(ae * sinfullife))) * payment)
-# Mandamentos da Ley de Deos
+# @subsection Mandamentos da Ley de Deos
 l += dez * (saba * (asé * (tupan * ekomonhang)))
 l += (eimoeté * (oîepé * tupan)).imp()
 
@@ -202,9 +208,34 @@ marãtekó.definition = "state of work, job, working"
 l += eimoeté * (domingo_e_feriado)
 
 l += eimoeté * pais
-
 l += -(+nde * apiti * moro).imp()
+l += -(+nde * potar * moro).imp()
+l += -(+nde * mondarõ).imp()
+l += -(+nde * v(moem)).imp() + (esé * abá)
+l += -(+nde * momotar * îe).imp() + esé * ((nde * apixara) * emirekó)
+l += nã + ((bae * ei) * pupé) + (paben + (aîpo * îub))
+l += (
+    opkmbt
+    + (((asé * aûsub * +opkmbt).base_nominal()) * sosé)
+    + (asé * (tupan * aûsub.base_nominal()))
+)
+l += (îabé * (+asé * aûsub * îe)) + n((asé * aûsub) * (og * apixara)) + no
+# @page 6
+# @subsection Mandamentos da Santa Madre Igreja
+l += sinco * (saba * (asé * (smi * ekomonhang)))
+l += (esé * domingo) + ((esebé * noworkday)) + (missa * endub).base_nominal()
+l += (iabiõ * seîxu) + (îe * mombeu).var(1).base_nominal()
+l += (iabiõ * Pascoa) + (tupan * îar).var(1).base_nominal()
+îekuakub.definition = "jejuar"
+l += (iabiõ * n(îe * ((smi) * (kuakub / puai)))) + (îekuakub).var(1).base_nominal()
+l += (iabiõ * n(opakombó)) + (
+    (supé * tupan) + (oîepé * (asé * moîaoka * mbae).base_nominal())
+)
+tupapotaba.definition = "quinhão de Deus dízimo"
+l += (pupé * ((pûera * (og * (emi * tym))) / ypy)) + (tupapotaba * meeng) + no
 
+# @subsection Sacramentos. Sete Santa Madre Igreja Sacramentos.
+l += ((ae * karaiba) * pupé) + (îe * moîasuk).var(1).base_nominal()
 
 araujo_catecismo_1686 = l
 if __name__ == "__main__":
