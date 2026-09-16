@@ -92,6 +92,10 @@
     "subtag": "CIRCUMSTANTIAL_SUFFIX"
   },
   {
+    "id": "S000131",
+    "subtag": "CLASSIFIER"
+  },
+  {
     "id": "S000068",
     "subtag": "CLASS_1"
   },
@@ -376,8 +380,16 @@
     "subtag": "ORAL_VOWEL"
   },
   {
+    "id": "S000133",
+    "subtag": "P"
+  },
+  {
     "id": "S000052",
     "subtag": "PARTICLE"
+  },
+  {
+    "id": "S000132",
+    "subtag": "PAST"
   },
   {
     "id": "S000039",

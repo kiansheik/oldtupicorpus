@@ -360,6 +360,10 @@
     "tag": "[3p:DEEPEST_NODE_4:SUBJECT]"
   },
   {
+    "id": "T000408",
+    "tag": "[3p:DEEPEST_NODE_5:MAIN_CLAUSE_SUBJECT:PRONOUN]"
+  },
+  {
     "id": "T000321",
     "tag": "[3p:DEEPEST_NODE_5:SUBJECT]"
   },
@@ -472,6 +476,10 @@
     "tag": "[ADVERB:DEEPEST_NODE_3:FROM_THERE]"
   },
   {
+    "id": "T000414",
+    "tag": "[ADVERB:DEEPEST_NODE_6]"
+  },
+  {
     "id": "T000403",
     "tag": "[ADVERB:DEEPEST_NODE_9]"
   },
@@ -582,6 +590,10 @@
   {
     "id": "T000046",
     "tag": "[CIRCUMSTANTIAL_SUFFIX:VOWEL_ENDING]"
+  },
+  {
+    "id": "T000411",
+    "tag": "[CLASSIFIER:DEEPEST_NODE_5:PAST]"
   },
   {
     "id": "T000383",
@@ -792,6 +804,10 @@
     "tag": "[DATIVE:DEEPEST_NODE_3:POSTPOSITION]"
   },
   {
+    "id": "T000406",
+    "tag": "[DATIVE:DEEPEST_NODE_5:POSTPOSITION]"
+  },
+  {
     "id": "T000282",
     "tag": "[DEADVERBAL:DEEPEST_NODE_5]"
   },
@@ -960,6 +976,10 @@
     "tag": "[DEEPEST_NODE_1:NEGATION_SUFFIX]"
   },
   {
+    "id": "T000407",
+    "tag": "[DEEPEST_NODE_1:NUMBER:ONE]"
+  },
+  {
     "id": "T000271",
     "tag": "[DEEPEST_NODE_1:NUMBER]"
   },
@@ -1036,6 +1056,10 @@
     "tag": "[DEEPEST_NODE_2:LOCATIVE:POSTPOSITION]"
   },
   {
+    "id": "T000413",
+    "tag": "[DEEPEST_NODE_2:P:PLURIFORM_PREFIX]"
+  },
+  {
     "id": "T000120",
     "tag": "[DEEPEST_NODE_2:PATIENT_PREFIX]"
   },
@@ -1074,6 +1098,10 @@
   {
     "id": "T000363",
     "tag": "[DEEPEST_NODE_3:MUTUAL:OBJECT:OBJECT_PREFIX:RECIPROCAL:mut]"
+  },
+  {
+    "id": "T000412",
+    "tag": "[DEEPEST_NODE_3:NOUN:POSSESSOR:PROPER_NOUN]"
   },
   {
     "id": "T000381",
@@ -1200,6 +1228,10 @@
     "tag": "[DEEPEST_NODE_5:OBJECT:OBJECT_PREFIX:REFLEXIVE:refl]"
   },
   {
+    "id": "T000409",
+    "tag": "[DEEPEST_NODE_5:PATIENT_PREFIX]"
+  },
+  {
     "id": "T000215",
     "tag": "[DEEPEST_NODE_5:PERMISSIVE_PREFIX:VOWEL]"
   },
@@ -1218,6 +1250,10 @@
   {
     "id": "T000399",
     "tag": "[DEEPEST_NODE_5:POSTPOSITION]"
+  },
+  {
+    "id": "T000410",
+    "tag": "[DEEPEST_NODE_5:PRETERITE_SUFFIX]"
   },
   {
     "id": "T000206",
@@ -1252,8 +1288,16 @@
     "tag": "[DEEPEST_NODE_6:POSTPOSITION]"
   },
   {
+    "id": "T000405",
+    "tag": "[DEEPEST_NODE_6:PROPER_NOUN:SUBSTANTIVE_SUFFIX:VOWEL_ENDING]"
+  },
+  {
     "id": "T000258",
     "tag": "[DEEPEST_NODE_6:RELATIVE_AGENT_SUFFIX]"
+  },
+  {
+    "id": "T000404",
+    "tag": "[DEEPEST_NODE_7:EVERY:POSTPOSITION]"
   },
   {
     "id": "T000217",

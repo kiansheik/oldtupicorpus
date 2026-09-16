@@ -2,6 +2,36 @@
 
 ## 2026-09-16
 
+- Fixed `(m)` pluriform prefix selection for possessed nouns in the
+  sibling `Noun.pluriform_prefix` and `Noun.possessive` methods. The
+  unchanged Araujo record 81 now renders `Tupã potabame'engi` in its
+  full phrase. Added a focused test and sibling grammar notes. After
+  MCP reload, all 80 saved Araujo and 40 Bettendorff targets verified;
+  record 81 remains unaccounted. The 92-test corpus suite passed.
+- Fixed `emi` on nasal `tym` and referential `og` before that derived
+  pluriform noun. `og * (emi * tym)` now renders `oemityma`.
+- Added `tests/emi_referential_test.py`, grammar navigation and
+  root-cause notes in `../nhe-enga`, and a session handoff. Focused
+  tests and `make test ARGS="--skip-tokenizer"` pass; MCP all-source
+  checks found no saved-target changes. The editor added Araujo record
+  81 with this construction during verification; records 80 and 81 are
+  unaccounted.
+- Fixed raw-number nominalization and attached-adjunct rendering in the
+  sibling `Number` class. The unchanged Araujo record 80 expression now
+  renders the editor's target modulo whitespace.
+- Added `tests/number_nominalization_test.py`, sibling grammar navigation
+  and root-cause notes, and a session handoff. After MCP reload, all 79
+  saved Araujo and 40 Bettendorff targets remained verified; record 80
+  is unaccounted for the human editor to commit.
+- Used the human editor's revised record-79 expression, already saved
+  in `historic/araujo_catecismo_1686.tu.py`, without rewriting it.
+- Updated sibling `Verb.base_nominal()` so a transitive verb with only
+  `îe` or `îo` uses the short nominal prefix for variation 1. Added
+  contrasts to `tests/reflexive_nominal_variation_test.py` and updated
+  sibling grammar navigation and root-cause notes.
+- Reloaded the MCP engine after the code edit. The exact record-79
+  expression now renders `Santa Madre Igreja îekuakupûaîa îabi'õ
+  îekuakuba`; all saved Araujo and Bettendorff targets still match.
 - Added `authoring.service.commit_ground_truth` (approve exactly one line's
   current rendering as ground truth, never a full source regenerate, and
   refuses to overwrite a declared-but-unmatched `normalized_target`) and

@@ -219,24 +219,24 @@ l += (
     + (((asé * aûsub * +opkmbt).base_nominal()) * sosé)
     + (asé * (tupan * aûsub.base_nominal()))
 )
-no = Adverb("no", definition="também")
 l += (îabé * (+asé * aûsub * îe)) + n((asé * aûsub) * (og * apixara)) + no
 # @page 6
 # @subsection Mandamentos da Santa Madre Igreja
 l += sinco * (saba * (asé * (smi * ekomonhang)))
 l += (esé * domingo) + ((esebé * noworkday)) + (missa * endub).base_nominal()
 l += (iabiõ * seîxu) + (îe * mombeu).var(1).base_nominal()
-Pascoa = ProperNoun("Pascoa", definition="Easter")
 l += (iabiõ * Pascoa) + (tupan * îar).var(1).base_nominal()
-igreja = ProperNoun("igreja", definition="igreja")
-puai = Verb(
-    "pûaî",
-    definition="dar ordens a, mandar, ordenar, mandar fazer [aquilo que se manda ou se ordena pode vir com esé (r, s)]:",
-)
-kuakub = Verb("kuakub", definition="recusar")
-îekuakub = îe * kuakub
 îekuakub.definition = "jejuar"
 l += (iabiõ * n(îe * ((smi) * (kuakub / puai)))) + (îekuakub).var(1).base_nominal()
+moîaoka = mo * îaok
+l += (iabiõ * n(opakombó)) + (
+    (supé * tupan) + (oîepé * (asé * moîaoka * mbae).base_nominal())
+)
+potaba = Noun("potaba", definition="(m) porção, parte")
+tupapotaba = tupan * potaba
+tupapotaba.definition = "quinhão de Deus dízimo"
+ypy = Noun("ypy", definition="início, primeiro, começar, começo")
+l += (pupé * ((pûera * (og * (emi * tym))) / ypy)) + (tupapotaba * meeng) + no
 
 araujo_catecismo_1686 = l
 if __name__ == "__main__":

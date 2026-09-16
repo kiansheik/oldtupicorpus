@@ -2,6 +2,63 @@
 
 Last updated: 2026-09-16
 
+## 2026-09-16 `(m)` pluriform possession in Araujo record 81
+
+- `../nhe-enga/tupi/tupi/noun.py` gives `(m)` nouns their own prefix
+  choice before the general pluriform rules: absolute `m-`, possessed
+  `p-`. The explicit-possessor `r-` rule excludes `(m)` nouns.
+- The unchanged Araujo record 81 expression renders
+  `oemitymbûerypy pupé Tupã potabame'engi no`, matching the editor's
+  target. `tests/m_pluriform_possession_test.py` covers the noun,
+  direct object, full record, and a `(t)` contrast.
+- MCP verification found all 80 saved Araujo and 40 Bettendorff targets
+  unchanged. Record 81 remains unaccounted for the human editor's Commit
+  ground truth action.
+
+## 2026-09-16 `emi` with nasal `tym` and referential `og`
+
+- `../nhe-enga/tupi/tupi/noun.py` now inserts `emi-` for an initial
+  `t` stem that contains a nasal consonant; `emi * tym` renders
+  `temityma` instead of dropping `emi-`.
+- `../nhe-enga/pydicate/pydicate/lang/tupilang/pos/deverbal.py`
+  handles `og` on the derived pluriform noun: it replaces the absolute
+  `t-` with `o-`, so `og * (emi * tym)` renders `oemityma`.
+- `tests/emi_referential_test.py` covers the requested form and the
+  absolute and `nde` contrasts. MCP checks found all 79 saved Araujo
+  and 40 Bettendorff targets unchanged. Araujo records 80 and 81 are
+  unaccounted pending human editorial action; record 81 now uses this
+  construction in the historic source.
+
+## 2026-09-16 Araujo raw number nominalization
+
+- `../nhe-enga/pydicate/pydicate/lang/tupilang/pos/number.py` now lets
+  `n(opakombó)` use the raw number as a noun and preserves `[NUMBER:TEN]`
+  in its annotation. `Number.preval` renders preceding phrases attached
+  by `+`, which previously disappeared.
+- The unchanged Araujo record 80 expression renders
+  `opakombó îabi'õ Tupã supé oîepé asé mba'emoîa'oka`. This matches
+  the editor's target when whitespace is ignored.
+- `tests/number_nominalization_test.py` covers the raw number and full
+  phrase. MCP checks find all 79 saved Araujo and 40 Bettendorff targets
+  verified. Record 80 remains unaccounted pending the human editor's
+  Commit ground truth action.
+
+## 2026-09-16 Araujo reflexive nominal variation
+
+- The human editor revised Araujo record 79 to place `îe` outside the
+  `smi * (kuakub / puai)` compound. The grammar engine now realizes its
+  one-argument transitive reflexive `.var(1).base_nominal()` as
+  `îekuakuba`. The complete expression renders
+  `Santa Madre Igreja îekuakupûaîa îabi'õ îekuakuba`.
+- `../nhe-enga/pydicate/pydicate/lang/tupilang/pos/verb.py` changes only
+  the nominal variation-1 path when a transitive verb has one reflexive
+  or reciprocal argument. Default and two-argument transitive nominals
+  keep their existing behavior; `tests/reflexive_nominal_variation_test.py`
+  covers those contrasts.
+- MCP `verify_ground_truth` reports all 78 saved Araujo and 40 saved
+  Bettendorff targets matched. Araujo record 79 remains unaccounted until
+  the human uses the editor's Commit ground truth action.
+
 ## 2026-09-16 Per-line ground-truth commit and MCP engine reload
 
 - Added `authoring.service.commit_ground_truth(source, ordinal)`: approves

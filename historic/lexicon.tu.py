@@ -310,6 +310,16 @@ missa = ProperNoun("missa", definition="mass")
 endub = Verb("endub")
 seîxu = Noun("seîxu", "ano")
 
+no = Adverb("no", definition="também")
+Pascoa = ProperNoun("Pascoa", definition="Easter")
+igreja = ProperNoun("igreja", definition="igreja")
+puai = Verb(
+    "pûaî",
+    definition="dar ordens a, mandar, ordenar, mandar fazer [aquilo que se manda ou se ordena pode vir com esé (r, s)]:",
+)
+kuakub = Verb("kuakub", definition="recusar")
+îekuakub = îe * kuakub
+
 __all__ = [
     name for name in globals() if not name.startswith("_") and name not in {"os", "sys"}
 ]
