@@ -261,6 +261,11 @@
   },
   {
     "value": "i",
+    "tag": "[3p:DEEPEST_NODE_4:POSSESSIVE_PRONOUN]",
+    "translation": ""
+  },
+  {
+    "value": "i",
     "tag": "[3p:DEEPEST_NODE_4:SUBJECT]",
     "translation": ""
   },
@@ -1181,6 +1186,11 @@
   },
   {
     "value": "koty",
+    "tag": "[DEEPEST_NODE_3:POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "pupé",
     "tag": "[DEEPEST_NODE_3:POSTPOSITION]",
     "translation": ""
   },

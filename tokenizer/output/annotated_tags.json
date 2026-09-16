@@ -356,6 +356,10 @@
     "tag": "[3p:DEEPEST_NODE_4:NON_MAIN_CLAUSE_SUBJECT:OBJECT]"
   },
   {
+    "id": "T000415",
+    "tag": "[3p:DEEPEST_NODE_4:POSSESSIVE_PRONOUN]"
+  },
+  {
     "id": "T000295",
     "tag": "[3p:DEEPEST_NODE_4:SUBJECT]"
   },

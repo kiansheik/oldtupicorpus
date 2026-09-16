@@ -320,6 +320,13 @@ puai = Verb(
 kuakub = Verb("kuakub", definition="recusar")
 îekuakub = îe * kuakub
 
+moîaoka = mo * îaok
+potaba = Noun("potaba", definition="(m) porção, parte")
+tupapotaba = tupan * potaba
+ypy = Noun("ypy", definition="início, primeiro, começar, começo")
+îasuk = Verb("îasuk", definition="batizar-se, lavar-se")
+moîasuk = mo * îasuk
+
 __all__ = [
     name for name in globals() if not name.startswith("_") and name not in {"os", "sys"}
 ]

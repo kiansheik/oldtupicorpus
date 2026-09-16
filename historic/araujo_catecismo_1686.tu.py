@@ -228,15 +228,14 @@ l += (iabiõ * seîxu) + (îe * mombeu).var(1).base_nominal()
 l += (iabiõ * Pascoa) + (tupan * îar).var(1).base_nominal()
 îekuakub.definition = "jejuar"
 l += (iabiõ * n(îe * ((smi) * (kuakub / puai)))) + (îekuakub).var(1).base_nominal()
-moîaoka = mo * îaok
 l += (iabiõ * n(opakombó)) + (
     (supé * tupan) + (oîepé * (asé * moîaoka * mbae).base_nominal())
 )
-potaba = Noun("potaba", definition="(m) porção, parte")
-tupapotaba = tupan * potaba
 tupapotaba.definition = "quinhão de Deus dízimo"
-ypy = Noun("ypy", definition="início, primeiro, começar, começo")
 l += (pupé * ((pûera * (og * (emi * tym))) / ypy)) + (tupapotaba * meeng) + no
+
+# @subsection Sacramentos. Sete Santa Madre Igreja Sacramentos.
+l += ((ae * karaiba) * pupé) + (îe * moîasuk).var(1).base_nominal()
 
 araujo_catecismo_1686 = l
 if __name__ == "__main__":
