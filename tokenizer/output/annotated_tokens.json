@@ -624,6 +624,10 @@
     "value": "ababykawere'ym"
   },
   {
+    "id": "M005242",
+    "value": "abaregûasu"
+  },
+  {
     "id": "M000263",
     "value": "abe"
   },
@@ -2538,6 +2542,10 @@
   {
     "id": "M000920",
     "value": "e'yĩ"
+  },
+  {
+    "id": "M005244",
+    "value": "e'õ"
   },
   {
     "id": "M000922",
@@ -11748,6 +11756,14 @@
     "value": "nhandygûasu"
   },
   {
+    "id": "M005243",
+    "value": "nhandykaraíbanong"
+  },
+  {
+    "id": "M005246",
+    "value": "nhandykaraíbarar"
+  },
+  {
     "id": "M002925",
     "value": "nhandyroba"
   },
@@ -11786,6 +11802,10 @@
   {
     "id": "M002939",
     "value": "nhatimanĩ"
+  },
+  {
+    "id": "M005248",
+    "value": "nhe"
   },
   {
     "id": "M000108",
@@ -12018,6 +12038,10 @@
   {
     "id": "M003030",
     "value": "nhemoaba"
+  },
+  {
+    "id": "M005247",
+    "value": "nhemoabaré"
   },
   {
     "id": "M003029",
@@ -13454,6 +13478,10 @@
   {
     "id": "M000008",
     "value": "oré"
+  },
+  {
+    "id": "M005239",
+    "value": "ota"
   },
   {
     "id": "M005237",
@@ -16380,6 +16408,10 @@
     "value": "syb"
   },
   {
+    "id": "M005241",
+    "value": "sybá"
+  },
+  {
     "id": "M004048",
     "value": "syguasu"
   },
@@ -18760,6 +18792,10 @@
     "value": "îaniparandyba"
   },
   {
+    "id": "M005245",
+    "value": "îanondé"
+  },
+  {
     "id": "M004509",
     "value": "îanungara"
   },
@@ -19330,6 +19366,10 @@
   {
     "id": "M003015",
     "value": "îemboryb"
+  },
+  {
+    "id": "M005240",
+    "value": "îemboîasuk"
   },
   {
     "id": "M003017",

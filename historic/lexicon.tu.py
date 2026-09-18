@@ -325,7 +325,66 @@ potaba = Noun("potaba", definition="(m) porção, parte")
 tupapotaba = tupan * potaba
 ypy = Noun("ypy", definition="início, primeiro, começar, começo")
 îasuk = Verb("îasuk", definition="batizar-se, lavar-se")
-moîasuk = mo * îasuk
+moîasuk = mbo * îasuk
+
+
+# @note studio-lexical:v1 {"id": "lexical:44c788fb-9c13-5e27-b7e7-de5c88decba9", "name": "syba_2f344911", "scope": "shared", "provenance": {"source": "dictionary", "id": "navarro:9755:49b6477c313dcd70", "citation": "Navarro · verbete 9755 · nhe-enga/pydicate/pydicate/tupi_only.db"}}
+syba_2f344911 = Noun(
+    "sybá",
+    definition="(s.) - testa (Castilho, Nomes, 37): Marãnamope asé o sybápe îoasaba moíni? - Por que a gente põe a cruz na testa? (Ar., Cat., 21)",
+)
+
+
+# @note studio-lexical:v1 {"id":"lexical:17060b173d476051a824b22763eee76f980055d78ac1a8feec52ae136c7b4922","name":"abareguasu","scope":"shared"}
+abareguasu = Noun(
+    value="abaregûasu",
+    definition="(etim. - padre grande) (s.) - bispo, autoridade eclesiástica, provincial, abade, prelado: Asé sybápe abaregûasu nhandy-karaíba nonga. - Pôr o bispo em nossa testa o óleo santo. (Ar., Cat., 17v); Abaregûasu ogûatá. - O bispo passeia. (Fig., Arte, 6)",
+)
+
+# @note studio-lexical:v1 {"id":"lexical:36f1a2a79764f7a6096b2292f512f5625ee200a99563189d856a08db94d61d41","name":"nong","scope":"shared"}
+nong = Verb(
+    value="nong",
+    verb_class="(-îo- ou -nho-) (v.tr.)",
+    definition="(-îo- ou -nho-) (v.tr.) - 1) pôr, colocar: Enhonong nde itaingapema nde ku'aî. - Põe tua espada na tua cintura. (Fig., Arte, 125); Nde morerekoar xe ri, nde pó gûyrype xe nonga. - Sê tu guardião de mim, sob tuas mãos colocando-me. (Valente, Cantigas, in Ar., Cat., 1618); Aó-tinga onong asé resé. - Roupa branca põe na gente. (Ar., Cat., 81v); 2) fazer ser, fazer estar: ...Aîonong ka'umondá... - Faço-os ser ladrões de cauim. (Anch., Teatro, 134); 3) deter: T'orosóne, Anhangusu; oré reîtyk, oré nonga. - Vamos, Anhanguçu; derrotou-nos, detendo-nos. (Anch., Teatro, 172) ● nongaba - lugar, tempo, modo, causa, etc. de pôr, de colocar, ato de pôr, de colocar: ...I pysyrõû tekoangaîpabypy Adão îandé nongaba suí. - Livrou-a do pecado primeiro em que Adão nos pôs. (Ar., Cat., 9); nongara - o que põe, o que coloca, etc.: Mba'easybora o mara'ara kakareme t'osenõîukar abaré, îandykaraíba nongara... - Ao se aproximar o doente de sua agonia, que mande chamar o padre, o que põe o óleo bento. (Ar., Cat., 137v); i nongymbyra - o que é (ou deve ser) posto, colocado, etc.: ...Kaûĩ i pupé i nongymbyra... - O vinho que é colocado dentro dele. (Bettendorff, Compêndio, 85)",
+    vid=7780,
+)
+
+# @note studio-lexical:v1 {"id":"lexical:8513e803f66a04e6c08f07c0b12e05e80a7152f3954fba8516b0963fc413b8bc","name":"nhandy","scope":"shared"}
+nhandy = Noun(
+    value="nhandy",
+    definition="(s.) - azeite; óleo: pirá-nhandy - óleo de peixe (VLB, I, 49); ...Asé sybápe abaregûasu nhandy-karaíba nonga. - Pôr o bispo em nossa testa o óleo sagrado. (Ar., Cat., 17v)",
+)
+
+
+# @note studio-lexical:v1 {"id":"lexical:1afac1da3216239127ff0d22ee46300a4ef9a9ec63fd68cee8922cb5908c649c","name":"ianonde","scope":"shared"}
+ianonde = Postposition(
+    value="îanondé",
+    definition="1) (posp.) - antes de (expressando tempo anterior a algo que se realizará depois, necessariamente): Xe îebyr-y îanondé. - Antes de minha volta. (Fig., Arte, 158); ...Oporaseî pysaré, oîemopaîeangaípa, tatápe o só îanondé. - Dançaram a noite toda, fazendo feitiçarias, antes de irem para o inferno. (Anch., Teatro, 14); Abá rokype erekûá, tá, nhemim-y îanondé? - Na casa de quem passaste, tomando-as [isto é, as coisas roubadas], antes de te esconderes? (Anch., Teatro, 44); Marã e'ipe asé o ké îanondé...? - Como diz a gente antes de dormir? (Ar., Cat., 24v); Xe angaturam ybakype xe só îanondé. - Eu fui bom antes de ir para o céu. (Anch., Arte, 45); 2) (adv.) antes (comparação): ...Ybakype i pyri o só îanondé Anhanga ratápe o só suí. - Antes sua ida para junto dele no céu que sua ida para o inferno. (Ar., Cat., 110)",
+)
+
+# @note studio-lexical:v1 {"id":"lexical:c6a31ecea2692f85a201ded3093f0e2b0479d2440c2967a78cf8d1c43eec0fbe","name":"eo","scope":"shared"}
+eo = Noun(
+    value="e'õ",
+    definition="(t) (s.) - 1) morte (em geral): ...Te'õ rupîara nhẽ... - Adversária da morte (Anch., Poemas, 88); Te'õ rerobyka é, xe angaîpá-tubixagûera amosẽne... - Aproximando-me da morte, meus grandes pecados antigos farei sair. (Anch., Teatro, 38); N'ereîkuabipe ko'yr te'õ nde resé sekó? - Não sabes que agora a morte está contigo? (D'Abbeville, Histoire, 350); 2) morte natural: Te'õ suí amanõ. - Morro de morte natural. (VLB, II, 42); 3) desfalecimento, entorpecimento; [adj.: e'õ (r, s)] - moribundo; desfalecido, entorpecido; (xe) morrer; desfalecer, entorpecer-se: ...Abá 'anga re'õû nhẽ Tupana nhe'enga abŷápe. - As almas dos homens morrem ao transgredirem a palavra de Deus. (Anch., Teatro, 144); Se'õ. - Ele morre. (Anch., Arte, 40); îybá-e'õ-e'õ - braços entorpecidos, quebrantados (com algum sobressalto, grande tristeza, etc.); pó-e'õ - mãos entorpecidas (VLB, II, 93) ● e'õsara (t) - o que morre, o mortal (VLB, II, 42); e'õaba (ou e'õsaba) (t) [no futuro egûama (t)] - tempo, lugar, modo, causa, instrumento, etc. da morte, do morrer; morte (Fig., Arte, 59): ...Abá re'õagûera resé og orybamo... - Alegrando-se com a morte de alguém. (Ar., Cat., 70v); O'u nhẽpe a'e 'ybá, tegûama...? - Comeu aquele fruto, causa de morte? (Ar., Cat., 40v); Nde ma'enduá-katu... nde resé se'õagûera resé. - Lembra-te bem de que morreu por tua causa. (Ar., Cat., 249); e'õ-memûã (ou e'õ-aíba ou e'õ-korine) (t) - morte súbita ou em desastre (VLB, II, 42)",
+)
+
+
+# @note studio-lexical:v1 {"id":"lexical:079d07c4a115a0fbb7ed2d78bde6b200b3dcf5dcf4bb2829777855db5bad4c85","name":"abare","scope":"shared"}
+abare = Noun(
+    value="abaré",
+    definition='(s.) - padre, ABARÉ, ABARUNA; clérigo; frade; sacerdote, religioso (VLB, II, 100): I xupé, ranhẽ, abaré, Tupã mombegûabo, i xóû. - Junto a ela, primeiramente, os padres foram, anunciando a Deus. (Anch., Poemas, 114); Oú tenhẽ xe pe\'abo "abaré" \'îaba... - Vêm em vão para me afastar os ditos "padres". (Anch., Teatro, 8)',
+)
+
+# @note studio-lexical:v1 {"id":"lexical:b6d8a095bc9a0071c7cbc600a9918a79a76d7f3d83006a641c18da019a8b6bf0","name":"nhemoabare","scope":"shared"}
+nhemoabare = ((((nhe) * ((mo) * (abare))).var(1)).base_nominal()).copy()
+nhemoabare.definition = "(etim. - fazer-se padre) (s.) - sacramento da ordem (Ar., Cat., 17v); definição do composto nhe + mo + abaré (Navarro 7935)."
+
+
+# @note studio-lexical:v1 {"id":"lexical:83b964a833bd253195cd7bd888ef52cf58034f2ae406d7ca449c3b8d55d11349","name":"mendara","scope":"shared"}
+mendara = Noun(
+    value="mendara",
+    definition="(s.) - 1) casado(a) - Ereîkópe mendara, mendarûera resé? - Tens relações com uma casada, com uma que foi casada? (Anch., Doutr. Cristã, II, 89); 2) casamento; matrimônio: -Marãpe amõ îandé 'anga posanga? -Mendara. -Qual é o outro remédio de nossa alma? -O matrimônio. (Ar., Cat., 94); 3) cônjuge: I mendá-mokõîa resé i byk'iré... - Após tocar em seu segundo cônjuge. (Ar., Cat., 280); (adj.: mendar) - casado: Ereîkópe kunhã-mendara resé? - Tiveste relações sexuais com uma mulher casada? (Ar., Cat., 109)",
+)
 
 __all__ = [
     name for name in globals() if not name.startswith("_") and name not in {"os", "sys"}

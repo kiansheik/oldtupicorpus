@@ -1,7 +1,28 @@
 # Agent Log
 
+## 2026-09-17
+
+- Added noun `/` transitive-verb incorporation in sibling Pydicate, with an
+  intransitive generic-object default and possessor-object `.var(1)`.
+- Changed Araujo record 81 to the editor-selected analysis. It renders
+  `oemitymbûerypy pupé Tupã potame'enga no` with role annotations.
+- Focused tests and 102 corpus tests pass; all 120 saved historic targets
+  remain verified. Records 81–82 remain unaccounted. See
+  [handoff](session-handoffs/2026-09-17-incorporated-object-verb.md).
+
 ## 2026-09-16
 
+- Added `nhe = îe.var(1)` and `nho = îo.var(1)` to the sibling engine,
+  with propagation into verb conjugation, and a focused regression.
+  Inventoried direct historic `îe` uses and two lexicon helpers in
+  `docs/agent/reflexive-nasal-review.md` for human witness decisions.
+  No historic expression or saved target changed. The 98-test corpus
+  suite passes; all 80 saved Araujo and 40 Bettendorff targets verify.
+- Added explicit `mbo = mo.var(1)` causative variation in the sibling
+  `VerbAugmentor`; the shared `moîasuk` helper now uses it while Araujo
+  record 82's expression remains unchanged. Focused tests and the
+  95-test corpus suite pass. After MCP reload, all 80 saved Araujo and
+  40 Bettendorff targets verified; records 81 and 82 are unaccounted.
 - Fixed `(m)` pluriform prefix selection for possessed nouns in the
   sibling `Noun.pluriform_prefix` and `Noun.possessive` methods. The
   unchanged Araujo record 81 now renders `Tupã potabame'engi` in its

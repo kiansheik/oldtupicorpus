@@ -292,6 +292,18 @@
     "subtag": "IMPERATIVE_PREFIX"
   },
   {
+    "id": "S000134",
+    "subtag": "INCORPORATED"
+  },
+  {
+    "id": "S000135",
+    "subtag": "INCORPORATED_OBJECT"
+  },
+  {
+    "id": "S000137",
+    "subtag": "INCORPORATED_VERB_NOMINAL"
+  },
+  {
     "id": "S000023",
     "subtag": "INTERJECTION"
   },
@@ -410,6 +422,10 @@
   {
     "id": "S000037",
     "subtag": "PORTUGUESE"
+  },
+  {
+    "id": "S000136",
+    "subtag": "POSSESSED"
   },
   {
     "id": "S000015",

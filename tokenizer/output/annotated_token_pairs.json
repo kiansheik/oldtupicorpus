@@ -161,6 +161,11 @@
   },
   {
     "value": "opakatu",
+    "tag": "[3p:ADVERB:ALL:DEEPEST_NODE_2]",
+    "translation": ""
+  },
+  {
+    "value": "opakatu",
     "tag": "[3p:ADVERB:ALL:DEEPEST_NODE_6]",
     "translation": ""
   },
@@ -255,6 +260,11 @@
     "translation": ""
   },
   {
+    "value": "o",
+    "tag": "[3p:DEEPEST_NODE_4:MAIN_CLAUSE_SUBJECT:PRONOUN]",
+    "translation": ""
+  },
+  {
     "value": "i",
     "tag": "[3p:DEEPEST_NODE_4:NON_MAIN_CLAUSE_SUBJECT:OBJECT]",
     "translation": ""
@@ -267,11 +277,6 @@
   {
     "value": "i",
     "tag": "[3p:DEEPEST_NODE_4:SUBJECT]",
-    "translation": ""
-  },
-  {
-    "value": "o",
-    "tag": "[3p:DEEPEST_NODE_5:MAIN_CLAUSE_SUBJECT:PRONOUN]",
     "translation": ""
   },
   {
@@ -530,11 +535,6 @@
     "translation": ""
   },
   {
-    "value": "ypy",
-    "tag": "[CLASSIFIER:DEEPEST_NODE_5:PAST]",
-    "translation": ""
-  },
-  {
     "value": "a",
     "tag": "[CLASS_1:CONSONANT:CONSONANT_ENDING:DEEPEST_NODE_6:GERUND_SUFFIX:SUBSTANTIVE_SUFFIX]",
     "translation": ""
@@ -637,6 +637,11 @@
   {
     "value": "a",
     "tag": "[CONSONANT_ENDING:DEEPEST_NODE_14:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "a",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_1:INCORPORATED_VERB_NOMINAL:NOUN:SUBSTANTIVE_SUFFIX]",
     "translation": ""
   },
   {
@@ -900,6 +905,11 @@
     "translation": ""
   },
   {
+    "value": "ota",
+    "tag": "[DEEPEST_NODE_1:INCORPORATED:INCORPORATED_OBJECT:OBJECT:POSSESSED]",
+    "translation": ""
+  },
+  {
     "value": "ene'ĩ",
     "tag": "[DEEPEST_NODE_1:INTERJECTION]",
     "translation": ""
@@ -935,6 +945,11 @@
     "translation": ""
   },
   {
+    "value": "sete",
+    "tag": "[DEEPEST_NODE_1:NUMBER]",
+    "translation": ""
+  },
+  {
     "value": "sinco",
     "tag": "[DEEPEST_NODE_1:NUMBER]",
     "translation": ""
@@ -952,6 +967,11 @@
   {
     "value": "poro",
     "tag": "[DEEPEST_NODE_1:OBJECT:gen]",
+    "translation": ""
+  },
+  {
+    "value": "p",
+    "tag": "[DEEPEST_NODE_1:P:PLURIFORM_PREFIX]",
     "translation": ""
   },
   {
@@ -1085,11 +1105,6 @@
     "translation": ""
   },
   {
-    "value": "p",
-    "tag": "[DEEPEST_NODE_2:P:PLURIFORM_PREFIX]",
-    "translation": ""
-  },
-  {
     "value": "emi",
     "tag": "[DEEPEST_NODE_2:PATIENT_PREFIX]",
     "translation": ""
@@ -1132,11 +1147,6 @@
   {
     "value": "pe",
     "tag": "[DEEPEST_NODE_3:LOCATIVE:POSTPOSITION]",
-    "translation": ""
-  },
-  {
-    "value": "Tupã",
-    "tag": "[DEEPEST_NODE_3:NOUN:POSSESSOR:PROPER_NOUN]",
     "translation": ""
   },
   {
@@ -1200,6 +1210,11 @@
     "translation": ""
   },
   {
+    "value": "îanondé",
+    "tag": "[DEEPEST_NODE_3:POSTPOSITION]",
+    "translation": ""
+  },
+  {
     "value": "agûer",
     "tag": "[DEEPEST_NODE_3:PRETERITE_SUFFIX]",
     "translation": ""
@@ -1241,6 +1256,11 @@
   },
   {
     "value": "embi",
+    "tag": "[DEEPEST_NODE_4:PATIENT_PREFIX]",
+    "translation": ""
+  },
+  {
+    "value": "emi",
     "tag": "[DEEPEST_NODE_4:PATIENT_PREFIX]",
     "translation": ""
   },
@@ -1290,6 +1310,11 @@
     "translation": ""
   },
   {
+    "value": "bûer",
+    "tag": "[DEEPEST_NODE_4:PRETERITE_SUFFIX]",
+    "translation": ""
+  },
+  {
     "value": "JesusChristoabé",
     "tag": "[DEEPEST_NODE_4:PROPER_NOUN]",
     "translation": ""
@@ -1335,13 +1360,13 @@
     "translation": ""
   },
   {
-    "value": "îe",
+    "value": "nhe",
     "tag": "[DEEPEST_NODE_5:OBJECT:OBJECT_PREFIX:REFLEXIVE:refl]",
     "translation": ""
   },
   {
-    "value": "emi",
-    "tag": "[DEEPEST_NODE_5:PATIENT_PREFIX]",
+    "value": "îe",
+    "tag": "[DEEPEST_NODE_5:OBJECT:OBJECT_PREFIX:REFLEXIVE:refl]",
     "translation": ""
   },
   {
@@ -1362,11 +1387,6 @@
   {
     "value": "îabé",
     "tag": "[DEEPEST_NODE_5:POSTPOSITION]",
-    "translation": ""
-  },
-  {
-    "value": "bûer",
-    "tag": "[DEEPEST_NODE_5:PRETERITE_SUFFIX]",
     "translation": ""
   },
   {

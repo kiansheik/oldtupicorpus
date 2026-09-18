@@ -236,6 +236,10 @@
     "tag": "[3p:ADVERB:ALL:DEEPEST_NODE_1]"
   },
   {
+    "id": "T000420",
+    "tag": "[3p:ADVERB:ALL:DEEPEST_NODE_2]"
+  },
+  {
     "id": "T000286",
     "tag": "[3p:ADVERB:ALL:DEEPEST_NODE_6]"
   },
@@ -350,6 +354,10 @@
   {
     "id": "T000234",
     "tag": "[3p:DEEPEST_NODE_3:SUBJECT_PREFIX]"
+  },
+  {
+    "id": "T000416",
+    "tag": "[3p:DEEPEST_NODE_4:MAIN_CLAUSE_SUBJECT:PRONOUN]"
   },
   {
     "id": "T000156",
@@ -712,6 +720,10 @@
     "tag": "[CONSONANT_ENDING:DEEPEST_NODE_15:SUBSTANTIVE_SUFFIX]"
   },
   {
+    "id": "T000419",
+    "tag": "[CONSONANT_ENDING:DEEPEST_NODE_1:INCORPORATED_VERB_NOMINAL:NOUN:SUBSTANTIVE_SUFFIX]"
+  },
+  {
     "id": "T000350",
     "tag": "[CONSONANT_ENDING:DEEPEST_NODE_1:NEGATION_SUFFIX]"
   },
@@ -952,6 +964,10 @@
     "tag": "[DEEPEST_NODE_1:GENERIC:PATIENT_PREFIX:PEOPLE_IN_GENERAL]"
   },
   {
+    "id": "T000418",
+    "tag": "[DEEPEST_NODE_1:INCORPORATED:INCORPORATED_OBJECT:OBJECT:POSSESSED]"
+  },
+  {
     "id": "T000201",
     "tag": "[DEEPEST_NODE_1:INTERJECTION]"
   },
@@ -994,6 +1010,10 @@
   {
     "id": "T000289",
     "tag": "[DEEPEST_NODE_1:OBJECT:gen]"
+  },
+  {
+    "id": "T000417",
+    "tag": "[DEEPEST_NODE_1:P:PLURIFORM_PREFIX]"
   },
   {
     "id": "T000392",

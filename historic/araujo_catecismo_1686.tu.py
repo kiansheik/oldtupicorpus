@@ -228,14 +228,78 @@ l += (iabiõ * seîxu) + (îe * mombeu).var(1).base_nominal()
 l += (iabiõ * Pascoa) + (tupan * îar).var(1).base_nominal()
 îekuakub.definition = "jejuar"
 l += (iabiõ * n(îe * ((smi) * (kuakub / puai)))) + (îekuakub).var(1).base_nominal()
+# @note studio:v1 {"passageId":"passage:976276b6-6bee-40d8-b91a-dce4c83abc16"}
 l += (iabiõ * n(opakombó)) + (
-    (supé * tupan) + (oîepé * (asé * moîaoka * mbae).base_nominal())
+    (supé * tupan) + (oîepé * (mbae * (asé * moîaoka)).base_nominal())
 )
-tupapotaba.definition = "quinhão de Deus dízimo"
-l += (pupé * ((pûera * (og * (emi * tym))) / ypy)) + (tupapotaba * meeng) + no
+l += (
+    (pupé * ((pûera * (og * (emi * tym))) / ypy))
+    + (tupan * (potaba / meeng).var(1)).base_nominal()
+    + no
+)
 
 # @subsection Sacramentos. Sete Santa Madre Igreja Sacramentos.
-l += ((ae * karaiba) * pupé) + (îe * moîasuk).var(1).base_nominal()
+# @note studio:v1 {"passageId":"passage:c28d2754-0b64-493b-9fae-6c06879d3290","evidence":{"version":1,"assetId":"7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e","passageId":"passage:c28d2754-0b64-493b-9fae-6c06879d3290"}}
+l += ((ae * karaiba) * pupé) + (îe * moîasuk).var(((1))).base_nominal()
+
+
+# @diplomatic Acé cybápe abaré goaçu nhandy caräíba nonga.
+# @target asé sybápe abaregûasu nhandykaraíbanonga
+# @page 6
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Sacramentos. Sete Santa Madre Igreja Sacramentos.
+# @note studio:v1 {"passageId": "passage:c0add967-b045-440c-8e1f-a42acd1e3b66"}
+l += (
+    ((pe) * ((asé) * (syba_2f344911)))
+    + (((abareguasu) * (nong)) * ((nhandy) / (karaiba)))
+).base_nominal()
+
+
+# @diplomatic asé sybápe abareguasu nhandy karaíba nonga
+# @note studio:v1 {"passageId": "passage:76592c86-8086-4b38-8ca6-f6cdb92c98f7"}
+l += (tupan * îar).var(1).base_nominal()
+
+
+# @diplomatic Nhemombëú.
+# @target nhemombe'u
+# @note studio:v1 {"passageId": "passage:709719cf-73d8-4be2-b1fd-82c188cee4d6"}
+l += (((((((((mombeu)) * ((nhe)))).var(1)))))).base_nominal()
+
+
+# @diplomatic Acé rëõ ianondé nhándy caräîba râra.
+# @page 6
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Sacramentos. Sete Santa Madre Igreja Sacramentos.
+# @note studio:v1 {"passageId":"passage:87d8b70b-b94e-4614-8e20-98aa92db1888","evidence":{"version":1,"assetId":"7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e","passageId":"passage:87d8b70b-b94e-4614-8e20-98aa92db1888"}}
+l += ((ianonde) * ((asé) * (eo))) + (
+    ((((((nhandy) / (karaiba)) * (îar)).var(1)).base_nominal()))
+)
+
+
+# @diplomatic Nhemöabaré.
+# @page 6
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Sacramentos. Sete Santa Madre Igreja Sacramentos.
+# @note studio:v1 {"passageId": "passage:dbb1dab7-bb56-41b8-81e2-2c143aad47da"}
+l += nhemoabare
+
+
+# @diplomatic Mendâra
+# @page 6
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Sacramentos. Sete Santa Madre Igreja Sacramentos.
+# @note studio:v1 {"passageId": "passage:b8e1456f-d0e6-43b5-af53-c7c2ff300cfd"}
+l += mendara
+
+
+# @diplomatic Sete opácatú angaipâba nhemonhán gáb ypy
+# @page 7
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Peccados Caitaes.
+# @note studio:v1 {"passageId": "passage:fe9af5c8-2d24-4dbc-be63-706f866addcf", "evidence": {"version": 1, "assetId": "7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e", "passageId": "passage:fe9af5c8-2d24-4dbc-be63-706f866addcf"}}
+l += (sete) * (
+    (opakatu) + (((saba) * ((((nhe)) * (((angaipaba)) * (monhang))))) / (ypy))
+)
 
 araujo_catecismo_1686 = l
 if __name__ == "__main__":

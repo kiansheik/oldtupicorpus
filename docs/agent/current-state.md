@@ -1,6 +1,50 @@
 # Current State
 
-Last updated: 2026-09-16
+Last updated: 2026-09-17
+
+## 2026-09-17 Noun-object incorporation in Araujo record 81
+
+- The sibling engine now interprets a bare noun `/` bare transitive verb as an
+  incorporated-object verb. Its default is intransitive with a generic object;
+  `.var(1)` is transitive and takes the incorporated noun's possessor as object.
+  Composition still uses `tupi.Noun.compose`, and the left noun supplies
+  pluriformity.
+- The editor-approved record 81 expression now uses
+  `(tupan * (potaba / meeng).var(1)).base_nominal()` and renders
+  `oemitymbûerypy pupé Tupã potame'enga no`. Tupã is annotated as the
+  possessor/object. Record 81 is still unsaved ground truth; record 82 is also
+  unaccounted. Regenerating JSONL would record both, so the editor's per-line
+  Commit ground truth action is still needed for record 81.
+- Focused tests and the 102-test corpus suite pass. MCP checks found all 80
+  saved Araujo and 40 Bettendorff lines unchanged. See
+  [handoff](session-handoffs/2026-09-17-incorporated-object-verb.md).
+
+## 2026-09-16 Explicit nasal reflexive and reciprocal variants
+
+- The sibling grammar engine now exports `nhe = îe.var(1)` and
+  `nho = îo.var(1)`; attached variants render in direct verbal and short
+  nominal forms. Existing `îe`/`îo` expressions remain unchanged.
+- `docs/agent/reflexive-nasal-review.md` lists every direct historic
+  `îe` occurrence and two lexicon helpers for witness review. No historic
+  expression or target was revised. The nested record-29 composition
+  still detaches an in-memory `nhe` candidate and needs investigation if
+  the editor selects it.
+- Focused tests and the 98-test corpus suite pass. MCP verification found
+  all 80 saved Araujo and 40 Bettendorff targets unchanged; Araujo
+  records 81 and 82 remain unaccounted.
+
+## 2026-09-16 Explicit causative `mbo-` variation
+
+- `../nhe-enga/pydicate/pydicate/lang/tupilang/pos/verb.py` now treats
+  `mo.var(1)` as the explicit `mbo-` allomorph and exports `mbo` as its
+  shorthand. The shared lexicon helper `moîasuk` uses that variant;
+  Araujo record 82's source expression was not edited.
+- Record 82 renders `i karaíba pupé îemboîasuka`, matching the editor's
+  target. `tests/mo_mbo_variation_test.py` covers the variant and approved
+  `mo-` contrasts. The 95-test corpus suite passes.
+- MCP checks found all 80 saved Araujo and 40 Bettendorff targets
+  unchanged. Araujo records 81 and 82 remain unaccounted for human
+  editorial action.
 
 ## 2026-09-16 `(m)` pluriform possession in Araujo record 81
 

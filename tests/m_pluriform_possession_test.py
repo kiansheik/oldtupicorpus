@@ -22,13 +22,15 @@ class MPluriformPossessionTest(unittest.TestCase):
         self.assertIn("p[PLURIFORM_PREFIX:P]otab", tupapotaba.eval(True))
         self.assertEqual((potaba * self.entries["meeng"]).eval(), "motaba oîme'eng")
 
-    def test_araujo_record_81_keeps_p_as_verb_object(self):
+    def test_araujo_record_81_keeps_p_as_incorporated_possessed_noun(self):
         record = self.entries["araujo_catecismo_1686"][80]
-        target = "oemitymbûerypy pupé Tupã potabame'engi no"
+        target = "oemitymbûerypy pupé Tupã potame'enga no"
 
         self.assertEqual("".join(record.eval().split()), "".join(target.split()))
-        self.assertIn("p[PLURIFORM_PREFIX:P]otab", record.eval(True))
-        self.assertIn("[OBJECT:DIRECT]", record.eval(True))
+        self.assertIn(
+            "p[PLURIFORM_PREFIX:P]ota[INCORPORATED_OBJECT]", record.eval(True)
+        )
+        self.assertIn("[OBJECT:DIRECT:INCORPORATED_NOUN_POSSESSOR]", record.eval(True))
 
     def test_t_class_keeps_r_when_possessed(self):
         self.assertEqual(
