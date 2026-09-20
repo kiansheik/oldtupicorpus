@@ -386,6 +386,60 @@ mendara = Noun(
     definition="(s.) - 1) casado(a) - Ereîkópe mendara, mendarûera resé? - Tens relações com uma casada, com uma que foi casada? (Anch., Doutr. Cristã, II, 89); 2) casamento; matrimônio: -Marãpe amõ îandé 'anga posanga? -Mendara. -Qual é o outro remédio de nossa alma? -O matrimônio. (Ar., Cat., 94); 3) cônjuge: I mendá-mokõîa resé i byk'iré... - Após tocar em seu segundo cônjuge. (Ar., Cat., 280); (adj.: mendar) - casado: Ereîkópe kunhã-mendara resé? - Tiveste relações sexuais com uma mulher casada? (Ar., Cat., 109)",
 )
 
+
+# @note studio-lexical:v1 {"id":"lexical:67d2d0e6bd29b9e227c0207424930705b1e625190d2619a7f070d04b4a1db32c","name":"ekateyma","scope":"shared"}
+ekateyma = Noun(
+    value="ekate'yma",
+    definition="(ou ekoate'yma) (t) (s.) - avareza: Tekate'yma robaîara tekate'yme'yma. - O oposto da avareza é a liberalidade. (Ar., Cat., 18); [adj.: ekate'ym (r, s)] - avaro: ...Pe rekate'ym sesé... - Vós sois avaros com ele. (Ar., Cat., 89)",
+)
+
+
+# @note studio-lexical:v1 {"id":"lexical:785ae19e55a33407cc5a71fc314b0145018be53b4b5d3719cf313ebfc832e0db","name":"moropotara","scope":"shared"}
+moropotara = (((potar) * moro).base_nominal()).copy()
+moropotara.definition = "(m) (etim. - desejar gente) (s.) - lascívia, luxúria, desejo sensual, concupiscência: Ereîtykype kunumĩ amõ... nde 'arybo moropotara suí? - Lançaste algum menino sobre ti por desejo sensual? (Anch., Doutr. Cristã, II, 95); (adj.: poropotar) - lascivo, lúbrico, desejoso de sexo, concupiscente, luxurioso: Nde resá-poropotápe amõ resé ema'ẽmo? - Tu tens olhos concupiscentes, olhando para alguém? (Ar., Cat., 104v); abá-poropotara - homem luxurioso (VLB, II, 25) ● i poropotaryba'e - o que é luxurioso: sesá-poropotaryba'e... - o que tem olhos que são luxuriosos (Ar., Cat., 71v); poropotarixûera (m) - o que tem tendência à luxúria, luxurioso (VLB, II, 25)"
+
+
+# @note studio-lexical:v1 {"id":"lexical:6dd14cb447a0e71fc6aae104fcbeb2e150f070886bf3abfc90b55433899e89a9","name":"moyro","scope":"shared"}
+moyro = Verb(
+    value="moŷrõ",
+    definition="(v.tr.) - 1) irar, irritar, agastar: Xe moaîu-marangatu, xe moŷrõetekatûabo, aîpó tekó-pysasu. - Importuna-me bem, irritando-me muitíssimo, aquela lei nova. (Anch., Teatro, 4); ...Pemoŷrõ Pa'i Îesu... - Irritastes o senhor Jesus. (Anch., Teatro, 42); 2) indispor (contra algo ou contra alguém: compl. com supé): Aîmoyrõ-yrõ (abá) supé. - Fiquei-o indispondo contra o homem. (VLB, I, 48, adapt.); 3) escandalizar (VLB, I, 122)",
+    verb_class="(v.tr.)",
+    vid=7597,
+)
+
+
+# @note studio-lexical:v1 {"id":"lexical:4614902bf71f6e759c5d2e8e8154b245eeaadb85048e0fd64318df020534d668","name":"kau","scope":"shared"}
+kau = Noun(
+    value="ka'u",
+    definition="(s.) - bebedeira (de cauim); bebedeira em geral: Mba'e-eté ka'ugûasu... - Coisa muito boa é uma grande bebedeira. (Anch., Teatro, 6); Ixé kó ka'u resé aporomoingó îepi... - Eis que eu faço as pessoas estarem na bebedeira sempre. (Anch., Teatro, 134)",
+)
+
+
+# @note studio-lexical:v1 {"id":"lexical:fe3098aab88e20de2fb4f987267890b838aab27b8567abf7d70a1c488bf5365f","name":"asy","scope":"shared"}
+asy = Noun(
+    value="asy",
+    definition="(t) (s.) - 1) dor, pena: 'Y berame'ĩ ikó îandé ratá rasy: n'osyki Anhanga ratá rasy resé. - Eis que a dor de nosso fogo parece a da água: não se equipara à dor do fogo do diabo. (Ar., Cat., 163v); Oîporará Tupã repîake'yma rasy. - Sofrem a dor de não verem a Deus. (Ar., Cat., 48); 2) mal, ruindade; problema: Na sasyî. - Não faz mal, não há problema. (Anch., Teatro, 148, 2006); [adj.: asy (r, s)] - 1) dolorido, doloroso, penoso, trabalhoso, árduo; (xe) doer, ser penoso, ser causa de pesar; pesar; ter dor, sentir dor; sofrer: T'oré pyatã, angá, mba'e-asy porarábo... - Que sejamos corajosos, sim, suportando as coisas dolorosas. (Anch., Teatro, 120); Sasy nakó ygá-pukuîa. - É penoso, de fato, remar canoa. (VLB, II, 134); Sasy nde só ixébe. - Dói-me tua ida. (Também se emprega com o gerúndio.): Sasy-eté ahẽ osóbo. - É doloroso ir-se fulano. Sasy-eté ahẽ oure'yma ixé o enõîndápe. - É muito doloroso não vir fulano ao meu chamado. (VLB, II, 75); Xe rybyt, nde nhyrõ xebo; xe rasy, xe mara'a. - Meu irmão, perdoa tu a mim; eu tenho dor, eu estou doente. (Anch., Teatro, 46); Ta sasy muru supé! - Que eles sofram junto dos malditos! (Anch., Teatro, 56); Mba'epe sasyeté a'epe tekoara supé?... - Que é mais penoso aos que estão ali? (Ar., Cat., 47v); Sasy ixébe. - Dói a mim; pesa-me (alguma coisa). (VLB, I, 105); Anhanga ratá îabépe satá rasyramo? - Como o fogo do diabo o fogo dele é penoso? (Ar., Cat., 48v); Sasy Peró supé. - Pesa a Pedro (alguma coisa); dói a Pedro (alguma coisa). (VLB, I, 105); Sasy-eté abá supé ogûe'õnama anduba. - Dói muito ao homem perceber sua morte. (Ar., Cat., 156); 2) mau, ruim: nhe'engasy - palavra ruim (VLB, I, 40); tobasy - cara ruim, mau humor (VLB, I, 140); (adv.) - demais, de doer, dolorosamente: Saîasy. - Ele está azedo demais (lit., azedo de doer). (VLB, I, 143); Osem okarype oîase'o-asykatûabo. - Saiu para o pátio chorando muito dolorosamente. (Ar., Cat., 57v) ● mba'e rasy - dor (em sentido genérico) (VLB, I, 106)",
+)
+
+# @note studio-lexical:v1 {"id":"lexical:e24748b0584ebd14de2fb57bb8bae67972321ff7352857fe8a5ab150d4fa0c68","name":"moasy","scope":"shared"}
+moasy = ((mo) * (asy)).copy()
+moasy.definition = "moasy (ou mboasy) (etim. - fazer doer) (v.tr.) -\n1) invejar:\nAbá mba'ekatu moasy.\nInvejar as coisas boas de alguém. (Anch., Doutr. Cristã, I, 151)\n\n2) ressentir-se de; levar a mal:\nAûîé sapirõmbyre'yma o moetee'yma oîmoasy...\nEnfim, o que não é pranteado ressente-se de não o honrarem. (Ar., Cat., 85v)\n\n3) sentir a dor de, ter dor por, lamentar:\nAîmoasy nde só.\nLamento tua ida. (VLB, II, 75)\nXe mba'e-moasy îá.\nEu lamento-me, de costume (isto é, reclamo de qualquer coisa). (VLB, I, 106)\n...O sy suí o 'aragûera moasŷabo...\nLamentando terem nascido de suas mães. (Ar., Cat., 163-163v)\n...O kaîa moasŷabo...\nTendo dor de suas queimaduras. (Ar., Cat., 161)\n\n4) arrepender-se de:\nO ekó moasy riré, abá sóû îemombegûabo...\nApós arrependerem-se de seus atos, os índios vão confessar-se. (Anch., Teatro, 38)\nNd'oîmoasyîpe amõ o nhe'engaibagûera?\nNão se arrependeram alguns de seus vitupérios? (Ar., Cat., 63)\n\n5) fazer sofrer:\nTupã sy îandé senõîa oîmoasy-katu-eté.\nO nosso chamado à mãe de Deus fá-lo sofrer muito. (Anch., Poemas, 186)"
+
+
+# @note studio-lexical:v1 {"id":"lexical:ce0c12488b620b8e945019799466e0ec2062ae5c73af918e104d04c9d49c6be1","name":"eko","scope":"shared"}
+eko = Noun(
+    value="ekó",
+    definition="(t) (s.) - lei, determinação, regra, costume (VLB, II, 19): Îori, t'ereîá sekó. - Vem, para que recebas a lei deles. (Anch., Teatro, 46); Ã tekó a'ereme moreroka. - Eis que era costume, então, batizar. (Ar., Cat., 3); ...Tekó-katu aby potare'yma - Não querendo transgredir a boa lei. (Ar., Cat., 125v); ...Asé 'anga rekorama oîmonhang asébe. - As leis de nossa alma fez para a gente. (Anch., Doutr. Cristã, I, 224) ● sekoba'e - o que é costume, o que está acostumado: Sekoba'e ixé. - Eu sou acostumado. (VLB, II, 140)",
+)
+
+# @note studio-lexical:v1 {"id":"lexical:4258266ba1a90cf97dfddc1d170496ae168d1425b87cbcbe3de25952b36a17d7","name":"ryryi","scope":"shared"}
+ryryi = Verb(
+    value="ryryî",
+    verb_class="(v. intr.)",
+    definition="(v. intr.) - tremer: ...Yby abé a'ereme... oryryîane. - Tremendo, então, a terra também. (Ar., Cat., 160); Aryryî, opá xe uba îesyî. - Tremo, ambas as minhas coxas adormeceram. (Anch., Teatro, 26); ...Asykyîé, aryryî! - Tenho medo, tremo! (Anch., Teatro, 62); Oryryî nde îuká ré... - Tremeram após te matarem. (Anch., Teatro, 122); Nde rera rendupa abé, anhanga ryryî okûapa. - Tão logo ouvindo o teu nome, o diabo está tremendo. (Anch., Poemas, 132)",
+    vid=9467,
+)
+
 __all__ = [
     name for name in globals() if not name.startswith("_") and name not in {"os", "sys"}
 ]

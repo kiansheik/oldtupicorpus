@@ -311,6 +311,11 @@
   },
   {
     "value": "t",
+    "tag": "[ABSOLUTE:DEEPEST_NODE_2:PLURIFORM_PREFIX:T]",
+    "translation": ""
+  },
+  {
+    "value": "t",
     "tag": "[ABSOLUTE:DEEPEST_NODE_3:PLURIFORM_PREFIX:T]",
     "translation": ""
   },
@@ -397,6 +402,11 @@
   {
     "value": "memẽ",
     "tag": "[ADVERB:DEEPEST_NODE_14]",
+    "translation": ""
+  },
+  {
+    "value": "memẽ",
+    "tag": "[ADVERB:DEEPEST_NODE_1:NOUN:POSSESSOR]",
     "translation": ""
   },
   {
@@ -1357,6 +1367,11 @@
   {
     "value": "e'ym",
     "tag": "[DEEPEST_NODE_5:NEGATION_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "Tupã",
+    "tag": "[DEEPEST_NODE_5:NOUN:POSSESSOR:PROPER_NOUN]",
     "translation": ""
   },
   {

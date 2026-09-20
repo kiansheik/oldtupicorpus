@@ -296,10 +296,78 @@ l += mendara
 # @page 7
 # @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
 # @subsection Peccados Caitaes.
-# @note studio:v1 {"passageId": "passage:fe9af5c8-2d24-4dbc-be63-706f866addcf", "evidence": {"version": 1, "assetId": "7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e", "passageId": "passage:fe9af5c8-2d24-4dbc-be63-706f866addcf"}}
+# @note studio:v1 {"passageId":"passage:fe9af5c8-2d24-4dbc-be63-706f866addcf","evidence":{"version":1,"assetId":"7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e","passageId":"passage:fe9af5c8-2d24-4dbc-be63-706f866addcf"}}
 l += (sete) * (
     (opakatu) + (((saba) * ((((nhe)) * (((angaipaba)) * (monhang))))) / (ypy))
 )
+
+
+# @diplomatic Morerobiarëyma.
+# @page 7
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Peccados Caitaes.
+# @note studio:v1 {"passageId": "passage:2ee62778-1af5-4f17-a079-7d9ca8546175"}
+l += -((((((moro).var(1))) * (erobîar)).var(1)).base_nominal())
+
+
+# @diplomatic Tecatëyma.
+# @translation avareza
+# @page 7
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Peccados Capitaes.
+# @note studio:v1 {"passageId": "passage:b021f340-2fd4-40d5-bba1-15a46a11f361"}
+l += ekateyma
+
+
+# @diplomatic Moropotâra
+# @page 7
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Peccados Capitaes.
+# @note studio:v1 {"passageId": "passage:9d4b3d3a-49e2-4f3b-8ed6-75206e8cb6c6"}
+l += moropotara
+
+
+# @diplomatic Nhemoyrõ.
+# @page 7
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Peccados Capitaes.
+# @note studio:v1 {"passageId": "passage:3a1e71eb-0e2f-44d0-af3a-744c6f3bb03b", "evidence": {"version": 1, "assetId": "7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e", "passageId": "passage:3a1e71eb-0e2f-44d0-af3a-744c6f3bb03b"}}
+l += ((moyro) * nhe).var(1).base_nominal()
+
+
+# @diplomatic mbaéu, memé cäú eté eté.
+# @page 7
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Peccados Capitaes.
+# @note studio:v1 {"passageId": "passage:aa6046ac-38c0-48d0-a565-bafd1e545e2e"}
+l += ((((((((u) * (mbae)).var(1)).base_nominal()))) + (memen))) * (
+    ((kau) / (eté)) / (eté)
+)
+
+
+# @page 7
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Peccados Capitaes.
+# @note studio:v1 {"passageId": "passage:c32d12b8-c846-44bf-8509-05ad394f0f46"}
+l += (((((((abá) * ((mbae) / ((katu)))))))) * ((moasy))).base_nominal()
+
+
+# @diplomatic Tupã recó recé nhemboryryi ëyma.
+# @page 7
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Peccados Capitaes.
+# @note studio:v1 {"passageId": "passage:293de403-8063-49ca-b6d6-645c186e35c7", "evidence": {"version": 1, "assetId": "7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e", "passageId": "passage:293de403-8063-49ca-b6d6-645c186e35c7"}}
+l += ((esé) * ((tupan) * ((eko)))) + (
+    (((-(((((((mo).var(1))) * (ryryi)) * (nhe)).var(1)).base_nominal()))))
+)
+
+
+# @diplomatic Sete tecó katu
+# @page 7
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Virtudes contra os sete peccados.
+# @note studio:v1 {"passageId": "passage:73573f3e-8cb6-439f-b437-3e06b4edfa2d"}
+l += (sete) * (((eko) / (katu)))
 
 araujo_catecismo_1686 = l
 if __name__ == "__main__":
