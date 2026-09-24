@@ -10,6 +10,7 @@ l = [
     + (endé * (pysyro.imp()) * oré)
     + ((tupan == (oré * îara.voc())))
     + ((sara * (-(oré * amotar))) * suí),
+    # @note studio:v1 {"passageId":"passage:6a1f20f3-b8d9-4180-81ef-c2b110ff2098","evidence":{"version":1,"assetId":"7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e","passageId":"passage:6a1f20f3-b8d9-4180-81ef-c2b110ff2098"}}
     (((tuba + tayra + espirito_santo) * era) * pupé),
     (amen),
     # @subsection Padre Noßo
