@@ -500,6 +500,10 @@
     "tag": "[ADVERB:DEEPEST_NODE_6]"
   },
   {
+    "id": "T000428",
+    "tag": "[ADVERB:DEEPEST_NODE_7]"
+  },
+  {
     "id": "T000403",
     "tag": "[ADVERB:DEEPEST_NODE_9]"
   },
@@ -558,6 +562,10 @@
   {
     "id": "T000163",
     "tag": "[AND:CONJUNCTION:DEEPEST_NODE_2]"
+  },
+  {
+    "id": "T000427",
+    "tag": "[AND:CONJUNCTION:DEEPEST_NODE_3:NOUN:POSSESSOR]"
   },
   {
     "id": "T000098",
@@ -678,6 +686,10 @@
   {
     "id": "T000015",
     "tag": "[CONJUNCTION:AND]"
+  },
+  {
+    "id": "T000429",
+    "tag": "[CONJUNCTION:DEEPEST_NODE_7]"
   },
   {
     "id": "T000177",
@@ -1076,6 +1088,10 @@
     "tag": "[DEEPEST_NODE_22:FUTURE_SUFFIX]"
   },
   {
+    "id": "T000424",
+    "tag": "[DEEPEST_NODE_2:DEMONSTRATIVE]"
+  },
+  {
     "id": "T000380",
     "tag": "[DEEPEST_NODE_2:FACILITY_SUFFIX]"
   },
@@ -1132,6 +1148,10 @@
     "tag": "[DEEPEST_NODE_3:MUTUAL:OBJECT:OBJECT_PREFIX:RECIPROCAL:mut]"
   },
   {
+    "id": "T000425",
+    "tag": "[DEEPEST_NODE_3:NEGATION_SUFFIX]"
+  },
+  {
     "id": "T000412",
     "tag": "[DEEPEST_NODE_3:NOUN:POSSESSOR:PROPER_NOUN]"
   },
@@ -1186,6 +1206,10 @@
   {
     "id": "T000105",
     "tag": "[DEEPEST_NODE_4:LOCATIVE:POSTPOSITION]"
+  },
+  {
+    "id": "T000426",
+    "tag": "[DEEPEST_NODE_4:NEGATION_SUFFIX]"
   },
   {
     "id": "T000167",

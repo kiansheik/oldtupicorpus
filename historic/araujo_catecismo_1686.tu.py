@@ -369,6 +369,55 @@ l += ((esé) * ((tupan) * ((eko)))) + (
 # @note studio:v1 {"passageId": "passage:73573f3e-8cb6-439f-b437-3e06b4edfa2d"}
 l += (sete) * (((eko) / (katu)))
 
+
+# @diplomatic "Aipó tekó aigaipâba robaixoâra\nNã ëi."
+# @page 7
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Virtudes contra os sete peccados.
+# @note studio:v1 {"passageId": "passage:0168ae08-9dcd-43c2-aa21-854f6b05bff5", "textEncoding": {"diplomatic": {"format": "json-string-v1", "sha256": "737b15cb9799482fb6b74d5b3778deef835a1f2f1842c2b36c558f1a414e9387"}}}
+l += ((nã)) >> ((((aipo) * ((((((eko) / (angaipaba)) * (obaixuara)))))) * ei))
+
+
+# @page 7
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Virtudes contra os sete peccados.
+# @note studio:v1 {"passageId": "passage:89243365-94cc-4151-b292-686b1be5e6f4"}
+l += ((-((((((moro).var(1))) * (erobîar)).var(1)).base_nominal())) * (obaixuara)) @ (
+    ((((-(((moeté) * (nhe)).var(1))).base_nominal())))
+)
+
+
+# @page 7
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Virtudes contra os sete peccados.
+# @note studio:v1 {"passageId":"passage:59b4cf67-6fef-4de1-a070-3ef88f8140c0","evidence":{"version":1,"assetId":"7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e","passageId":"passage:59b4cf67-6fef-4de1-a070-3ef88f8140c0"}}
+l += ((ekateyma) * (obaixuara)) @ (((tekateymeyma)))
+
+
+# @diplomatic "Moropotâra robaixoára\nMoropatarëyma."
+# @page 7
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Virtudes contra os sete peccados.
+# @note studio:v1 {"passageId": "passage:86349beb-b171-4d2c-8136-957095fbfa60", "textEncoding": {"diplomatic": {"format": "json-string-v1", "sha256": "51110d91e2ac30358832454e0208856bc920157abc843417aa4c633e228424fc"}}}
+l += (((((moropotara)))) * (obaixuara)) @ (((((-(moropotara))))))
+
+
+# @page 7
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Virtudes contra os sete peccados.
+# @note studio:v1 {"passageId": "passage:125fdaf7-b8de-444c-a65b-f17774b0096f"}
+l += ((((moyro) * nhe).var(1).base_nominal()) * (obaixuara)) @ (osanga)
+
+
+# @page 7
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Virtudes contra os sete peccados.
+# @note studio:v1 {"passageId": "passage:9db2e050-31c8-4449-b239-603db3230e86"}
+l += (
+    (((((((abé) * (((mbaeuete)))) * ((((kauete))))).var(1)).base_nominal())))
+    * (obaixuara)
+) @ (((oia) + (nhote)) + (((meme) * ((((u) * (mbae)).var(1)).base_nominal())) * (kau)))
+
 araujo_catecismo_1686 = l
 if __name__ == "__main__":
     for expr in araujo_catecismo_1686:

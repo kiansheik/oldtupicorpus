@@ -435,6 +435,11 @@
     "translation": ""
   },
   {
+    "value": "nhote",
+    "tag": "[ADVERB:DEEPEST_NODE_7]",
+    "translation": ""
+  },
+  {
     "value": "no",
     "tag": "[ADVERB:DEEPEST_NODE_9]",
     "translation": ""
@@ -497,6 +502,11 @@
   {
     "value": "abé",
     "tag": "[AND:CONJUNCTION:DEEPEST_NODE_2]",
+    "translation": ""
+  },
+  {
+    "value": "bé",
+    "tag": "[AND:CONJUNCTION:DEEPEST_NODE_3:NOUN:POSSESSOR]",
     "translation": ""
   },
   {
@@ -607,6 +617,11 @@
   {
     "value": "y",
     "tag": "[CLITIC:CONSONANT_ENDING:DEEPEST_NODE_7:SUBSTANTIVE_SUFFIX]",
+    "translation": ""
+  },
+  {
+    "value": "memẽ",
+    "tag": "[CONJUNCTION:DEEPEST_NODE_7]",
     "translation": ""
   },
   {
@@ -1100,6 +1115,11 @@
     "translation": ""
   },
   {
+    "value": "aîpó",
+    "tag": "[DEEPEST_NODE_2:DEMONSTRATIVE]",
+    "translation": ""
+  },
+  {
     "value": "ab",
     "tag": "[DEEPEST_NODE_2:FACILITY_SUFFIX]",
     "translation": ""
@@ -1157,6 +1177,11 @@
   {
     "value": "pe",
     "tag": "[DEEPEST_NODE_3:LOCATIVE:POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "e'ym",
+    "tag": "[DEEPEST_NODE_3:NEGATION_SUFFIX]",
     "translation": ""
   },
   {
@@ -1247,6 +1272,11 @@
   {
     "value": "pe",
     "tag": "[DEEPEST_NODE_4:LOCATIVE:POSTPOSITION]",
+    "translation": ""
+  },
+  {
+    "value": "e'ym",
+    "tag": "[DEEPEST_NODE_4:NEGATION_SUFFIX]",
     "translation": ""
   },
   {

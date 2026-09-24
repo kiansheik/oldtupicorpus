@@ -440,6 +440,64 @@ ryryi = Verb(
     vid=9467,
 )
 
+
+# @note studio-lexical:v1 {"id":"lexical:7f992c33db34699189006ce5970c50058f0617a4009ac1d4b83def320b3ebf52","name":"aipo","scope":"shared"}
+aipo = Demonstrative(
+    value="aîpó",
+    definition="(dem. pron. e adj.) - esse (es, a, as), aquele (es, a, as), isso, aquilo: Mbobype aîpó i 'éû? - Quantas vezes disse isso? (Ar., Cat., 55v); Aîpó nhẽ-pipó ereîkó? - Porventura fazes isso à toa? (Anch., Teatro, 22); Aîpó nhõ-pipó nde rera? - Esse, somente, é de fato teu nome? (Anch., Teatro, 44); T'asó aîpó nhe'enga mopó... - Hei de ir cumprir essas palavras. (Anch., Teatro, 60); T'asó nde pyri, kori, aîpó tubixaba gûabo. - Hei de ir junto de ti, hoje, para comer aqueles reis. (Anch., Teatro, 66); Eteumẽ, aîpó tekó kuab'iré, tekó-poxy rerekóbo. - Guarda-te, após conhecer essa lei, de ter má vida. (Anch., Poemas, 158); Aîporama resé é peîmongaraíb abaré pyri. - É por isso que o batizais junto ao padre. (Ar., Cat., 127v); Abá nhe'engûerape aîpó? - Palavras de quem são essas? (Ar., Cat., 35); (adv.) eis que esse (es, a, as), eis que aquele (es, a, as): Aîpó turi. - Eis que esse vem (ouvindo sua voz, somente, não o vendo). (VLB, I, 109); Aîpó xe me'engarama ruri... - Eis que veio o que me entregará. (Ar., Cat., 53v) ● aîpó nhẽ! - É isso! Aí é que está!: Aîpó nhẽ! Xe putupab nhẽ nde ri. - Aí é que está! Eu estou surpreso por tua causa. (Léry, Histoire, 353); aîpó suí - daí, desse lugar (que tu dizes) (VLB, I, 89)",
+)
+
+# @note studio-lexical:v1 {"id":"lexical:25f0062399d189dac35cc7cf99597ef467b7dbc66e0d3f06c0d29ac985883b5f","name":"obaixuara","scope":"shared"}
+obaixuara = Noun(value="obaîxûara", definition="(t) (s.) - mão de pilão (VLB, II, 32)")
+obaixuara.definition = "(etim. - o que está em face) (s.) - oposto, contrário:\nMorerobîare'yma robaîxûara nhemoetee'yma.\nO contrário da soberba é a humildade. (Bettendorff, Compêndio, 15)"
+
+
+# @note studio-lexical:v1 {"id":"lexical:ed11a994ac704e75c78ff5316b86b5ba42402afe97189917881fdcc17de4aa43","name":"tekateymeyma","scope":"shared"}
+tekateymeyma = (-(ekateyma)).copy()
+tekateymeyma.definition = "liberalidade"
+
+
+# @note studio-lexical:v1 {"id":"lexical:fa428c1b8cbdf245406722ed2b77ca08827521c7764ab8756a7a8fd50010269a","name":"osanga","scope":"shared"}
+osanga = Noun(
+    value="osanga",
+    definition="(t) (s.) - paciência, sossego (VLB, II, 62; Fig., Arte, 38): Nhemoŷrõ robaîara tosanga. - O oposto da ira é a paciência. (Ar., Cat., 18); sofrimento em padecer (VLB, II, 120), resistência; [adj.: osang (r, s)] - paciente; sossegado (Fig., Arte, 38); sofrido; resistente; (xe) padecer, sofrer, ter resistência: ...Sosang poresé. - Sofre pela gente. (Anch., Poemas, 122); Mba'e o emimborará-tyba supé og osange'ymamo. - Para as coisas que costuma sofrer não tendo paciência. (Anch., Diál. da Fé, 231); Xe rosang - Eu sou paciente. (Fig., Arte, 109); Sosang, tatá porarábo... - Sofreu, suportando o fogo. (Anch., Teatro, 54); Na xe rosangi. - Eu não tenho resistência. (VLB, II, 10)",
+)
+
+
+# @note studio-lexical:v1 {"id":"lexical:a24b9403bf634d8e3d8f752a10ac9e3c18d67c487facb32aca020d381f414ff5","name":"kau_a24b9403","scope":"shared"}
+kau_a24b9403 = Verb(
+    value="ka'u",
+    verb_class="(v. intr.)",
+    definition="(v. intr.) - tomar cauim, tomar bebida alcoólica: E'ikatupe abá... okagûabo...? - Pode alguém beber cauim? (Ar., Cat., 76v); T'aka'une! - Vou beber cauim! (Anch., Teatro, 10); Saraûaî, îori ekagûabo. - Sarauaia, vem para beber cauim. (Anch., Teatro, 60) ● kagûara - bebedor de cauim: Onheŷnhang umã sesé kunumĩetá kagûara... - Já se juntaram por causa disso muitos moços bebedores de cauim. (Anch., Teatro, 24); kagûaba - lugar, tempo, modo, etc. de beber cauim: Nd'e'i te'e kunumĩgûasu... oîkébo memẽ kagûápe... - Por isso mesmo os moços entram sempre no lugar de beber cauim. (Anch., Teatro, 34); Kagûápe nhõ nde ratãngatu-potá? - Somente quando bebes cauim tu queres ser valente? (Anch., Teatro, 64)",
+    vid=5987,
+)
+
+# @note studio-lexical:v1 {"id":"lexical:7aef32595311391ac4c7f4efa0486398cc0c9d24bba65d7fd0ab22589d044b01","name":"oia","scope":"shared"}
+oia = Noun(
+    value="oîá",
+    definition="(s.) - o suficiente: Mba'e 'u-eté-eté robaîara oîá nhote mba'e 'u. - O oposto do comer demais é comer somente o suficiente. (Ar., Cat., 18)",
+)
+
+# @note studio-lexical:v1 {"id":"lexical:2cd77baa999d10d68e6178c7dd0248a95c2c41e9f775332cf705dea4ea5a6e92","name":"nhote","scope":"shared"}
+nhote = Adverb(
+    value="nhote",
+    definition="(ou îõte) (adv.) - só, somente, apenas: ...Xe pópe nhote arasó. - Nas minhas mãos, somente, levei-as. (Anch., Teatro, 46); T'îasó xe irũnamo Nhoesembépe nhote. - Vamos comigo somente até Nhoesembé. (VLB, I, 46); Opûerab é ipó xe 'anga nde nhe'enga pupé nhote. - Sara mesmo minha alma apenas com tuas palavras. (Ar., Cat., 86v) V. anhõ e nhõ.",
+)
+
+# @note studio-lexical:v1 {"id":"lexical:ca96750d1b46248bd022c11ccb3260eb69fa6fef51d644e2b4c4da6ccddb86d2","name":"meme","scope":"shared"}
+meme = Conjunction(
+    value="memẽ",
+    definition="(conj.) - quanto mais (Anch., Arte, 57; Fig., Arte, 137) (o mesmo que memetipó - v.)",
+)
+
+# @note studio-lexical:v1 {"id":"lexical:d8ae2b9a4fa65b7878afab0ff0cb1660d56d18afa7db341fc2a4abaa36e1e758","name":"mbaeuete","scope":"shared"}
+mbaeuete = (((((((u) / (eté)))) * (mbae)).var(1)).base_nominal()).copy()
+mbaeuete.definition = "(etim. - o comer demais as coisas) (s.) - gula (VLB, I, 152)"
+
+# @note studio-lexical:v1 {"id":"lexical:911559febf0f61b7d1ecd8c9e393dc9c596140f28ca8e89e84a7b5b6684ca710","name":"kauete","scope":"shared"}
+kauete = ((((((kau_a24b9403)) / (eté))).var(1)).base_nominal()).copy()
+kauete.definition = "ka'ueté - beber demais\n\n(s.) - bebedeira (de cauim); bebedeira em geral: Mba'e-eté ka'ugûasu... - Coisa muito boa é uma grande bebedeira. (Anch., Teatro, 6); Ixé kó ka'u resé aporomoingó îepi... - Eis que eu faço as pessoas estarem na bebedeira sempre. (Anch., Teatro, 134)\n"
+
 __all__ = [
     name for name in globals() if not name.startswith("_") and name not in {"os", "sys"}
 ]
