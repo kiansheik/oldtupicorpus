@@ -1,5 +1,33 @@
 # Agent Log
 
+## 2026-09-24
+
+- Added a schema-1 Navarro registry resolver that accepts only explicit
+  Pydicate lexical constructors and JSON scalar/null constructor arguments.
+  Registry metadata and runtime constructor values must agree, unresolved and
+  coverage accounting is validated, and each resolution creates a fresh object.
+- Exported `navarro_lexeme` from the shared historic lexicon for stable
+  Studio-published declarations.
+- Added an AST-only historic source-module check and `make
+  check-lexical-variables`; the checked-in passage modules contain no direct
+  calls to the 13 lexical constructors. A bad fixture proves the check detects
+  direct calls both inside passage expressions and in helper assignments, so a
+  source-local alias cannot bypass the central lexicon. A follow-up regression
+  also rejects constructor-class aliases, qualified constructor attributes and
+  explicitly imported aliases without executing contributor code.
+- Verified with the focused 10-test resolver/invariant suite, the AST command,
+  `git diff --check`, and `python3 tests/run_tests.py --skip-tokenizer`
+  (112 tests, all passing). Existing dirty author and generated-data edits were
+  not changed.
+- Installed and independently loaded the deterministic Studio registry through
+  the corpus resolver: 7,197 entries and 1,109 unresolved rows, comprising 20
+  exact shared matches and 7,177 dictionary-only entries. Resolution by ID and
+  stable name returned distinct objects for a sampled dictionary-only entry.
+  The loader now rejects a disagreement between `unresolved_by_reason` and the
+  actual unresolved ledger. The installed JSON is 10,811,309 bytes with SHA-256
+  `3d0a85cf7d496d1fcf665ed0722da2e49c4cadbf401e931abfa2893f24aa9a2e`.
+- See [handoff](session-handoffs/2026-09-24-navarro-registry-and-lexical-variable-invariant.md).
+
 ## 2026-09-17
 
 - Added noun `/` transitive-verb incorporation in sibling Pydicate, with an

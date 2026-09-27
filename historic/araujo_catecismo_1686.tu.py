@@ -68,10 +68,12 @@ l = [
     * ((sara * v(poreaûsuberekó)).voc())
     * ((bae * v(een)).voc())
     * virgem_maria.voc(),  # fix absoluta m
-    ((cop() * santamaria * (tupan * sy)) + (v(angaturama).perm() * +oré) << ne)
-    + (esé * (pûera * (emi * (christo * enõî))))
+    # @note studio:v1 {"passageId":"passage:201850ee-ddf3-44dc-93ea-60e225667f54"}
+    (((+endé * tupãmongetá).imp()) + (esé * oré))
     + (
-        ri * (rama * (saba * (oré * îekosub)))
+        ((cop() * santamaria * (tupan * sy)) + (v(angaturama).perm() * +oré) << ne)
+        + (esé * (pûera * (emi * (christo * enõî))))
+        + (ri * (rama * (saba * (oré * îekosub))))
     ),  # îekosubagûama here is îekosuBagûama in bettendorf, displaying already some early divergences of loss of phonetic composition which we see in nheengatu
     (amen),
     # @subsection Credo
@@ -94,10 +96,11 @@ l = [
     (aebae * ar) + (suí * (cop() * (maria) * (ababykagûereyma))),
     (ponciopilato * ((amo * morubixaba) >> (ikó)))
     >> ((amo * (pyra * (erekó / memûã))) + (+aebae * ikó)),
+    # @note studio:v1 {"passageId":"passage:8d491564-ecdf-4b1a-be99-4f37b0ad3c69"}
     (esé * ybyraîoasaba)
     + (amo * (pyra * moîar) + (ikó * +aebae))
     + (amo * (pyra * îuká))
-    + (amo * (pyra * tym) + (ikó * +aebae)),
+    + ((amo * (pyra * tym))),
     (+jesus * gûeîyb + (pe * (yby * apytera))),
     (pupé * third_day)
     + ((suí * (pûera * (bae * (manõ)))) + (+jesus * (ikobé / îebyr))),
@@ -199,7 +202,26 @@ l += arobiar * (
 # @page 5
 l += arobiar * ((esé * third_day) + (saguera(((+jesus * (ikobé / îebyr))))))
 l += arobiar * ((abé.var(1) * risetoheaven) * rightsidegod)
-l += arobiar * ((abé.var(1) * bondadenomundo * (pûera * n(ae * sinfullife))) * payment)
+# @note studio:v1 {"passageId":"passage:8c6242cb-a30e-4860-9bfe-e9fd28b65c80"}
+l += arobiar * (
+    (
+        abé.var(1)
+        * (
+            (
+                pe * (saba * (ara * pab))
+                + saguama(îur)
+                + saguera(
+                    abé.var(2)
+                    * (bae * ikobé)
+                    * (((((pûera)) * ((bae * manõ)))))
+                    * (ikó / katu)
+                )
+            )
+        )
+        * (pûera * n(ae * ((ikó) / (angaipaba))))
+    )
+    * payment
+)
 # @subsection Mandamentos da Ley de Deos
 l += dez * (saba * (asé * (tupan * ekomonhang)))
 l += (eimoeté * (oîepé * tupan)).imp()
@@ -213,7 +235,8 @@ l += -(+nde * apiti * moro).imp()
 l += -(+nde * potar * moro).imp()
 l += -(+nde * mondarõ).imp()
 l += -(+nde * v(moem)).imp() + (esé * abá)
-l += -(+nde * momotar * îe).imp() + esé * ((nde * apixara) * emirekó)
+# @note studio:v1 {"passageId":"passage:5f4c83a9-9ff6-44df-b677-32aee34a21ed"}
+l += -(+nde * momotar * ((îe).var(1))).imp() + esé * ((nde * apixara) * emirekó)
 l += nã + ((bae * ei) * pupé) + (paben + (aîpo * îub))
 l += (
     opkmbt
@@ -418,6 +441,31 @@ l += (
     (((((((abé) * (((mbaeuete)))) * ((((kauete))))).var(1)).base_nominal())))
     * (obaixuara)
 ) @ (((oia) + (nhote)) + (((meme) * ((((u) * (mbae)).var(1)).base_nominal())) * (kau)))
+
+
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Virtudes contra os sete peccados.
+# @page 8
+# @note studio:v1 {"passageId":"passage:0a95384c-7b08-4b20-9287-428ca18999d3"}
+l += (
+    ((((((((abá) * ((mbae) / ((katu)))))))) * ((moasy))).base_nominal()) * (obaixuara)
+) @ (((((ioausuba)))))
+
+
+# @page 7
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Virtudes contra os sete peccados.
+# @note studio:v1 {"passageId": "passage:0f7327b9-01ec-4a7d-b1f9-232f6ce9fb78", "evidence": {"version": 1, "assetId": "7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e", "passageId": "passage:0f7327b9-01ec-4a7d-b1f9-232f6ce9fb78"}}
+l += (
+    (
+        ((esé) * ((tupan) * ((eko))))
+        + (-(((((((mo).var(1))) * (ryryi)) * (nhe)).var(1)).base_nominal()))
+    )
+    * (obaixuara)
+) @ (
+    ((esé) * ((tupan) * ((eko))))
+    + ((((((((mo).var(1))) * (ryryi)) * (nhe)).var(1)).base_nominal()))
+)
 
 araujo_catecismo_1686 = l
 if __name__ == "__main__":

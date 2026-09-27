@@ -184,6 +184,10 @@
     "value": "'ubapytanga"
   },
   {
+    "id": "M005270",
+    "value": "'ueté"
+  },
+  {
     "id": "M000416",
     "value": "'use"
   },
@@ -626,6 +630,10 @@
   {
     "id": "M005242",
     "value": "abaregûasu"
+  },
+  {
+    "id": "M005266",
+    "value": "abaré"
   },
   {
     "id": "M000263",
@@ -2052,6 +2060,10 @@
     "value": "aso'îabok"
   },
   {
+    "id": "M005269",
+    "value": "asy"
+  },
+  {
     "id": "M000814",
     "value": "asy'ab"
   },
@@ -2238,6 +2250,10 @@
   {
     "id": "M000197",
     "value": "aé"
+  },
+  {
+    "id": "M005271",
+    "value": "aíb"
   },
   {
     "id": "M000838",
@@ -2694,6 +2710,10 @@
   {
     "id": "M000216",
     "value": "ekoangaípa"
+  },
+  {
+    "id": "M005263",
+    "value": "ekoangaîpa"
   },
   {
     "id": "M000180",
@@ -3792,6 +3812,10 @@
     "value": "erõîen"
   },
   {
+    "id": "M005273",
+    "value": "esa"
+  },
+  {
     "id": "M001284",
     "value": "esaapytapytang"
   },
@@ -3912,8 +3936,16 @@
     "value": "etapurũ"
   },
   {
+    "id": "M005278",
+    "value": "eteeté"
+  },
+  {
     "id": "M001304",
     "value": "etun"
+  },
+  {
+    "id": "M005276",
+    "value": "etá"
   },
   {
     "id": "M000277",
@@ -7796,6 +7828,10 @@
     "value": "mba'eaíb"
   },
   {
+    "id": "M005268",
+    "value": "mba'ekatu"
+  },
+  {
     "id": "M005255",
     "value": "mba'ekatumoasy"
   },
@@ -8138,6 +8174,10 @@
   {
     "id": "M002020",
     "value": "mirakubora"
+  },
+  {
+    "id": "M005264",
+    "value": "missa"
   },
   {
     "id": "M005228",
@@ -10712,6 +10752,10 @@
     "value": "mopûerab"
   },
   {
+    "id": "M005267",
+    "value": "mor"
+  },
+  {
     "id": "M002628",
     "value": "morambuer"
   },
@@ -11776,6 +11820,10 @@
     "value": "nhanduapu'a"
   },
   {
+    "id": "M005277",
+    "value": "nhandy"
+  },
+  {
     "id": "M002920",
     "value": "nhandy'"
   },
@@ -11790,6 +11838,10 @@
   {
     "id": "M002922",
     "value": "nhandygûasu"
+  },
+  {
+    "id": "M005265",
+    "value": "nhandykaraíb"
   },
   {
     "id": "M005243",
@@ -14450,6 +14502,10 @@
   {
     "id": "M003692",
     "value": "poraûsuba"
+  },
+  {
+    "id": "M005274",
+    "value": "poraûsubar"
   },
   {
     "id": "M000296",
@@ -18920,6 +18976,10 @@
     "value": "îasear"
   },
   {
+    "id": "M005272",
+    "value": "îasegûa"
+  },
+  {
     "id": "M004539",
     "value": "îasekó"
   },
@@ -20590,6 +20650,10 @@
   {
     "id": "M004992",
     "value": "îoakypûerekar"
+  },
+  {
+    "id": "M005275",
+    "value": "îoasab"
   },
   {
     "id": "M003388",

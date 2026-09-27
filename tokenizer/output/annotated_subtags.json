@@ -108,6 +108,10 @@
     "subtag": "CLITIC"
   },
   {
+    "id": "S000140",
+    "subtag": "COMPOUND"
+  },
+  {
     "id": "S000021",
     "subtag": "CONJUNCTION"
   },
@@ -202,6 +206,10 @@
   {
     "id": "S000114",
     "subtag": "DEEPEST_NODE_22"
+  },
+  {
+    "id": "S000138",
+    "subtag": "DEEPEST_NODE_23"
   },
   {
     "id": "S000092",
@@ -322,6 +330,10 @@
   {
     "id": "S000130",
     "subtag": "MAIN_CLAUSE_SUBJECT"
+  },
+  {
+    "id": "S000139",
+    "subtag": "MBO"
   },
   {
     "id": "S000049",

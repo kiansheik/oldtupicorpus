@@ -24,6 +24,15 @@
   modules.
 - `historic/lexicon.tu.py`: shared lexicon and `load_lexicon()`.
 - `historic/lexicon.py`: compatibility loader for the `.tu.py` lexicon.
+- `historic/navarro_lexicon.py`: validates and resolves the generated Navarro
+  registry without evaluating source text; each lookup constructs a fresh
+  predicate.
+- `historic/navarro_lexicon.json`: generated schema-1 Navarro lexical inventory
+  consumed by the resolver, Studio, and scholarly appendix tooling.
+- `authoring/lexical_variables.py`: AST-only invariant that complete historic
+  source modules use central named lexicon variables instead of direct lexical
+  constructors, including through source-local helper assignments, import
+  aliases and qualified constructor attributes.
 
 Current checked-in historic sources include:
 
@@ -42,6 +51,10 @@ Current checked-in historic sources include:
 - `ground_truth/synthetic/*.txt`: rendered synthetic reference lines.
 - `tests/run_tests.py`: main runner and interactive ground-truth updater.
 - `tests/ground_truth_cases.py`: source loading and ground-truth comparison.
+- `tests/navarro_lexicon_test.py`: registry schema, safe lookup, and fresh-object
+  checks using a small temporary registry.
+- `tests/lexical_variables_test.py`: current-corpus and bad-fixture coverage for
+  the named-variable passage invariant.
 - `tests/rendered_corpus_test.py`: rendered corpus, morpheme metadata, and
   syntax-span coverage.
 - `tests/tooltip_overrides_test.py`: tooltip override store and request parsing.

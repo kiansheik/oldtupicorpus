@@ -15,7 +15,7 @@ GH_PAGES_BRANCH ?= gh-pages
 GH_PAGES_WORKTREE ?= .gh-pages-worktree
 GH_PAGES_COMMIT_MESSAGE ?=
 
-.PHONY: help lint push test review-ground-truth verify-ground-truth regenerate-ground-truth last-ground-truth play dict frontend-install frontend-build serve-dict deploy-gh-pages
+.PHONY: help lint push test check-lexical-variables review-ground-truth verify-ground-truth regenerate-ground-truth last-ground-truth play dict frontend-install frontend-build serve-dict deploy-gh-pages
 
 help: ## Show available targets
 	@printf "Available targets:\n"
@@ -46,6 +46,9 @@ push: ## Lint, test, commit, and push the current branch
 
 test: ## Run the test suite; pass extra args with ARGS="..."
 	python3 tests/run_tests.py $(ARGS)
+
+check-lexical-variables: ## Reject raw lexical constructors in historic passages
+	python3 scripts/check_historic_lexical_variables.py
 
 verify-ground-truth: ## Verify source renderings and source-derived JSONL ground truth
 	python3 -m authoring.ground_truth_cli verify $(ARGS)

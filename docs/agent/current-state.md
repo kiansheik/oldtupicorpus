@@ -1,6 +1,42 @@
 # Current State
 
-Last updated: 2026-09-17
+Last updated: 2026-09-24
+
+## 2026-09-24 Navarro registry boundary and named passage lexemes
+
+- `historic/navarro_lexicon.py` now loads the generated schema-1 Navarro
+  registry as data. It validates source and coverage accounting, unresolved
+  rows, unique registry IDs and stable names, supported constructor signatures,
+  scalar keyword values, and equality between printed headword/definition
+  metadata and the values passed to Pydicate. It never evaluates registry text.
+- `navarro_lexeme(registry_id_or_name)` returns a newly constructed Pydicate
+  object on every call. `historic/lexicon.tu.py` exports it so Studio can add a
+  stable shared declaration such as `name = navarro_lexeme("navarro:...")`
+  while passage expressions continue to refer only to `name`.
+- `authoring.lexical_variables` checks complete source-module ASTs without
+  importing them. The `make check-lexical-variables` gate rejects direct calls
+  to the 13 supported lexical constructors anywhere in `historic/*.tu.py`,
+  excluding the shared lexicon; this includes helper assignments that a passage
+  could otherwise use to bypass the central registry. Constructor aliases,
+  qualified calls such as `pos.Noun(...)`, and explicit import aliases are also
+  rejected. Grammatical calls such as `cop()`, `v()`, `n()`, and predicate methods
+  remain valid. The current Araujo and Bettendorff modules have no such references.
+- Focused resolver/invariant tests pass, as does the 112-test corpus suite with
+  tokenizer regeneration skipped. Existing author edits and generated corpus
+  changes were preserved.
+- The canonical `historic/navarro_lexicon.json` is installed and passes this
+  resolver. It contains 7,197 entries: 20 exact shared declarations and 7,177
+  dictionary-only entries. It accounts for all 8,293 Tupi source rows as 7,184
+  safely supported rows and 1,109 explicit unresolved rows. The latter comprise
+  1,105 unclassified headers, three verbs without a defensible explicit class,
+  and one malformed source row. Twenty-three verbs absent from the engine's
+  precomputed conjugation subset use their real Navarro IDs and explicit header
+  classes, with that limitation recorded in the registry. The loader now also
+  reconciles the unresolved-reason summary against every unresolved row.
+- The artifact is 10,811,309 bytes with SHA-256
+  `3d0a85cf7d496d1fcf665ed0722da2e49c4cadbf401e931abfa2893f24aa9a2e`.
+  Rebuilding after installation reproduced identical bytes. A dictionary-only
+  demonstrative resolved by both ID and name to separate objects.
 
 ## 2026-09-17 Noun-object incorporation in Araujo record 81
 

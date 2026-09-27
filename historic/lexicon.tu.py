@@ -17,6 +17,7 @@ _prepend_dev_path("tupi")
 
 from pydicate.lang.tupilang import *
 from pydicate.lang.tupilang.pos import *
+from historic.navarro_lexicon import navarro_lexeme
 
 arakae = Adverb(
     "araka'e", definition="a long time ago, distant past", tag="[ADVERB:DISTANT_PAST]"
@@ -497,6 +498,11 @@ mbaeuete.definition = "(etim. - o comer demais as coisas) (s.) - gula (VLB, I, 1
 # @note studio-lexical:v1 {"id":"lexical:911559febf0f61b7d1ecd8c9e393dc9c596140f28ca8e89e84a7b5b6684ca710","name":"kauete","scope":"shared"}
 kauete = ((((((kau_a24b9403)) / (eté))).var(1)).base_nominal()).copy()
 kauete.definition = "ka'ueté - beber demais\n\n(s.) - bebedeira (de cauim); bebedeira em geral: Mba'e-eté ka'ugûasu... - Coisa muito boa é uma grande bebedeira. (Anch., Teatro, 6); Ixé kó ka'u resé aporomoingó îepi... - Eis que eu faço as pessoas estarem na bebedeira sempre. (Anch., Teatro, 134)\n"
+
+
+# @note studio-lexical:v1 {"id":"lexical:7e8f9ad17e37da68535357cece25948f1536edb346ee20fcf9932d37f3d9a8cd","name":"ioausuba","scope":"shared"}
+ioausuba = ((((love) * (îo)).var(1)).base_nominal()).copy()
+ioausuba.definition = "(s.) - amizade (VLB, I, 34); amor, caridade: Tupã îoaûsuba pupé îaîkóbo, tekokatu-eté îarekó... - Estando nós no amor de Deus, a verdadeira felicidade temos. (Anch., Doutr. Cristã, I, 202); ...pe ramũîa îoaûsuba... - a amizade de vossos avós (Knivet, The Adm. Adv., 1237)"
 
 __all__ = [
     name for name in globals() if not name.startswith("_") and name not in {"os", "sys"}
