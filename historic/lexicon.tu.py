@@ -504,6 +504,25 @@ kauete.definition = "ka'ueté - beber demais\n\n(s.) - bebedeira (de cauim); beb
 ioausuba = ((((love) * (îo)).var(1)).base_nominal()).copy()
 ioausuba.definition = "(s.) - amizade (VLB, I, 34); amor, caridade: Tupã îoaûsuba pupé îaîkóbo, tekokatu-eté îarekó... - Estando nós no amor de Deus, a verdadeira felicidade temos. (Anch., Doutr. Cristã, I, 202); ...pe ramũîa îoaûsuba... - a amizade de vossos avós (Knivet, The Adm. Adv., 1237)"
 
+
+# @note studio-lexical:v1 {"id":"lexical:b45f288b4f60cd0b5cc48a4c6bb141f18ba9afb45444e7548897e2aba14136b4","name":"ausubar","scope":"shared"}
+ausubar = Verb(value='aûsubar', verb_class='(s) (v.tr.)', definition="(s) (v.tr.) - compadecer-se de, ter piedade de, ter misericórdia de, ter pena de: Oré raûsubá îepé... - Compadece-te de nós. (Anch., Poemas, 100); Eîori, oré raûsubá... - Vem para te compadeceres de nós. (Anch., Teatro, 120); Ta xe raûsubar... - Que ele se compadeça de mim... (Ar., Cat., 23v); Eresaûsubápe nde sy, nde ruba...? - Compadeceste-te de tua mãe e de teu pai? (Ar., Cat., 101); N'asaûsubari mba'e. - Não tenho pena das coisas (isto é, sou pródigo). (VLB, II, 87) ● saûsubaryba'e - o que tem misericórdia, o que tem pena: Tekokatu-eté rerekoara i poraûsubaryba'e... - Os que têm a bem-aventurança são os que têm pena das pessoas. (Ar., Cat., 19); saûsubarypyra - o que é objeto de compaixão, aquele de quem se tem pena, o que recebe compaixão: Mbobype saûsubarypyra? - Quantos são os que recebem compaixão? (Ar., Cat., 41v); aûsubaraba (ou aûsubasaba) (t) - tempo, lugar, modo, causa, etc. de se compadecer; compaixão: Tupã o aûsubaraûama resé onhemoapysyka. - Consolando-se com a compaixão de Deus. (Ar., Cat., 41); Xe raûsubasápe, xe 'anga moteni. - Por se compadecer de mim, minh'alma faz firme. (Anch., Poemas, 108)", vid=3608)
+
+
+# @note studio-lexical:v1 {"id":"lexical:6422bad071b9bc0682001d6a3cd01baa950f96a7f4c1163a428c6c2401c1a9fd","name":"ete","scope":"shared"}
+ete = Noun(value='eté', definition="(t) (s.) - 1) corpo: Pedro reté - o corpo de Pedro (Fig., Arte, 74); Sygépe o eterama Tupã tari... - Em seu ventre Deus recebeu seu próprio corpo. (Anch., Poemas, 88); Mba'epe asé reté remi'u? - Qual é a comida de nosso corpo? (Ar., Cat., 27v); Tupã aé, o karaíba pupé, i 'anga seté monhangi. - O próprio Deus, com sua santidade, as almas e os corpos deles fez. (Anch., Teatro, 28); Opá nde reté raíri itatîãîa pupé. - Riscaram todo o teu corpo com ferro pontiagudo. (Anch., Teatro, 120); 2) substância, matéria: Oîaby-eté seté tiruã oîkuabe'ymba'e. - Transgride-os muito o que não conhece sequer sua substância. (Bettendorff, Compêndio, 103) ● seteba'e - o que tem corpo, o que é corpóreo (VLB, I, 82)")
+
+
+# @note studio-lexical:v1 {"id":"lexical:b59c12cf99b97b6cf72b9c94efd60b3b542aa97e9ab8783b5a1602fb0587316d","name":"amby","scope":"shared"}
+amby = Noun(value='amby', definition='(s.) - ventrecha, parte inferior da barriga, parte do corpo entre o umbigo e a virilha; colo (Castilho, Nomes, 38): Xe ambyî arekó. - Trago-o no meu colo. (VLB, I, 77)')
+
+# @note studio-lexical:v1 {"id":"lexical:3e2a82e7e450232cc519ce5c684cd998b2a5857969ff44f777bcd518b8661bfa","name":"bor","scope":"shared"}
+bor = Noun(value='bor', definition="(suf. que expressa o agente habitual, hábito, constância, frequência): Anga îá, angaîpabora aîuká... - Como a esses, matarei os que costumam pecar. (Anch., Teatro, 92); mara'abora - o doente; miraibora - o bexigoso; kanhembora - o fujão, o que tem costume de fugir (Anch., Arte, 31)")
+
+# @note studio-lexical:v1 {"id":"lexical:1ea0cca883aa370dd290d81e3b183c7e03ce946ce2fe3e3a154ccaa3f586fc19","name":"ambyasy","scope":"shared"}
+ambyasy = ((amby) / (asy)).copy()
+ambyasy.definition = "(etim. - dor de ventrecha) (s.) - fome: xe ambyasy posanga... - lenitivo de minha fome... (Valente, Cantigas, VII, in Ar., Cat., 1618); ...ambyasy, 'useîa porarábo... - sofrendo a fome e a sede (Ar., Cat., 169v); (adj.) - faminto; (xe) ter fome: I ambyasy bépe, i 'useî bépe asé îabé?... - Tinha também fome, tinha também sede como nós? (Ar., Cat., 44v); Xe ambyasy. - Eu estou faminto. (Léry, Histoire, 367) ● i ambyasyba'e - o que tem fome, o faminto (VLB, I, 134); ambyasybora - faminto (costumeiramente): Ambyasybora poîa. - Alimentar os famintos. (Ar., Cat., 18)"
+
 __all__ = [
     name for name in globals() if not name.startswith("_") and name not in {"os", "sys"}
 ]
