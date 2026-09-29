@@ -467,6 +467,30 @@ l += (
     + ((((((((mo).var(1))) * (ryryi)) * (nhe)).var(1)).base_nominal()))
 )
 
+
+# @diplomatic Catorse acé abá rauçubá çâba.
+# @page 8
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Obras de Misericordia.
+# @note studio:v1 {"passageId": "passage:6b96117a-0972-4170-aaea-eea1d4268049", "prayerName": "", "evidence": {"version": 1, "assetId": "7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e", "passageId": "passage:6b96117a-0972-4170-aaea-eea1d4268049"}}
+l += (catorse) * ((saba) * (((ausubar) * (asé)) * (abá)))
+
+
+# @diplomatic Sete abá reté recé ndoâra nã ëí.
+# @page 8
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Obras de Misericordia.
+# @note studio:v1 {"passageId": "passage:386b2920-80c1-47f7-ae6b-16d64c7d3261", "prayerName": ""}
+l += (nã) >> (((sete) * ((nduara) * ((esé) * ((abá) * ((ete)))))) * ei)
+
+
+# @diplomatic AMbyacybôra póia.
+# @page 8
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Obras de Misericordia.
+# @note studio:v1 {"passageId": "passage:353ec4eb-0891-499d-8be6-5e95ede4122e", "prayerName": "", "evidence": {"version": 1, "assetId": "7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e", "passageId": "passage:353ec4eb-0891-499d-8be6-5e95ede4122e"}}
+l += (((poî) * (((ambyasy)) / ((bor)))).base_nominal())
+
 araujo_catecismo_1686 = l
 if __name__ == "__main__":
     for expr in araujo_catecismo_1686:
