@@ -491,6 +491,30 @@ l += (nã) >> (((sete) * ((nduara) * ((esé) * ((abá) * ((ete)))))) * ei)
 # @note studio:v1 {"passageId": "passage:353ec4eb-0891-499d-8be6-5e95ede4122e", "prayerName": "", "evidence": {"version": 1, "assetId": "7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e", "passageId": "passage:353ec4eb-0891-499d-8be6-5e95ede4122e"}}
 l += (((poî) * (((ambyasy)) / ((bor)))).base_nominal())
 
+
+# @diplomatic Icatupendoâra moäôba.
+# @page 8
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Obras de Misericordia.
+# @note studio:v1 {"passageId": "passage:d95c07ea-7527-41d8-9b9f-924d62ec94ee", "prayerName": "", "evidence": {"version": 1, "assetId": "7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e", "passageId": "passage:d95c07ea-7527-41d8-9b9f-924d62ec94ee"}}
+l += ((((moaob)) * ((nduara) * ((i_katupe)))).base_nominal())
+
+
+# @diplomatic Uceibôra moyú.
+# @page 8
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Obras de Misericordia.
+# @note studio:v1 {"passageId": "passage:3e4a5b24-c584-4297-ba50-da68cd7a35f1", "prayerName": "", "evidence": {"version": 1, "assetId": "7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e", "passageId": "passage:3e4a5b24-c584-4297-ba50-da68cd7a35f1"}}
+l += (((((((u) / (sei)).base_nominal())) / (bor)) * ((mo) * ((y) / ((u))))).base_nominal())
+
+
+# @diplomatic Atâra mombytá.
+# @page 8
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Obras de Misericordia.
+# @note studio:v1 {"passageId": "passage:ad5f6be7-c2c9-46d1-ad66-b348aaec07cc", "prayerName": "", "evidence": {"version": 1, "assetId": "7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e", "passageId": "passage:ad5f6be7-c2c9-46d1-ad66-b348aaec07cc"}}
+l += ((((((((((((((sara))) * (((guata))))).var(1))))) * ((((((((((mo).var(2)))) * (pytá)))))))).base_nominal()))))
+
 araujo_catecismo_1686 = l
 if __name__ == "__main__":
     for expr in araujo_catecismo_1686:
