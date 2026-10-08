@@ -645,11 +645,11 @@ l += ((((bae) * (((((((ikotebe_a75ef014)))))))) * (((mo)) * (apysyka))).base_nom
 l += (((((((((((bae))) * ((((ikomemua)))))))) * ((enonhen)))).base_nominal()))
 
 
-# @diplomatic Abá marã cecó agoérĩ recé nheranëyma
 # @page 8
 # @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
 # @subsection Obras de Misericordia.
-# @note studio:v1 {"passageId": "passage:b904916e-32e1-4a49-a7ce-58313422dac2", "prayerName": "", "evidence": {"version": 1, "assetId": "7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e", "passageId": "passage:b904916e-32e1-4a49-a7ce-58313422dac2"}}
+# @diplomatic "Abá marã cecó agoérĩ recé nheran-\nëyma"
+# @note studio:v1 {"passageId":"passage:b904916e-32e1-4a49-a7ce-58313422dac2","prayerName":"","evidence":{"version":1,"assetId":"7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e","passageId":"passage:b904916e-32e1-4a49-a7ce-58313422dac2"},"textEncoding":{"diplomatic":{"format":"json-string-v1","sha256":"a6d6c89adf0c0cb8251730dc6726c00c3db35b754e8efb11a42a903ab6b76e9d"}}}
 l += ((esé) * (((pûera) * ((saba) * ((abá) * (((((((((((mara)))))) >> (((((iko))))))))))))) / (i))) + (nheraneym)
 
 
