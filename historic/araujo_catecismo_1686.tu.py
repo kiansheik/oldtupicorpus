@@ -571,7 +571,7 @@ l += (((poî) * (((ambyasy)) / ((bor)))).base_nominal())
 # @page 8
 # @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
 # @subsection Obras de Misericordia.
-# @note studio:v1 {"passageId": "passage:d95c07ea-7527-41d8-9b9f-924d62ec94ee", "prayerName": "", "evidence": {"version": 1, "assetId": "7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e", "passageId": "passage:d95c07ea-7527-41d8-9b9f-924d62ec94ee"}}
+# @note studio:v1 {"passageId":"passage:d95c07ea-7527-41d8-9b9f-924d62ec94ee","prayerName":"","evidence":{"version":1,"assetId":"7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e","passageId":"passage:d95c07ea-7527-41d8-9b9f-924d62ec94ee"},"translations":{"pt":"vestir os nus"}}
 l += ((((moaob)) * ((nduara) * ((i_katupe)))).base_nominal())
 
 
@@ -643,6 +643,22 @@ l += ((((bae) * (((((((ikotebe_a75ef014)))))))) * (((mo)) * (apysyka))).base_nom
 # @subsection Obras de Misericordia.
 # @note studio:v1 {"passageId": "passage:3d56dc40-0901-43b0-8687-36f082cf0c65", "prayerName": ""}
 l += (((((((((((bae))) * ((((ikomemua)))))))) * ((enonhen)))).base_nominal()))
+
+
+# @diplomatic Abá marã cecó agoérĩ recé nheranëyma
+# @page 8
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Obras de Misericordia.
+# @note studio:v1 {"passageId": "passage:b904916e-32e1-4a49-a7ce-58313422dac2", "prayerName": "", "evidence": {"version": 1, "assetId": "7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e", "passageId": "passage:b904916e-32e1-4a49-a7ce-58313422dac2"}}
+l += ((esé) * (((pûera) * ((saba) * ((abá) * (((((((((((mara)))))) >> (((((iko))))))))))))) / (i))) + (nheraneym)
+
+
+# @diplomatic Oicobébäe recé, omanóbäepoéra recé bé Tupã monghetá.
+# @page 8
+# @section Livro I. Dos primeiros elementos da Fé Christãa, Summa dos mysterios, & doutrina Christãa
+# @subsection Obras de Misericordia.
+# @note studio:v1 {"passageId": "passage:5f3e6735-1b7a-483f-96eb-9702bba2b5b2", "prayerName": "", "evidence": {"version": 1, "assetId": "7acb95b61976b62c381e04def7f77f4d3809d68dbeff1d0e3721c4e4a024660e", "passageId": "passage:5f3e6735-1b7a-483f-96eb-9702bba2b5b2"}}
+l += ((((abé) * ((esé) * (vivos))) * ((esé) * (pûera * (bae * (manõ))))).var(1)) >> (((mongetá) * ((tupan))).base_nominal())
 
 araujo_catecismo_1686 = l
 if __name__ == "__main__":
