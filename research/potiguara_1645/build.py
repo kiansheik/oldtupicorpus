@@ -122,6 +122,7 @@ def scrape_justalinear():
                         continue
                     tupi, portuguese = [re.sub(r"\s+"," ",chunk).strip().strip("•*– ") for chunk in label.split("||",1)]
                     tupi = re.sub(r"([^\W\d_])\d{1,3}(?=\W|$)",r"\1",tupi,flags=re.UNICODE)
+                    tupi = re.sub(r"(?<=\s)\d{1,3}(?=[^\W\d_])","",tupi,flags=re.UNICODE)
                     if not tupi or not portuguese:
                         continue
                     key = (current_letter,normalize(tupi),normalize(portuguese))
