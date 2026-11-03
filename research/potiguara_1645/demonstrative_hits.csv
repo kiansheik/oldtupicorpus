@@ -2,137 +2,137 @@ hit_id,line_id,letter,surface,lemma,family,inventory_class,provisional_function,
 D0001,C01-L004,1,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,raûsupa,,11,12,"Pe raûsupa é,","Amando-os, de fato,",,,not_determined,needs_philological_review
 D0002,C01-L009,1,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,gûitekóbo,,10,11,"gûitekóbo é,","estando eu, na verdade,",P001,nominal,not_determined,needs_philological_review
 D0003,C01-L012,1,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,nhẽ,,14,16,N’i katuî nhẽ kó,"Não é bom, com efeito, isto",P002,property,in_predication_span_role_unresolved,needs_philological_review
-D0004,C01-L019,1,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,2,Kó xe nhe’enga,Estas minhas palavras,,,in_predication_span_role_unresolved,needs_philological_review
+D0004,C01-L019,1,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,2,Kó xe nhe’enga,Estas minhas palavras,,,not_determined,needs_philological_review
 D0005,C01-L027,1,niã,niã,presentational_particle,related,related_not_automatically_nominal_demonstrative,aîkó,ixé,5,8,Aîkó niã ixé,"Estou eu, com efeito,",,,not_determined,needs_philological_review
 D0006,C01-L030,1,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,sasyeté,,8,9,Sasyeté ã,"É muito dolorosa, isso é,",P003,property,in_predication_span_role_unresolved,needs_philological_review
-D0007,C01-L033,1,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,marana,0,2,"kó marana,","esta guerra19,",,,in_predication_span_role_unresolved,needs_philological_review
+D0007,C01-L033,1,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,marana,0,2,"kó marana,","esta guerra19,",,,not_determined,needs_philological_review
 D0008,C01-L036,1,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,yby,0,2,kó yby poretéramo,desta terra como habitantes verdadeiros,P004,nominal,in_predication_span_role_unresolved,needs_philological_review
 D0009,C01-L042,1,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,ma'ẽtepe,mokõî,9,10,Ma’ẽtepe é mokõî ygûã,"Ora, duas vezes já",,,not_determined,needs_philological_review
 D0010,C01-L057,1,ãgûa,ãgûa,uncertain_pronominal,related,related_not_automatically_nominal_demonstrative,,supé,0,4,ãgûa supé quartel.,para eles quartel.,,,not_determined,needs_philological_review
 D0011,C01-L059,1,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,yby,0,2,kó yby poretéramo,desta terra como habitantes verdadeiros,P006,nominal,in_predication_span_role_unresolved,needs_philological_review
 D0012,C01-L060,1,ãgûa,ãgûa,uncertain_pronominal,related,related_not_automatically_nominal_demonstrative,,rekóreme,0,4,ãgûa rekóreme?,se eles estão?,P006,nominal,not_determined,needs_philological_review
 D0013,C01-L065,1,a’ereme,a'ereme,derived_anaphoric_connective,related,related_not_automatically_nominal_demonstrative,,,0,7,"a’ereme,","então,",,,not_determined,needs_philological_review
-D0014,C01-L066,1,koba’e,kó,proximal_visible,core,anaphoric_determiner_or_independent_pronoun,,suí,0,6,koba’e suí,dela,,,in_predication_span_role_unresolved,needs_philological_review
-D0015,C01-L068,1,Kó,kó,proximal_visible,core,presentative_or_clausal_deictic,,ixé,0,2,Kó ixé,"Eis que eu,",,,in_predication_span_role_unresolved,needs_philological_review
-D0016,C01-L105,1,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,quartel,0,1,ã quartel nheme’engi.,esse quartel se dá.,,,in_predication_span_role_unresolved,needs_philological_review
+D0014,C01-L066,1,koba’e,kó,proximal_visible,core,anaphoric_determiner_or_independent_pronoun,,suí,0,6,koba’e suí,dela,,,not_determined,needs_philological_review
+D0015,C01-L068,1,Kó,kó,proximal_visible,core,presentative_or_clausal_deictic,,ixé,0,2,Kó ixé,"Eis que eu,",,,not_determined,needs_philological_review
+D0016,C01-L105,1,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,quartel,0,1,ã quartel nheme’engi.,esse quartel se dá.,,,not_determined,needs_philological_review
 D0017,C01-L123,1,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,nhõ,0,2,Kó nhõ pe posanga.,Este somente é o remédio de vocês.,P008,nominal,in_predication_span_role_unresolved,needs_philological_review
-D0018,C01-L131,1,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,2,Kó xe nhe’enga rupi,Segundo estas minhas palavras,,,in_predication_span_role_unresolved,needs_philological_review
+D0018,C01-L131,1,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,2,Kó xe nhe’enga rupi,Segundo estas minhas palavras,,,not_determined,needs_philological_review
 D0019,C01-L140,1,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,marana,0,2,Kó marana,Esta guerra,P010,nominal,in_predication_span_role_unresolved,needs_philological_review
 D0020,C01-L144,1,akûeîba’e,akûeî,distal_unseen,core,anaphoric_determiner_or_independent_pronoun,,rekó,0,9,akûeîba’e rekó.,[é] a condição daquela.,P011,nominal,in_predication_span_role_unresolved,needs_philological_review
 D0021,C01-L145,1,aé,aé,demonstrative_reinforcer,related,related_not_automatically_nominal_demonstrative,ixé,,4,6,Ixé aé,Eu mesmo,,,not_determined,needs_philological_review
-D0022,C01-L158,1,A’e,a'e,distal_unseen,core,third_person_pronoun_or_distal_demonstrative_unresolved,,abé,0,3,A’e abé oîme’ẽ,Eles também darão,,,in_predication_span_role_unresolved,needs_philological_review
-D0023,C01-L168,1,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,yby,0,2,kó yby,esta terra,,,in_predication_span_role_unresolved,needs_philological_review
-D0024,C01-L176,1,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,bé,0,2,Kó bé aîkó.,Eis que aqui também estou.,,,in_predication_span_role_unresolved,needs_philological_review
-D0025,C01-L179,1,aîpó,aîpó,medial_unseen,core,anaphoric_determiner_or_independent_pronoun,,xe,0,4,aîpó xe nhe’enga.,essas minhas palavras.,,,in_predication_span_role_unresolved,needs_philological_review
-D0026,C02-L001,2,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,2,Kó xe nhe’enga,Estas minhas palavras,,,in_predication_span_role_unresolved,needs_philological_review
+D0022,C01-L158,1,A’e,a'e,distal_unseen,core,third_person_pronoun_or_distal_demonstrative_unresolved,,abé,0,3,A’e abé oîme’ẽ,Eles também darão,,,not_determined,needs_philological_review
+D0023,C01-L168,1,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,yby,0,2,kó yby,esta terra,,,not_determined,needs_philological_review
+D0024,C01-L176,1,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,bé,0,2,Kó bé aîkó.,Eis que aqui também estou.,,,not_determined,needs_philological_review
+D0025,C01-L179,1,aîpó,aîpó,medial_unseen,core,anaphoric_determiner_or_independent_pronoun,,xe,0,4,aîpó xe nhe’enga.,essas minhas palavras.,,,not_determined,needs_philological_review
+D0026,C02-L001,2,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,2,Kó xe nhe’enga,Estas minhas palavras,,,not_determined,needs_philological_review
 D0027,C02-L004,2,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,gûitekóbo,,10,11,gûitekóbo é.,"estando, na verdade.",P015,nominal,not_determined,needs_philological_review
 D0028,C02-L005,2,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,rupi,serã,24,25,Nde remimotare’yma rupi é serã?,Será que está conforme ao que tu não desejas? (ao teu não desejar?),,,not_determined,needs_philological_review
 D0029,C02-L027,2,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,reté,ã,9,10,Nde reté é ã,"Tu és verdadeiro, mesmo,",P018,property,not_determined,needs_philological_review
 D0029,C02-L027,2,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,é,,11,12,Nde reté é ã,"Tu és verdadeiro, mesmo,",P018,property,in_predication_span_role_unresolved,needs_philological_review
 D0031,C02-L032,2,anga,ang,proximal,excluded,excluded_homograph_soul,nde,,10,14,memẽ nde ‘anga,"[e], mais ainda, tua alma",,,not_determined,needs_philological_review
-D0032,C02-L034,2,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,nde,0,2,Kó nde rekó,Esse teu proceder,,,in_predication_span_role_unresolved,needs_philological_review
+D0032,C02-L034,2,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,nde,0,2,Kó nde rekó,Esse teu proceder,,,not_determined,needs_philological_review
 D0033,C02-L037,2,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,raûsupa,,12,13,nde raûsupa é.,por te amar95 de verdade.,,,not_determined,needs_philological_review
-D0034,C02-L038,2,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,nde,0,2,Kó nde rekorama resé,Acerca daquilo que farás,,,in_predication_span_role_unresolved,needs_philological_review
-D0035,C02-L042,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,opabenhẽ,yby,9,11,"Opabenhẽ kó yby pupé,",Em toda esta terra,,,in_predication_span_role_unresolved,needs_philological_review
-D0036,C02-L052,2,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,karaíba,0,1,ã karaíba,desses brancos,,,in_predication_span_role_unresolved,needs_philological_review
-D0037,C02-L058,2,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,memẽ,karaíba,5,6,Memẽ ã karaíba,Sempre esses brancos,,,in_predication_span_role_unresolved,needs_philological_review
+D0034,C02-L038,2,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,nde,0,2,Kó nde rekorama resé,Acerca daquilo que farás,,,not_determined,needs_philological_review
+D0035,C02-L042,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,opabenhẽ,yby,9,11,"Opabenhẽ kó yby pupé,",Em toda esta terra,,,not_determined,needs_philological_review
+D0036,C02-L052,2,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,karaíba,0,1,ã karaíba,desses brancos,,,not_determined,needs_philological_review
+D0037,C02-L058,2,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,memẽ,karaíba,5,6,Memẽ ã karaíba,Sempre esses brancos,,,not_determined,needs_philological_review
 D0038,C02-L063,2,A’e,a'e,distal_unseen,core,third_person_pronoun_or_distal_demonstrative_unresolved,,endébe,0,3,A’e endébe,Eles para ti,P020,nominal,in_predication_span_role_unresolved,needs_philological_review
 D0039,C02-L066,2,ahẽ,ahẽ,human_demonstrative_or_pronoun,related,related_not_automatically_nominal_demonstrative,n'oîme'engangaî,,16,19,n’oîme’engangaî ahẽ,[e] não dão eles de modo nenhum,,,not_determined,needs_philological_review
 D0040,C02-L071,2,ahẽ,ahẽ,human_demonstrative_or_pronoun,related,related_not_automatically_nominal_demonstrative,ymẽ,,11,14,T’oîkó ymẽ ahẽ,Para que não estejam eles104,,,not_determined,needs_philological_review
-D0041,C02-L073,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,nhẽ,,11,13,t’oîkó nhẽ kó,para que estejam esses,,,in_predication_span_role_unresolved,needs_philological_review
+D0041,C02-L073,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,nhẽ,,11,13,t’oîkó nhẽ kó,para que estejam esses,,,not_determined,needs_philological_review
 D0042,C02-L074,2,ahẽ,ahẽ,human_demonstrative_or_pronoun,related,related_not_automatically_nominal_demonstrative,,apŷabaíba,0,3,"ahẽ apŷabaíba irũnamo,","com aquele homem mau107,",,,not_determined,needs_philological_review
 D0043,C02-L077,2,a’ereme,a'ereme,derived_anaphoric_connective,related,related_not_automatically_nominal_demonstrative,,t'arekó,0,7,a’ereme t’arekó,"e, então, hei de tratar",,,not_determined,needs_philological_review
-D0044,C02-L078,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,ahẽ,0,2,kó ahẽ remirekopûera,essas esposas deles,,,in_predication_span_role_unresolved,needs_philological_review
+D0044,C02-L078,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,ahẽ,0,2,kó ahẽ remirekopûera,essas esposas deles,,,not_determined,needs_philological_review
 D0044,C02-L078,2,ahẽ,ahẽ,human_demonstrative_or_pronoun,related,related_not_automatically_nominal_demonstrative,kó,remirekopûera,3,6,kó ahẽ remirekopûera,essas esposas deles,,,not_determined,needs_philological_review
 D0046,C02-L081,2,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,o'îabo,ã,7,8,o’îabo é ã karaíba.,dizendo mesmo esse holandês111.,,,not_determined,needs_philological_review
-D0046,C02-L081,2,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,é,karaíba,9,10,o’îabo é ã karaíba.,dizendo mesmo esse holandês111.,,,in_predication_span_role_unresolved,needs_philological_review
+D0046,C02-L081,2,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,é,karaíba,9,10,o’îabo é ã karaíba.,dizendo mesmo esse holandês111.,,,not_determined,needs_philological_review
 D0048,C02-L085,2,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,suí,,18,19,ixé pe pysyrõ suí é.,para de mim a não salvação de vocês.,,,not_determined,needs_philological_review
-D0049,C02-L088,2,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,mba'e,0,1,ã mba’e rerobîáne.,nessas coisas acreditar.,,,in_predication_span_role_unresolved,needs_philological_review
+D0049,C02-L088,2,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,mba'e,0,1,ã mba’e rerobîáne.,nessas coisas acreditar.,,,not_determined,needs_philological_review
 D0050,C02-L090,2,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,ruba,ã,9,10,Nde ruba é ã ixé.,Teu próprio pai de fato eis que eu [sou].,P022,nominal,not_determined,needs_philological_review
 D0050,C02-L090,2,ã,ã,proximal,core,interposed_presentative_deictic_candidate,é,ixé,11,12,Nde ruba é ã ixé.,Teu próprio pai de fato eis que eu [sou].,P022,nominal,between_nominal_constituents,needs_philological_review
 D0052,C02-L097,2,ãgûa,ãgûa,uncertain_pronominal,related,related_not_automatically_nominal_demonstrative,t'ererur,,9,13,T’ererur ãgûa,Que tragas (a) eles,,,not_determined,needs_philological_review
 D0053,C02-L099,2,ãgûa,ãgûa,uncertain_pronominal,related,related_not_automatically_nominal_demonstrative,nhyrõ,supé,9,13,Xe nhyrõ ãgûa supé,Eu perdoo àqueles,,,not_determined,needs_philological_review
-D0054,C02-L109,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,îoapiti,0,2,kó îoapiti,isso uma matança120,,,in_predication_span_role_unresolved,needs_philological_review
-D0055,C02-L112,2,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,apŷabaíba,0,2,Kó apŷabaíba é,"Esses homens maus, mesmo,",,,in_predication_span_role_unresolved,needs_philological_review
+D0054,C02-L109,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,îoapiti,0,2,kó îoapiti,isso uma matança120,,,not_determined,needs_philological_review
+D0055,C02-L112,2,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,apŷabaíba,0,2,Kó apŷabaíba é,"Esses homens maus, mesmo,",,,not_determined,needs_philological_review
 D0055,C02-L112,2,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,apŷabaíba,,13,14,Kó apŷabaíba é,"Esses homens maus, mesmo,",,,not_determined,needs_philological_review
-D0057,C02-L113,2,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,kó,0,1,ã kó tekó,eis que esta lei,,,in_predication_span_role_unresolved,needs_philological_review
-D0057,C02-L113,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,ã,tekó,2,4,ã kó tekó,eis que esta lei,,,in_predication_span_role_unresolved,needs_philological_review
+D0057,C02-L113,2,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,kó,0,1,ã kó tekó,eis que esta lei,,,not_determined,needs_philological_review
+D0057,C02-L113,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,ã,tekó,2,4,ã kó tekó,eis que esta lei,,,not_determined,needs_philological_review
 D0059,C02-L115,2,a’ereme,a'ereme,derived_anaphoric_connective,related,related_not_automatically_nominal_demonstrative,nhandé,é,7,14,nhandé a’ereme é,"e nós, então, na verdade,",,,not_determined,needs_philological_review
 D0059,C02-L115,2,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,a'ereme,,15,16,nhandé a’ereme é,"e nós, então, na verdade,",,,not_determined,needs_philological_review
 D0061,C02-L117,2,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,rekasápe,,9,10,rekasápe é.,"[estamos], de fato, na busca.",,,not_determined,needs_philological_review
-D0062,C02-L118,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,eré,,4,6,Eré kó,"Mostra-te, eia,",,,in_predication_span_role_unresolved,needs_philological_review
-D0063,C02-L119,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,apŷabaíba,0,2,kó apŷabaíba,desses homens maus,,,in_predication_span_role_unresolved,needs_philological_review
-D0064,C02-L123,2,a’e,a'e,distal_unseen,core,third_person_pronoun_or_distal_demonstrative_unresolved,,îabé,0,3,a’e îabé!123,como eles!,,,in_predication_span_role_unresolved,needs_philological_review
-D0065,C02-L125,2,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,nhandé,0,1,ã nhandé rekorama,essa nossa futura morada,,,in_predication_span_role_unresolved,needs_philological_review
+D0062,C02-L118,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,eré,,4,6,Eré kó,"Mostra-te, eia,",,,not_determined,needs_philological_review
+D0063,C02-L119,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,apŷabaíba,0,2,kó apŷabaíba,desses homens maus,,,not_determined,needs_philological_review
+D0064,C02-L123,2,a’e,a'e,distal_unseen,core,third_person_pronoun_or_distal_demonstrative_unresolved,,îabé,0,3,a’e îabé!123,como eles!,,,not_determined,needs_philological_review
+D0065,C02-L125,2,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,nhandé,0,1,ã nhandé rekorama,essa nossa futura morada,,,not_determined,needs_philological_review
 D0066,C02-L126,2,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,reká,,5,6,reká é.,"buscando (para buscar), na verdade.",,,not_determined,needs_philological_review
 D0067,C02-L138,2,Aîpó,aîpó,medial_unseen,core,anaphoric_determiner_or_independent_pronoun,,pe,0,4,Aîpó pe rekó,Esse ato de vocês,P023,property,in_predication_span_role_unresolved,needs_philological_review
-D0068,C02-L140,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,tekó,0,2,kó tekó endé i potareme,se esse ato tu quiseres,,,in_predication_span_role_unresolved,needs_philological_review
-D0069,C02-L142,2,Ebokûeî,ebokûeî,medial_visible,core,referential_deictic_role_unresolved,,bé,0,7,Ebokûeî bé,Esse também,,,in_predication_span_role_unresolved,needs_philological_review
-D0070,C02-L146,2,aîpó,aîpó,medial_unseen,core,anaphoric_determiner_or_independent_pronoun,,pe,0,4,aîpó pe rekó resé.,para essa ação de vocês.,,,in_predication_span_role_unresolved,needs_philological_review
-D0071,C02-L148,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,tekó,0,2,kó tekó resé,nessa ação,,,in_predication_span_role_unresolved,needs_philological_review
-D0072,C03-L002,3,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,2,kó xe papera,esta minha carta,,,in_predication_span_role_unresolved,needs_philological_review
-D0073,C03-L006,3,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,ixé,ké,4,5,"Ixé ã ké,","Eis que eu, aqui,",,,in_predication_span_role_unresolved,needs_philological_review
-D0074,C03-L015,3,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,xe,0,1,ã xe nhe’enga,estas minhas palavras,,,in_predication_span_role_unresolved,needs_philological_review
+D0068,C02-L140,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,tekó,0,2,kó tekó endé i potareme,se esse ato tu quiseres,,,not_determined,needs_philological_review
+D0069,C02-L142,2,Ebokûeî,ebokûeî,medial_visible,core,referential_deictic_role_unresolved,,bé,0,7,Ebokûeî bé,Esse também,,,not_determined,needs_philological_review
+D0070,C02-L146,2,aîpó,aîpó,medial_unseen,core,anaphoric_determiner_or_independent_pronoun,,pe,0,4,aîpó pe rekó resé.,para essa ação de vocês.,,,not_determined,needs_philological_review
+D0071,C02-L148,2,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,tekó,0,2,kó tekó resé,nessa ação,,,not_determined,needs_philological_review
+D0072,C03-L002,3,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,2,kó xe papera,esta minha carta,,,not_determined,needs_philological_review
+D0073,C03-L006,3,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,ixé,ké,4,5,"Ixé ã ké,","Eis que eu, aqui,",,,not_determined,needs_philological_review
+D0074,C03-L015,3,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,xe,0,1,ã xe nhe’enga,estas minhas palavras,,,not_determined,needs_philological_review
 D0075,C03-L018,3,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,gûitekóbo,,10,11,gûitekóbo é.,estando eu.,P024,nominal,not_determined,needs_philological_review
 D0076,C03-L020,3,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,benhẽ,serã,6,7,benhẽ é serã,"novamente, mesmo,",,,not_determined,needs_philological_review
-D0077,C03-L023,3,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,2,kó xe papera rerasoara?,desta minha carta o levador (o que leva)?,,,in_predication_span_role_unresolved,needs_philological_review
-D0078,C03-L026,3,a’eba’e,a'e,distal_unseen,core,referential_deictic_role_unresolved,,ã,0,7,a’eba’e ã,isso aí,,,in_predication_span_role_unresolved,needs_philological_review
-D0078,C03-L026,3,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,a'eba'e,,8,9,a’eba’e ã,isso aí,,,in_predication_span_role_unresolved,needs_philological_review
-D0080,C03-L028,3,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,marana,0,2,"Kó marana pupé,","Nesta guerra,",,,in_predication_span_role_unresolved,needs_philological_review
+D0077,C03-L023,3,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,2,kó xe papera rerasoara?,desta minha carta o levador (o que leva)?,,,not_determined,needs_philological_review
+D0078,C03-L026,3,a’eba’e,a'e,distal_unseen,core,referential_deictic_role_unresolved,,ã,0,7,a’eba’e ã,isso aí,,,not_determined,needs_philological_review
+D0078,C03-L026,3,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,a'eba'e,,8,9,a’eba’e ã,isso aí,,,not_determined,needs_philological_review
+D0080,C03-L028,3,Kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,marana,0,2,"Kó marana pupé,","Nesta guerra,",,,not_determined,needs_philological_review
 D0081,C03-L030,3,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,gûitekóbo,,10,11,"gûitekóbo é,","eu estando, de fato,",P025,nominal,not_determined,needs_philological_review
-D0082,C03-L032,3,aîpó,aîpó,medial_unseen,core,anaphoric_determiner_or_independent_pronoun,,nde,0,4,aîpó nde rekó resé.,por esse teu procedimento.,,,in_predication_span_role_unresolved,needs_philological_review
-D0083,C03-L040,3,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,nde,0,1,"ã nde ryke’yra,","esse teu irmão mais velho,",,,in_predication_span_role_unresolved,needs_philological_review
-D0084,C03-L051,3,a’e,a'e,distal_unseen,core,third_person_pronoun_or_distal_demonstrative_unresolved,,rupibé,0,3,a’e rupibé.,conforme elas [são].,,,in_predication_span_role_unresolved,needs_philological_review
-D0085,C03-L056,3,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,ko'y,,5,6,ko’y ã.,agora.,,,in_predication_span_role_unresolved,needs_philological_review
-D0086,C03-L060,3,ebokûé,ebokûé,medial_visible,core,referential_deictic_role_unresolved,,koty,0,6,ebokûé koty,para aí,,,in_predication_span_role_unresolved,needs_philological_review
+D0082,C03-L032,3,aîpó,aîpó,medial_unseen,core,anaphoric_determiner_or_independent_pronoun,,nde,0,4,aîpó nde rekó resé.,por esse teu procedimento.,,,not_determined,needs_philological_review
+D0083,C03-L040,3,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,nde,0,1,"ã nde ryke’yra,","esse teu irmão mais velho,",,,not_determined,needs_philological_review
+D0084,C03-L051,3,a’e,a'e,distal_unseen,core,third_person_pronoun_or_distal_demonstrative_unresolved,,rupibé,0,3,a’e rupibé.,conforme elas [são].,,,not_determined,needs_philological_review
+D0085,C03-L056,3,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,ko'y,,5,6,ko’y ã.,agora.,,,not_determined,needs_philological_review
+D0086,C03-L060,3,ebokûé,ebokûé,medial_visible,core,referential_deictic_role_unresolved,,koty,0,6,ebokûé koty,para aí,,,not_determined,needs_philological_review
 D0087,C03-L063,3,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,gûitekóbo,,10,11,"gûitekóbo é,","estando eu, na verdade,",P026,nominal,not_determined,needs_philological_review
-D0088,C03-L068,3,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,nhandé,0,1,ã nhandé anama,esses nossos parentes,,,in_predication_span_role_unresolved,needs_philological_review
+D0088,C03-L068,3,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,nhandé,0,1,ã nhandé anama,esses nossos parentes,,,not_determined,needs_philological_review
 D0089,C03-L078,3,anga,ang,proximal,excluded,excluded_homograph_soul,nde,,10,14,memẽ nde ‘anga.,"[e], mais ainda, tua alma (estão).",,,not_determined,needs_philological_review
 D0090,C03-L079,3,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,suí,,31,32,Endé i mokanhema benhẽ nhã suí é,"Para tu não os arruinar novamente, como de costume,",,,not_determined,needs_philological_review
-D0091,C03-L080,3,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,xe,0,1,ã xe nhe’enga,estas minhas palavras,,,in_predication_span_role_unresolved,needs_philological_review
+D0091,C03-L080,3,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,xe,0,1,ã xe nhe’enga,estas minhas palavras,,,not_determined,needs_philological_review
 D0092,C03-L090,3,ãgûa,ãgûa,uncertain_pronominal,related,related_not_automatically_nominal_demonstrative,endé,rerosema,5,9,"endé ãgûa rerosema,",tu a eles fazer sair contigo,,,not_determined,needs_philological_review
-D0093,C03-L094,3,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,nhandé,0,1,ã nhandé anama,desses nossos parentes,,,in_predication_span_role_unresolved,needs_philological_review
-D0094,C03-L101,3,ebokûé,ebokûé,medial_visible,core,referential_deictic_role_unresolved,aîmondó,koty,8,14,"aîmondó ebokûé koty,","envio para aí,",,,in_predication_span_role_unresolved,needs_philological_review
+D0093,C03-L094,3,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,nhandé,0,1,ã nhandé anama,desses nossos parentes,,,not_determined,needs_philological_review
+D0094,C03-L101,3,ebokûé,ebokûé,medial_visible,core,referential_deictic_role_unresolved,aîmondó,koty,8,14,"aîmondó ebokûé koty,","envio para aí,",,,not_determined,needs_philological_review
 D0095,C03-L119,3,Koba’e,kó,proximal_visible,core,anaphoric_determiner_or_independent_pronoun,,tekó,0,6,"Koba’e tekó,","Isto [será] uma ação,",P028,nominal,in_predication_span_role_unresolved,needs_philological_review
-D0096,C03-L137,3,koba’e,kó,proximal_visible,core,anaphoric_determiner_or_independent_pronoun,,resé,0,6,koba’e resé,por causa disso,,,in_predication_span_role_unresolved,needs_philological_review
+D0096,C03-L137,3,koba’e,kó,proximal_visible,core,anaphoric_determiner_or_independent_pronoun,,resé,0,6,koba’e resé,por causa disso,,,not_determined,needs_philological_review
 D0097,C03-L139,3,Aîpó,aîpó,medial_unseen,core,anaphoric_determiner_or_independent_pronoun,,nhõ,0,4,Aîpó nhõ,Essas155 somente,P030,nominal,in_predication_span_role_unresolved,needs_philological_review
 D0098,C04-L001,4,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,tupana,,12,13,Pa’i Tupana é,"O Senhor Deus, [ele] próprio,",,,not_determined,needs_philological_review
-D0099,C04-L007,4,Ebokûé,ebokûé,medial_visible,core,referential_deictic_role_unresolved,,bé,0,6,Ebokûé bé,Também essa,,,in_predication_span_role_unresolved,needs_philological_review
-D0100,C04-L024,4,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,2,kó xe papera,esta minha carta,,,in_predication_span_role_unresolved,needs_philological_review
-D0101,C04-L031,4,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,ĩ,xe,6,8,“Re´ĩ kó xe ganã;,"“Ai, eis que me enganam;",,,in_predication_span_role_unresolved,needs_philological_review
+D0099,C04-L007,4,Ebokûé,ebokûé,medial_visible,core,referential_deictic_role_unresolved,,bé,0,6,Ebokûé bé,Também essa,,,not_determined,needs_philological_review
+D0100,C04-L024,4,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,2,kó xe papera,esta minha carta,,,not_determined,needs_philological_review
+D0101,C04-L031,4,kó,kó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,ĩ,xe,6,8,“Re´ĩ kó xe ganã;,"“Ai, eis que me enganam;",,,not_determined,needs_philological_review
 D0102,C04-L032,4,ahẽ,ahẽ,human_demonstrative_or_pronoun,related,related_not_automatically_nominal_demonstrative,ipó,,8,11,nde ipó ahẽ”,"tu és deles, certamente”,",P033,nominal,not_determined,needs_philological_review
 D0103,C04-L042,4,niã,niã,presentational_particle,related,related_not_automatically_nominal_demonstrative,sorybeté,,9,12,Sorybeté niã,"Estariam muito felizes, com efeito,",P034,property,not_determined,needs_philological_review
 D0104,C04-L057,4,niã,niã,presentational_particle,related,related_not_automatically_nominal_demonstrative,,morubixaba,0,3,"niã morubixaba,","com efeito, o chefe",,,not_determined,needs_philological_review
-D0105,C04-L068,4,Aîpó,aîpó,medial_unseen,core,anaphoric_determiner_or_independent_pronoun,,nhote,0,4,"Aîpó nhote,","Isso somente [te digo],",,,in_predication_span_role_unresolved,needs_philological_review
+D0105,C04-L068,4,Aîpó,aîpó,medial_unseen,core,anaphoric_determiner_or_independent_pronoun,,nhote,0,4,"Aîpó nhote,","Isso somente [te digo],",,,not_determined,needs_philological_review
 D0106,C05-L003,5,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,tupã,,10,11,Pa’i Tupã é,"Deus, ele próprio,",,,not_determined,needs_philological_review
-D0107,C05-L006,5,Ikó,ikó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,3,Ikó xe papera,Esta minha carta,,,in_predication_span_role_unresolved,needs_philological_review
+D0107,C05-L006,5,Ikó,ikó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,3,Ikó xe papera,Esta minha carta,,,not_determined,needs_philological_review
 D0108,C05-L008,5,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,rorykatu,,12,13,xe rorykatu ã,"eu estou muito feliz,",P036,property,in_predication_span_role_unresolved,needs_philological_review
 D0109,C05-L012,5,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,abé,,7,8,"xe abé ã,","eu também,",P037,property,in_predication_span_role_unresolved,needs_philological_review
-D0110,C05-L021,5,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,xe,0,1,"ã xe soldados ebapó,","estes meus soldados aí,",,,in_predication_span_role_unresolved,needs_philological_review
+D0110,C05-L021,5,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,xe,0,1,"ã xe soldados ebapó,","estes meus soldados aí,",,,not_determined,needs_philological_review
 D0111,C05-L025,5,ãgûa,ãgûa,uncertain_pronominal,related,related_not_automatically_nominal_demonstrative,,amõ,0,4,ãgûa amõ,de alguns deles,,,not_determined,needs_philological_review
 D0112,C05-L033,5,é,é,assertive_particle,related,related_not_automatically_nominal_demonstrative,renosema,,14,15,“-Pe renosema é,"Para vos fazer sair conosco, na verdade,",,,not_determined,needs_philological_review
-D0113,C05-L034,5,ikó,ikó,proximal_visible,core,presentative_or_clausal_deictic,,oroîur,0,3,ikó oroîur”,"eis que viemos”,",,,in_predication_span_role_unresolved,needs_philological_review
+D0113,C05-L034,5,ikó,ikó,proximal_visible,core,presentative_or_clausal_deictic,,oroîur,0,3,ikó oroîur”,"eis que viemos”,",,,not_determined,needs_philological_review
 D0114,C05-L039,5,ãgûa,ãgûa,uncertain_pronominal,related,related_not_automatically_nominal_demonstrative,,mongakuapa,0,4,"ãgûa mongakuapa”,","para a eles190 dar notícias”,",,,not_determined,needs_philological_review
-D0115,C05-L043,5,ikó,ikó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,3,ikó xe nhe’enga,estas minhas palavras,,,in_predication_span_role_unresolved,needs_philological_review
+D0115,C05-L043,5,ikó,ikó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,3,ikó xe nhe’enga,estas minhas palavras,,,not_determined,needs_philological_review
 D0116,C05-L047,5,ã,ã,proximal,core,interposed_presentative_deictic_candidate,xe,,3,4,Xe ã,Eis que eu,P038,nominal,between_nominal_constituents,needs_philological_review
-D0117,C05-L080,5,Ikó,ikó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,bé,0,3,Ikó bé oroîkó,"Aqui novamente estamos,",,,in_predication_span_role_unresolved,needs_philological_review
+D0117,C05-L080,5,Ikó,ikó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,bé,0,3,Ikó bé oroîkó,"Aqui novamente estamos,",,,not_determined,needs_philological_review
 D0118,C05-L088,5,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,putubabeté,gûitekóbo,14,15,Xe putubabeté ã gûitekóbo,Eis que eu estou-me admirando,P042,property,in_predication_span_role_unresolved,needs_philological_review
-D0119,C05-L128,5,Aîpó,aîpó,medial_unseen,core,anaphoric_determiner_or_independent_pronoun,,nhõ,0,4,Aîpó nhõ,"Essas, somente,",,,in_predication_span_role_unresolved,needs_philological_review
+D0119,C05-L128,5,Aîpó,aîpó,medial_unseen,core,anaphoric_determiner_or_independent_pronoun,,nhõ,0,4,Aîpó nhõ,"Essas, somente,",,,not_determined,needs_philological_review
 D0120,C06-L005,6,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,rorykatu,,12,13,Xe rorykatu ã,"Eis que eu estou muito feliz,",P045,property,in_predication_span_role_unresolved,needs_philological_review
 D0121,C06-L008,6,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,abé,,7,8,xe abé ã,eu também,P046,property,in_predication_span_role_unresolved,needs_philological_review
-D0122,C06-L013,6,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,aîmondó,,8,9,aîmondó ã,eis que envio,,,in_predication_span_role_unresolved,needs_philological_review
-D0123,C06-L021,6,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,nã,xe,3,4,Nã ã xe nhe’enga,"Deste modo, estas minhas palavras",,,in_predication_span_role_unresolved,needs_philological_review
+D0122,C06-L013,6,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,aîmondó,,8,9,aîmondó ã,eis que envio,,,not_determined,needs_philological_review
+D0123,C06-L021,6,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,nã,xe,3,4,Nã ã xe nhe’enga,"Deste modo, estas minhas palavras",,,not_determined,needs_philological_review
 D0124,C06-L029,6,ãgûa,ãgûa,uncertain_pronominal,related,related_not_automatically_nominal_demonstrative,,supé,0,4,ãgûa supé.,a eles.,,,not_determined,needs_philological_review
-D0125,C06-L032,6,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,oroîur,,7,8,Oroîur ã,Eis que viemos,,,in_predication_span_role_unresolved,needs_philological_review
+D0125,C06-L032,6,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,oroîur,,7,8,Oroîur ã,Eis que viemos,,,not_determined,needs_philological_review
 D0126,C06-L034,6,ãgûa,ãgûa,uncertain_pronominal,related,related_not_automatically_nominal_demonstrative,eré,supé,4,8,"eré ãgûa supé,","dize a eles,",,,not_determined,needs_philological_review
-D0127,C06-L036,6,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,e'i,ahẽ,4,5,e’i ã ahẽ,"disse isso ele,",,,in_predication_span_role_unresolved,needs_philological_review
+D0127,C06-L036,6,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,e'i,ahẽ,4,5,e’i ã ahẽ,"disse isso ele,",,,not_determined,needs_philological_review
 D0127,C06-L036,6,ahẽ,ahẽ,human_demonstrative_or_pronoun,related,related_not_automatically_nominal_demonstrative,ã,,6,9,e’i ã ahẽ,"disse isso ele,",,,not_determined,needs_philological_review
-D0129,C06-L038,6,A’e,a'e,distal_unseen,core,third_person_pronoun_or_distal_demonstrative_unresolved,,rupi,0,3,"A’e rupi,","De acordo com isso,",,,in_predication_span_role_unresolved,needs_philological_review
-D0130,C06-L039,6,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,ikó,0,1,ã ikó papera,eis que esta carta,,,in_predication_span_role_unresolved,needs_philological_review
-D0130,C06-L039,6,ikó,ikó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,ã,papera,2,5,ã ikó papera,eis que esta carta,,,in_predication_span_role_unresolved,needs_philological_review
-D0132,C06-L041,6,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,xe,naîkóî,3,4,Xe ã naîkóî,Eis que não procedo,,,in_predication_span_role_unresolved,needs_philological_review
-D0133,C06-L048,6,ikó,ikó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,3,ikó xe papera,desta minha carta,,,in_predication_span_role_unresolved,needs_philological_review
-D0134,C06-L056,6,ikó,ikó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,3,ikó xe papera poepykaba.,desta minha carta a resposta.,,,in_predication_span_role_unresolved,needs_philological_review
+D0129,C06-L038,6,A’e,a'e,distal_unseen,core,third_person_pronoun_or_distal_demonstrative_unresolved,,rupi,0,3,"A’e rupi,","De acordo com isso,",,,not_determined,needs_philological_review
+D0130,C06-L039,6,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,,ikó,0,1,ã ikó papera,eis que esta carta,,,not_determined,needs_philological_review
+D0130,C06-L039,6,ikó,ikó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,ã,papera,2,5,ã ikó papera,eis que esta carta,,,not_determined,needs_philological_review
+D0132,C06-L041,6,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,xe,naîkóî,3,4,Xe ã naîkóî,Eis que não procedo,,,not_determined,needs_philological_review
+D0133,C06-L048,6,ikó,ikó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,3,ikó xe papera,desta minha carta,,,not_determined,needs_philological_review
+D0134,C06-L056,6,ikó,ikó,proximal_visible,core,nominal_determiner_or_pronominal_deictic,,xe,0,3,ikó xe papera poepykaba.,desta minha carta a resposta.,,,not_determined,needs_philological_review
 D0135,C06-L060,6,a’ereme,a'ereme,derived_anaphoric_connective,related,related_not_automatically_nominal_demonstrative,,,0,7,a’ereme,então,,,not_determined,needs_philological_review
-D0136,C06-L066,6,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,putupabi,,15,16,na xe putupabi ã,não me preocuparei,,,in_predication_span_role_unresolved,needs_philological_review
-D0137,C06-L079,6,Aîpó,aîpó,medial_unseen,core,anaphoric_determiner_or_independent_pronoun,,nhõ,0,4,Aîpó nhõ moranduba,"Essas notícias, somente,",,,in_predication_span_role_unresolved,needs_philological_review
+D0136,C06-L066,6,ã,ã,proximal,core,presentative_temporal_or_deictic_unresolved,putupabi,,15,16,na xe putupabi ã,não me preocuparei,,,not_determined,needs_philological_review
+D0137,C06-L079,6,Aîpó,aîpó,medial_unseen,core,anaphoric_determiner_or_independent_pronoun,,nhõ,0,4,Aîpó nhõ moranduba,"Essas notícias, somente,",,,not_determined,needs_philological_review
