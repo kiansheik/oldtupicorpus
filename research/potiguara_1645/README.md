@@ -6,6 +6,6 @@ Source: Navarro (2022), "Transcrição e tradução integral anotada das cartas 
 
 Counts count **clauses**, not editorial lines (one clause can span several lines); strict deictic_between distinguishes the two clear ã-insertion cases from postposed deictics. eko_predicative includes substantive and state predication, NOT ordinary locative, aspectual or possessive rekó. See summary.json for matched and unmatched annotations.
 
-Rebuild: pip install requests beautifulsoup4; python research/potiguara_1645/build.py.
+Rebuild: pip install requests beautifulsoup4 pymupdf; python research/potiguara_1645/build.py.
 
 Future review: inspect all candidate rows, disambiguate ã/niã, é, aé and verb ekó versus demonstrative ikó, then label all clauses and establish verified exhaustive counts.

@@ -1,6 +1,7 @@
 {
   "source": "https://doi.org/10.1590/2178-2547-BGOELDI-2021-0034",
   "source_sha256": "a7843ed80458fe21020ec02933d0e60c07ce05b3014fbcd6ec06fe69c17d34b8",
+  "source_pdf": "https://arquivos-producao.ufopa.edu.br/arquivos/202310017675e5666416aa70b73ebbcd/transcricaonavarro.pdf",
   "row_total": 777,
   "rows_by_letter": {
     "1": 179,
@@ -10,16 +11,16 @@
     "5": 138,
     "6": 86
   },
-  "candidate_clauses_matched": 46,
-  "candidate_clauses_unmatched": 1,
+  "candidate_clauses_matched": 47,
+  "candidate_clauses_unmatched": 0,
   "strategies": {
-    "eko_predicative": 21,
+    "eko_predicative": 22,
     "zero": 19,
     "deictic_attached": 4,
     "deictic_between": 2
   },
   "nominal_strategies": {
-    "eko_predicative": 17,
+    "eko_predicative": 18,
     "zero": 11,
     "deictic_between": 2
   },
@@ -51,7 +52,7 @@
     },
     "6": {
       "deictic_attached": 1,
-      "eko_predicative": 2,
+      "eko_predicative": 3,
       "zero": 2
     }
   },
