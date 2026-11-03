@@ -118,7 +118,7 @@ def scrape_justalinear():
                     if not (1<=current_letter<=6 and "||" in label and label.count("||")==1):
                         continue
                     tupi, portuguese = [re.sub(r"\s+"," ",chunk).strip().strip("•*– ") for chunk in label.split("||",1)]
-                    tupi = re.sub(r"(?<=[A-Za-zÁ-ÿ])\d{1,3}(?=\W|$)","",tupi)
+                    tupi = re.sub(r"([^\W\d_])\d{1,3}(?=\W|$)",r"\1",tupi,flags=re.UNICODE)
                     if not tupi or not portuguese:
                         continue
                     key = (current_letter,normalize(tupi),normalize(portuguese))
@@ -201,7 +201,7 @@ def main():
     rows, response_content = scrape_justalinear()
     rows, clauses, missing = annotate(rows, cases())
     save_csv(HERE / "all_lines.csv", rows,
-             ["id","letter","line","tupi","portuguese","copular","predication_kind","strategy","has_demonstrative_copular_candidate",
+             ["id","letter","line","tupi","portuguese","pdf_page","copular","predication_kind","strategy","has_demonstrative_copular_candidate",
               "has_eko_predicative_candidate","clause_ids","screening","editorial_status","source","source_url"])
     save_csv(HERE / "copular_clauses.csv", clauses,
              ["id","letter","start_id","end_id","tupi","portuguese","kind","strategy","note","evidence_status","source"])
@@ -211,6 +211,7 @@ def main():
     nominal_strategies = Counter(item["strategy"] for item in clauses if item["kind"] == "nominal")
     distribution = {str(k): dict(Counter(x["strategy"] for x in clauses if x["letter"] == k)) for k in range(1,7)}
     summary = {"source": DOI, "source_sha256": hashlib.sha256(response_content).hexdigest(),
+               "source_pdf": rows[0]["source_url"],
                "row_total": len(rows), "rows_by_letter": dict(Counter(x["letter"] for x in rows)),
                "candidate_clauses_matched": len(clauses), "candidate_clauses_unmatched": len(missing),
                "strategies": dict(strategies), "nominal_strategies": dict(nominal_strategies),
@@ -229,7 +230,7 @@ def main():
         "strict deictic_between distinguishes the two clear ã-insertion cases from postposed deictics. "
         "eko_predicative includes substantive and state predication, NOT ordinary locative, aspectual or possessive rekó. "
         "See summary.json for matched and unmatched annotations.\n\n"
-        "Rebuild: pip install requests beautifulsoup4; python research/potiguara_1645/build.py.\n\n"
+        "Rebuild: pip install requests beautifulsoup4 pymupdf; python research/potiguara_1645/build.py.\n\n"
         "Future review: inspect all candidate rows, disambiguate ã/niã, é, "
         "aé and verb ekó versus demonstrative ikó, then label all clauses and establish verified exhaustive counts.\n",
         encoding="utf-8")
