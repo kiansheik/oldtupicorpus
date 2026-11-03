@@ -84,45 +84,58 @@ def normalize(value: str) -> str:
     return re.sub(r"[^a-z0-9]", "", "".join(c for c in value if not unicodedata.combining(c)))
 
 def scrape_justalinear():
-    response = requests.get(URL, headers={"User-Agent": "OldTupiCorpus/1.0 research dataset (+https://github.com/kiansheik/oldtupicorpus)"}, timeout=55)
-    response.raise_for_status()
-    soup = BeautifulSoup(response.text, "html.parser")
-    for unwanted in soup(["script", "style", "nav", "header", "footer"]):
-        unwanted.decompose()
-    current_letter = 0
-    rows = []
-    seen = set()
-    for element in soup.find_all(["h1", "h2", "h3", "h4", "h5", "h6", "p", "li"]):
-        label = element.get_text(" ", strip=True)
-        if "TRANSCRIÇÃO COM TRADUÇÃO JUSTALINEAR ANOTADA" in label.upper() and len(label) < 160:
-            current_letter += 1
-            continue
-        if not (1 <= current_letter <= 6 and element.name in ("p", "li")):
-            continue
-        if element.name == "li" and element.find("p"):
-            continue
-        if "||" not in label:
-            continue
-        cloned = BeautifulSoup(str(element), "html.parser")
-        for footnote in cloned.find_all(["sup"]):
-            footnote.decompose()
-        clean = cloned.get_text(" ", strip=True)
-        if clean.count("||") != 1:
-            continue
-        tupi, portuguese = [re.sub(r"\s+", " ", chunk).strip().strip("•*– ") for chunk in clean.split("||", 1)]
-        if not tupi or not portuguese:
-            continue
-        key = (current_letter, normalize(tupi), normalize(portuguese))
-        if key in seen and rows and rows[-1]["letter"] == current_letter and normalize(rows[-1]["tupi"]) == normalize(tupi):
-            continue
-        seen.add(key)
-        pos = sum(1 for row in rows if row["letter"] == current_letter) + 1
-        rows.append({"id": f"C{current_letter:02d}-L{pos:03d}", "letter": current_letter, "line": pos, "tupi": tupi,
-                     "portuguese": portuguese, "source": DOI, "source_url": URL})
-    groups = Counter(x["letter"] for x in rows)
-    if set(groups) != set(range(1,7)) or len(rows) < 250:
-        raise RuntimeError(f"Scraper did not recover all six letter transcriptions: {groups}. Check SciELO HTML markup before using data.")
-    return rows, response.content
+    """Fetch an independently hosted, text-layer copy of the open-access edition.
+
+    SciELO's web site blocks automated GitHub runners (HTTP 403). Wikimedia hosts
+    the freely available 50-page original PDF; extract each justalinear source
+    line using the printed || alignment marker. Use the UFOPA copy as fallback.
+    """
+    import fitz  # PyMuPDF
+
+    urls = [
+        "https://upload.wikimedia.org/wikipedia/commons/2/29/TRANSCRI%C3%87%C3%83O_E_TRADU%C3%87%C3%83O_INTEGRAL_ANOTADA.pdf",
+        "https://arquivos-producao.ufopa.edu.br/arquivos/202310017675e5666416aa70b73ebbcd/transcricaonavarro.pdf",
+    ]
+    errors = []
+    for url in urls:
+        try:
+            response = requests.get(url, headers={"User-Agent": "Mozilla/5.0 (compatible; OldTupiCorpus/1.0; academic research)"},timeout=75)
+            response.raise_for_status()
+            doc = fitz.open(stream=response.content, filetype="pdf")
+            rows = []
+            seen = set()
+            current_letter = 0
+            last_heading = (-1, -99)
+            for page_idx, page in enumerate(doc):
+                content_lines = page.get_text("text", sort=True).splitlines()
+                for position, line in enumerate(content_lines):
+                    label = line.strip()
+                    heading = " ".join(content_lines[max(0,position-2):position+2]).upper()
+                    if "TRANSCRIÇÃO COM TRADUÇÃO JUSTALINEAR ANOTADA" in heading:
+                        if last_heading[0] != page_idx or abs(position-last_heading[1]) > 3:
+                            current_letter += 1
+                            last_heading = (page_idx,position)
+                    if not (1<=current_letter<=6 and "||" in label and label.count("||")==1):
+                        continue
+                    tupi, portuguese = [re.sub(r"\s+"," ",chunk).strip().strip("•*– ") for chunk in label.split("||",1)]
+                    tupi = re.sub(r"(?<=[A-Za-zÁ-ÿ])\d{1,3}(?=\W|$)","",tupi)
+                    if not tupi or not portuguese:
+                        continue
+                    key = (current_letter,normalize(tupi),normalize(portuguese))
+                    if key in seen and rows and rows[-1]["letter"]==current_letter and normalize(rows[-1]["tupi"])==normalize(tupi):
+                        continue
+                    seen.add(key)
+                    pos = 1+sum(row["letter"]==current_letter for row in rows)
+                    rows.append({"id":f"C{current_letter:02d}-L{pos:03d}","letter":current_letter,"line":pos,
+                                 "tupi":tupi,"portuguese":portuguese,"pdf_page":page_idx+1,
+                                 "source":DOI,"source_url":url})
+            distribution = Counter(x["letter"] for x in rows)
+            if set(distribution)==set(range(1,7)) and len(rows)>250:
+                return rows,response.content
+            errors.append(f"{url}: partial extraction rows={len(rows)}; letters={distribution}")
+        except Exception as error:
+            errors.append(f"{url}: {type(error).__name__}: {error}")
+    raise RuntimeError("No complete machine-readable edition available: "+"; ".join(errors))
 
 def cases():
     result = []
