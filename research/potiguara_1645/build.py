@@ -39,8 +39,8 @@ CASES = """letter|start|end|kind|strategy|occ|note
 1|sobaîygûaramo|sekóreme|nominal|eko_predicative|1|Foreigners, as residents of the other side
 1|Kó nhõ pe posanga|Kó nhõ pe posanga|nominal|zero|1|This alone is your remedy
 1|xe rorybeténe|xe rorybeténe|property|zero|1|I will be happy (class-II predicate)
-1|Kó marana|amõ armada rekopûera îabé|nominal|zero|1|This war like former armada, simile not equation
-1|sekó akûeîba’e rekó|sekó akûeîba’e rekó|nominal|zero|1|Its condition is that one's condition
+1|Kó marana|amõ armada rekopûera îabé|nominal|zero|2|This war like former armada, simile not equation
+1|akûeîba’e rekó|akûeîba’e rekó|nominal|zero|1|Its condition is that one's condition
 1|i mokanhemetepyramo nhẽ|sekóûne|nominal|eko_predicative|1|They will be ruined, simulative nominal predicate
 1|Xe remimotaramo|peîkóne|nominal|eko_predicative|1|They will be as those I desire
 1|i aparypyramo|peîkó|nominal|eko_predicative|1|They are like cripples
@@ -52,7 +52,7 @@ CASES = """letter|start|end|kind|strategy|occ|note
 2|A’e endébe|nhe’engabyeteeté|nominal|zero|1|They are greatly transgressors, anaphoric A'e
 2|Na karaíba ruã ixé|Na karaíba ruã ixé|nominal|zero|1|I am not a white man
 2|Nde ruba é ã ixé|Nde ruba é ã ixé|nominal|deictic_between|1|DEMONSTRATIVE between nominal father and pronoun I
-2|Aîpó pe rekó|n’i îabaibangáî|property|zero|1|That procedure is not difficult; rekó is nominal
+2|Aîpó pe rekó|îabaibangáî|property|zero|1|That procedure is not difficult; rekó is nominal
 3|nde anametéramo|gûitekóbo é|nominal|eko_predicative|1|As your true family member
 3|tekó kugûaparamo|gûitekóbo é|nominal|eko_predicative|1|As one who knows the customs
 3|opabenhẽ pe rubetéramo|gûitekóbo é|nominal|eko_predicative|1|As your true father
@@ -63,12 +63,12 @@ CASES = """letter|start|end|kind|strategy|occ|note
 4|aîkó xe kane’õramo|aîkó xe kane’õramo|property|eko_predicative|1|I am tired; property+ramo
 4|nde ipó ahẽ|nde ipó ahẽ|nominal|zero|1|You are theirs, perhaps postpositional possession, uncertain
 4|Sorybeté niã|opabenhẽ karaibetá|property|zero|1|All whites happy, niã not ã
-4|Nde sema abaíme|Nde sema abaíme|property|zero|1|Your departure is difficult
+4|Nde sema|abaíme|property|zero|2|Your departure is difficult
 5|xe rorykatu ã|xe rorykatu ã|property|deictic_attached|1|I am very happy
 5|xe abé ã|gûitekóbo|property|eko_predicative|1|I am also not doing badly, ã is presentational
 5|Xe ã|nde anama retekatu|nominal|deictic_between|1|DEMONSTRATIVE between I and your true relative
 5|Karaíba|na okanhemba’e ruã|nominal|zero|1|Whites are not the lost ones
-5|Cristãoramo|sekóreme|nominal|eko_predicative|1|Being Christians
+5|Cristãoramo|sekóreme|nominal|eko_predicative|3|Being Christians
 5|na pe anama ruãtepe oré|na pe anama ruãtepe oré|nominal|zero|1|Are we not your relatives?
 5|oré rorybetémo|oré rorybetémo|property|zero|1|We would be very glad
 6|Xe rorykatu ã|Xe rorykatu ã|property|deictic_attached|1|I am very happy
@@ -81,7 +81,7 @@ CASES = """letter|start|end|kind|strategy|occ|note
 
 def normalize(value: str) -> str:
     value = unicodedata.normalize("NFKD", value.lower())
-    return re.sub(r"[^a-z0-9]", "", "".join(c for c in value if not unicodedata.combining(c)))
+    return " ".join(re.findall(r"[a-z0-9]+", "".join(c for c in value if not unicodedata.combining(c))))
 
 def scrape_justalinear():
     """Fetch an independently hosted, text-layer copy of the open-access edition.
@@ -165,12 +165,12 @@ def annotate(rows, specifications):
     extracted, missing = [], []
     for spec in specifications:
         entries = by_letter[spec["letter"]]
-        starters = [i for i, (idx,row) in enumerate(entries) if normalize(spec["start"]) in normalize(row["tupi"])]
+        starters = [i for i, (idx,row) in enumerate(entries) if (" " + normalize(spec["start"]) + " ") in (" " + normalize(row["tupi"]) + " ")]
         if len(starters) < spec["occurrence"]:
             missing.append({**spec, "problem": "start not found", "found": len(starters)})
             continue
         first = starters[spec["occurrence"]-1]
-        ends = [i for i in range(first, min(first+10, len(entries))) if normalize(spec["end"]) in normalize(entries[i][1]["tupi"])]
+        ends = [i for i in range(first, min(first+10, len(entries))) if (" " + normalize(spec["end"]) + " ") in (" " + normalize(entries[i][1]["tupi"]) + " ")]
         if not ends:
             missing.append({**spec, "problem": "end not found", "found_start_id": entries[first][1]["id"]})
             continue
