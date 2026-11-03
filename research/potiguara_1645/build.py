@@ -60,6 +60,7 @@ CASES = """letter|start|end|kind|strategy|occ|note
 3|Koba’e tekó|ma’egûasueté|nominal|zero|1|That action is a grand thing
 3|xe rorybeté|gûitekóbo|property|eko_predicative|1|Being happy
 3|Aîpó nhõ|xe nhe’enga endébe|nominal|zero|1|Only these are my words
+3|Na apŷabaíba|irã ereîkóne|property|eko_predicative|1|No longer as formerly treated, comparative-state ekó (borderline)
 4|aîkó xe kane’õramo|aîkó xe kane’õramo|property|eko_predicative|1|I am tired; property+ramo
 4|nde ipó ahẽ|nde ipó ahẽ|nominal|zero|1|You are theirs, perhaps postpositional possession, uncertain
 4|Sorybeté niã|opabenhẽ karaibetá|property|zero|1|All whites happy, niã not ã
@@ -69,6 +70,8 @@ CASES = """letter|start|end|kind|strategy|occ|note
 5|Xe ã|nde anama retekatu|nominal|deictic_between|1|DEMONSTRATIVE between I and your true relative
 5|Karaíba|na okanhemba’e ruã|nominal|zero|1|Whites are not the lost ones
 5|Cristãoramo|sekóreme|nominal|eko_predicative|3|Being Christians
+5|Tekokuabe’ymamo|eîkóbo|property|eko_predicative|1|Being in an ignorant state, -ramo and ekó
+5|Xe putubabeté ã gûitekóbo|Xe putubabeté ã gûitekóbo|property|eko_predicative|1|Stative plus ekó, with emphatic ã
 5|na pe anama ruãtepe oré|na pe anama ruãtepe oré|nominal|zero|1|Are we not your relatives?
 5|oré rorybetémo|oré rorybetémo|property|zero|1|We would be very glad
 6|Xe rorykatu ã|Xe rorykatu ã|property|deictic_attached|1|I am very happy
@@ -155,6 +158,7 @@ def annotate(rows, specifications):
         by_letter[row["letter"]].append((idx,row))
         row.update({"copular": "not_confirmed", "predication_kind": "", "strategy": "",
                     "has_demonstrative_copular_candidate": False,
+                    "has_standalone_a_deictic": bool(re.search(r"(?<!\\w)ã(?!\\w)",row["tupi"])),
                     "has_eko_predicative_candidate": False, "clause_ids": "",
                     "screening": "candidate" if re.search(
                         r"\b(?:sou|és|é|somos|são|estou|estás|está|estão|era|eram|será|serão|estando|ser|estar)\b",
@@ -188,6 +192,8 @@ def annotate(rows, specifications):
                           "tupi": " ".join(entries[i][1]["tupi"] for i in range(first,last+1)),
                           "portuguese": " ".join(entries[i][1]["portuguese"] for i in range(first,last+1)),
                           "source": DOI})
+    for clause in extracted:
+        clause["contains_standalone_ã"] = bool(re.search(r"(?<!\\w)ã(?!\\w)",clause["tupi"]))
     return rows, extracted, missing
 
 def save_csv(path, records, fields):
@@ -202,9 +208,9 @@ def main():
     rows, clauses, missing = annotate(rows, cases())
     save_csv(HERE / "all_lines.csv", rows,
              ["id","letter","line","tupi","portuguese","pdf_page","copular","predication_kind","strategy","has_demonstrative_copular_candidate",
-              "has_eko_predicative_candidate","clause_ids","screening","editorial_status","source","source_url"])
+              "has_eko_predicative_candidate","has_standalone_a_deictic","clause_ids","screening","editorial_status","source","source_url"])
     save_csv(HERE / "copular_clauses.csv", clauses,
-             ["id","letter","start_id","end_id","tupi","portuguese","kind","strategy","note","evidence_status","source"])
+             ["id","letter","start_id","end_id","tupi","portuguese","kind","strategy","contains_standalone_ã","note","evidence_status","source"])
     save_csv(HERE / "unmatched_annotations.csv", missing,
              ["id","letter","start","end","kind","strategy","occurrence","note","problem","found","found_start_id"])
     strategies = Counter(item["strategy"] for item in clauses)
@@ -216,6 +222,7 @@ def main():
                "candidate_clauses_matched": len(clauses), "candidate_clauses_unmatched": len(missing),
                "strategies": dict(strategies), "nominal_strategies": dict(nominal_strategies),
                "strategies_by_letter": distribution, "strict_deictic_between": sum(x["strategy"] == "deictic_between" for x in clauses),
+               "all_copular_candidate_clauses_with_standalone_ã": sum(x["contains_standalone_ã"] for x in clauses),
                "annotation_status": "preliminary, not a gold-standard grammatical annotation"}
     (HERE / "summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
     (HERE / "README.md").write_text(
