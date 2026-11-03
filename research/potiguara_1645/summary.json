@@ -1,7 +1,7 @@
 {
   "source": "https://doi.org/10.1590/2178-2547-BGOELDI-2021-0034",
-  "source_sha256": "867997c3c153c0e0545a8ee6d4c06ad2012b3eea3efb6ddd6627a10853ef4fc2",
-  "source_pdf": "https://upload.wikimedia.org/wikipedia/commons/2/29/TRANSCRI%C3%87%C3%83O_E_TRADU%C3%87%C3%83O_INTEGRAL_ANOTADA.pdf",
+  "source_sha256": "a7843ed80458fe21020ec02933d0e60c07ce05b3014fbcd6ec06fe69c17d34b8",
+  "source_pdf": "https://arquivos-producao.ufopa.edu.br/arquivos/202310017675e5666416aa70b73ebbcd/transcricaonavarro.pdf",
   "row_total": 777,
   "rows_by_letter": {
     "1": 179,
@@ -11,11 +11,11 @@
     "5": 138,
     "6": 86
   },
-  "candidate_clauses_matched": 49,
-  "candidate_clauses_unmatched": 1,
+  "candidate_clauses_matched": 50,
+  "candidate_clauses_unmatched": 0,
   "strategies": {
     "eko_predicative": 25,
-    "zero": 18,
+    "zero": 19,
     "deictic_attached": 4,
     "deictic_between": 2
   },
@@ -33,7 +33,7 @@
     "2": {
       "eko_predicative": 4,
       "deictic_attached": 1,
-      "zero": 2,
+      "zero": 3,
       "deictic_between": 1
     },
     "3": {
