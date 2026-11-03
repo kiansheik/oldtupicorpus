@@ -1,0 +1,7 @@
+id,letter,start,end,kind,strategy,occurrence,note,problem,found,found_start_id
+P010,1,Kó marana,amõ armada rekopûera îabé,nominal,zero,1,"This war like former armada, simile not equation",end not found,,C01-L033
+P011,1,sekó akûeîba’e rekó,sekó akûeîba’e rekó,nominal,zero,1,Its condition is that one's condition,start not found,0,
+P023,2,Aîpó pe rekó,n’i îabaibangáî,property,zero,1,That procedure is not difficult; rekó is nominal,end not found,,C02-L138
+P034,4,Nde sema abaíme,Nde sema abaíme,property,zero,1,Your departure is difficult,start not found,0,
+P037,5,Xe ã,nde anama retekatu,nominal,deictic_between,1,DEMONSTRATIVE between I and your true relative,end not found,,C05-L012
+P039,5,Cristãoramo,sekóreme,nominal,eko_predicative,1,Being Christians,end not found,,C05-L053
