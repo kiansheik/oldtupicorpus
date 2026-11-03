@@ -20,6 +20,7 @@ from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
+from demonstratives import augment
 
 HERE = Path(__file__).resolve().parent
 URL = "https://www.scielo.br/j/bgoeldi/a/vy7RnrNvd5B4rrCCX6vVx4d/?format=html&lang=pt"
@@ -207,11 +208,23 @@ def main():
     HERE.mkdir(parents=True, exist_ok=True)
     rows, response_content = scrape_justalinear()
     rows, clauses, missing = annotate(rows, cases())
+    demonstrative_hits, demo_summary = augment(rows, clauses)
     save_csv(HERE / "all_lines.csv", rows,
              ["id","letter","line","tupi","portuguese","pdf_page","copular","predication_kind","strategy","has_demonstrative_copular_candidate",
-              "has_eko_predicative_candidate","has_standalone_a_deictic","clause_ids","screening","editorial_status","source","source_url"])
+              "has_eko_predicative_candidate","has_standalone_a_deictic",
+              "demonstrative_candidates","demonstrative_lemmas","demonstrative_candidate_count","has_demonstrative_candidate",
+              "related_deictic_particle_candidates","demonstrative_hit_ids",
+              "clause_ids","screening","editorial_status","source","source_url"])
     save_csv(HERE / "copular_clauses.csv", clauses,
-             ["id","letter","start_id","end_id","tupi","portuguese","kind","strategy","contains_standalone_ã","note","evidence_status","source"])
+             ["id","letter","start_id","end_id","tupi","portuguese","kind","strategy","contains_standalone_ã",
+              "demonstrative_candidates","demonstrative_lemmas","demonstrative_candidate_count","has_demonstrative_candidate",
+              "demonstrative_roles_unreviewed","demonstrative_predication_role","contains_related_particles",
+              "note","evidence_status","source"]
+    )
+    save_csv(HERE / "demonstrative_hits.csv", demonstrative_hits,
+             ["hit_id","line_id","letter","surface","lemma","family","inventory_class","provisional_function",
+              "preceding_token","following_token","char_start","char_end","tupi","portuguese","clause_ids",
+              "copular_context","predication_interposition","editorial_status"]))
     save_csv(HERE / "unmatched_annotations.csv", missing,
              ["id","letter","start","end","kind","strategy","occurrence","note","problem","found","found_start_id"])
     strategies = Counter(item["strategy"] for item in clauses)
@@ -224,7 +237,8 @@ def main():
                "strategies": dict(strategies), "nominal_strategies": dict(nominal_strategies),
                "strategies_by_letter": distribution, "strict_deictic_between": sum(x["strategy"] == "deictic_between" for x in clauses),
                "all_copular_candidate_clauses_with_standalone_ã": sum(x["contains_standalone_ã"] for x in clauses),
-               "annotation_status": "preliminary, not a gold-standard grammatical annotation"}
+               "annotation_status": "preliminary, not a gold-standard grammatical annotation",
+               "demonstrative_inventory": demo_summary}
     (HERE / "summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
     (HERE / "README.md").write_text(
         "# Camarão letters (1645): nominal predication audit\n\n"
@@ -236,6 +250,11 @@ def main():
         "Columns beginning with has_ are candidate labels, not grammatical facts.\n\n"
         "Counts count **clauses**, not editorial lines (one clause can span several lines); "
         "strict deictic_between distinguishes the two clear ã-insertion cases from postposed deictics. "
+        "Zero strategy means zero overt copular particle, NOT absence of demonstratives. "
+        "A full paradigm scan in demonstrative_hits.csv now tracks kó, ikó, aîpó, a’e, koba’e, ebokûé, "
+        "kûeî, akûeî and other forms, with nominal-reference roles distinct from the predicative copula hypothesis. "
+        "The accompanying summary groups occurrences by lemma, family and letter. "
+        "Emphatic é / niã and pronouns with competing readings are inventoried separately. "
         "eko_predicative includes substantive and state predication, NOT ordinary locative, aspectual or possessive rekó. "
         "See summary.json for matched and unmatched annotations.\n\n"
         "Rebuild: pip install requests beautifulsoup4 pymupdf; python research/potiguara_1645/build.py.\n\n"
