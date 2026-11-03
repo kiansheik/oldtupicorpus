@@ -17,13 +17,15 @@ jobs:
           python-version: '3.12'
       - name: Install HTML parser
         run: python -m pip install --disable-pip-version-check requests beautifulsoup4 pymupdf
+      - name: Test demonstrative lexical distinctions
+        run: python research/potiguara_1645/test_demonstratives.py
       - name: Extract all six letters and annotate cases
         run: python research/potiguara_1645/build.py
       - name: Commit reproducible source-derived tables
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add research/potiguara_1645/all_lines.csv research/potiguara_1645/copular_clauses.csv research/potiguara_1645/unmatched_annotations.csv research/potiguara_1645/summary.json research/potiguara_1645/README.md
+          git add research/potiguara_1645/demonstrative_hits.csv research/potiguara_1645/all_lines.csv research/potiguara_1645/copular_clauses.csv research/potiguara_1645/unmatched_annotations.csv research/potiguara_1645/summary.json research/potiguara_1645/README.md
           if ! git diff --staged --quiet; then
             git commit -m "data: regenerate six Potiguara letters audit [skip ci]"
             git push
