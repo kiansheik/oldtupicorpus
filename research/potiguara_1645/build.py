@@ -224,7 +224,7 @@ def main():
     save_csv(HERE / "demonstrative_hits.csv", demonstrative_hits,
              ["hit_id","line_id","letter","surface","lemma","family","inventory_class","provisional_function",
               "preceding_token","following_token","char_start","char_end","tupi","portuguese","clause_ids",
-              "copular_context","predication_interposition","editorial_status"]))
+              "copular_context","predication_interposition","editorial_status"])
     save_csv(HERE / "unmatched_annotations.csv", missing,
              ["id","letter","start","end","kind","strategy","occurrence","note","problem","found","found_start_id"])
     strategies = Counter(item["strategy"] for item in clauses)
