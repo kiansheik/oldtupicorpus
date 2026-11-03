@@ -137,7 +137,7 @@ def augment(rows: list[dict], clauses: list[dict]):
             ):
                 match["predication_interposition"] = "between_nominal_constituents"
                 match["provisional_function"] = "interposed_presentative_deictic_candidate"
-            elif clause_ids and match["inventory_class"] == "core":
+            elif row.get("clause_ids") and match["inventory_class"] == "core":
                 match["predication_interposition"] = "in_predication_span_role_unresolved"
         strict = [match for match in matches if match["inventory_class"] == "core"]
         related = [match for match in matches if match["inventory_class"] == "related"]
