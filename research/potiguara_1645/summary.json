@@ -1,0 +1,143 @@
+{
+  "source": "https://doi.org/10.1590/2178-2547-BGOELDI-2021-0034",
+  "source_sha256": "a7843ed80458fe21020ec02933d0e60c07ce05b3014fbcd6ec06fe69c17d34b8",
+  "source_pdf": "https://arquivos-producao.ufopa.edu.br/arquivos/202310017675e5666416aa70b73ebbcd/transcricaonavarro.pdf",
+  "row_total": 777,
+  "rows_by_letter": {
+    "1": 179,
+    "2": 154,
+    "3": 148,
+    "4": 72,
+    "5": 138,
+    "6": 86
+  },
+  "candidate_clauses_matched": 50,
+  "candidate_clauses_unmatched": 0,
+  "strategies": {
+    "eko_predicative": 25,
+    "zero": 19,
+    "deictic_attached": 4,
+    "deictic_between": 2
+  },
+  "nominal_strategies": {
+    "eko_predicative": 18,
+    "zero": 11,
+    "deictic_between": 2
+  },
+  "strategies_by_letter": {
+    "1": {
+      "eko_predicative": 8,
+      "zero": 5,
+      "deictic_attached": 1
+    },
+    "2": {
+      "eko_predicative": 4,
+      "deictic_attached": 1,
+      "zero": 3,
+      "deictic_between": 1
+    },
+    "3": {
+      "eko_predicative": 5,
+      "zero": 3
+    },
+    "4": {
+      "eko_predicative": 1,
+      "zero": 3
+    },
+    "5": {
+      "deictic_attached": 1,
+      "eko_predicative": 4,
+      "deictic_between": 1,
+      "zero": 3
+    },
+    "6": {
+      "deictic_attached": 1,
+      "eko_predicative": 3,
+      "zero": 2
+    }
+  },
+  "strict_deictic_between": 2,
+  "all_copular_candidate_clauses_with_standalone_ã": 9,
+  "annotation_status": "preliminary, not a gold-standard grammatical annotation",
+  "demonstrative_inventory": {
+    "definition": "Exact-token inclusive lexical search; no grammatical claim that each match is a copula.",
+    "core_demo_token_hits": 90,
+    "core_demo_lines": 87,
+    "related_particle_hits": 45,
+    "excluded_homograph_hits": 2,
+    "by_surface_core": {
+      "kó": 29,
+      "ã": 32,
+      "koba’e": 3,
+      "akûeîba’e": 1,
+      "a’e": 5,
+      "aîpó": 8,
+      "ebokûeî": 1,
+      "a’eba’e": 1,
+      "ebokûé": 3,
+      "ikó": 7
+    },
+    "by_lemma_core": {
+      "kó": 32,
+      "ã": 32,
+      "akûeî": 1,
+      "a'e": 6,
+      "aîpó": 8,
+      "ebokûeî": 1,
+      "ebokûé": 3,
+      "ikó": 7
+    },
+    "by_family_core": {
+      "proximal_visible": 39,
+      "proximal": 32,
+      "distal_unseen": 7,
+      "medial_unseen": 8,
+      "medial_visible": 4
+    },
+    "related_by_form": {
+      "é": 22,
+      "niã": 3,
+      "ãgûa": 9,
+      "a'ereme": 4,
+      "aé": 1,
+      "ahẽ": 6
+    },
+    "copular_candidates_with_core_demonstrative": 19,
+    "nominal_predication_candidates_with_core_demonstrative": 10,
+    "original_zero_strategy_clauses_containing_core_demonstrative": 8,
+    "nominal_zero_strategy_clauses_containing_core_demonstrative": 6,
+    "by_letter": {
+      "1": {
+        "core_hits": 17,
+        "core_hit_lines": 17,
+        "nominal_predicative_candidates_with_core_demo": 5
+      },
+      "2": {
+        "core_hits": 26,
+        "core_hit_lines": 25,
+        "nominal_predicative_candidates_with_core_demo": 2
+      },
+      "3": {
+        "core_hits": 19,
+        "core_hit_lines": 18,
+        "nominal_predicative_candidates_with_core_demo": 2
+      },
+      "4": {
+        "core_hits": 4,
+        "core_hit_lines": 4,
+        "nominal_predicative_candidates_with_core_demo": 0
+      },
+      "5": {
+        "core_hits": 10,
+        "core_hit_lines": 10,
+        "nominal_predicative_candidates_with_core_demo": 1
+      },
+      "6": {
+        "core_hits": 14,
+        "core_hit_lines": 13,
+        "nominal_predicative_candidates_with_core_demo": 0
+      }
+    },
+    "remaining_ambiguity": "A'e is often third-person pronoun; kó/ikó often nominal determination; ã often presentative/temporal; é and niã not included as core demonstratives. All hits need syntactic review."
+  }
+}
