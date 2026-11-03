@@ -158,7 +158,7 @@ def annotate(rows, specifications):
         by_letter[row["letter"]].append((idx,row))
         row.update({"copular": "not_confirmed", "predication_kind": "", "strategy": "",
                     "has_demonstrative_copular_candidate": False,
-                    "has_standalone_a_deictic": bool(re.search(r"(?<!\\w)ã(?!\\w)",row["tupi"])),
+                    "has_standalone_a_deictic": bool(re.search(r"(?<!\w)ã(?!\w)",row["tupi"])),
                     "has_eko_predicative_candidate": False, "clause_ids": "",
                     "screening": "candidate" if re.search(
                         r"\b(?:sou|és|é|somos|são|estou|estás|está|estão|era|eram|será|serão|estando|ser|estar)\b",
@@ -193,7 +193,7 @@ def annotate(rows, specifications):
                           "portuguese": " ".join(entries[i][1]["portuguese"] for i in range(first,last+1)),
                           "source": DOI})
     for clause in extracted:
-        clause["contains_standalone_ã"] = bool(re.search(r"(?<!\\w)ã(?!\\w)",clause["tupi"]))
+        clause["contains_standalone_ã"] = bool(re.search(r"(?<!\w)ã(?!\w)",clause["tupi"]))
     return rows, extracted, missing
 
 def save_csv(path, records, fields):
